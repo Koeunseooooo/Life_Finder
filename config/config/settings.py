@@ -39,6 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'cal',
+    'main',
+    'create_profile',
+    'life_finder',
+    'dashboard',
+
+
 ]
 
 MIDDLEWARE = [

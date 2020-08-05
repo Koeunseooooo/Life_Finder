@@ -19,4 +19,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('calendar/',include('cal.urls')),
+    path('',include('main.urls')),
+    path('create/',include('create_profile.urls')),
+    path('life/',include('life.urls')),
+    path('dash/',include('dash.urls')),
 ]
