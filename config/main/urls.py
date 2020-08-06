@@ -5,4 +5,5 @@ app_name = 'main'
 urlpatterns = [
  path('',views.base, name='base'),
  #chaeeun test
+ #chaeeun test04
 ]
