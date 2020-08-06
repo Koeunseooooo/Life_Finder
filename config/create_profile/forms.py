@@ -8,13 +8,8 @@ class CreateUserForm(UserCreationForm):  # 회원가입폼
     class Meta:
         model = User
         fields = ["username", "password1", "password2"]
-        labels = {"username": "아이디"}
-        password1 = forms.CharField(
-            label="비밀번호",
-        )
-        password2 = forms.CharField(
-            label="비밀번호 확인",
-        )
+        labels = {"username": "ID"}
+
 
 
 class CustomAuthenticationForm(AuthenticationForm):

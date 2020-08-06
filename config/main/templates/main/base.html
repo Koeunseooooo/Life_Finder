@@ -6,23 +6,36 @@
     <title>Title</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'main/base.css' %}">
+    {% block style %}
+    {% endblock %}
 </head>
 <body>
 
 <nav>
     <ul>
-        <li><a href="#">HOME</a></li>
+        <li><a href="/">HOME</a></li>
         <li><a href="#">LIFE FINDER</a></li>
         <li><a href="#">DASH BOARD</a></li>
         <li><a href="#">MY PAGE</a></li>
+        {% if user.is_authenticated %}
+            {{ user }}
+            <li><a href="{% url 'create_profile:logout' %}">로그아웃</a></li>
+        {% else %}
+            <li><a href="{% url 'create_profile:signup' %}">회원가입</a></li>
+            <li><a href="{% url 'create_profile:login' %}">로그인</a></li> {#보던 페이지로 이동#}
+        {% endif %}
     </ul>
 </nav>
 
-<div class="contents">
-
+<div class="r_contents">
+    {% block content %}
+    {% endblock %}
 </div>
 
 
-
+{% block footer %}
+{% endblock %}
 </body>
+
+
 </html>

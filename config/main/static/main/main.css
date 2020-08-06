@@ -1,0 +1,150 @@
+.r_contents {
+    width: 100%;
+}
+
+.card_01 {
+    width: 100%;
+    height: 56rem;
+    padding-top: 5rem;
+    overflow: hidden;
+    background-color: #63D9FF;
+}
+
+.card_01 h1 {
+    padding-top: 10rem;
+    color: white;
+    float: left;
+    margin-left: 10rem;
+    font-size: 6rem;
+    font-family: "Syncopate", sans-serif;
+}
+
+.card_01 img {
+    padding-top: 5rem;
+    float: right;
+    margin-right: 5rem;
+    width: 34rem;
+    height: 35rem;
+}
+
+.contents #bottom {
+    margin-top: 30rem;
+}
+
+#btn {
+    width: 13rem;
+    margin-left: 10rem;
+}
+
+#btn #first_btn {
+    width: 13rem;
+    background-color: white;
+    height: 3.5rem;
+    color: #717FFF;
+    font-family: "Syncopate", sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    border-radius: 2rem;
+    border: none;
+    text-align: center;
+    line-height: 3.5rem;
+}
+
+#first_btn a, #second_btn a, #third_btn a {
+    padding: 20px;
+}
+
+#btn #second_btn {
+    margin-top: 1rem;
+    width: 13rem;
+    background-color: white;
+    height: 3.5rem;
+    color: #717FFF;
+    font-family: "Syncopate", sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    border-radius: 2rem;
+    border: none;
+    text-align: center;
+    line-height: 3.5rem;
+}
+
+#btn #third_btn {
+    margin-top: 1rem;
+    width: 13rem;
+    background-color: white;
+    height: 3.5rem;
+    color: #717FFF;
+    font-family: "Syncopate", sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    border-radius: 2rem;
+    border: none;
+    text-align: center;
+    line-height: 3.5rem;
+}
+
+#btn #first_btn:hover, #btn #second_btn:hover {
+    background-color: #717FFF;
+    color: white;
+}
+
+.card_02 {
+    width: 100%;
+    height: 56rem;
+    background-color: #5E5694;
+
+}
+
+.card_02 h3, .card_03 h3, .card_04 h3 {
+    margin-left: 10rem;
+    font-family: 'Permanent Marker', cursive;
+    color: #A5E9FF;
+    font-size: 2rem;
+    padding-top: 8rem;
+}
+
+.card_02 h1, .card_03 h1, .card_04 h1 {
+    margin-left: 10rem;
+    font-family: 'Audiowide', cursive;
+    font-size: 4rem;
+    width: 30%;
+    color: #63D9FF;
+}
+
+.card_02 p, .card_03 p, .card_04 p {
+    margin-left: 10rem;
+    margin-top: 8rem;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    color: #63D9FF;
+}
+
+.card_02 p span, .card_03 p span, .card_04 p span {
+    font-weight: 700;
+}
+
+.card_03 {
+    width: 100%;
+    height: 56rem;
+    background-color: #717FFF;
+}
+
+.card_04 {
+    width: 100%;
+    height: 56rem;
+    background-color: #79aec8;
+}
+
+footer {
+    width: 100%;
+    height: 20rem;
+    background-color: #F5F5F7;
+    color: white;
+}
+
+footer h1 {
+    color: black;
+    padding-left: 45%;
+    padding-top: 7rem;
+}
