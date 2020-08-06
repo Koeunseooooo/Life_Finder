@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+{% block login %}
+    {% if user.is_authenticated %}
+        {{ user }}
+        <li><a href="{% url 'create_profile:logout' %}">로그아웃</a></li>
+    {% else %}
+        <li><a href="{% url 'create_profile:signup' %}">회원가입</a></li>
+        <li><a href="{% url 'create_profile:login' %}">로그인</a></li> {#보던 페이지로 이동#}
+    {% endif %}
+{% endblock %}
