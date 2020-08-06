@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/base.css' %}">
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">LIFE FINDER</a></li>
+        <li><a href="#">DASHBOARD</a></li>
+        <li><a href="#">MY PAGE</a></li>
+    </ul>
+</nav>
+
+<div class="contents">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer>
+<h1>푸터입니다</h1>
+</footer>
+
+
+
+</body>
+</html>
