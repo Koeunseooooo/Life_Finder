@@ -1,0 +1,77 @@
+{% extends 'create_profile/page.html' %}
+{% block style %}
+    <style>
+    form {
+        background-color: white;
+        width: 600px;
+        padding: 40px;
+        border-radius: 5px;
+        margin: 0px auto;
+    }
+
+    h2 {
+        text-align: center;
+        line-height: 80px;
+
+    }
+
+    table {
+        line-height: 40px;
+        font-size: 15px;
+        margin: 0 auto;
+    }
+    th{
+        vertical-align: text-top;
+        line-height: 60px;
+        text-align: left;
+    }
+
+    input, button {
+        margin-left: 10px;
+        width: 250px;
+        height: 40px;
+        border-radius: 5px;
+        border: solid 1px #b0bec9;;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+
+    #save {
+        margin-top: 30px;
+        margin-left: 251px;
+        background-color: #1E88E5;
+        border-radius: 5px;
+        color: white;
+        width: 100px;
+        text-align: center;
+    }
+
+
+    input[type=password] {
+    font-family: "Adobe 고딕 Std B";
+    }
+    footer{
+        display: none;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        line-height: 30px;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+    <div style="height: 100px"></div>
+    <div class="formbox">
+        <form method="POST" action="{% url 'create_profile:login' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <div id="box">
+                    {{ login_form }}
+                </div>
+            </table>
+            <input type="submit" id="save" value="submit"/>
+        </form>
+    </div>
+{% endblock %}
