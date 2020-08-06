@@ -2,5 +2,5 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
- #test
+ #test #new feature test
 ]
