@@ -32,12 +32,16 @@ nav li{
 }
 
 nav li:nth-child(2){
-    margin-left: 20rem;
+    margin-left: 15rem;
 
 }
 
 nav li:nth-child(3){
-    margin-left: 25rem;
+    margin-left: 15rem;
+}
+
+nav li:nth-child(4){
+    margin-left: 20rem;
 }
 
 nav a{
@@ -47,21 +51,6 @@ nav a{
 .contents{
     margin: 0 auto;
     width: 80%;
-    height: 60rem;
+    height: 100rem;
     background-color: red;
-}
-
-footer{
-    position: sticky;
-    margin-top: 60rem;
-    width: 100%;
-    height: 20rem;
-    background-color: #F5F5F7;
-    color: white;
-}
-
-footer h1{
-    color: black;
-    padding-left: 45%;
-    padding-top: 7rem;
 }
