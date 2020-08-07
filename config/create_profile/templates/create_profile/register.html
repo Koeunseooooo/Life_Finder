@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    <div style="height: 100px"></div>
+        <h2>당신의 프로필을 작성해주세요!</h2>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div>
+                    {% csrf_token %}
+                    <table>
+                        <div id="box">{{ profile_form.as_table }}</div>
+                    </table>
+                    <input type="submit" value="제출"/>
+                </div>
+            </form>
+{% endblock %}
