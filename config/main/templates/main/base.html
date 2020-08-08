@@ -14,7 +14,7 @@
 <nav>
     <ul>
         <li><a href="/">HOME</a></li>
-        <li><a href="#">LIFE FINDER</a></li>
+        <li><a href="{% url 'cal:calendar' %}">LIFE FINDER</a></li>
         <li><a href="#">DASH BOARD</a></li>
 
         {% if user.is_authenticated %}
