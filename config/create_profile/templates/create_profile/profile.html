@@ -1,0 +1,47 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% block content %}
+    <div style="height: 200px;"></div>
+    <h1>내 프로필</h1><br/>
+    <h2>{{ profile.nickname }}'s Profile</h2>
+
+    {% if profile.photo %}
+        <img src='{{ profile.photo.url }}' style="height: 200px; width: 200px;">
+    {% else %}
+        <img src="{% static 'img01.png' %}" style="height: 200px; width: 200px;">
+    {% endif %}
+
+
+    {% if profile.age %}
+        <h2>나이: {{ profile.age }}살</h2>
+    {% endif %}
+    {% if profile.job %}
+        <h2>직업: {{ profile.job }}</h2>
+    {% endif %}
+    {% if profile.description %}
+        <h2>소개: {{ profile.description }}</h2>
+    {% endif %}
+    <h2>목표개수: {{ profile.goal_count }}</h2>
+
+
+   <button type="button"><a href="{% url 'create_profile:profile_edit' profile.pk %}">프로필 수정하기</a>
+
+{% endblock %}
+
+{#    <div style="height: 200px;"></div>#}
+{#    <h1>내 프로필</h1><br/>#}
+{#    <h2>{{ user.user_profile.nickname }}'s Profile</h2>#}
+{#    {% if profile.photo %}#}
+{#        <img scr="{{ user.user_profile.photo.url }}">#}
+{#    {% endif %}#}
+{#    {% if profile.age != None %}#}
+{#        <h2>나이: {{ user.user_profile.age }}살</h2>#}
+{#    {% endif %}#}
+{#    {% if profile.job != None %}#}
+{#        <h2>직업: {{ user.user_profile.job }}</h2>#}
+{#    {% endif %}#}
+{#    {% if profile.description != None %}#}
+{#        <h2>소개: {{ user.user_profile.description }}</h2>#}
+{#    {% endif %}#}
+{#    <h2>목표개수: {{ user.user_profile.goal_count }}</h2>#}

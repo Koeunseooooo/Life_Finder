@@ -16,9 +16,9 @@
         <li><a href="/">HOME</a></li>
         <li><a href="#">LIFE FINDER</a></li>
         <li><a href="#">DASH BOARD</a></li>
-        <li><a href="#">MY PAGE</a></li>
+
         {% if user.is_authenticated %}
-            {{ user }}
+            <li><a href="{% url 'create_profile:profile_look' request.user.pk  %}">MY PAGE</a></li>
             <li><a href="{% url 'create_profile:logout' %}">로그아웃</a></li>
         {% else %}
             <li><a href="{% url 'create_profile:signup' %}">회원가입</a></li>
