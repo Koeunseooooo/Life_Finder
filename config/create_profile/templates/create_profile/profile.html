@@ -8,14 +8,17 @@
 
     {% if profile.photo %}
         <img src='{{ profile.photo.url }}' style="height: 200px; width: 200px;">
+{#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
     {% else %}
         <img src="{% static 'img01.png' %}" style="height: 200px; width: 200px;">
     {% endif %}
 
-
     {% if profile.age %}
         <h2>나이: {{ profile.age }}살</h2>
     {% endif %}
+{#    {% if profile.birthday %}#}
+{#        <h2>생일 {{ profile.birthday }}</h2>#}
+{#    {% endif %}#}
     {% if profile.job %}
         <h2>직업: {{ profile.job }}</h2>
     {% endif %}
