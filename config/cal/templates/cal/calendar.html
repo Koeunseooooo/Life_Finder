@@ -1,9 +1,11 @@
 
 {% extends 'cal/base.html' %}
 
+{% block content %}
 {% block title %}
 Calendar
 {% endblock %}
+<div style='height:100px'></div>
 
 {% block content_cal %}
 <div class="clearfix">
@@ -13,4 +15,15 @@ Calendar
 </div>
 
 {{ calendar }}
+
+{#{% block footer %}#}
+{#    #}
+{#{% for event in events %}#}
+{#{{ event }}#}
+{#{% endfor %}#}
+{#    #}
+{#{% endblock %}#}
+{##}
+{% endblock %}
+
 {% endblock %}
