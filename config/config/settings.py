@@ -42,10 +42,7 @@ INSTALLED_APPS = [
     'main',
     'create_profile',
     'dashboard',
-
     'django.forms',
-
-
 ]
 
 MIDDLEWARE = [
