@@ -1,16 +1,74 @@
 {% extends 'main/base.html' %}
+{% block style %}
+    <style>
+        input[type=file] {
+            padding-top: 80px;
+            padding-left: 20px;
+        }
+
+        input[type=text], input[type=number] {
+            margin-bottom: 10px;
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: solid 1px #b0bec9;;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+
+        #save {
+            margin-top: 30px;
+
+            width: 300px;
+            height: 40px;
+            border-radius: 5px;
+            border: solid 1px #b0bec9;
+            padding-left: 10px;
+
+            background-color: #1E88E5;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+        }
+
+    </style>
+{% endblock %}
 {% block content %}
-    <div style="height: 100px"></div>
-    <h2>당신의 프로필을 변경해주세요!</h2>
-    <form action="" method="post" enctype="multipart/form-data">
-        <div>
-            {% csrf_token %}
-            <table>
-                <div id="box">{{ profile_form.as_table }}
-                {{ goal_form.as_table }}
-                </div>
-            </table>
-            <input type="submit" value="수정완료"/>
-        </div>
-    </form>
+        <div style="height: 100px"></div>
+        <h2>당신의 프로필을 변경해주세요!</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            <div>
+                {% csrf_token %}
+                <table>
+                    <div id="box">
+                        {{ profile_form.as_table }}
+                         {{ goal_form.as_table }}
+                    </div>
+                </table>
+                <input type="submit" value="수정완료"/>
+            </div>
+        </form>
+
+
+{#    <div style="height: 100px"></div>#}
+{#    <h2>당신의 프로필을 변경해주세요!</h2>#}
+{#    <form action="" method="post" enctype="multipart/form-data">#}
+{#        <div>#}
+{#            {% csrf_token %}#}
+{#            <div class="input_file" style="height: 200px; width: 200px; border-radius: 50%; background-color: orange;">#}
+{#                <input class="input_file_show" name="photo" type="file" value="{{ profile.photo }}"></div>#}
+{#            <br/>#}
+{#            <label for="nickname">닉네임</label><br/>#}
+{#            <input name="nickname" type="text" id="nickname" placeholder="{{ profile.nickname }}"><br/>#}
+{#            <label for="age">나이</label><br/>#}
+{#            <input name="age" type="number" id="age" value="{{ profile.age }}"><br/>#}
+{#            <label for="job">직업</label><br/>#}
+{#            <input name="job" type="text" id="job" value="{{ profile.job }}"><br/>#}
+{#            <label for="description">소개글</label><br/>#}
+{#            <input name="description" type="text" id="description" value="{{ profile.description }}"><br/>#}
+{#            <label for="goal_count">목표 개수</label><br/>#}
+{#            <input type="number" name="goal_count" id="goal_count" value="{{ profile.goal_count }}"><br/>#}
+{#            <input type="submit" id="save" value="수정완료"/>#}
+{#        </div>#}
+{#    </form>#}
 {% endblock %}

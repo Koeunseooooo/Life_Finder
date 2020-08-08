@@ -1,4 +1,33 @@
 {% extends 'main/base.html' %}
+{% block style %}
+    <style>
+        input[type=file] {
+            padding-top: 80px;
+            padding-left: 20px;
+        }
+
+        input[type=text], input[type=number] {
+            margin-bottom: 10px;
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: solid 1px #b0bec9;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+
+        #save {
+            margin-top: 30px;
+            margin-left: 251px;
+            background-color: #1E88E5;
+            border-radius: 5px;
+            color: white;
+            width: 100px;
+            text-align: center;
+        }
+
+    </style>
+{% endblock %}
 {% block content %}
     <div style="height: 100px"></div>
         <h2>당신의 프로필을 작성해주세요!</h2>
@@ -12,3 +41,37 @@
                 </div>
             </form>
 {% endblock %}
+
+
+{#{% block content %}#}
+{#    <div style="height: 100px"></div>#}
+{#    <h3>로고</h3>#}
+{#    <h3>당신의 프로필을 설정해주세요!</h3>#}
+{#    <form action="" method="post" enctype="multipart/form-data">#}
+{#        <div>#}
+{#            {% csrf_token %}#}
+{#            <div class="input_file" style="height: 200px; width: 200px; border-radius: 50%; background-color: orange;">#}
+{#                <input class="input_file_show" name="photo" type="file"></div>#}
+{#            <br/>#}
+            {#            <script>#}
+            {#                $(document).ready(function () {#}
+            {#                    $('.input_file').click(function () {#}
+            {#                        $('.input_file_show').show();#}
+            {#                    })#}
+            {#                };#}
+            {#<input name = "photo" type="file">#}
+            {#            </script>#}
+            {#            <input class="input_file_show" name="photo" type="file"><br/>#}
+{#            <label for="nickname">닉네임</label><br/>#}
+{#            <input name="nickname" type="text" id="nickname" value="{{ .title }}"><br/>#}
+{#            <label for="age">나이</label><br/>#}
+{#            <input name="age" type="number" id="age"><br/>#}
+{#            <label for="job">직업</label><br/>#}
+{#            <input name="job" type="text" id="job"><br/>#}
+{#            <label for="description">소개글</label><br/>#}
+{#            <input name="description" type="text" id="description"><br/>#}
+{#            <input type="submit" id="save" value="저장하기"/>#}
+{#        </div>#}
+{#    </form>#}
+{#{% endblock %}#}
+{#사진 닉네임 나이 직업 소개글 저장하기#}
