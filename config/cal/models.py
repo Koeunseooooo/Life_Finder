@@ -15,7 +15,7 @@ class Event(models.Model):
     start_time = models.DateTimeField(default = timezone.now, blank = True)
     # default = timezone.now,
     profile=models.ForeignKey(Profile, related_name='event',on_delete=models.CASCADE)
-    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], blank=True, default='some_value')
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], blank=True, default='enter your value')
 
     def __str__(self):
         return '{}/ {}/ {}'.format(self.id, self.title, self.start_time, self.rating)

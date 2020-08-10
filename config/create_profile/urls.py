@@ -11,6 +11,7 @@ urlpatterns = [
     path('profile/<int:pk>/', views.profile_look, name='profile_look'),
     path('profile/<int:pk>/edit/',views.profile_edit,name='profile_edit'),
     path('profile/register/',views.register, name='register'),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -10,7 +10,6 @@ class EventForm(ModelForm):
         widgets = {
             'rating': RateitjsWidget,
             'start_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
-
         }
 
         fields = ['title','start_time','rating']

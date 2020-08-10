@@ -1,37 +1,39 @@
 {% extends 'cal/base.html' %}
-{##}
 
-{#{% block title %}#}
-{#Event#}
-{#{% endblock %}#}
-{##}
-{#{% block content_cal %}#}
 
 {% block content %}
-    {% block content_cal  %}
+    {% block content_cal %}
         <div style="height: 100px;"></div>
-{% if form.errors %}
-    {% for field in form %}
-        {% for error in field.errors %}
-            <div class="alert alert-danger">
-                {{ field.label }} <strong>{{ error|escape }}</strong>
-            </div>
-        {% endfor %}
-    {% endfor %}
-    {% for error in form.non_field_errors %}
-        <div class="alert alert-danger">
-            {{ field.label }} <strong>{{ error|escape }}</strong>
-        </div>
-    {% endfor %}
-{% endif %}
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        {{ field.label }} <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ field.label }} <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
 
-<form method="post" action="">
-  {% csrf_token %}
-  <table class="form form-table">
-    {{ form }}
-    <tr><td colspan="2"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>
-  </table>
-</form>
+        <form method="post" action="">
+            {% csrf_token %}
+            <table class="form form-table">
+                {{ form }}
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="btn btn-info right" name="action_add"> 등록하기</button>
+                    </td>
+                    <td colspan="2">
+                        <button type="submit" class="btn btn-info right" name="action_remove"> 삭제하기</button>
+                    </td>
+                </tr>
+
+            </table>
+            {#    <a href="{% url 'cal:delete' event.pk %}"> delete </a>#}
+        </form>
+    {% endblock %}
 {% endblock %}
-{% endblock %}
-{##}
