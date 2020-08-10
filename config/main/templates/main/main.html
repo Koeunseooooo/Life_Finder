@@ -4,6 +4,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'main/main.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
 {% endblock %}
 
 
@@ -12,8 +14,7 @@
     <div class="contents">
     <div class="card_01">
         <div id="top">
-            <h1>LIFE<br/>FINDER</h1>
-            <img src="{% static 'img01.png' %}">
+            <img src="static/logo001.png">
         </div>
 
         <div id="bottom">
@@ -43,22 +44,33 @@
 
     </div>
     <div class="card_02">
-        <h3>your map your life</h3>
-        <h1>LIFE<br/>FINDER</h1>
+
+        <h3>HOW WAS YOUR DAY?</h3>
+        <h1>LIFE<br/>FINDER-YA!</h1>
         <p>
             <span>LIFEFINDER</span>는
-            당신의 라이프 스타일을 확인해줍니다<br/>
-            지금 당신의 라이프를 찾아보세요<br/>
-            라이프파인더는 우리 삶의 만족도를 확인해주는 지표로 활용할 수 있습니다
+            당신의 삶은 일과 삶으로부터 지켜지고 있나요?<br/>
+            라이프 파인더는 일과 삶의 비율을 확인하여 <br />
+            당신의 라이프 스타일을 확인해줍니다<br />
+            지금 당신의 라이프를 찾아보세요
         </p>
-        <img src="">
+        <div id="lf">
+            <a href="#">LIFEFINDER-YA!</a>
+        </div>
+
+    </div>
+
+    <div class="vid_01">
+         <video width="100%" muted autoplay loop>
+             <source src="{% static "real001.mp4" %}" type="video/mp4">
+        </video>
     </div>
 
     <div class="card_03">
         <h3>Check your lifestyle</h3>
         <h1>DASH
             <br/>
-            BOARD</h1>
+            BOARD-Ya!</h1>
         <p>
             <span>DASHBOARD</span>에서는 일주일간의 라이프 기록을<br/>
             살펴볼 수 있습니다
@@ -68,13 +80,23 @@
     <div class="card_04">
         <h3>Who can use this service?</h3>
         <h1>How <br/>
-            To Use</h1>
+            To Use-YA!</h1>
         <p>
             <span>어떻게 </span>라이프 파인더를 활용할 수 있을까요?<br/>
             열심히 일하고 뿌듯함을 느낀 당신<br/>
             일상 속에서 소소한 행복함을 느낀 당신<br/>
             몰랐던 즐거움을 찾은 당신<br/>
             라이프 뱃지를 통해 당신의 만족도를 확인해보세요!
+        </p>
+    </div>
+
+    <div class="card_05">
+        <h3>Who are you?</h3>
+        <h1>NUGU-YA!</h1>
+        <p>
+            <span>어떻게 </span>라이프 파인더를 활용할 수 있을까요?<br/>
+            열심히 일하고 뿌듯함을 느낀 당신<br/>
+
         </p>
     </div>
 {% endblock %}

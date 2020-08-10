@@ -14,10 +14,10 @@ class CreateUserForm(UserCreationForm):  # 회원가입폼
 
 class CustomAuthenticationForm(AuthenticationForm):
     username = UsernameField(
-        label='아이디',
+        label='',
     )
     password = forms.CharField(
-        label="비밀번호",
+        label="",
         strip=False,
         widget=forms.PasswordInput,
     )

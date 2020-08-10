@@ -1,14 +1,25 @@
 {% extends 'main/base.html' %}
+{% load static %}
 {% block style %}
     <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
     form {
-        background-color: white;
+        padding-top: 1rem;
         width: 600px;
-        padding: 40px;
-        border-radius: 5px;
-        margin: 0px auto;
+        margin: 0 auto;
     }
 
+
+    #logoimg{
+        padding-top: 8rem;
+        margin-left: 34rem;
+    }
+    .formbox{
+        margin: 0 auto;
+    }
     h2 {
         text-align: center;
         line-height: 80px;
@@ -27,28 +38,34 @@
     }
 
     input, button {
-        margin-left: 10px;
+
         width: 250px;
         height: 40px;
-        border-radius: 5px;
-        border: solid 1px #b0bec9;;
-        margin-top: 10px;
-        padding-left: 10px;
+        border: solid 1px #b0bec9;
+        margin-top: 1.5rem;
+
     }
+
+
 
     #save {
-        margin-top: 30px;
-        margin-left: 251px;
-        background-color: #1E88E5;
-        border-radius: 5px;
+        margin-top: 4rem;
+        background-color: #717FFF;
         color: white;
-        width: 100px;
+        width: 460px;
+        height: 56px;
         text-align: center;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
     }
 
+    #logbtn{
+        margin-left: 4.5rem;
+    }
 
     input[type=password] {
-    font-family: "Adobe 고딕 Std B";
+    font-family: "Noto Sans KR", sans-serif;
     }
     footer{
         display: none;
@@ -59,19 +76,49 @@
     li{
         line-height: 30px;
     }
+
+    #id_username{
+        width: 460px;
+
+    }
+
+    #id_password{
+        width: 460px;
+
+    }
+
+    #box{
+        margin: 0 auto;
+
+        width: 460px;
+    }
+    #box input{
+
+        width: 460px;
+        margin-top: 2rem;
+    }
     </style>
 {% endblock %}
 {% block content %}
+    {% load staticfiles %}
     <div style="height: 100px"></div>
+
     <div class="formbox">
+    <div id="logoimg">
+    <img src="{% static 'main/NAME.png' %}">
+    </div>
+
+
         <form method="POST" action="{% url 'create_profile:login' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <table>
-                <div id="box">
-                    {{ login_form }}
+            <div id="box">
+                <input name="username" type="text" placeholder="     아이디" autofocus><br/>
+                <input name="password" type="password" placeholder="    비밀번호">
+                <input type="submit" id="save" value="로그인하기"/>
                 </div>
-            </table>
-            <input type="submit" id="save" value="submit"/>
+
+
         </form>
     </div>
 {% endblock %}
