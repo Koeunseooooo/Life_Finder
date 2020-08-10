@@ -31,15 +31,19 @@ def login(request):
 def signup(request):
     if request.method == "POST":
         user_form = CreateUserForm(request.POST)
+
         if user_form.is_valid():
             user = user_form.save()
             auth_login(request, user)  # 로그인 처리
             return redirect('create_profile:register')
-    elif request.method == 'GET':
+
+    elif request.method == "GET":
         user_form = CreateUserForm()
+
     return render(request, 'create_profile/signup.html', {
         'user_form': user_form,
     })
+
 
 
 def logout(request):
@@ -47,14 +51,6 @@ def logout(request):
     return redirect('main:first')
 
 
-# @login_required  # 로그인 된 사람만 응답하게. 로그인X시 로그인 창 뜸
-# def profile(request, pk):
-#     user = User.objects.get(pk=pk)  # 프로필의 user
-#     profile_info = user.user_profile
-#     ctx = {
-#         'profile_info': profile_info
-#     }
-#     return render(request, 'create_profile/profile.html', ctx)
 @login_required
 def profile_look(request, pk):
     user = User.objects.get(id=pk)

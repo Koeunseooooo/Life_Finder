@@ -80,11 +80,13 @@
             }
 
             .rateit button.rateit-reset {
-                background: url(delete.gif) 0 0;
-                width: 32px;
-                height: 32px;
-                display: -moz-inline-box;
-                display: inline-block;
+                /*background: url(delete.gif) 0 0;*/
+                /*visibility: hidden; 공간을 차지함*/
+                 display: none;
+                /*width: 32px;*/
+                /*height: 32px;*/
+                /*display: -moz-inline-box;*/
+                /*display: inline-block;*/
                 float: left;
                 outline: none;
                 border: none;

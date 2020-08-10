@@ -16,7 +16,6 @@
         <li><a href="/">HOME</a></li>
         <li><a href="{% url 'cal:calendar' %}">LIFE FINDER</a></li>
         <li><a href="#">DASH BOARD</a></li>
-
         {% if user.is_authenticated %}
             <li><a href="{% url 'create_profile:profile_look' request.user.pk  %}">MY PAGE</a></li>
             <li><a href="{% url 'create_profile:logout' %}">로그아웃</a></li>

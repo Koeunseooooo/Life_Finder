@@ -1,82 +1,145 @@
 /* Common styles */
 body {
-  font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 }
 
 .left {
-  float: left;
+    float: left;
 }
 
 .right {
-  float: right;
+    float: right;
 }
 
 .btn {
-  outline: none;
-  color: black;
-  background-color: transparent;
-  box-shadow: 0 0 0 0;
-  margin-right: 3px;
+    outline: none;
+    color: black;
+    background-color: transparent;
+    box-shadow: 0 0 0 0;
+    margin-right: 3px;
 }
 
 .clearfix {
-  margin: 15px;
+    margin: 15px;
+    width: 70%;
+    margin: 15px auto;
 }
 
 .form {
-  margin: auto;
+    margin: auto;
 }
 
 .form input, .form select, .form textarea {
-  border-radius: 5px;
-  border: 1px solid #17a2b8;
-  outline: none;
-  background: none;
-  padding: 5px;
-  width: 100%;
+    border-radius: 5px;
+    border: 1px solid darkblue;
+    outline: none;
+    background: none;
+    padding: 5px;
+    width: 100%;
 }
 
 /* App styles */
 .title {
-  text-align: center;
-  margin: 10px;
+    text-align: center;
+    margin: 10px;
 }
 
 .calendar {
-  width: 98%;
-  margin: auto;
-  font-size: 13px;
+    width: 70%;
+    margin: auto;
+    font-size: 13px;
 }
 
 .calendar tr, .calendar td {
-  border: 1px solid black;
+    border: 1px solid darkblue;
 }
 
 .calendar th {
-  padding: 10px;
-  text-align: center;
-  font-size: 18px;
+    padding: 5px;
+    text-align: center;
+    font-size: 18px;
 }
 
 .calendar td {
-  width: 200px;
-  height: 150px;
-  padding: 20px 0px 0px 5px;
+    width: 200px;
+    height: 80px;
+    padding: 20px 0px 0px 5px;
 }
 
+
+.calendar td ul li a {
+    color: #00ff7f;
+    font-size: 0.9rem;
+    /*뱃지 크기와 색깔 정하는 아이*/
+}
+
+
 .month {
-  font-size: 25px;
+    font-size: 25px;
 }
 
 .date {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 ul {
-  height: 100%;
-  padding: 0px 5px 0px 20px;
+    height: 100%;
+    padding: 0px 5px 0px 20px;
 }
 
-a {
-  color: #17a2b8;
+
+/*캘린더 밑에 나오는 오늘 리스트부분 스타일 시작*/
+.today_list_total {
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.today_list_total .today{
+  color: #1E88E5;
+  font-size: 4rem;
+  font-weight: bold;
+}
+.today_rating {
+    margin-top: 20px;
+}
+.today_list_item {
+    width: 200px;
+    height: 50px;
+  line-height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 2px solid lightgray;
+}
+.today_list_total .total{
+    color: lightgray;
+  font-size: 2rem;
+  font-weight: bold;
+    margin-right: 20px;
+}
+.today_list_item .each_rating{
+    font-weight: bold;
+    color: darkblue;
+    margin-left: 10px;
+}
+
+/*대시보드 보러가기 버튼 css*/
+.go_dashboard button{
+        background-color: #1E88E5;
+        width: 170px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 30px;
+        margin-top: 40px;
+        border: none;
+        padding-left: 10px;
+}
+.go_dashboard a{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+.go_dashboard a:hover{
+    font-weight: bold;
 }
