@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.shortcuts import redirect
 from django.utils.safestring import mark_safe
 import calendar
+from django.utils import timezone
 from .models import Event
 from .models import *
 from .utils import Calendar
@@ -95,18 +96,58 @@ def dash(request):
     # 오늘로 부터 7일전 까지 갖고온다.
     import arrow
     past_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-7).datetime
-    events = Event.objects.filter(start_time__gte=past_datetime).order_by('start_time')
-    count = 0
-    numsum = 0
-    for event in events:
+    future_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).datetime
+
+    select_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-1).datetime
+    select_datetime_late = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=0).datetime
+    # 왜 -6일까
+    events = Event.objects.filter(start_time__gte=past_datetime).filter(start_time__lte=future_datetime).order_by('start_time')
+    select_events=Event.objects.filter(start_time__gte=select_datetime).filter(start_time__lte=select_datetime_late).order_by('start_time')
+    # future_events = Event.objects.filter(start_time__lte=future_datetime).order_by('start_time')
+
+    count=0
+    for select_event in select_events:
         count += 1
-        numsum += event.rating
-    mean_value = numsum / (count + 1e-7)
+
+    if(count == 0):
+        result='no object'
+    else:
+        result='exists objects'
+
+        # //키야~~~ 이거대로 유알엘 2개  더 파~~
+
+
+
+
+
+    # count=0
+    # # -3에는 3개의 objects가 있어욤
+    # for eventi in events:
+    #     if eventi.start_time == select_datetime:
+    #         count += 1
+    #
+    # all_count=count
+
+
+
+
+
+    # count = 0
+    # numsum = 0
+    # for event in events:
+    #     count += 1
+    #     numsum += event.rating
+    # mean_value = numsum / (count + 1e-7)
     # 갖고온 이벤트들 레이팅값
-    # queryset = Event.objects.filter(title__startswith="고은")
+
     context={
         'events':events,
-        'mean_value': mean_value
+        'select_events':select_events,
+        'result':result,
+        # 'mean_value': mean_value,
+        # 'count':count
+        # 'future_events':future_events
+        # 'all_count':all_count
     }
     return render(request,'cal/index.html',context=context)
 

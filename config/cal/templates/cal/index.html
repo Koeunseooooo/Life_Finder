@@ -2,6 +2,18 @@
     {% for event in events %}
         <li>{{ event }}</li>
     {% endfor %}
-    {{ mean_value }}
+////
+    {% for selectevent in select_events %}
+        <li>{{ selectevent }}</li>
+    {% endfor %}
+
+    {{  result }}
+{#    {{ all_count }}#}
+{#    {{ mean_value }}#}
+{#    {{ count }}#}
+{#    //////#}
+{#    {% for future_event in future_events %}#}
+{#        <li>{{ future_event }}</li>#}
+{#    {% endfor %}#}
 {# 레전드,,,,, 미쳤다.... #}
 </ul>
