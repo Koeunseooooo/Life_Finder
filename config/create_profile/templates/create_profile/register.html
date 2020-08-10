@@ -1,4 +1,33 @@
 {% extends 'main/base.html' %}
+{% block style %}
+    <style>
+        input[type=file] {
+            padding-top: 30px;
+            padding-left: 20px;
+        }
+
+        input[type=text], input[type=number] {
+            margin-bottom: 10px;
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: solid 1px #b0bec9;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+
+        #save {
+            margin-top: 30px;
+            margin-left: 251px;
+            background-color: #1E88E5;
+            border-radius: 5px;
+            color: white;
+            width: 100px;
+            text-align: center;
+        }
+
+    </style>
+{% endblock %}
 {% block content %}
     <div style="height: 100px"></div>
         <h2>당신의 프로필을 작성해주세요!</h2>
@@ -8,7 +37,8 @@
                     <table>
                         <div id="box">{{ profile_form.as_table }}</div>
                     </table>
-                    <input type="submit" value="제출"/>
+                    <input type="submit" id="save" value="제출"/>
                 </div>
             </form>
 {% endblock %}
+

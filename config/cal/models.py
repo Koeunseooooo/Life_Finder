@@ -5,36 +5,34 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import datetime
+# from PIL import Image
+#
+# im=Image.open('hello.jpg')
+# print(im.size)
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
     start_time = models.DateTimeField(default = timezone.now, blank = True)
     # default = timezone.now,
     profile=models.ForeignKey(Profile, related_name='event',on_delete=models.CASCADE)
-    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], blank=True, default='some_value')
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], blank=True, default='enter your value')
+
+    def __str__(self):
+        return '{}/ {}/ {}'.format(self.id, self.title, self.start_time, self.rating)
+
 
     @property
     def get_html_url(self):
         url = reverse('cal:event_edit', args=(self.id,))
-        return f'<a href="{url}"> {self.title} </a>'
+        # f'<a href="{url}"> {self.rating} </a>'
 
+        result = []
+        for a in {self.rating}:
+            while a>0:
+                result.append('●')
+                a-=1
 
-#
-#
-#
-#
-# # Create your models here.
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile')
-#     nickname = models.CharField(max_length=15, verbose_name='닉네임')
-#     photo = models.ImageField(blank=True, upload_to="create_profile/%Y/%m/%d", verbose_name='프로필사진')
-#     age = models.IntegerField(blank=True, verbose_name='나이')
-#     job = models.CharField(blank=True, max_length=20, verbose_name='직업')
-#     description = models.TextField(blank=True, max_length=100,verbose_name='소개')
-#     goal_count = models.IntegerField(
-#         default=0,
-#         validators=[
-#             MaxValueValidator(100),
-#             MinValueValidator(0)
-#         ]
-#      )
+        final_result=' '.join(result)
+
+        return f'<a href="{url}">{final_result}</a>'
+

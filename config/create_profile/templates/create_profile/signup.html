@@ -56,18 +56,20 @@
     }
     </style>
 {% endblock %}
+
 {% block content %}
-    {% if user_form.errors %}
-        <p style="color:red;">양식에 맞게 작성해주세요.</p>
-    {% endif %}
-        <h2>가입해보세요!</h2>
+        {% if user_form.errors %}
+            <p style="color:red;">양식에 맞게 작성해주세요.</p>
+        {% endif %}
+        <h2>가입해보세요</h2>
         <div class="formbox">
             <form action="{% url 'create_profile:signup' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <table>
-                        <div id="box">{{ user_form }}</div>
+                        <div id="box">{{ user_form.as_table }}</div>
                     </table>
-                    <button type="submit" id="save" value="다음"/>가입하기</button>
+                         <button type="submit" id="save" value="음"/>가입하기</div>
             </form>
         </div>
+
 {% endblock %}
