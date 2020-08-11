@@ -11,7 +11,6 @@ from .models import Event
 from .models import *
 from .utils import Calendar
 from .forms import EventForm
-from django.contrib.auth.models import User
 from create_profile.forms import Profile
 
 from django.utils import timezone
@@ -19,6 +18,7 @@ from datetime import datetime, date
 from create_profile.models import Profile
 from django.contrib.auth.models import User
 from django.db.models import Sum, Count
+from django.contrib.auth.decorators import login_required
 
 
 class CalendarView(generic.ListView):
@@ -26,10 +26,10 @@ class CalendarView(generic.ListView):
     template_name = 'cal/calendar.html'
     context_object_name = 'today_list'  # today_list에는 오늘 등록한 객체들이 포함됨
 
-    def get_queryset(self,**kwargs):
+    def get_queryset(self, **kwargs):
         queryset = {
             'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()),
-            'today_list_rating_sum':  Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()).aggregate(Sum('rating')).values()
+            'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()).aggregate(Sum('rating')).values()
         }
         return queryset
 
@@ -43,6 +43,8 @@ class CalendarView(generic.ListView):
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
         return context
+
+
 
 def get_date(req_month):
     if req_month:
@@ -111,7 +113,6 @@ def event(request, event_id=None):
     #     return redirect('cal:calendar')
     # return render(request, 'cal/event.html', {'form': form})
 
-
 def dash(request):
     # queryset = Event.objects.all()
     # queryset = Event.objects.first()
@@ -119,7 +120,7 @@ def dash(request):
     import arrow
 
     past_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-6).datetime
-    future_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=0).datetime
+    future_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=23, minute=59, second=59).shift(days=0).datetime
     events = Event.objects.filter(start_time__gte=past_datetime).filter(start_time__lte=future_datetime).order_by('start_time')
 
 
@@ -210,10 +211,6 @@ def dash(request):
     #         count += 1
     #
     # all_count=count
-
-
-
-
 
     # count = 0
     # numsum = 0

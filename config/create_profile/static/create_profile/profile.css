@@ -1,0 +1,40 @@
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal; }
+
+#save {
+        width: 460px;
+        height: 50px;
+        border-radius: 5px;
+        padding: 10px;
+        border: solid 1px #6570CE;
+        margin-top: 5rem;
+        background-color: #717FFF;
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: 900;
+        color: white;
+    }
+
+h2{
+    margin: 0 auto;
+    color: black;
+}
+
+h2:nth-child(1){
+    margin-bottom: 2rem;
+    font-family: 'yg-jalnan', "cursive";
+}
+
+img{
+    border-radius: 10rem;
+    margin-bottom: 4rem;
+}
+
+#profile{
+    margin: 0 auto;
+    margin-top: 7rem;
+    text-align: center;
+}

@@ -2,42 +2,60 @@
 {% load static %}
 {% load staticfiles %}
 {% block style %}
-    <style>
-        #save {
-        width: 250px;
-        height: 40px;
-        border-radius: 5px;
-        padding: 10px;
-        border: solid 1px #b0bec9;
-        margin-top: 10px;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'create_profile/profile.css' %}">
 {% endblock %}
 {% block content %}
-    <div style="height: 200px;"></div>
-    <h1>내 프로필</h1><br/>
-    <h2>{{ profile.nickname }}'s Profile</h2>
+    <div id="profile">
 
-    {% if profile.photo %}
-        <img src='{{ profile.photo.url }}' style="height: 200px; width: 200px;">
-{#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
-    {% else %}
-        <img src="{% static 'img01.png' %}" style="height: 200px; width: 200px;">
-    {% endif %}
+        <h2>{{ profile.nickname }}'s Profile</h2>
 
-    {% if profile.age %}
-        <h2>나이: {{ profile.age }}살</h2>
-    {% endif %}
-{#    {% if profile.birthday %}#}
-{#        <h2>생일 {{ profile.birthday }}</h2>#}
-{#    {% endif %}#}
-    {% if profile.job %}
-        <h2>직업: {{ profile.job }}</h2>
-    {% endif %}
-    {% if profile.description %}
-        <h2>소개: {{ profile.description }}</h2>
-    {% endif %}
-    <h2>목표개수: {{ profile.goal_count }}</h2>
-   <button type="button" id="save"><a href="{% url 'create_profile:profile_edit' profile.pk %}">프로필 수정하기</a>
+        {% if profile.photo %}
+            <img src='{{ profile.photo.url }}' style="height: 200px; width: 200px;">
+            {#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
+        {% else %}
+               <img src="{% static 'quokka.jpg' %}" style="height: 200px; width: 200px;">
+        {% endif %}
+
+        {% if profile.age %}
+            <h2>나이: {{ profile.age }}살</h2>
+        {% endif %}
+        {#    {% if profile.birthday %}#}
+        {#        <h2>생일 {{ profile.birthday }}</h2>#}
+        {#    {% endif %}#}
+        {% if profile.job %}
+            <h2>직업: {{ profile.job }}</h2>
+        {% endif %}
+        {% if profile.description %}
+            <h2>소개: {{ profile.description }}</h2>
+        {% endif %}
+        <h2>목표개수: {{ profile.goal_count }}</h2>
+        <button type="button" id="save"><a href="{% url 'create_profile:profile_edit' profile.pk %}">프로필 수정하기</a>
+    </div>
+
+    {#    <div style="height: 200px;"></div>#}
+    {#    <h1>내 프로필</h1><br/>#}
+    {#    <h2>{{ profile.nickname }}'s Profile</h2>#}
+    {##}
+    {#    {% if profile.photo %}#}
+    {#        <img src='{{ profile.photo.url }}' style="height: 200px; width: 200px;">#}
+    {#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
+    {#    {% else %}#}
+    {#        <img src="{% static 'quokka.jpg' %}" style="height: 200px; width: 200px;">#}
+    {#    {% endif %}#}
+    {##}
+    {#    {% if profile.age %}#}
+    {#        <h2>나이: {{ profile.age }}살</h2>#}
+    {#    {% endif %}#}
+    {#    {% if profile.birthday %}#}
+    {#        <h2>생일 {{ profile.birthday }}</h2>#}
+    {#    {% endif %}#}
+    {#    {% if profile.job %}#}
+    {#        <h2>직업: {{ profile.job }}</h2>#}
+    {#    {% endif %}#}
+    {#    {% if profile.description %}#}
+    {#        <h2>소개: {{ profile.description }}</h2>#}
+    {#    {% endif %}#}
+    {#    <h2>목표개수: {{ profile.goal_count }}</h2>#}
+    {#   <button type="button" id="save"><a href="{% url 'create_profile:profile_edit' profile.pk %}">프로필 수정하기</a>#}
 
 {% endblock %}

@@ -1,50 +1,15 @@
 {% extends 'main/base.html' %}
+{% load static %}
+{% load staticfiles %}
 {% block style %}
-    <style>
-        input[type=file] {
-            padding-left: 20px;
-        }
-
-        input[type=text], input[type=number] {
-            margin-bottom: 10px;
-            width: 250px;
-            height: 40px;
-            border-radius: 5px;
-            border: solid 1px #b0bec9;;
-            margin-top: 10px;
-            padding-left: 10px;
-        }
-        textarea{
-           margin-bottom: 10px;
-            width: 250px;
-            height: 150px;
-            border-radius: 5px;
-            border: solid 1px #b0bec9;;
-            margin-top: 10px;
-            padding-left: 10px;
-        }
-        #save {
-            margin-top: 30px;
-            margin-left: 80px;
-            width: 270px;
-            height: 40px;
-            border-radius: 5px;
-            border: solid 1px #b0bec9;
-            padding-left: 10px;
-
-            background-color: #1E88E5;
-            border-radius: 5px;
-            color: white;
-            text-align: center;
-        }
-
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'create_profile/profile_update.css' %}">
 {% endblock %}
 {% block content %}
-        <div style="height: 100px"></div>
+
+        <div id="upd">
+
         <h2>당신의 프로필을 변경해주세요!</h2>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form id="updf" action="" method="post" enctype="multipart/form-data">
             <div>
                 {% csrf_token %}
                 <table>
@@ -56,4 +21,19 @@
                 <input type="submit" id="save" value="수정완료"/>
             </div>
         </form>
+    </div>
+{#    <div style="height: 100px"></div>#}
+{#    <h2>당신의 프로필을 변경해주세요!</h2>#}
+{#    <form action="" method="post" enctype="multipart/form-data">#}
+{#        <div>#}
+{#            {% csrf_token %}#}
+{#            <table>#}
+{#                <div id="box">#}
+{#                    {{ profile_form.as_table }}#}
+{#                    {{ goal_form.as_table }}#}
+{#                </div>#}
+{#            </table>#}
+{#            <input type="submit" id="save" value="수정완료"/>#}
+{#        </div>#}
+{#    </form>#}
 {% endblock %}

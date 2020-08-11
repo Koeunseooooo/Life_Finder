@@ -1,75 +1,34 @@
 {% extends 'main/base.html' %}
+{% load static %}
 {% block style %}
-    <style>
-    form {
-        background-color: white;
-        width: 600px;
-        padding: 40px;
-        border-radius: 5px;
-        margin: 0px auto;
-    }
 
-    h2 {
-        text-align: center;
-        line-height: 80px;
+    <link rel="stylesheet" type="text/css" href="{% static 'create_profile/signup.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
 
-    }
-
-    table {
-        line-height: 40px;
-        font-size: 15px;
-        margin: 0 auto;
-    }
-    th{
-        vertical-align: text-top;
-        line-height: 60px;
-        text-align: left;
-    }
-
-    input, button {
-        width: 250px;
-        height: 40px;
-        border-radius: 5px;
-        border: solid 1px #b0bec9;;
-        margin-top: 10px;
-        padding-left: 10px;
-    }
-
-    #save {
-        margin-left: 171px;
-        background-color: #1E88E5;
-        border-radius: 5px;
-        color: white;
-    }
-
-    input[type=password] {
-    font-family: "Adobe 고딕 Std B";
-    }
-    footer{
-        display: none;
-    }
-    ul{
-        list-style: none;
-    }
-    li{
-        line-height: 30px;
-    }
-    </style>
 {% endblock %}
 
 {% block content %}
-        {% if user_form.errors %}
-            <p style="color:red;">양식에 맞게 작성해주세요.</p>
-        {% endif %}
-        <h2>가입해보세요</h2>
-        <div class="formbox">
-            <form action="{% url 'create_profile:signup' %}" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <table>
-                        <div id="box">{{ user_form.as_table }}</div>
-                    </table>
-                         <button type="submit" id="save" value="음"/>가입하기</div>
-            </form>
-        </div>
+    {% if user_form.errors %}
+        <p style="color:red;">양식에 맞게 작성해주세요.</p>
+    {% endif %}
+
+    {% load staticfiles %}
+
+    <div id="logoimg">
+        <img src="{% static 'main/NAME.png' %}">
+    </div>
+
+    <div class="formbox">
+        <form action="{% url 'create_profile:signup' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <div id="box">{{ user_form.as_table }}</div>
+            </table>
+            <button type="submit" id="save" value="음"/>
+            가입하기
+    </div>
+    </form>
+    </div>
 
 {% endblock %}
