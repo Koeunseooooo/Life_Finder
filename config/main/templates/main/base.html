@@ -12,20 +12,21 @@
 <body>
 
 <nav>
-    <ul>
-        <li><a href="/">HOME</a></li>
-        <li><a href="{% url 'cal:calendar' %}">LIFE FINDER</a></li>
+    <ul class="navt">
+        <li><a href="/">YAHO!</a></li>
+        <li><a href="#">LIFE FINDER</a></li>
         <li><a href="#">DASH BOARD</a></li>
         {% if user.is_authenticated %}
             <li><a href="{% url 'create_profile:profile_look' request.user.pk  %}">MY PAGE</a></li>
-            <li><a href="{% url 'create_profile:logout' %}">로그아웃</a></li>
+            <li><a href="{% url 'create_profile:logout' %}">LOGOUT</a></li>
         {% else %}
-            <li><a href="{% url 'create_profile:signup' %}">회원가입</a></li>
-            <li><a href="{% url 'create_profile:login' %}">로그인</a></li> {#보던 페이지로 이동#}
+            <li><a href="{% url 'create_profile:signup' %}">JOIN US</a></li>
+            <li><a href="{% url 'create_profile:login' %}">LOG IN</a></li> {#보던 페이지로 이동#}
         {% endif %}
     </ul>
 </nav>
 
+#바디
 <div class="r_contents">
     {% block content %}
     {% endblock %}

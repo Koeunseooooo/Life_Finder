@@ -5,7 +5,9 @@
     text-decoration: none;
 }
 
-
+.navt li a{
+    color: white;
+}
 nav {
     background-color: black;
     width: 100%;
@@ -13,6 +15,7 @@ nav {
     font-weight: 900;
     position: fixed;
 }
+
 
 nav ul {
     width: 80%;
@@ -24,27 +27,24 @@ nav ul {
 
 nav li {
     font-family: "Syncopate", sans-serif;
-    color: white;
     display: inline-block;
     padding-top: 1.5rem;
+    margin-left: 2rem;
 
 }
 
 nav li:nth-child(2) {
-    margin-left: 15rem;
+    margin-left: 3rem;
 
 }
 
 nav li:nth-child(3) {
-    margin-left: 15rem;
+    margin-left: 3rem;
 }
 
-nav li:nth-child(4) {
-    margin-left: 20rem;
-}
+nav a{
+    color: red;
 
-nav a {
-    color: white;
 }
 
 .r_contents {
