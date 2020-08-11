@@ -6,10 +6,11 @@ app_name = 'cal'
 urlpatterns = [
  # path('',views.CalendarView.as_view(),name='calendar'),
  path('', views.CalendarView.as_view(), name='calendar'),
-
- url(r'^event/new/$', views.event, name='event_new'),
- url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
+ path('event/new/',views.event, name='event_new'),
+ path('event/edit/<int:event_id>',views.event_edit, name='event_edit'),
+ # url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
  path('dash/',views.dash,name='dash'),
+ path('no_dash/',views.dash,name='no_dash'),
  # path('event/edit/<int:pk>/delete/', views.delete, name='delete'),
 
 ]

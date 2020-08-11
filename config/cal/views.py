@@ -66,12 +66,9 @@ def next_month(d):
     return month
 
 
-def event(request, event_id=None):
-    instance = Event()
-    if event_id:
-        instance = get_object_or_404(Event, pk=event_id)
-    else:
-        instance = Event()
+
+def event_edit(request, event_id):
+    instance = get_object_or_404(Event, pk=event_id)
     form = EventForm(request.POST or None, instance=instance)
     if "action_add" in request.POST and form.is_valid():
         instance = form.save(commit=False)
@@ -81,7 +78,38 @@ def event(request, event_id=None):
     elif "action_remove" in request.POST:  # 삭제하기 버튼
         instance.delete()
         return redirect('cal:calendar')
+    return render(request, 'cal/event_edit.html', {'form': form})
+
+
+
+
+def event(request, event_id=None):
+    instance = Event()
+    form = EventForm(request.POST or None, instance=instance)
+    if "action_add" in request.POST and form.is_valid():
+        instance = form.save(commit=False)
+        instance.profile = request.user.user_profile
+        instance.save()
+        return redirect('cal:calendar')
+    # elif "action_remove" in request.POST:  # 삭제하기 버튼
+    #     instance.delete()
+    #     return redirect('cal:calendar')
     return render(request, 'cal/event.html', {'form': form})
+
+    # if event_id:
+    #     instance = get_object_or_404(Event, pk=event_id)
+    # else:
+    #     instance = Event()
+    # form = EventForm(request.POST or None, instance=instance)
+    # if "action_add" in request.POST and form.is_valid():
+    #     instance = form.save(commit=False)
+    #     instance.profile = request.user.user_profile
+    #     instance.save()
+    #     return redirect('cal:calendar')
+    # elif "action_remove" in request.POST:  # 삭제하기 버튼
+    #     instance.delete()
+    #     return redirect('cal:calendar')
+    # return render(request, 'cal/event.html', {'form': form})
 
 
 def dash(request):
@@ -89,32 +117,93 @@ def dash(request):
     # queryset = Event.objects.first()
     # 오늘로 부터 7일전 까지 갖고온다.
     import arrow
-    past_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-7).datetime
-    future_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).datetime
 
-    select_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-1).datetime
-    select_datetime_late = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=0).datetime
-    # 왜 -6일까
+    past_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-6).datetime
+    future_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=0).datetime
     events = Event.objects.filter(start_time__gte=past_datetime).filter(start_time__lte=future_datetime).order_by('start_time')
-    select_events=Event.objects.filter(start_time__gte=select_datetime).filter(start_time__lte=select_datetime_late).order_by('start_time')
-    # future_events = Event.objects.filter(start_time__lte=future_datetime).order_by('start_time')
+
+
+    # one_select_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-6).datetime
+    # one_select_datetime_late = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-5).datetime
+    # one_select_events=Event.objects.filter(start_time__gte=one_select_datetime).filter(start_time__lte=one_select_datetime_late).order_by('start_time')
+    #
+    # two_select_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-5).datetime
+    # two_select_datetime_late = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-4).datetime
+    # two_select_events = Event.objects.filter(start_time__gte=two_select_datetime).filter(start_time__lte=two_select_datetime_late).order_by('start_time')
+    #
+    # three_select_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-4).datetime
+    # three_select_datetime_late = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-3).datetime
+    # three_select_events = Event.objects.filter(start_time__gte=three_select_datetime).filter(start_time__lte=three_select_datetime_late).order_by('start_time')
+    #
+    # four_select_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-3).datetime
+    # four_select_datetime_late = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-2).datetime
+    # four_select_events = Event.objects.filter(start_time__gte=four_select_datetime).filter(start_time__lte=four_select_datetime_late).order_by('start_time')
+    #
+    # five_select_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-2).datetime
+    # five_select_datetime_late = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-1).datetime
+    # five_select_events = Event.objects.filter(start_time__gte=five_select_datetime).filter(start_time__lte=five_select_datetime_late).order_by('start_time')
+    #
+    # six_select_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-1).datetime
+    # six_select_datetime_late = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=0).datetime
+    # six_select_events = Event.objects.filter(start_time__gte=six_select_datetime).filter(start_time__lte=six_select_datetime_late).order_by('start_time')
+    #
+    # seven_select_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).datetime
+    # seven_select_events = Event.objects.filter(start_time__gte=seven_select_datetime).order_by('start_time')
+    #
+    # count=0
+    # for one_select_event in one_select_events:
+    #     count+=1
+    #     break
+    #
+    # for two_select_event in two_select_events:
+    #     count+=1
+    #     break
+    #
+    # for three_select_event in three_select_events:
+    #     count+=1
+    #     break
+    #
+    # for four_select_event in four_select_events:
+    #     count+=1
+    #     break
+    #
+    # for five_select_event in five_select_events:
+    #     count+=1
+    #     break
+    #
+    # for six_select_event in six_select_events:
+    #     count+=1
+    #     break
+    #
+    # for seven_select_event in seven_select_events:
+    #     count+=1
+    #     break
 
     count=0
-    for select_event in select_events:
-        count += 1
 
-    if(count == 0):
-        result='no object'
+    for event in events:
+        count +=1
+
+    context={
+        'events':events,
+        # 'one_select_events':one_select_events,
+        # 'two_select_events': two_select_events,
+        # 'three_select_events': three_select_events,
+        # 'four_select_events': four_select_events,
+        # 'five_select_events': five_select_events,
+        # 'six_select_events': six_select_events,
+        # 'seven_select_events': seven_select_events,
+        'count':count,
+        # 'mean_value': mean_value,
+    }
+
+    if(count >= 7):
+        return render(request, 'cal/index.html', context=context)
     else:
-        result='exists objects'
-
-        # //키야~~~ 이거대로 유알엘 2개  더 파~~
+        return render(request, 'cal/less_data.html',context=context)
 
 
-
-
-
-    # count=0
+  # count=0
     # # -3에는 3개의 objects가 있어욤
     # for eventi in events:
     #     if eventi.start_time == select_datetime:
@@ -133,14 +222,3 @@ def dash(request):
     #     numsum += event.rating
     # mean_value = numsum / (count + 1e-7)
     # 갖고온 이벤트들 레이팅값
-
-    context={
-        'events':events,
-        'select_events':select_events,
-        'result':result,
-        # 'mean_value': mean_value,
-        # 'count':count
-        # 'future_events':future_events
-        # 'all_count':all_count
-    }
-    return render(request, 'cal/index.html', context=context)
