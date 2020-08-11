@@ -30,25 +30,100 @@
         {% if today_list.today_list_items|length %}
             {% for list in today_list.today_list_items %}
                 <div class="today_list_item">
-                    {#                    <span>{{ list.title }}</span>#}
                     <span>{{ list.title }}</span>
-                    <span class="each_rating">{{ list.rating }}</span>
+                     <span class="each_rating">{{ list.rating }}</span>
+
+{#                    {% for rating_num in range(list.rating) %}#}
+{#                        <img src="static/quokka.jpg">#}
+{#                    {% endfor %}#}
+
+
+{#                     <span class="each_rating">{{ list.rating }}</span>#}
+{#                    {% for rating_num in {{ list.rating }} %}#}
+{#                        <img src="static/quokka.jpg">#}
+{#                    {% endfor %}#}
+
+
+
+                    {#                    {% rating as list.rating %}#}
+                    {#                    {% for rating_num in rating %}#}
+                    {#                       <h5>{{ rating_num }}</h5>#}
+                    {#                        {% endfor %}#}
+
+
+                    {#                    {% for rating_num in {{ list.rating }} %}#}
+                    {#                        <img src="static/quokka.jpg">#}
+                    {#                    {% endfor %} #}
                 </div>
             {% endfor %}
+
             <div class="today_rating">
                 <span class="total">TOTAL</span>
                 {% for value in today_list.today_list_rating_sum %}
                     <span class="today_sum_rating"
                           style="font-size: 2rem; font-weight: bold; color:#bdbdbd;">{{ value }}</span>
                 {% endfor %}
+
+                {#                {% for value in today_list.today_list_rating_sum %}#}
+
+                {#                    {% with count = value %}#}
+                {#                        {% while count >0 %}#}
+                {#                            <img src="static/quokka.jpg">#}
+                {#                        {% endwhile %}#}
+                {#                    {% endwith %}#}
+                {#                {% endfor %}#}
+
+
+                {#                {% for value  in today_list.today_list_rating_sum %}#}
+                {#                    {% while count >0 %}{{ value }}#}
+                {##}
+                {#                      {% while count > 0: %}#}
+                {#                    {% for i in range %}}#}
+                {#                         <img src="static/quokka.jpg">#}
+                {#                     {% endfor %}#}
+                {#                    {% for repeat_time in value %}#}
+                {#                        <img src="static/quokka.jpg">#}
+                {#                        {% endfor %}#}
+                {#                {% endfor %}#}
+                {##}
+                {#              {% with count = 0 %}#}
+                {#  {% while count < 5: %}#}
+                {#      <div class='rating-stars text-center'>#}
+                {#          <ul class='stars'>#}
+                {#              <li class='star selected' title='Poor' data-value='1'>#}
+                {#                  <i class='fa fa-star fa-fw'></i>#}
+                {#              </li>#}
+                {#              <li class='star selected' title='Fair' data-value='2'>#}
+                {#                  <i class='fa fa-star fa-fw'></i>#}
+                {#              </li>#}
+                {#              <li class='star selected' title='Good' data-value='3'>#}
+                {#                  <i class='fa fa-star fa-fw'></i>#}
+                {#              </li>#}
+                {#              <li class='star selected' title='Excellent' data-value='4'>#}
+                {#                  <i class='fa fa-star fa-fw'></i>#}
+                {#              </li>#}
+                {#              <li class='star selected' title='WOW!!!' data-value='5'>#}
+                {#                  <i class='fa fa-star fa-fw'></i>#}
+                {#              </li>#}
+                {#          </ul>#}
+                {#      </div>#}
+                {#        {% count += 1 %}#}
+                {#      {% endwhile %}#}
+                {#  {% endwith %}#}
+                {#            #}
+
+
             </div>
+
         {% else %}
             <h5>오늘 등록한 뱃지가 없습니다😥</h5>
         {% endif %}
-
+{#        {{ object_list }}#}
         <div class="go_dashboard">
-        {#  추후 url추가해서 만약 user가 7일 이상 활동했으면 dashboard보여주고 아니면 7일 후 볼 수 있다는 안내 페이지로 이동#}
+            {#  추후 url추가해서 만약 user가 7일 이상 활동했으면 dashboard보여주고 아니면 7일 후 볼 수 있다는 안내 페이지로 이동#}
             <button><a href="#">뭐 보러 가볼래?</a></button>
         </div>
+
+
     </div>
 {% endblock %}

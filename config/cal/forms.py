@@ -1,18 +1,18 @@
-from django.forms import ModelForm, DateInput
+from django.forms import ModelForm, DateInput, HiddenInput
 from cal.models import Event
 from .widgets import RateitjsWidget
+from django.utils import timezone
+
 
 class EventForm(ModelForm):
-
     class Meta:
         model = Event
         # datetime-local is a HTML5 input type, format to make date time show on fields
         widgets = {
             'rating': RateitjsWidget,
-            'start_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
+            'start_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M',),
         }
-
-        fields = ['title','start_time','rating']
+        fields = ['title', 'start_time', 'rating']
         # , 'profile'
 
     def __init__(self, *args, **kwargs):
