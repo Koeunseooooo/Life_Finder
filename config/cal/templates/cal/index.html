@@ -4,12 +4,81 @@
 {% extends 'cal/base.html' %}
 {% block content %}
 
+    {#{{ wanted_goal }}#}
+    {#    <div class="user_goal_position">#}
+    {#        {% for value in wanted_goal %}#}
+    {#            <span class="user_goal_des">라이프 목표 뱃지 개수 |</span>#}
+    {#            <span class="user_goal_number">#}
+    {#        {{ value.goal_count }}개#}
+    {#        </span>#}
+    {#        수정하기 누르면 전에 있던 페이지로 연결되는 작업 profile에서 추후 해야할 듯#}
+    {#            <button><a href="{% url 'create_profile:goal_get' %}">수정하기</a></button>#}
+    {##}
+    {#        {% endfor %}#}
+    {#    </div>#}
+
 
 
     <div style="height: 100px"></div>
+
+
+
+    <div style="height: 20px"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <div class="total">
         <div class="left">
+
+            {% for value in wanted_goal %}
+                <span class="user_goal_des">라이프 목표 뱃지 개수 |</span>
+                <span class="user_goal_number"></span>
+                <div class="goal">
+            {{ value.goal_count }}개
+
+                <div style="width:300px; ">
+                    <canvas id="myChart0"></canvas>
+                </div>
+
+                <script>
+                    var ctxx = document.getElementById("myChart0").getContext('2d');
+                    var myChart0 = new Chart(ctxx, {
+                        type: 'horizontalBar',
+                        data: {
+                            labels: ["-6day"],
+                            datasets: [{
+                                {#label: 1,#}
+                                {#라벨 안쓰고 싶은데... ?#}
+                                data: [{{ value.goal_count }}],
+                                backgroundColor: [
+                                    'rgba(54, 162, 235, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(54, 162, 235, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+                            scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+
+
+
+
+                <button><a href="{% url 'create_profile:goal_get' %}">수정하기</a></button>
+            {% endfor %}
+            </div>
+
+
             <div style="width:500px; height:300px">
                 <canvas id="myChart"></canvas>
             </div>
@@ -25,22 +94,22 @@
                             {#라벨 안쓰고 싶은데... ?#}
                             data: [{{one_total}}, {{two_total}}, {{three_total}}, {{ four_total }}, {{five_total}}, {{six_total}}, {{seven_total}}],
                             backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)',
-                                'rgba(255, 100, 64, 0.2)'
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
                             ],
                             borderColor: [
-                                'rgba(255,99,132,1)',
                                 'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)',
-                                'rgba(255, 100, 64, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(54, 162, 235, 1)',
                             ],
                             borderWidth: 1
                         }]
@@ -188,8 +257,6 @@
             <br/>
 
 
-
-
             {#{{ one_start_time }}#}
             {#        {{ one_str }}#}
             {#    {{ two_str }}#}
@@ -280,9 +347,18 @@
 
         </div>
     </div>
-        {% for event in events %}
-            <li>{{ event }}</li>
-        {% endfor %}
+    {% for event in events %}
+        <li>{{ event }}</li>
+    {% endfor %}
+
+    {{ mon }}
+    {{ tue }}
+    {{ wed }}
+    {{ thur }}
+    {{ fri }}
+    {{ sat }}
+    {{ sun }}
+    {{ a }}
 
 
 {% endblock %}

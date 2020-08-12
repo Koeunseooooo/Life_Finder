@@ -20,7 +20,6 @@ class Profile(models.Model):
         ('잠', '잠'),
         ('기타', '기타'),
     )
-
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile')
     nickname = models.CharField(max_length=15, verbose_name='닉네임')
     photo = models.ImageField(null=True, blank=True, upload_to="create_profile/%Y/%m/%d", verbose_name='프로필사진')

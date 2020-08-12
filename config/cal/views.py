@@ -111,6 +111,8 @@ def dash(request):
     queryset = Event.objects.all()
     # queryset = Event.objects.first()
     # 오늘로 부터 7일전 까지 갖고온다.
+
+    wanted_goal = Profile.objects.all().values().filter(user=request.user)
     import arrow
 
     # 모든 라이프기록 객체들 불러올때
@@ -123,7 +125,7 @@ def dash(request):
     one_select_datetime_late = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-5).datetime
     one_select_events  = Event.objects.filter(start_time__gte=one_select_datetime).filter(start_time__lte=one_select_datetime_late).order_by('start_time')
 
-    one_select_datetime = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-6).datetime
+    one_select_datetime = arrow.utcnow().replace(hour=0, minute=0, second=0).shift(days=-6).datetime
     one_select_datetime_late = arrow.utcnow().to('Asia/Seoul').replace(hour=0, minute=0, second=0).shift(days=-5).datetime
     one_select_events = Event.objects.filter(start_time__gte=one_select_datetime).filter(start_time__lte=one_select_datetime_late).order_by('start_time')
 
@@ -322,11 +324,16 @@ def dash(request):
         if(event.rating == 1):
             one_count+=1
 
-
+    # queryset = {
+    #     'wanted_goal': Profile.objects.all().values().filter(user=request.user)
+    # }
 
     count=0
     for event in events:
         count +=1
+
+
+    a=arrow.utcnow().day
 
     context={
         'events':events,
@@ -357,8 +364,10 @@ def dash(request):
         'four_count':four_count,
         'five_count':five_count,
 
+        'a':a,
+        'wanted_goal': wanted_goal,
 
-
+        # 'queryset':queryset
         # 'one_str':one_str,
         # 'two_str': two_str,
         # 'three_str': three_str,
@@ -367,6 +376,8 @@ def dash(request):
         # # 'seven_str': seven_str,
         # 'one_start_time':one_start_time,
     }
+
+
 
     if(count >= 7):
         return render(request, 'cal/index.html', context=context)
@@ -382,15 +393,6 @@ def dash(request):
     #
     # all_count=count
 
-        # 'one_select_events':one_select_events,
-        # 'two_select_events': two_select_events,
-        # 'three_select_events': three_select_events,
-        # 'four_select_events': four_select_events,
-        # 'five_select_events': five_select_events,
-        # 'six_select_events': six_select_events,
-        # 'seven_select_events': seven_select_events,
-
-
     # count = 0
     # numsum = 0
     # for event in events:
@@ -400,104 +402,4 @@ def dash(request):
     # 갖고온 이벤트들 레이팅값
 
 
-
- #
-    # for two_select_event in two_select_events:
-    #     count+=1
-    #     break
-    #
-    # for three_select_event in three_select_events:
-    #     count+=1
-    #     break
-    #
-    # for four_select_event in four_select_events:
-    #     count+=1
-    #     break
-    #
-    # for five_select_event in five_select_events:
-    #     count+=1
-    #     break
-    #
-    # for six_select_event in six_select_events:
-    #     count+=1
-    #     break
-    #
-    # for seven_select_event in seven_select_events:
-    #     count+=1
-    #     break
-
-
-    # if event_id:
-    #     instance = get_object_or_404(Event, pk=event_id)
-    # else:
-    #     instance = Event()
-    # form = EventForm(request.POST or None, instance=instance)
-    # if "action_add" in request.POST and form.is_valid():
-    #     instance = form.save(commit=False)
-    #     instance.profile = request.user.user_profile
-    #     instance.save()
-    #     return redirect('cal:calendar')
-    # elif "action_remove" in request.POST:  # 삭제하기 버튼
-    #     instance.delete()
-    #     return redirect('cal:calendar')
-    # return render(request, 'cal/event.html', {'form': form})
-
-    #
-    #
-    # if (one_total == best1):
-    #     for one_select_event in one_select_events:
-    #         str.append(one_select_event.title)
-    #         one_str=' '.join(str)
-    #         start_time = one_select_event.start_time
-    #         one_start_time = start_time
-    #         continue;
-    #     str=[]
-    # elif(two_total == best1):
-    #     for two_select_event in two_select_events:
-    #         str.append(two_select_event.title)
-    #         two_str = ' '.join(str)
-    #         start_time = two_select_event.start_time
-    #         two_start_time = start_time
-    #         continue;
-    #     str = []
-    # elif (three_total == best):
-    #     for three_select_event in three_select_events:
-    #         str.append(three_select_event.title)
-    #         three_str = ' '.join(str)
-    #         start_time = three_select_event.start_time
-    #         three_start_time = start_time
-    #         continue;
-    #     str = []
-    # elif (four_total == best):
-    #     for four_select_event in four_select_events:
-    #         str.append(one_select_event.title)
-    #         four_str = ' '.join(str)
-    #         start_time = four_select_event.start_time
-    #         four_start_time = start_time
-    #         continue;
-    #     str = []
-    # elif (five_total == best):
-    #     for five_select_event in five_select_events:
-    #         str.append(one_select_event.title)
-    #         five_str = ' '.join(str)
-    #         start_time = five_select_event.start_time
-    #         five_start_time = start_time
-    #         continue;
-    #     str = []
-    # elif (six_total == best):
-    #     for six_select_event in six_select_events:
-    #         str.append(six_select_event.title)
-    #         six_str = ' '.join(str)
-    #         start_time = six_select_event.start_time
-    #         six_start_time = start_time
-    #         continue;
-    #     str = []
-    # elif (seven_total == best):
-    #     for seven_select_event in seven_select_events:
-    #         str.append(seven_select_event.title)
-    #         seven_str = ' '.join(str)
-    #         start_time = seven_select_event.start_time
-    #         seven_start_time = start_time
-    #         continue;
-    #     str = []
 
