@@ -1,0 +1,55 @@
+
+    form {
+        padding-top: 1rem;
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    #logoimg{
+        padding-top: 13rem;
+        margin-left: 34rem;
+    }
+
+    table {
+        line-height: 40px;
+        font-size: 15px;
+        margin: 0 auto;
+    }
+    th{
+        vertical-align: text-top;
+        line-height: 60px;
+        text-align: left;
+    }
+
+    input, button {
+        width: 460px;
+        border: solid 1px #b0bec9;
+        margin-top: 2rem;
+        height: 50px;
+    }
+
+    #save {
+        margin-top: 4rem;
+        background-color: #717FFF;
+        color: white;
+        width: 460px;
+        height: 56px;
+        text-align: center;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        margin-left: 4.5rem;
+    }
+
+    input[type=password] {
+        font-family: "Noto Sans KR", sans-serif;
+    }
+    footer{
+        display: none;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        line-height: 30px;
+    }

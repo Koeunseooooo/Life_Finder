@@ -1,0 +1,45 @@
+#lesscontent{
+    width: 60rem;
+    margin: 0 auto;
+    padding-top: 10rem;
+
+}
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal; }
+p:nth-child(1){
+    color: #0B2752;
+    text-align: center;
+    font-family: 'yg-jalnan', "cursive";
+    font-size: 1.5rem;
+}
+p:nth-child(2){
+    color: #c4c4c4;
+    text-align: center;
+    font-family: 'yg-jalnan', "cursive";
+    font-size: 1rem;
+    margin-top: 3rem;
+}
+
+#lessbtn{
+    margin: 0 auto;
+    width: 12rem;
+    background-color: #0B2752;
+    height: 3rem;
+    border-radius: 3rem;
+    text-align: center;
+    line-height: 3rem;
+}
+
+a{
+text-decoration: none;
+    color: white;
+
+}
+
+#lessbtn:hover{
+    background-color: orangered;
+}

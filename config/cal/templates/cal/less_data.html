@@ -1,5 +1,18 @@
-{% extends 'cal/base.html' %}
-{% block content %}
-데이터가 부족해요 라이프 기록을 좀 더 쌓아야 대시보드를 열람할 수 있답니다
-채은 언니 여기 작살나게 꾸며줘 ㅎㅎ헤헷 ???? 어머님 노트북이니까 meet하실수 ㅣㅇㅆ지 않을까??
+{% load static %}
+{% block style %}
+        <link rel="stylesheet" type="text/css" href="{% static 'cal/css/less_data.css' %}">
+
 {% endblock %}
+    <div id="lesscontent">
+        <p>
+        데이터가 부족해요<br />
+
+            라이프 기록을 좀 더 쌓아야
+            대시보드를 열람할 수 있답니다
+        </p>
+
+        <p>데이터는 2주일치 기록이 쌓이면 열람할 수 있어요!</p>
+        <div id="lessbtn">
+            <h3><a href="/">돌아가기</a></h3>
+        </div>
+    </div>

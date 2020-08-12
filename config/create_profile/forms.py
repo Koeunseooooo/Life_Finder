@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from .models import Profile
-
+from django.forms.widgets import RadioSelect, CheckboxSelectMultiple
 
 # class CreateUserForm(UserCreationForm):  # 회원가입폼
 #     class Meta:
@@ -49,9 +49,34 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 
 class RegisterProfileForm(forms.ModelForm):
+
+
     class Meta:
         model = Profile
-        fields = ['nickname', 'photo', 'age', 'job', 'description']
+        # widgets = {
+        #     # 'interested': RadioSelect()
+        #     'interested': CheckboxSelectMultiple()
+        # }
+        fields = ['nickname', 'photo', 'job', 'description', 'interested']
+
+        def selected_interested_labels(self):
+            return [label for value, label in self.fields['interested'].choices if value in self['interested'].value()]
+
+# class ObjectGoalNumberForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ['goal_count']
+#         labels = {"goal_count": "목표 개수"}
+
+
+# class RangeInput(NumberInput):
+#     input_type = 'range'
+
+
+# goal_count = forms.IntegerField(widget=NumberInput(attrs={'type': 'range', 'max': '100', 'min': '0', 'step': '1'}))
+
+
+from django.forms.widgets import NumberInput
 
 
 class ObjectGoalNumberForm(forms.ModelForm):
@@ -59,3 +84,20 @@ class ObjectGoalNumberForm(forms.ModelForm):
         model = Profile
         fields = ['goal_count']
         labels = {"goal_count": "목표 개수"}
+        widgets = {'goal_count': NumberInput(attrs={'type': 'range', 'max': '100', 'min': '0', 'step': '1'})}
+
+    # scale = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '5', 'min': '-100', 'max': '100', 'id':'myRange'}), required=False)
+# forms.IntegerField(widget=NumberInput(attrs={'type':'range', 'step': '2'}))
+
+# class MyForm(ModelForm):
+#     ....
+#     class Meta:
+#
+#         model = Application
+#         fields = ['amount', 'reason']
+#         widgets = {
+#             'amount' : RangeInput(attrs={'max': 100000,
+#             'min':10000,
+#             'step':5000}),
+#
+#         }
