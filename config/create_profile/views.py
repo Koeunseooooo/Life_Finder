@@ -99,6 +99,9 @@ def register(request):
     })
 
 
+
+
+
 def profile_edit(request, pk):
     profile = Profile.objects.get(pk=pk)
     if request.method == "POST":

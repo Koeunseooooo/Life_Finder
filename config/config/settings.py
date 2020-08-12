@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'create_profile',
     'dashboard',
     'django.forms',
+
+    'multiselectfield',
 ]
 
 MIDDLEWARE = [
