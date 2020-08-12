@@ -1,9 +1,15 @@
 {% extends 'cal/base.html' %}
+{% load static %}
+{% load staticfiles %}
 
+{% block style %}
+        <link rel="stylesheet" type="text/css" href="{% static 'cal/css/event.css' %}">
+
+{% endblock %}
 
 {% block content %}
+    <div id="bow">
     {% block content_cal %}
-        <div style="height: 100px;"></div>
         {% if form.errors %}
             {% for field in form %}
                 {% for error in field.errors %}
@@ -36,4 +42,5 @@
             {#    <a href="{% url 'cal:delete' event.pk %}"> delete </a>#}
         </form>
     {% endblock %}
+    </div>
 {% endblock %}
