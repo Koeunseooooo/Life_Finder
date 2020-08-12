@@ -49,15 +49,18 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 
 class RegisterProfileForm(forms.ModelForm):
+
+
     class Meta:
         model = Profile
-        widgets = {
-            'interested': RadioSelect()
-            # 'interested': CheckboxSelectMultiple()
-
-        }
+        # widgets = {
+        #     # 'interested': RadioSelect()
+        #     'interested': CheckboxSelectMultiple()
+        # }
         fields = ['nickname', 'photo', 'job', 'description', 'interested']
 
+        def selected_interested_labels(self):
+            return [label for value, label in self.fields['interested'].choices if value in self['interested'].value()]
 
 # class ObjectGoalNumberForm(forms.ModelForm):
 #     class Meta:
