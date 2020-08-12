@@ -53,18 +53,21 @@ td {
 textarea {
     margin-bottom: 10px;
     width: 460px;
-    height: 150px;
+    height: 100px;
     border: solid 1px #b0bec9;;
     margin-top: 10px;
 }
 
+
 #save {
+    padding:20px;
     margin-top: 2rem;
     width: 460px;
     height: 56px;
     border: solid 1px #6570CE;
     background-color: #717FFF;
     color: white;
+    border-radius: 5px;
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 800;
     font-size: 1rem;
@@ -81,4 +84,14 @@ form {
     margin-top: 5rem;
     width: 560px;
 
+}
+
+
+
+
+/*radio버튼 디자인*/
+input[type="radio"]{
+   /* width: 19px;*/
+   /*height: 19px;*/
+    display: inline;
 }

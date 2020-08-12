@@ -26,18 +26,30 @@ class Event(models.Model):
     #     korean_timezone = timezone(settings.TIME_ZONE)
     #     return self.created_at_korean_time(korean_timezone)
 
+    # @property
+    # def get_html_url(self):
+    #     url = reverse('cal:event_edit', args=(self.id,))
+    #     # f'<a href="{url}"> {self.rating} </a>'
+    #
+    #     result = []
+    #     for a in {self.rating}:
+    #         while a>0:
+    #             result.append('|||||||||')
+    #             a-=1
+    #
+    #     final_result=' '.join(result)
+    #
+    #     return f'<a href="{url}">{final_result}</a>'
+
     @property
     def get_html_url(self):
         url = reverse('cal:event_edit', args=(self.id,))
         # f'<a href="{url}"> {self.rating} </a>'
 
-        result = []
-        for a in {self.rating}:
-            while a>0:
-                result.append('●')
-                a-=1
+        result = ''
+        for a in {self.title}:
+            result += a
 
-        final_result=' '.join(result)
+        return f'<a href="{url}">{result}</a>'
 
-        return f'<a href="{url}">{final_result}</a>'
 

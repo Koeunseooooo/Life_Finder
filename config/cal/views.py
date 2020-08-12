@@ -27,10 +27,18 @@ class CalendarView(generic.ListView):
     context_object_name = 'today_list'  # today_list에는 오늘 등록한 객체들이 포함됨
 
     def get_queryset(self, **kwargs):
+        # profile_value = Profile.objects.all()
         queryset = {
             'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()),
-            'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()).aggregate(Sum('rating')).values()
+            'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()).aggregate(Sum('rating')).values(),
+            'wanted_goal': Profile.objects.all().values().filter(user=self.request.user)
+            # Event.objects.filter(profile=profile_value)
+            # 'wanted_goal': Event.objects.values('profile') 프로필 아이디만 갖고와짐
+            # Event.objects.select_related('profile')
+            # select_related('profile')
         }
+
+        # CartItem.objects.select_related('product').filter(cart=cart)
         return queryset
 
     def get_context_data(self, **kwargs):

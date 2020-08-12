@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required  # 프로필 창 로�
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from .models import Profile
-from .forms import RegisterProfileForm,ObjectGoalNumberForm
+from .forms import RegisterProfileForm, ObjectGoalNumberForm
 
 from .forms import CreateUserForm, CustomAuthenticationForm  # 회원가입
 from django.contrib.auth.forms import AuthenticationForm  # 로그인
@@ -11,10 +11,6 @@ from django.contrib.auth import login as auth_login  # 로그인
 
 from django.contrib.auth import logout as auth_logout  # 로그아웃
 
-
-# Create your views here.
-# def page(request):
-#     return render(request, 'create_profile/page.html')
 
 def login(request):
     if request.method == 'POST':
@@ -45,6 +41,22 @@ def signup(request):
     })
 
 
+@login_required
+def goal_get(request):
+    user = request.user
+    profile = request.user.user_profile
+    goal_form = ObjectGoalNumberForm(request.POST)
+    if request.method == "POST":
+        if goal_form.is_valid():
+            goal_count = request.POST['goal_count']
+            profile.goal_count = goal_count
+            profile.save()
+            return redirect('main:first')
+    else:
+        goal_form = ObjectGoalNumberForm()
+    return render(request, 'create_profile/goal_get.html', {'goal_form': goal_form})
+
+
 
 def logout(request):
     auth_logout(request)
@@ -59,7 +71,8 @@ def profile_look(request, pk):
     ctx = {
         'profile': profile
     }
-    return render(request,'create_profile/profile.html',ctx)
+    return render(request, 'create_profile/profile.html', ctx)
+
 
 @login_required
 def register(request):
@@ -71,12 +84,13 @@ def register(request):
                 user=user,
                 nickname=profile_form.cleaned_data['nickname'],
                 photo=profile_form.cleaned_data['photo'],
-                age=profile_form.cleaned_data['age'],
-                # birthday=profile_form.cleaned_data['birthday'],
+                # age=profile_form.cleaned_data['age'],
+                # birthday=profile_form.cleaned_data['birthday']
+                interested=profile_form.cleaned_data['interested'],
                 job=profile_form.cleaned_data['job'],
                 description=profile_form.cleaned_data['description'],
             )
-            return redirect('main:first')
+            return redirect('create_profile:goal_get')
     else:
         profile_form = RegisterProfileForm()
 
@@ -85,11 +99,11 @@ def register(request):
     })
 
 
-def profile_edit(request,pk):
+def profile_edit(request, pk):
     profile = Profile.objects.get(pk=pk)
     if request.method == "POST":
         profile_form = RegisterProfileForm(request.POST, request.FILES, instance=profile)
-        goal_form = ObjectGoalNumberForm(request.POST,instance=profile)
+        goal_form = ObjectGoalNumberForm(request.POST, instance=profile)
         if profile_form.is_valid():
             # profile = profile_form.save()
             profile_form.save()
@@ -101,10 +115,9 @@ def profile_edit(request,pk):
         ctx = {
             'profile_form': profile_form,
             'goal_form': goal_form,
-            'profile':profile,
+            'profile': profile,
         }
-        return render(request,'create_profile/profile_update.html',ctx)
-
+        return render(request, 'create_profile/profile_update.html', ctx)
 
 # def profile_edit(request,pk):
 #     profile = Profile.objects.get(pk=pk)
