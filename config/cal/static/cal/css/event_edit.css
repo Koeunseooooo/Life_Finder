@@ -12,7 +12,7 @@
 .r_contents{
     height: 40rem;
 }
-#top_b{
+#top_f{
     padding-top: 5rem;
     padding-left: 4rem;
     width: 30rem;
@@ -26,34 +26,34 @@
 
 
 #bow{
-
-    padding-top: 5rem;
+        padding-top: 5rem;
     padding-bottom: 3rem;
-    width: 50rem;
-    padding-left: 5rem;
-    margin: 0 auto;
+    margin-left: 28rem;
     font-family: 'yg-jalnan', "cursive";
     color: #0B2752;
+    width: 35rem;
+    padding-left: 5rem;
+
+
 }
 
 input{
-    width: 90%;
     margin-left: 2rem;
+    width: 90%;
     height: 30px;
     line-height: 30px;
     margin-bottom: 1.5rem;
     border: 1px solid lightgray;
 }
 label{
-    line-height: 30px;
-    text-align: center;
-    padding: 0;
-    margin: 0;
+
 }
 
 input[name="title"]{
+width: 20rem;
+}
 
-    margin-left: 2rem;
+input[name="start_time"]{
 
 }
 
@@ -61,23 +61,48 @@ input[name="rating"]{
     display: none;
 }
 
-#lb{
-    margin-top: 2.5rem;
+#lc1{
+    border-radius: 3rem;
+    margin-top: 4rem;
     background-color: #717FFF;
     color: white;
     text-align: center;
-    margin-left: 12rem;
     border: none;
     font-family: "Syncopate", sans-serif;
     font-weight: 900;
-    padding: 20px 10rem;
+    padding: 1rem 2rem;
+    width: 10rem;
 
 }
 
-#lb:hover{
+#lc2{
+    border-radius: 3rem;
+        margin-top: 4rem;
+    background-color: #717FFF;
+    color: white;
+    text-align: center;
+    border: none;
+    font-family: "Syncopate", sans-serif;
+    font-weight: 900;
+    padding: 1rem 2rem;
+    width: 10rem;
+    margin-left: 7.5rem;
+
+}
+
+#lc1:hover{
+    background-color: orangered;
+}
+
+#lc2:hover{
     background-color: orangered;
 }
 #rateit-range-2{
     margin-left: 2rem;
     margin-top: 1.5rem;
+}
+
+td{
+    width: 3rem;
+
 }

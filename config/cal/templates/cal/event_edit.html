@@ -1,39 +1,60 @@
 {% extends 'cal/base.html' %}
+{% load static %}
+{% load staticfiles %}
 
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cal/css/event_edit.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
-    {% block content_cal %}
-        <div style="height: 100px;"></div>
-        {% if form.errors %}
-            {% for field in form %}
-                {% for error in field.errors %}
+    <div id="top_f"><h1>라이프 기록을 수정해주세요</h1></div>
+    <div id="bow">
+
+        {% block content_cal %}
+
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            {{ field.label }} <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
                     <div class="alert alert-danger">
                         {{ field.label }} <strong>{{ error|escape }}</strong>
                     </div>
+
                 {% endfor %}
-            {% endfor %}
-            {% for error in form.non_field_errors %}
-                <div class="alert alert-danger">
-                    {{ field.label }} <strong>{{ error|escape }}</strong>
-                </div>
-            {% endfor %}
-        {% endif %}
+            {% endif %}
 
-        <form method="post" action="">
-            {% csrf_token %}
-            <table class="form form-table">
-                {{ form }}
-                <tr>
-                    <td colspan="2">
-                        <button type="submit" class="btn btn-info right" name="action_add"> 수정하기</button>
-                    </td>
-                    <td colspan="2">
-                        <button type="submit" class="btn btn-info right" name="action_remove"> 삭제하기</button>
-                    </td>
-                </tr>
+            <form method="post" action="">
+                {% csrf_token %}
+                <table class="form form-table">
+                    {{ form }}
+                    <tr>
+                        <td colspan="2">
 
-            </table>
-            {#    <a href="{% url 'cal:delete' event.pk %}"> delete </a>#}
-        </form>
-    {% endblock %}
+                            <button id="lc1" type="submit" class="btn btn-info right" name="action_add"> EDIT</button>
+                            <button id="lc2" type="submit" class="btn btn-info right" name="action_remove"> DELETE</button>
+                        </td>
+
+                            {##}
+                            {#                    <td colspan="2">#}
+                            {#                            <button id="lc2" type="submit" class="btn btn-info right" name="action_remove"> DELETE</button>#}
+                            {##}
+                            {#                    </td>#}
+
+                            {#                    <td colspan="2">#}
+                            {#                        <button type="submit" class="btn btn-info right" name="action_remove"> 삭제하기</button>#}
+                            {#                    </td>#}
+                    </tr>
+
+                </table>
+                {#    <a href="{% url 'cal:delete' event.pk %}"> delete </a>#}
+            </form>
+            </div>
+        {% endblock %}
+
 {% endblock %}
