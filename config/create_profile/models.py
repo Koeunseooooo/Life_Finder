@@ -2,6 +2,8 @@ from django.db import models
 from django import forms
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from multiselectfield import MultiSelectField
+
 YEARS = [x for x in range(1940, 2021)]
 
 
@@ -26,12 +28,22 @@ class Profile(models.Model):
     # birthday = models.DateField(blank=True)
     job = models.CharField(blank=True, max_length=20, verbose_name='직업')
     description = models.TextField(blank=True, max_length=100, verbose_name='소개')
-    # interested = models.MultipleChoiceField(max_length=15, choices=interested_tags, verbose_name='관심 라이프',default="기타")
+    interested = MultiSelectField(blank=True, max_choices=8, choices=interested_tags,
+                                  verbose_name='관심 라이프', default="기타")
+    # interested = models.CharField(max_length=15, choices=interested_tags,verbose_name='관심 라이프', default="기타")
 
-    interested = models.CharField(max_length=15, choices=interested_tags, verbose_name='관심 라이프',default="기타")
+
+
+    # interested = models.CharField(max_length=15, choices=interested_tags, verbose_name='관심 라이프',default="기타")
     # label = '당신의 관심분야는?', , widget=forms.RadioSelect())
     # interested = models.CharField(max_length=15, choices=Interested_tag, blank=True)
     # interested = models.CharField(max_length=50, default='etc', choices=interested_tags, verbose_name='관심 카테고리')
+
+
+    def selected_genders_labels(self):
+        return [label for value, label in self.fields['genders'].choices if value in self['genders'].value()]
+
+
 
     goal_count = models.IntegerField(
         default=0,

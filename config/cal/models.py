@@ -48,7 +48,7 @@ class Event(models.Model):
 
         result = ''
         for a in {self.title}:
-            result += a[:5]
+            result += a[:7]
 
         return f'<a href="{url}">{result}</a>'
 
