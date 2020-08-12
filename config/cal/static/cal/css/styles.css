@@ -3,7 +3,13 @@ body {
     font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }
-
+input[name="start_time"]{
+     margin-top: 30px;
+}
+input[name="rating"]{
+    margin-top: 30px;
+    display: block;
+}
 .left {
     float: left;
 }
@@ -14,30 +20,42 @@ body {
 
 .btn {
     outline: none;
-    color: black;
-    background-color: transparent;
+    color: #0B2752;
+    background-color: #F1F1F1;
     box-shadow: 0 0 0 0;
-    margin-right: 3px;
+    font-family: "Syncopate", sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    border: none;
+    margin-top: 3rem;
+}
+
+.btn:nth-child(3){
+    background-color: #0B2752;
+    margin-top: 0;
+    margin-right: 18rem;
+    padding: 10px 15px 10px 15px;
+    color: white;
+
 }
 
 .clearfix {
-    margin: 15px;
     width: 70%;
-    margin: 15px auto;
+    margin: 50px auto 15px;
 }
 
 .form {
     margin: auto;
 }
 
-.form input, .form select, .form textarea {
-    border-radius: 5px;
-    border: 1px solid darkblue;
-    outline: none;
-    background: none;
-    padding: 5px;
-    width: 100%;
-}
+/*.form input, .form select, .form textarea {*/
+/*    border-radius: 5px;*/
+/*    border: 1px solid darkblue;*/
+/*    outline: none;*/
+/*    background: none;*/
+/*    padding: 5px;*/
+/*    width: 100%;*/
+/*}*/
 
 /* App styles */
 .title {
@@ -46,81 +64,132 @@ body {
 }
 
 .calendar {
-    width: 70%;
+    width: 80%;
     margin: auto;
     font-size: 13px;
+    height: 35rem;
 }
 
-.calendar tr, .calendar td {
-    border: 1px solid darkblue;
+/*calendar line here!*/
+
+.calendar tr{
+     border: 2px solid #0B2752;
+    background-color: #0B2752;
+    color: white;
+
+}
+.calendar tr:nth-child(1){
+    height: 7rem;
+    border: none;
 }
 
-.calendar th {
+.calendar tr:nth-child(2){
+    height: 5rem;
+}
+
+.calendar td{
+    height: 1rem;
+    border: 2px solid #0B2752;
+    color: white;
+}
+
+.calendar th:nth-child(0) {
     padding: 5px;
     text-align: center;
     font-size: 18px;
+
 }
 
 .calendar td {
     width: 200px;
     height: 80px;
-    padding: 20px 0px 0px 5px;
+    padding: 10px 5px 0px 5px;
+    background-color: #F1F1F1;
 }
 
 
 .calendar td ul li a {
-    color: #00ff7f;
-    font-size: 0.9rem;
+    /*color: #717FFF;*/
+    background-color: #717FFF;
+    margin-bottom: 5px;
+    width: 180px;
+    display: block;
+    color: white;
+    font-size: 1rem;
     /*뱃지 크기와 색깔 정하는 아이*/
 }
 
-
 .month {
-    font-size: 25px;
+    font-size: 3rem;
+    color: #0B2752;
+    background-color: white;
+    margin: 0 auto;
+    text-align: center;
+
+}
+.mon, .tue, .wed, .thu, .fri, .sat, .sun{
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
 }
 
 .date {
-    font-size: 16px;
+    font-size: 1rem;
+    color: #0B2752;
+    font-weight: 700;
 }
 
-ul {
-    height: 100%;
-    padding: 0px 5px 0px 20px;
+.calendar ul {
+    height: 70%;
 }
-
 
 /*캘린더 밑에 나오는 오늘 리스트부분 스타일 시작*/
+
+.contain{
+    position: absolute;
+    top: 960px;
+}
 .today_list_total {
     text-align: center;
-    width: 70%;
-    margin: auto;
+    /*position: relative;*/
+    /*top: 80rem;*/
+    margin-left: 32rem;
 }
 
 .today_list_total .today{
-  color: #1E88E5;
-  font-size: 4rem;
-  font-weight: bold;
+    color: #0B2752;
+    font-size: 4rem;
+    font-weight: 900;
+    font-family: "Syncopate", sans-serif,
+                    "helvertica", sans-serif;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+
 }
 .today_rating {
-    margin-top: 20px;
+    margin-top: 0px;
+    font-family: "Syncopate", sans-serif;
 }
 .today_list_item {
     width: 200px;
     height: 50px;
-  line-height: 50px;
+    line-height: 50px;
     margin: 0 auto;
     text-align: center;
-    border-bottom: 2px solid lightgray;
+    border-bottom: 3px solid lightgray;
+    color: #0B2752;
+    font-size: 1.5rem;
 }
 .today_list_total .total{
-    color: lightgray;
+    color: #0B2752;
   font-size: 2rem;
   font-weight: bold;
     margin-right: 20px;
+
 }
 .today_list_item .each_rating{
     font-weight: bold;
-    color: darkblue;
+    color: #717FFF;
     margin-left: 10px;
 }
 
@@ -136,10 +205,24 @@ ul {
         padding-left: 10px;
 }
 .go_dashboard a{
+    font-family: "Syncopate", sans-serif;
     color: white;
     text-decoration: none;
     padding: 10px;
+    font-weight: 900;
 }
 .go_dashboard a:hover{
+ background-color: #717FFF;
+}
+
+/*맨 상단에 위치한 목표 개수 css*/
+.user_goal_position{
+    position: absolute;
+    width: 500px;
+    margin: 0 auto;
+    top: 70px;
+}
+.user_goal_position span{
     font-weight: bold;
+    font-size: 1.5rem;
 }
