@@ -113,6 +113,7 @@ def dash(request):
     # 오늘로 부터 7일전 까지 갖고온다.
 
     wanted_goal = Profile.objects.all().values().filter(user=request.user)
+
     import arrow
 
     # 모든 라이프기록 객체들 불러올때

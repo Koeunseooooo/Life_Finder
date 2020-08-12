@@ -17,6 +17,13 @@
     {#        {% endfor %}#}
     {#    </div>#}
 
+        {% for value in wanted_goal %}
+            <span class="user_goal_des">라이프 목표 뱃지 개수 |g</span>
+            <span class="user_goal_number">
+        {{ value.goal_count }}개
+        </span>
+            <button><a href="{% url 'create_profile:goal_get' %}">수정하기</a></button>
+        {% endfor %}
 
 
     <div style="height: 100px"></div>

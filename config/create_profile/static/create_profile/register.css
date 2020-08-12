@@ -1,0 +1,31 @@
+        input[type=file] {
+            padding-top: 30px;
+            padding-left: 20px;
+        }
+
+        input[type=text], input[type=number] {
+            margin-bottom: 10px;
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: solid 1px #b0bec9;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+
+        #save {
+
+            background-color: #717FFF;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            width: 100px;
+            text-align: center;
+            line-height: 30px;
+            margin: 0 auto;
+        }
+
+
+        h2{
+            color: red;
+        }
