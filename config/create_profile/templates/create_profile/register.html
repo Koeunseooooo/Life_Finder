@@ -1,35 +1,14 @@
 {% extends 'main/base.html' %}
+{% load static %}
+{% load staticfiles %}
+
 {% block style %}
-    <style>
-        input[type=file] {
-            padding-top: 30px;
-            padding-left: 20px;
-        }
+        <link rel="stylesheet" type="text/css" href="{% static 'create_profile/register.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet">
 
-        input[type=text], input[type=number] {
-            margin-bottom: 10px;
-            width: 250px;
-            height: 40px;
-            border-radius: 5px;
-            border: solid 1px #b0bec9;
-            margin-top: 10px;
-            padding-left: 10px;
-        }
-
-        #save {
-            margin-top: 30px;
-            margin-left: 251px;
-            background-color: #1E88E5;
-            border-radius: 5px;
-            color: white;
-            width: 100px;
-            text-align: center;
-        }
-
-    </style>
 {% endblock %}
 {% block content %}
-    <div style="height: 100px"></div>
+
         <h2>당신의 프로필을 작성해주세요!</h2>
             <form action="" method="post" enctype="multipart/form-data">
                 <div>
@@ -37,7 +16,7 @@
                     <table>
                         <div id="box">{{ profile_form.as_table }}</div>
                     </table>
-                    <input type="submit" id="save" value="제출"/>
+                    <input type="submit" id="save" value="SAVE"/>
                 </div>
             </form>
 {% endblock %}

@@ -2,38 +2,25 @@
 
 
 {% block content %}
-    {% block title %}
-        Calendar
-    {% endblock %}
-    <div style='height:50px'></div>
+
+
 
     {% block content_cal %}
-        <div class="clearfix">
-            <a class="btn btn-info left" href="{% url 'cal:calendar' %}?{{ prev_month }}"> Previous Month </a>
-            <a class="btn btn-info right" href="{% url 'cal:calendar' %}?{{ next_month }}"> Next Month </a>
-            <a class="btn btn-info right" href="{% url 'cal:event_new' %}"> New Event </a>
-        </div>
+        <div id="cal">
+            <div class="clearfix">
+                <a class="btn btn-info left" href="{% url 'cal:calendar' %}?{{ prev_month }}"> Previous Month </a>
+                <a class="btn btn-info middle" href="{% url 'cal:event_new' %}"> New Event </a>
+                 <a class="btn btn-info right" href="{% url 'cal:calendar' %}?{{ next_month }}"> Next Month </a>
 
-        <div style="height: 500px">
-            {{ calendar }}
+            </div>
+          {{ calendar }}
         </div>
-
     {% endblock %}
-    {#    {{ today_list.wanted_goal }}#}
-    <div class="user_goal_position">
-        {% for value in today_list.wanted_goal %}
-            <span class="user_goal_des">라이프 목표 뱃지 개수 |</span>
-            <span class="user_goal_number">
-        {{ value.goal_count }}개
-        </span>
-            {#        수정하기 누르면 전에 있던 페이지로 연결되는 작업 profile에서 추후 해야할 듯#}
-            <button><a href="{% url 'create_profile:goal_get' %}">수정하기</a></button>
 
-        {% endfor %}
-    </div>
-    {#    {% for value in today_list.wanted_goal %}#}
-    {#    {{ value.goal_count }}#}
-    {#    {% endfor %}#}
+
+
+
+
 
     {#    top 830px로 줬는데 만약 사용자가 하루에 7개 이상 등록해서 달력의 높이가 높아지면 문제가-> today리스트 값이 달력 위로 올라감#}
     <div class="contain">
@@ -48,85 +35,15 @@
                         <span>{{ list.title }}</span>
                         <span class="each_rating">{{ list.rating }}</span>
 
-                        {#                    {% for rating_num in range(list.rating) %}#}
-                        {#                        <img src="static/quokka.jpg">#}
-                        {#                    {% endfor %}#}
-
-
-                        {#                     <span class="each_rating">{{ list.rating }}</span>#}
-                        {#                    {% for rating_num in {{ list.rating }} %}#}
-                        {#                        <img src="static/quokka.jpg">#}
-                        {#                    {% endfor %}#}
-
-
-                        {#                    {% rating as list.rating %}#}
-                        {#                    {% for rating_num in rating %}#}
-                        {#                       <h5>{{ rating_num }}</h5>#}
-                        {#                        {% endfor %}#}
-
-
-                        {#                    {% for rating_num in {{ list.rating }} %}#}
-                        {#                        <img src="static/quokka.jpg">#}
-                        {#                    {% endfor %} #}
                     </div>
                 {% endfor %}
+                </div>
 
                 <div class="today_rating">
                     <span class="total">TOTAL</span>
                     {% for value in today_list.today_list_rating_sum %}
-                        <span class="today_sum_rating"
-                              style="font-size: 2rem; font-weight: bold; color:#bdbdbd;">{{ value }}</span>
+                        {{ value }}
                     {% endfor %}
-
-                    {#                {% for value in today_list.today_list_rating_sum %}#}
-
-                    {#                    {% with count = value %}#}
-                    {#                        {% while count >0 %}#}
-                    {#                            <img src="static/quokka.jpg">#}
-                    {#                        {% endwhile %}#}
-                    {#                    {% endwith %}#}
-                    {#                {% endfor %}#}
-
-
-                    {#                {% for value  in today_list.today_list_rating_sum %}#}
-                    {#                    {% while count >0 %}{{ value }}#}
-                    {##}
-                    {#                      {% while count > 0: %}#}
-                    {#                    {% for i in range %}}#}
-                    {#                         <img src="static/quokka.jpg">#}
-                    {#                     {% endfor %}#}
-                    {#                    {% for repeat_time in value %}#}
-                    {#                        <img src="static/quokka.jpg">#}
-                    {#                        {% endfor %}#}
-                    {#                {% endfor %}#}
-                    {##}
-                    {#              {% with count = 0 %}#}
-                    {#  {% while count < 5: %}#}
-                    {#      <div class='rating-stars text-center'>#}
-                    {#          <ul class='stars'>#}
-                    {#              <li class='star selected' title='Poor' data-value='1'>#}
-                    {#                  <i class='fa fa-star fa-fw'></i>#}
-                    {#              </li>#}
-                    {#              <li class='star selected' title='Fair' data-value='2'>#}
-                    {#                  <i class='fa fa-star fa-fw'></i>#}
-                    {#              </li>#}
-                    {#              <li class='star selected' title='Good' data-value='3'>#}
-                    {#                  <i class='fa fa-star fa-fw'></i>#}
-                    {#              </li>#}
-                    {#              <li class='star selected' title='Excellent' data-value='4'>#}
-                    {#                  <i class='fa fa-star fa-fw'></i>#}
-                    {#              </li>#}
-                    {#              <li class='star selected' title='WOW!!!' data-value='5'>#}
-                    {#                  <i class='fa fa-star fa-fw'></i>#}
-                    {#              </li>#}
-                    {#          </ul>#}
-                    {#      </div>#}
-                    {#        {% count += 1 %}#}
-                    {#      {% endwhile %}#}
-                    {#  {% endwith %}#}
-                    {#            #}
-
-
                 </div>
 
             {% else %}
@@ -140,5 +57,5 @@
             </div>
 
         </div>
-    </div>
+
 {% endblock %}
