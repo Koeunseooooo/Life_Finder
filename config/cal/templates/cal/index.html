@@ -4,9 +4,19 @@
 {% extends 'cal/base.html' %}
 {% block content %}
 
-
-
     <div style="height: 100px"></div>
+
+        {% for value in wanted_goal %}
+            <span class="user_goal_des">라이프 목표 뱃지 개수 |g</span>
+            <span class="user_goal_number">
+        {{ value.goal_count }}개
+        </span>
+            <button><a href="{% url 'create_profile:goal_get' %}">수정하기</a></button>
+        {% endfor %}
+
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <div class="total">
         <div class="left">

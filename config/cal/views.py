@@ -111,6 +111,9 @@ def dash(request):
     queryset = Event.objects.all()
     # queryset = Event.objects.first()
     # 오늘로 부터 7일전 까지 갖고온다.
+
+    wanted_goal = Profile.objects.all().values().filter(user=request.user)
+
     import arrow
 
     # 모든 라이프기록 객체들 불러올때
@@ -357,6 +360,7 @@ def dash(request):
         'four_count':four_count,
         'five_count':five_count,
 
+        'wanted_goal':wanted_goal,
 
 
         # 'one_str':one_str,
