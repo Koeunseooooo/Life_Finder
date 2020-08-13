@@ -27,7 +27,7 @@ class Event(models.Model):
     start_time = models.DateTimeField(default=timezone.now, blank=True)
     profile=models.ForeignKey(Profile, related_name='event',on_delete=models.CASCADE)
     rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], blank=True, default='enter your value')
-    category = models.CharField(choices=cateegory_tags,max_length=15,blank=True,default="기타")
+    category = models.CharField(choices=cateegory_tags,max_length=15,blank=True,default="친구/가족과의 시간")
     def __str__(self):
         return '{}/ {}/ {}'.format(self.id, self.title, self.start_time, self.rating)
 
