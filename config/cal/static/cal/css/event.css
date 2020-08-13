@@ -19,14 +19,10 @@
     margin: 0 auto;
     text-align: center;
     font-family: 'yg-jalnan', "cursive";
-
-
-
 }
 
 
 #bow{
-
     padding-top: 5rem;
     padding-bottom: 3rem;
     width: 50rem;
@@ -36,7 +32,10 @@
     color: #0B2752;
 }
 
-input{
+select{
+    margin-top: 20px;
+}
+input, select{
     width: 90%;
     margin-left: 2rem;
     height: 30px;
@@ -71,7 +70,6 @@ input[name="rating"]{
     font-family: "Syncopate", sans-serif;
     font-weight: 900;
     padding: 20px 10rem;
-
 }
 
 #lb:hover{

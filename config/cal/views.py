@@ -14,7 +14,7 @@ from .forms import EventForm
 from create_profile.forms import Profile
 
 from django.utils import timezone
-from datetime import datetime, date
+from datetime import datetime, date,timedelta
 from create_profile.models import Profile
 from django.contrib.auth.models import User
 from django.db.models import Sum, Count
@@ -111,8 +111,25 @@ def dash(request):
     queryset = Event.objects.all()
     # queryset = Event.objects.first()
     # 오늘로 부터 7일전 까지 갖고온다.
-
+    one_month_ago = datetime.today() - timedelta(days=30) #30일동안 등록한 필드만 보여주게 하는 쿼리문
     wanted_goal = Profile.objects.all().values().filter(user=request.user)
+
+    # 운동 선택한 필드만 가져오는 쿼리문
+    exercise_field = Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='운동').filter(start_time__gte=one_month_ago)
+    # 운동 선택한 필드의 개수만 가져오는 쿼리문
+    exercise_field_count = Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='운동').filter(start_time__gte=one_month_ago).count()
+
+    # 여행 선택한 필드만 가져오는 쿼리문
+    travel_field = Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='여행').filter(start_time__gte=one_month_ago)
+    # 여행 선택한 필드의 개수만 가져오는 쿼리문
+    travel_field_count = Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='여행').filter(start_time__gte=one_month_ago).count()
+
+    # 기타 선택한 필드만 가져오는 쿼리문
+    etc_field = Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='기타').filter(start_time__gte=one_month_ago)
+    # 기타 선택한 필드의 개수만 가져오는 쿼리문
+    etc_field_count = Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='기타').filter(start_time__gte=one_month_ago).count()
+
+
 
     import arrow
 
@@ -376,6 +393,14 @@ def dash(request):
         # 'five_str': five_str,
         # # 'seven_str': seven_str,
         # 'one_start_time':one_start_time,
+
+
+        'exercise_field': exercise_field,
+        'exercise_field_count':exercise_field_count,
+        'travel_field':travel_field,
+        'travel_field_count':travel_field_count,
+        'etc_field':etc_field,
+        'etc_field_count':etc_field_count,
     }
 
 

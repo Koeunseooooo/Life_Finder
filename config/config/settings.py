@@ -120,7 +120,7 @@ USE_L10N = True
 # DJANGO_CELERY_BEAT_TZ_AWARE = False
 
 
-USE_TZ = False
+USE_TZ = True
 # USE_TZ = False로 하면 이벤트를 저장할 때 한국 시간이 객체에 저장되지만
 # SQLite backend does not support timezone-aware datetimes when USE_TZ is False.라는 오류 발생
 

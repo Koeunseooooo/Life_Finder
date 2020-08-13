@@ -12,11 +12,22 @@ from datetime import datetime
 # print(im.size)
 
 class Event(models.Model):
+    cateegory_tags = (
+        # 보일 땐 친구/가족이 보이고 선태가면 앞에 있는게 보이는 구조네. 현재 한 가지만 선택가능
+        ('친구/가족과의 시간', '친구/가족과의 시간'),
+        ('자기계발', '자기계발'),
+        ('운동', '운동'),
+        ('취미생활', '취미생활'),
+        ('여가생활', '여가생활'),
+        ('여행', '여행'),
+        ('일', '일'),
+        ('기타', '기타'),
+    )
     title = models.CharField(max_length=200)
     start_time = models.DateTimeField(default=timezone.now, blank=True)
     profile=models.ForeignKey(Profile, related_name='event',on_delete=models.CASCADE)
     rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], blank=True, default='enter your value')
-
+    category = models.CharField(choices=cateegory_tags,max_length=15,blank=True,default="기타")
     def __str__(self):
         return '{}/ {}/ {}'.format(self.id, self.title, self.start_time, self.rating)
 

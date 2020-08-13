@@ -22,7 +22,7 @@
     <ul class="navt">
         <li><a href="/">YAHO!</a></li>
         <li><a href="{% url 'cal:calendar' %}">LIFE FINDER</a></li>
-        <li><a href="#">DASH BOARD</a></li>
+        <li><a href="{% url 'cal:dash' %}">DASH BOARD</a></li>
         {% if user.is_authenticated %}
             <li><a href="{% url 'create_profile:profile_look' request.user.pk %}">MY PAGE</a></li>
             <li><a href="{% url 'create_profile:logout' %}">LOGOUT</a></li>
