@@ -17,7 +17,7 @@ class Profile(models.Model):
         ('취미생활', '취미생활'),
         ('여가생활', '여가생활'),
         ('여행', '여행'),
-        ('잠', '잠'),
+        ('일', '일'),
         ('기타', '기타'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile')
@@ -25,12 +25,11 @@ class Profile(models.Model):
     photo = models.ImageField(null=True, blank=True, upload_to="create_profile/%Y/%m/%d", verbose_name='프로필사진')
     # age = models.PositiveIntegerField(blank=True, null=True, verbose_name='나이')
     # birthday = models.DateField(blank=True)
-    job = models.CharField(blank=True, max_length=20, verbose_name='직업')
+    job = models.CharField(blank=True, max_length=20, verbose_name='직업이 뭘까?')
     description = models.TextField(blank=True, max_length=100, verbose_name='소개')
     interested = MultiSelectField(blank=True, max_choices=8, choices=interested_tags,
                                   verbose_name='관심 라이프', default="기타")
     # interested = models.CharField(max_length=15, choices=interested_tags,verbose_name='관심 라이프', default="기타")
-
 
 
     # interested = models.CharField(max_length=15, choices=interested_tags, verbose_name='관심 라이프',default="기타")

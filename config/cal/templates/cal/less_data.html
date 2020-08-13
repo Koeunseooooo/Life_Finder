@@ -1,8 +1,10 @@
+{% extends 'main/base.html' %}
 {% load static %}
 {% block style %}
         <link rel="stylesheet" type="text/css" href="{% static 'cal/css/less_data.css' %}">
 
 {% endblock %}
+{% block content %}
     <div id="lesscontent">
         <p>
         데이터가 부족해요<br />
@@ -16,3 +18,4 @@
             <h3><a href="/">돌아가기</a></h3>
         </div>
     </div>
+{% endblock %}

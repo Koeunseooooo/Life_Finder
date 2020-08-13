@@ -179,7 +179,6 @@ input[name="rating"]{
 }
 
 
-
 .today_list_item {
     width: 200px;
     height: 50px;
@@ -196,7 +195,6 @@ input[name="rating"]{
     color: #0B2752;
   font-size: 2rem;
   font-weight: bold;
-    margin-right: 20px;
 
 }
 .today_list_item .each_rating{

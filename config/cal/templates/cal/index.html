@@ -3,6 +3,15 @@
 
 {% extends 'cal/base.html' %}
 {% block content %}
+        <div style="height: 200px"></div>
+{#    <h5>{{ exercise_field }}</h5>#}
+    <h5>30일 간 운동 선택한 이벤트의 개수: {{ exercise_field_count }}</h5>
+
+{#        <h5>{{ travel_field }}</h5>#}
+    <h5>30일 간 여행 선택한 이벤트의 개수: {{ travel_field_count }}</h5>
+
+{#        <h5>{{ etc_field }}</h5>#}
+    <h5>30일 간 기타 선택한 이벤트의 개수: {{ etc_field_count }}</h5>
 
     {#{{ wanted_goal }}#}
     {#    <div class="user_goal_position">#}
@@ -17,20 +26,11 @@
     {#        {% endfor %}#}
     {#    </div>#}
 
-        {% for value in wanted_goal %}
-            <span class="user_goal_des">라이프 목표 뱃지 개수 |g</span>
-            <span class="user_goal_number">
-        {{ value.goal_count }}개
-        </span>
-            <button><a href="{% url 'create_profile:goal_get' %}">수정하기</a></button>
-        {% endfor %}
-
-
-    <div style="height: 100px"></div>
 
 
 
-    <div style="height: 20px"></div>
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <div class="total">
