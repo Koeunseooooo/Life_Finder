@@ -3,3 +3,4 @@ pytz==2020.1
 sqlparse==0.3.1
 pillow~7.2.0
 arrow
+django-multiselectfield

@@ -182,7 +182,6 @@ def dash(request):
 
 
     #graph(1)에 필요한 각 날짜들의 라이프뱃지 'total'값들 + graph(2)에서 뽑아내야하는 '요일'값 list에 넣기
-
     one=0
     two=0
     three=0

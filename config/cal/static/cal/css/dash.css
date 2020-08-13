@@ -1,3 +1,58 @@
-.total{
-    display: flex;
+/*.total{*/
+/*    display: flex;*/
+/*}*/
+
+.mychart0{
+    margin: 0 auto;
+}
+
+.user_goal_des{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.goal{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mychart{
+    margin: 0 auto;
+}
+
+.line{
+    text-align: center;
+}
+
+.first_string{
+    text-align: center;
+}
+
+.second_string{
+    text-align: center;
+}
+
+.gura {
+    text-align: center;
+}
+
+.gura_date{
+    text-align: center;
+}
+
+.gura_event_1{
+    text-align : center;
+}
+
+.gura_event_2{
+    text-align : center;
+}
+
+
+.mychart4{
+    margin: 0 auto;
+}
+
+.mychart3{
+    margin: 0 auto;
 }
