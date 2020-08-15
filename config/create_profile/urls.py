@@ -13,6 +13,9 @@ urlpatterns = [
     path('profile/<int:pk>/edit/', views.profile_edit, name='profile_edit'),
     path('profile/register/', views.register, name='register'),
     path('goal/', views.goal_get, name='goal_get'),
+
+    path('login_success/',views.login_success,name='login_success'),
+    path('login_please/', views.need_login, name='need_login'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,102 +1,132 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
 {% block style %}
     <style>
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    form {
-        padding-top: 1rem;
-        width: 600px;
-        margin: 0 auto;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            padding-top: 1rem;
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        #logoimg {
+            padding-top: 4rem;
+            {#margin-left: 34rem;#}
+            text-align: center;
+        }
+
+        .formbox {
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            line-height: 80px;
+
+        }
+
+        table {
+            line-height: 40px;
+            font-size: 15px;
+            margin: 0 auto;
+        }
+
+        th {
+            vertical-align: text-top;
+            line-height: 60px;
+            text-align: left;
+        }
+
+        input, button {
+            width: 250px;
+            height: 40px;
+            border: solid 1px #b0bec9;
+            margin-top: 1.5rem;
+        }
 
 
-    #logoimg{
-        padding-top: 8rem;
-        margin-left: 34rem;
-    }
-    .formbox{
-        margin: 0 auto;
-    }
-    h2 {
-        text-align: center;
-        line-height: 80px;
+        #save {
+            margin-top: 4rem;
+            background-color: #717FFF;
+            color: white;
+            width: 460px;
+            height: 56px;
+            line-height: 56px;
+            text-align: center;
+            font-family: "Noto Sans KR", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .google_login{
+            margin-top: 2rem;
+            background-color: lightgray;
+            color: white;
+            width: 460px;
+            height: 56px;
+            line-height: 56px;
+            text-align: center;
+            font-family: "Noto Sans KR", sans-serif;
+            font-size: 20px;
+            margin-left: 70px;
+            font-weight: 700;
+        }
+        .google_login:hover{
+            background-color: orange;
+        }
 
-    }
+        .google_login a {
+            color: white;
+        }
 
-    table {
-        line-height: 40px;
-        font-size: 15px;
-        margin: 0 auto;
-    }
-    th{
-        vertical-align: text-top;
-        line-height: 60px;
-        text-align: left;
-    }
+        #logbtn {
+            margin-left: 4.5rem;
+        }
 
-    input, button {
+        input[type=password] {
+            font-family: "Noto Sans KR", sans-serif;
+        }
 
-        width: 250px;
-        height: 40px;
-        border: solid 1px #b0bec9;
-        margin-top: 1.5rem;
+        footer {
+            display: none;
+        }
 
-    }
+        ul {
+            list-style: none;
+        }
 
+        li {
+        /*여기에 스타일 주면 nav바에도 같이 주게 되어서 지움*/
+            {#line-height: 30px;#}
+        }
 
+        #id_username {
+            width: 460px;
 
-    #save {
-        margin-top: 4rem;
-        background-color: #717FFF;
-        color: white;
-        width: 460px;
-        height: 56px;
-        text-align: center;
-        font-family: "Noto Sans KR", sans-serif;
-        font-size: 20px;
-        font-weight: 700;
-    }
+        }
 
-    #logbtn{
-        margin-left: 4.5rem;
-    }
+        #id_password {
+            width: 460px;
 
-    input[type=password] {
-    font-family: "Noto Sans KR", sans-serif;
-    }
-    footer{
-        display: none;
-    }
-    ul{
-        list-style: none;
-    }
-    li{
-        line-height: 30px;
-    }
+        }
 
-    #id_username{
-        width: 460px;
+        #box {
+            margin: 0 auto;
 
-    }
+            width: 460px;
+        }
 
-    #id_password{
-        width: 460px;
+        #box input {
 
-    }
+            width: 460px;
+            margin-top: 2rem;
+        }
 
-    #box{
-        margin: 0 auto;
-
-        width: 460px;
-    }
-    #box input{
-
-        width: 460px;
-        margin-top: 2rem;
-    }
     </style>
 {% endblock %}
 
@@ -104,22 +134,25 @@
     {% load staticfiles %}
     <div style="height: 100px"></div>
 
-    <div class="formbox">
-    <div id="logoimg">
-    <img src="{% static 'main/NAME.png' %}">
-    </div>
+    {% if user.is_authenticated %}
+    {% else %}
+        <div class="formbox">
+            <div id="logoimg">
+                <img src="{% static 'main/NAME.png' %}">
+            </div>
+            <form method="POST" action="{% url 'create_profile:login' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    <div id="box">
+                        <input name="username" type="text" placeholder="     아이디" autofocus><br/>
+                        <input name="password" type="password" placeholder="    비밀번호">
+                        <input type="submit" id="save" value="로그인하기"/>
+                    </div>
+            </form>
 
-
-        <form method="POST" action="{% url 'create_profile:login' %}" enctype="multipart/form-data">
-            {% csrf_token %}
-            <table>
-            <div id="box">
-                <input name="username" type="text" placeholder="     아이디" autofocus><br/>
-                <input name="password" type="password" placeholder="    비밀번호">
-                <input type="submit" id="save" value="로그인하기"/>
-                </div>
-
-
-        </form>
-    </div>
+            <div class="google_login">
+                <a href="{% provider_login_url 'google' %}">구글로 로그인하기</a>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

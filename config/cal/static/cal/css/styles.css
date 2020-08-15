@@ -4,22 +4,11 @@
 
 /*}*/
 
-.r_contents{
-    height: 55rem;
-}
-
-/*맨 상단에 위치한 목표 개수 css*/
-
-
-
 @font-face {
     font-family: 'yg-jalnan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
     font-weight: normal;
     font-style: normal; }
-
-
-
 
 input[name="start_time"]{
      margin-top: 30px;
@@ -28,29 +17,51 @@ input[name="rating"]{
     margin-top: 30px;
     display: block;
 }
+/*.btn {*/
+/*    outline: none;*/
+/*    color: #0B2752;*/
+/*    background-color: #F1F1F1;*/
+/*    box-shadow: 0 0 0 0;*/
+/*    font-family: "Syncopate", sans-serif;*/
+/*    font-weight: 900;*/
+/*    font-size: 0.9rem;*/
+/*    border: none;*/
+/*    border-radius: 3rem;*/
+/*    margin-top: 5.5rem;*/
+/*    width: 14rem;*/
+/*    margin-bottom: 1rem;*/
+/*}*/
+/*.btn:nth-child(2){*/
+/*    margin-left: 5.7rem;*/
+/*    margin-right: 5.7rem;*/
+/*}*/
 
-.btn {
+.button_4{
+    border: none;
+    border: none;
     outline: none;
-    color: #0B2752;
     background-color: #F1F1F1;
-    box-shadow: 0 0 0 0;
-    font-family: "Syncopate", sans-serif;
+    margin-bottom: 1rem;
+    border-radius: 3rem;
+    width: 14rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
+}
+.button_4 a{
+    padding: 10px;
+    color: #0B2752;
     font-weight: 900;
     font-size: 0.9rem;
-    border: none;
-    border-radius: 3rem;
-    margin-top: 5.5rem;
-    width: 14rem;
-    margin-bottom: 1rem;
+    font-family: "Syncopate", sans-serif;
 }
-.btn:nth-child(2){
+.button_4:nth-child(2){
     margin-left: 5.7rem;
     margin-right: 5.7rem;
 }
 
 
 #cal{
-
     width: 100%;
     height: 57rem;
 }
@@ -58,10 +69,7 @@ input[name="rating"]{
     width: 70%;
 }
 
-
-
 /* App styles */
-
 .calendar {
     float: left;
     width: 57%;
@@ -69,7 +77,6 @@ input[name="rating"]{
 }
 
 /*calendar line here!*/
-
 .calendar tr{
     border: 2px solid #0B2752;
     background-color: #0B2752;
@@ -102,8 +109,16 @@ input[name="rating"]{
 .calendar td {
     width: 200px;
     height: 80px;
-    padding: 10px 5px 0px 5px;
+    padding: 0px 5px 0px 5px;
     background-color: #F1F1F1;
+    overflow: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.calendar td::-webkit-scrollbar { /* WebKit 스크롤바 안 보이게*/
+    width: 0px;
+    height: 0px;
 }
 
 
@@ -112,12 +127,16 @@ input[name="rating"]{
     background-color: #717FFF;
     margin-bottom: 5px;
     width: 100px;
+    border-radius: 5px;
     display: block;
     color: white;
-    font-size: 1rem;
+    font-size: 0.8rem;
     /*뱃지 크기와 색깔 정하는 아이*/
 }
 
+.date{
+
+}
 .month {
     font-size: 3rem;
     color: #0B2752;
@@ -137,6 +156,9 @@ input[name="rating"]{
     color: #0B2752;
     font-weight: 700;
 }
+
+
+
 
 .calendar ul {
     height: 50%;
@@ -178,7 +200,11 @@ input[name="rating"]{
 
 }
 
-
+.r_contents {
+    margin: 0 auto;
+    width: 80%;
+    height: 55rem;
+}
 .today_list_item {
     width: 200px;
     height: 50px;
@@ -188,8 +214,6 @@ input[name="rating"]{
     border-bottom: 3px solid lightgray;
     color: #0B2752;
     font-size: 1.5rem;
-
-
 }
 .today_list_total .total{
     color: #0B2752;
@@ -225,4 +249,3 @@ input[name="rating"]{
 .go_dashboard button:hover{
     background-color: orangered;
 }
-
