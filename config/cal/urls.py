@@ -29,6 +29,7 @@ urlpatterns = [
  path('event/edit/<int:event_id>',views.event_edit, name='event_edit'),
  # url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
  path('dash/',views.dash,name='dash'),
+ path('dash_detail/',views.dash_detail,name='dash_detail'),
  path('no_dash/',views.dash,name='no_dash'),
 
  # url(r'^(?P<date>d{4}-d{2}-d{2})/$', views.prev_day),

@@ -16,6 +16,8 @@ urlpatterns = [
 
     path('login_success/',views.login_success,name='login_success'),
     path('login_please/', views.need_login, name='need_login'),
+    path('profile_please/', views.need_profile, name='need_profile'),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -8,8 +8,8 @@ class RateitjsWidget(forms.NumberInput):
         attrs = super().build_attrs(*args, **kwargs)
         attrs.update({
             'step': 1,
-            'starwidth' :32,
-            'starheight' : 32,
+            'starwidth' :64,
+            'starheight' : 64,
         })
         return attrs
 
