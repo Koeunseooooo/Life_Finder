@@ -4,6 +4,7 @@
 
 /*}*/
 
+
 @font-face {
     font-family: 'yg-jalnan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
@@ -36,36 +37,79 @@ input[name="rating"]{
 /*    margin-right: 5.7rem;*/
 /*}*/
 
-.button_4{
-    border: none;
+
+.button_2{
+    margin-left: 10rem;
     border: none;
     outline: none;
     background-color: #F1F1F1;
-    margin-bottom: 1rem;
     border-radius: 3rem;
-    width: 14rem;
-    height: 2rem;
+    width: 7rem;
+    height: 3.5rem;
     text-align: center;
     line-height: 2rem;
+    font-family: "yg-jalnan", 'sans-serif';
 }
-.button_4 a{
+
+.button_2 a{
+color: #0B2752;
+}
+
+.button_2:hover{
+    background-color: #717FFF;
+}
+
+.button_6{
+       margin-top: 10rem;
+    border: none;
+    outline: none;
+    background-color: #F1F1F1;
+    border-radius: 3rem;
+    width: 4rem;
+    height: 3.5rem;
+    text-align: center;
+    line-height: 2rem;
+    float: right;
+    margin-right: 12rem;
+}
+
+.button_4{
+    margin-top: 10rem;
+    border: none;
+    outline: none;
+    background-color: #F1F1F1;
+    border-radius: 3rem;
+    width: 4rem;
+    height: 3.5rem;
+    text-align: center;
+    line-height: 2rem;
+    margin-right: 10rem;
+}
+.button_4 a, .button_6 a{
     padding: 10px;
     color: #0B2752;
     font-weight: 900;
     font-size: 0.9rem;
     font-family: "Syncopate", sans-serif;
 }
-.button_4:nth-child(2){
+.button_4:nth-child(2), .button_6:nth-child(2){
     margin-left: 5.7rem;
     margin-right: 5.7rem;
 }
 
+.button_4:hover, .button_6:hover{
+    background-color: #717FFF;
+}
+
+
 
 #cal{
+    margin-top: 1rem;
     width: 100%;
     height: 57rem;
 }
 .clearfix {
+    margin-bottom: 2rem;
     width: 70%;
 }
 
@@ -135,6 +179,10 @@ input[name="rating"]{
     display: block;
     color: white;
     font-size: 0.8rem;
+    font-family: "Noto Sans KR", sans-serif;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     /*뱃지 크기와 색깔 정하는 아이*/
 }
 
@@ -147,6 +195,7 @@ input[name="rating"]{
     background-color: white;
     margin: 0 auto;
     text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
 
 }
 .mon, .tue, .wed, .thu, .fri, .sat, .sun{
@@ -193,11 +242,11 @@ input[name="rating"]{
 
 .today_list_total .today{
     color: #0B2752;
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 900;
-    font-family: "Syncopate", sans-serif,
-                    "helvertica", sans-serif;
+    font-family: "yg-jalnan", 'sans-serif';
     margin: 0 auto;
+    padding-top: 3rem;
     padding-bottom: 1rem;
 
 }
@@ -205,9 +254,15 @@ input[name="rating"]{
     font-family: "yg-jalnan",'sans-serif';
       font-weight: 900;
     margin-top: 2rem;
-     color: #717FFF;
-    font-size: 2rem;
+     color: #0B2752;
+    font-size: 1.2rem;
 
+}
+
+.contain h5{
+    padding: 5rem;
+    font-family: "SF Pro", 'sans-serif';
+    font-size: 1.7rem;
 }
 
 .r_contents {
@@ -216,21 +271,26 @@ input[name="rating"]{
     height: 55rem;
 }
 .today_list_item {
-    width: 200px;
+    width: 35rem;
     height: 50px;
     line-height: 50px;
     margin: 0 auto;
     text-align: center;
-    border-bottom: 3px solid lightgray;
-    color: #0B2752;
+    color: #717FFF;
     font-size: 1.5rem;
+    background-color: #F1F1F1;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    font-family: "yg-jalnan",'sans-serif';
+    overflow: scroll;
+
 }
 .today_list_total .total{
     color: #0B2752;
   font-size: 2rem;
   font-weight: bold;
-
 }
+
 .today_list_item .each_rating{
     font-weight: bold;
     color: #717FFF;
@@ -240,20 +300,21 @@ input[name="rating"]{
 /*대시보드 보러가기 버튼 css*/
 .go_dashboard button{
         background-color: #0B2752;
-        width: 170px;
-        height: 50px;
+        width: 20rem;
+        height: 4rem;
         line-height: 50px;
-        border-radius: 30px;
+        border-radius: 4rem;
         margin-top: 40px;
         border: none;
         padding-left: 10px;
 }
 .go_dashboard a{
-    font-family: "Syncopate", sans-serif;
+    font-family: "yg-jalnan",'sans-serif';
     color: white;
     text-decoration: none;
     padding: 10px;
     font-weight: 900;
+    font-size: 1.2rem;
 }
 
 .go_dashboard button:hover{

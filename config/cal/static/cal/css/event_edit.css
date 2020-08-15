@@ -13,8 +13,8 @@
     height: 40rem;
 }
 #top_f{
-    padding-top: 5rem;
-    padding-left: 4rem;
+    padding-top: 12rem;
+
     width: 30rem;
     margin: 0 auto;
     text-align: center;
@@ -26,13 +26,13 @@
 
 
 #bow{
-        padding-top: 5rem;
+    padding-top: 5rem;
     padding-bottom: 3rem;
-    margin-left: 28rem;
-    font-family: 'yg-jalnan', "cursive";
-    color: #0B2752;
-    width: 35rem;
-    padding-left: 5rem;
+    font-family: "SF Pro", 'sans-serif';
+    color: #c4c4c4;
+    width: 540px;
+    margin: 0 auto;
+    padding-right: 70px;
 
 
 }
@@ -42,55 +42,72 @@ select{
 }
 
 input, select{
-    margin-left: 2rem;
+
     width: 90%;
     height: 30px;
     line-height: 30px;
     margin-bottom: 1.5rem;
     border: 1px solid lightgray;
 }
+
+
 label{
-
+    line-height: 50px;
+    width: 50px;
+    float: left;
 }
-
 input[name="title"]{
-width: 20rem;
+width: 460px;
+    height: 50px;
 }
 
 input[name="start_time"]{
-
+width: 460px;
+    height: 50px;
 }
 
 input[name="rating"]{
     display: none;
 }
 
+select[name="category"]{
+    width: 460px;
+    height: 50px;
+
+
+}
+
+#rateit-range-2{
+}
+
+
+
 #lc1{
-    border-radius: 3rem;
-    margin-top: 4rem;
-    background-color: #717FFF;
+    margin-top: 3rem;
+    background-color: #c4c4c4;
     color: white;
     text-align: center;
     border: none;
     font-family: "Syncopate", sans-serif;
     font-weight: 900;
     padding: 1rem 2rem;
-    width: 10rem;
+    width: 460px;
+    margin-left: 80px;
 
 }
 
 #lc2{
-    border-radius: 3rem;
-        margin-top: 4rem;
-    background-color: #717FFF;
+    margin-top: 1.5rem;
+    background-color: #c4c4c4;
     color: white;
     text-align: center;
     border: none;
     font-family: "Syncopate", sans-serif;
     font-weight: 900;
     padding: 1rem 2rem;
-    width: 10rem;
-    margin-left: 7.5rem;
+    width: 460px;
+    margin-left: 80px;
+
 
 }
 
@@ -102,11 +119,19 @@ input[name="rating"]{
     background-color: orangered;
 }
 #rateit-range-2{
-    margin-left: 2rem;
-    margin-top: 1.5rem;
 }
 
 td{
     width: 3rem;
 
 }
+#bobtn{
+    width: 35rem;
+    margin: 0 auto;
+    background-color: greenyellow;
+}
+
+form{
+    width: 540px;
+}
+

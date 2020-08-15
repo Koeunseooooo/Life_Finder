@@ -47,12 +47,14 @@
     </script>
 {% endblock %}
 {% block content_cal %}
-    <div style="height: 100px;"></div>
+
+
+
     <div id="cal">
         <div class="clearfix">
-            <button class="button_4"><a class="button_first" href="{% url 'cal:calendar' %}?{{ prev_month }}"> Previous Month </a></button>
-            <button class="button_4"><a class="button_middle" href="{% url 'cal:event_new' %}"> New Event </a></button>
-            <button class="button_4"><a class="button_last" href="{% url 'cal:calendar' %}?{{ next_month }}"> Next Month </a></button>
+            <button class="button_4"><a class="button_first" href="{% url 'cal:calendar' %}?{{ prev_month }}"><i class="fas fa-arrow-left"></i></a></button>
+            <button class="button_2"><a class="button_middle" href="{% url 'cal:event_new' %}"> New Event </a></button>
+            <button class="button_6"><a class="button_last" href="{% url 'cal:calendar' %}?{{ next_month }}"><i class="fas fa-arrow-right"></i></a></button>
 
         </div>
 
@@ -89,7 +91,7 @@
         {#                    {{ object_list.today_list_items }}#}
         <div class="go_dashboard">
             {#  추후 url추가해서 만약 user가 7일 이상 활동했으면 dashboard보여주고 아니면 7일 후 볼 수 있다는 안내 페이지로 이동#}
-            <button><a href="{% url 'cal:dash' %}">뭐 보러 가볼래?</a></button>
+            <button><a href="{% url 'cal:dash' %}">GO DASHBOARD !</a></button>
         </div>
 
     </div>

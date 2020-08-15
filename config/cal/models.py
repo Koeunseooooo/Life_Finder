@@ -23,11 +23,11 @@ class Event(models.Model):
         ('일', '일'),
         ('기타', '기타'),
     )
-    title = models.CharField(max_length=200)
-    start_time = models.DateTimeField(default=timezone.now, blank=True)
+    title = models.CharField(max_length=200, verbose_name='NAME')
+    start_time = models.DateTimeField(default=timezone.now, blank=True, verbose_name='TIME')
     profile=models.ForeignKey(Profile, related_name='event',on_delete=models.CASCADE)
-    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], blank=True, default='enter your value')
-    category = models.CharField(choices=cateegory_tags,max_length=15,blank=True,default="친구/가족과의 시간")
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], blank=True, default='라이프 점수를 기록해주세요', verbose_name='SCORE')
+    category = models.CharField(choices=cateegory_tags,max_length=15,blank=True,default="친구/가족과의 시간", verbose_name='TYPE')
     def __str__(self):
         return '{}/ {}/ {}'.format(self.id, self.title, self.start_time, self.rating)
 

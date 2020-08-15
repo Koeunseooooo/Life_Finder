@@ -53,10 +53,10 @@
     <ul class="navt">
         <li><a href="/">YAHO!</a></li>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'cal:calendar' %}">LIFE FINDER</a></li>
+        <li><a href="{% url 'cal:calendar' %}">CALENDAR</a></li>
         <li><a href="{% url 'cal:dash' %}">DASH BOARD</a></li>
         {% else %}
-        <li><a href="{% url 'create_profile:need_login' %}">LIFE FINDER</a></li>
+        <li><a href="{% url 'create_profile:need_login' %}">CALENDAR</a></li>
         <li><a href="{% url 'create_profile:need_login' %}">DASH BOARD</a></li>
         {% endif %}
         {% if user.is_authenticated %}
@@ -69,7 +69,7 @@
     </ul>
 </nav>
 
-#바디
+{##바디#}
 <div class="r_contents">
     {% block content %}
     {% endblock %}

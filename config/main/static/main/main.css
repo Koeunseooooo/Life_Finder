@@ -1,16 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
 .r_contents {
     width: 100%;
 }
 
 .card_01 {
     width: 100%;
-    height: 50rem;
+    height: 53rem;
     padding-top: 12rem;
     overflow: hidden;
     background-color: #0B2752;
 }
 
 #top {
+    padding-top: 5rem;
     margin-left: 32rem;
 }
 
@@ -74,7 +81,7 @@
     background-color: white;
     height: 3.5rem;
     color: #717FFF;
-    font-family: "Syncopate", sans-serif;
+    font-family: "yg-jalnan", 'sans-serif';
     font-weight: 900;
     font-size: 1rem;
     border-radius: 2rem;
@@ -83,7 +90,11 @@
     line-height: 3.5rem;
 }
 
-#btn #first_btn:hover, #btn #second_btn:hover {
+#btn #third_btn a{
+    color: #0B2752;
+}
+
+#btn #first_btn:hover, #btn #second_btn:hover, #btn #third_btn:hover {
     background-color: #717FFF;
     color: white;
 }
@@ -114,7 +125,6 @@
     margin-left: 10rem;
     font-family: 'yg-jalnan', "cursive";
     font-size: 4rem;
-    width: 30%;
     color: #0B2752;
 }
 
@@ -165,6 +175,23 @@
 
 }
 
+.card_03 #03l{
+    background-color: red;
+    width: 40%;
+    height: 30rem;
+    float: left;
+
+}
+
+#03l p {
+
+}
+
+#dialog{
+    float: right;
+    width: 60%;
+}
+
 
 .vid_01 {
     background-color: white;
@@ -186,19 +213,63 @@
     width: 100%;
     height: 45rem;
     background-color: white;
+    margin: 0 auto;
 }
+
+
+
+
+
+
+
 
 .card_04 {
     width: 100%;
-    height: 45rem;
+    height: 50rem;
     background-color: #0B2752;
+    margin: 0 auto;
 }
 
-.card_05 {
-    background-color: #E5E5E5;
-    width: 100%;
-    height: 40rem;
+.card_04 p{
+display: inline-block;
 }
+
+#smile{
+    float: right;
+    display: inline;
+    margin-right: 13rem;
+    position:absolute;
+    animation: move 2s infinite alternate;
+    animation-timing-function: ease-in-out;
+  /*left:100px;*/
+  /*width:100px;*/
+  /*height:50px;*/
+  /*margin-left:-100px;*/
+  /*background-color:#000;*/
+  /*color:#fff;*/
+
+
+}
+
+@keyframes move{
+  from{
+    left:750px;
+  }
+  to{
+    left:800px;
+  }
+}
+
+
+
+
+.card_04 img{
+    width: 180px;
+    height: 180px;
+    float: right;
+}
+
+
 
 #ant{
     width: 500px;
@@ -206,13 +277,15 @@
 }
 footer {
     width: 100%;
-    height: 20rem;
-    background-color: #c4c4c4;
+    height: 10rem;
+    background-color: lightgray;
     color: white;
+    text-align: center;
 }
 
-footer h1 {
-    color: black;
-    padding-left: 45%;
-    padding-top: 7rem;
+footer p {
+    color: #4f4f4f;
+    display: block;
+    padding-top: 5rem;
+
 }
