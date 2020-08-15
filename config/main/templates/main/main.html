@@ -14,7 +14,8 @@
     <div class="contents">
     <div class="card_01">
         <div id="top">
-            <img src="static/logo001.png">
+{#            <img src="static/logo001.png">#}  pyth
+            <img src="{% static 'logo001.png' %}">
         </div>
 
         <div id="bottom">
@@ -91,6 +92,7 @@
     </div>
 
     <div class="card_05">
+    <div id="05_l">
         <h3>Who are you?</h3>
         <h1>NUGU-YA!</h1>
         <p>
@@ -99,11 +101,16 @@
 
         </p>
     </div>
+        <div id="ant">
+            <img src="{% static 'ant.png' %}">
+{#            <img src="static/ant.png">#}
+        </div>
+    </div>
 {% endblock %}
 
 {% block footer %}
     <footer>
-        <h1>푸터입니다</h1>
+        <p style="color: black; display: block; text-align: center; padding-top: 20px;">&copy; 피로그래밍 13기 고은서 박예진 오채은 옥혜원<p>
     </footer>
     </div>
 {% endblock %}

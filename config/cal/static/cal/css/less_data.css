@@ -1,15 +1,15 @@
-#lesscontent{
-    width: 60rem;
-    margin: 0 auto;
-    padding-top: 10rem;
-
-}
-
 @font-face {
     font-family: 'yg-jalnan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
     font-weight: normal;
     font-style: normal; }
+
+#lesscontent{
+    width: 60rem;
+    margin: 0 auto;
+    padding-top: 10rem;
+}
+
 p:nth-child(1){
     color: #0B2752;
     text-align: center;
@@ -34,10 +34,10 @@ p:nth-child(2){
     line-height: 3rem;
 }
 
-a{
+.return{
 text-decoration: none;
     color: white;
-
+    padding: 20px;
 }
 
 #lessbtn:hover{

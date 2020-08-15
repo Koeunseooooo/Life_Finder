@@ -1,15 +1,16 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,HttpResponse
 from django.contrib.auth.decorators import login_required  # 프로필 창 로그인 필요
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from .models import Profile
 from .forms import RegisterProfileForm, ObjectGoalNumberForm
-
+from django import forms
 from .forms import CreateUserForm, CustomAuthenticationForm  # 회원가입
 from django.contrib.auth.forms import AuthenticationForm  # 로그인
 from django.contrib.auth import login as auth_login  # 로그인
 
 from django.contrib.auth import logout as auth_logout  # 로그아웃
+from django.contrib import messages
 
 
 def login(request):
@@ -17,20 +18,37 @@ def login(request):
         login_form = CustomAuthenticationForm(request, request.POST)
         if login_form.is_valid():
             auth_login(request, login_form.get_user())
-        return redirect('main:first')
-    else:
+        # else:
+        #     # raise forms.ValidationError('로그인이 제대로 되지 않았습니다.')
+        #     # return HttpResponse("로그인이 제대로 되지 않았습니다")
+        #     messages.error(request, 'Invalid login credentials')
+            return redirect('main:first')
+        else:
+            return render(request, 'create_profile/login.html', {'error': '아이디 또는 비밀번호가 올바르지 않습니다'})
+    elif request.method == 'GET':
         login_form = CustomAuthenticationForm()
-
     return render(request, 'create_profile/login.html', {'login_form': login_form})
 
+
+def login_success(request):
+    try:
+        profile = request.user.user_profile
+        return redirect('main:first')
+    except Exception:
+        return redirect('create_profile:register')
+
+def need_login(request):
+    return render(request,'create_profile/need_login.html')
+
+def need_profile(request):
+    return render(request,'create_profile/need_profile.html')
 
 def signup(request):
     if request.method == "POST":
         user_form = CreateUserForm(request.POST)
-
         if user_form.is_valid():
             user = user_form.save()
-            auth_login(request, user)  # 로그인 처리
+            auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')  # 소셜로그인이 아닌 로그인 처리의 백엔드 지정
             return redirect('create_profile:register')
 
     elif request.method == "GET":
@@ -57,22 +75,25 @@ def goal_get(request):
     return render(request, 'create_profile/goal_get.html', {'goal_form': goal_form})
 
 
-
 def logout(request):
     auth_logout(request)
     return redirect('main:first')
 
-
 @login_required
 def profile_look(request, pk):
     user = User.objects.get(id=pk)
+    try:
     # profile = request.user.user_profile(id=pk)
-    profile = user.user_profile
-    ctx = {
-        'profile': profile
-    }
-    return render(request, 'create_profile/profile.html', ctx)
-
+        profile = user.user_profile
+        ctx = {
+            'profile': profile
+        }
+        return render(request, 'create_profile/profile.html', ctx)
+    except Exception:
+        if user == request.user:
+            return redirect('create_profile:register')
+        else:
+            return render(request,'http404.html')
 
 @login_required
 def register(request):

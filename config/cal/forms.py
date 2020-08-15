@@ -11,7 +11,6 @@ class EventForm(ModelForm):
         widgets = {
             'rating': RateitjsWidget,
             'start_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M',),
-
         }
         fields = ['title', 'start_time', 'rating','category']
         # , 'profile'
@@ -20,4 +19,7 @@ class EventForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
         # input_formats parses HTML5 datetime-local input to datetime field
-        self.fields['start_time'].input_formats = ('%Y-%m-%dT%H:%M',)
+        self.fields['start_time'].input_formats =  ('%Y-%m-%dT%H:%M',)
+
+
+

@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from calendar import HTMLCalendar
-
-
+from django.shortcuts import render
+from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from .models import Event
 from create_profile.models import Profile
@@ -13,16 +13,24 @@ class Calendar(HTMLCalendar):
         self.month = month
         super(Calendar, self).__init__()
 
-    # formats a day as a td
-    # filter events by day
+# class Calendar(HTMLCalendar):
+#     def __init__(self, year=None, month=None,day=None):
+#         self.year = year
+#         self.month = month
+#         self.day = day
+#         super(Calendar, self).__init__()
+
     def formatday(self, day, events):
         events_per_day = events.filter(start_time__day=day)
         d = ''
         for event in events_per_day:
-            d += f'<li> {event.get_html_url} </li>'
+            d += f"<li> {event.get_html_url} </li>"
 
         if day != 0:
-            return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
+            return f"<td><span class='date'>{day}</span><ul>{d}</ul></td>"
+            # filter_date = Event.objects.all().filter(start_time__day=day)
+            # return f"<td><span class='date'><a href=''>{day}</a></span><ul>{d}</ul></td>", filter_date
+
         return '<td></td>'
 
     # formats a week as a tr
@@ -43,3 +51,24 @@ class Calendar(HTMLCalendar):
         for week in self.monthdays2calendar(self.year, self.month):
             cal += f'{self.formatweek(week, events)}\n'
         return cal
+        # try:
+        #     events = Event.objects.filter(start_time__year=self.year, start_time__month=self.month).filter(profile= user.user_profile)
+        # except Exception:
+        #     if user = self.request.user:
+        #         return redirect('create_profile:register.html')
+        #     else:
+        #         return redirect('create_profile/http404.html')
+        # cal = f'<table border="0" cellpadding="0" cellspacing="0" class="calendar">\n'
+        # cal += f'{self.formatmonthname(self.year, self.month, withyear=withyear)}\n'
+        # cal += f'{self.formatweekheader()}\n'
+        # for week in self.monthdays2calendar(self.year, self.month):
+        #     cal += f'{self.formatweek(week, events)}\n'
+        # return cal
+        #
+        # try:
+        #     profile = user.user_profile  # user -> profile
+        # except Exception:
+        #     if user == request.user:
+        #         return redirect('accounts:signup_profile')
+        #     else:
+        #         return render(request, 'http404.html')
