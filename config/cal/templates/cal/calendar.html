@@ -38,16 +38,48 @@
     {#    }#}
     {#  }#}
             {#document.write('<li><a href="#" title="' + _i + '" data-value="' + _i + '"' + _addClass + '>' + _i + '</a></li>');#}
+{#    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>#}
+{#    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>#}
+{##}
 
 
-    <script>
-
-
-
-    </script>
+{#    <script type="text/javascript">#}
+{#           $(document).ready(function() {#}
+{#               $(function() {#}
+{#                   $( "#error" ).dialog({#}
+{#                       modal: true,#}
+{#                       closeOnEscape: false,#}
+{#                       dialogClass: "no-close",#}
+{#                       resizable: false,#}
+{#                       draggable: false,#}
+{#                       width: 600,#}
+{#                       buttons: [#}
+{#                           {#}
+{#                               text: "OK",#}
+{#                               click: function() {#}
+{#                               $( this ).dialog( "close" );#}
+{#                               }#}
+{#                           }#}
+{#                       ]#}
+{#                   });#}
+{#               });#}
+{#           });#}
+{#       </script>#}
+{##}
 {% endblock %}
 {% block content_cal %}
     <div style="height: 100px;"></div>
+{#    {% if messages %}#}
+{#        {% for message in messages %}#}
+{#        {{ message.message }}#}
+{##}
+{#        {% endfor %}#}
+{#    {% endif %}#}
+{##}
+{#    {% if error %}#}
+{#        <div id="error" title="프포필 작성 필요">프로필 작성이 필요합니다</div>#}
+{#    {% endif %}#}
+
     <div id="cal">
         <div class="clearfix">
             <button class="button_4"><a class="button_first" href="{% url 'cal:calendar' %}?{{ prev_month }}"> Previous Month </a></button>

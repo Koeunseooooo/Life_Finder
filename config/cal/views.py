@@ -19,6 +19,7 @@ from create_profile.models import Profile
 from django.contrib.auth.models import User
 from django.db.models import Sum, Count
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 from django.views.generic.dates import DayArchiveView
@@ -31,12 +32,24 @@ class CalendarView(generic.ListView):
     template_name = 'cal/calendar.html'
     context_object_name = 'today_list'  # today_list에는 오늘 등록한 객체들이 포함됨
 
+    # def get(self, request, *args, **kwargs):
+    #     profile = self.request.user.user_profile
+    #     if not profile:
+    #             raise Http404(_("Empty list and '%(class_name)s.allow_empty' is False.") % {
+    #                 'class_name': self.__class__.__name__,
+    #             })
+    #     context = self.get_context_data()
+    #     # return self.render_to_response(context)
+
+
     # def get(self, request):
     #     date = datetime.strptime(date, '%Y-%M-%d').date()
     #     selected_queryset = Event.objects.filter(start_time__day=date)
     #     return selected_queryset
 
     def get_context_data(self, **kwargs):
+        if self.request.user.user_profile is None:
+            return render(self.request, 'cal/calendar.html', {'error': '프로필을 작성해주세요'})
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))
         # day = get_specifiec_date(self.request.GET.get('day', None))
@@ -47,6 +60,7 @@ class CalendarView(generic.ListView):
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
+
 
         # context['my_date_view'] = my_date_view(date)
         # context['prev_day'] = prev_day(day)
@@ -65,6 +79,9 @@ class CalendarView(generic.ListView):
 
 
     def get_queryset(self, **kwargs):
+        # if self.request.user.user_profile is None:
+            # return render('create_profile/register.html', {'error': '아이디 또는 비밀번호가 올바르지 않습니다'})
+            # messages.info(self, '프로필을 먼저 등록해주세요.')
         # date_after_day = datetime.today() + relativedelta(days=1)
         # today = datetime.today().strftime('%d/%m/%Y')
         # after_day = date_after_day.strftime('%d/%m/%Y')
@@ -80,11 +97,24 @@ class CalendarView(generic.ListView):
 
             'wanted_goal': Profile.objects.all().values().filter(user=self.request.user),
             'every_events': Event.objects.all().filter(profile=self.request.user.user_profile),
-
         }
+        return queryset
+        # try:
+        #     queryset = {
+        #         'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()),
+        #         'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()).aggregate(Sum('rating')).values(),
+        #
+        #         'wanted_goal': Profile.objects.all().values().filter(user=self.request.user),
+        #         'every_events': Event.objects.all().filter(profile=self.request.user.user_profile),
+        #
+        #     }
+        #     return queryset
+        # except Exception:
+        #     # queryset = {}
+        #     return redirect('create_profile/http404.html')
 
         # CartItem.objects.select_related('product').filter(cart=cart)
-        return queryset
+
 
 
 
