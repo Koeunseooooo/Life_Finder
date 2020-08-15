@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.forms',
 
     'multiselectfield',
-
+    'photo',
 
     # allauth
     'allauth',

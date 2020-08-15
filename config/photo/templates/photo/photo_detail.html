@@ -1,0 +1,28 @@
+{% extends 'photo/base.html' %}
+
+{% block photo %}
+    <div style="width: 1000px">
+        <div style="height:200px;">
+            {% if object.image %}
+            <img src=" {{ object.image.url }}" alt="...">
+            {% endif %}
+                <h5>{{ object.author }}</h5>
+                <p> {{ object.text }} </p>
+
+            <ul>
+                <li>
+                        <a href="{% url 'photo:like' object.id %}" class="{%if user in object.like.all %} active {%endif%}">좋아요!</a>
+                        {% if object.like.all.count %}
+                        <span>{{object.like.all.count}}</span>
+                        {% endif %}
+                    </li>
+                <li>생성일 : {{ object.created }}</li>
+
+            </ul>
+            <div>
+                <a href="{% url 'photo:update' object.id %}">수정하기</a>
+                <a href="{% url 'photo:delete' object.id %}">삭제하기</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
