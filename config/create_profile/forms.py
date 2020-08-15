@@ -22,11 +22,11 @@ class CreateUserForm(UserCreationForm):  # 회원가입 폼
 
         for fieldname in ['username', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
-            self.fields['username'].widget.attrs.update({'placeholder': '아이디'})
+            self.fields['username'].widget.attrs.update({'placeholder': '    아이디'})
             self.fields['username'].label = ''
-            self.fields['password1'].widget.attrs.update({'placeholder': '비밀번호'})
+            self.fields['password1'].widget.attrs.update({'placeholder': '    비밀번호'})
             self.fields['password1'].label = ''
-            self.fields['password2'].widget.attrs.update({'placeholder': '비밀번호 재확인'})
+            self.fields['password2'].widget.attrs.update({'placeholder': '    비밀번호 재확인'})
             self.fields['password2'].label = ''
 
     def save(self, commit=True):

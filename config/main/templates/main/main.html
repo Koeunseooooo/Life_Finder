@@ -14,7 +14,8 @@
     <div class="contents">
     <div class="card_01">
         <div id="top">
-            <img src="static/logo001.png">
+{#            <img src="static/logo001.png">#}  pyth
+            <img src="{% static 'logo001.png' %}">
         </div>
 
         <div id="bottom">
@@ -91,6 +92,7 @@
     </div>
 
     <div class="card_05">
+    <div id="05_l">
         <h3>Who are you?</h3>
         <h1>NUGU-YA!</h1>
         <p>
@@ -98,6 +100,11 @@
             열심히 일하고 뿌듯함을 느낀 당신<br/>
 
         </p>
+    </div>
+        <div id="ant">
+            <img src="{% static 'ant.png' %}">
+{#            <img src="static/ant.png">#}
+        </div>
     </div>
 {% endblock %}
 

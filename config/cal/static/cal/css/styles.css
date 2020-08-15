@@ -98,6 +98,10 @@ input[name="rating"]{
     border: 2px solid #0B2752;
     color: white;
 }
+.calendar tr:nth-child(1){
+    height: 7rem;
+    border: none;
+}
 
 .calendar th:nth-child(0) {
     padding: 5px;
@@ -149,6 +153,12 @@ input[name="rating"]{
     text-align: center;
     color: white;
     font-size: 1.1rem;
+}
+
+.mon, .tue, .wed, .thu, .fri, .sat, .sun{
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
 }
 
 .date {
@@ -229,7 +239,7 @@ input[name="rating"]{
 
 /*대시보드 보러가기 버튼 css*/
 .go_dashboard button{
-        background-color: #1E88E5;
+        background-color: #0B2752;
         width: 170px;
         height: 50px;
         line-height: 50px;
