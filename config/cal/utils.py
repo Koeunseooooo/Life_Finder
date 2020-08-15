@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from calendar import HTMLCalendar
-
-
+from django.shortcuts import render
+from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from .models import Event
 from create_profile.models import Profile
@@ -51,3 +51,24 @@ class Calendar(HTMLCalendar):
         for week in self.monthdays2calendar(self.year, self.month):
             cal += f'{self.formatweek(week, events)}\n'
         return cal
+        # try:
+        #     events = Event.objects.filter(start_time__year=self.year, start_time__month=self.month).filter(profile= user.user_profile)
+        # except Exception:
+        #     if user = self.request.user:
+        #         return redirect('create_profile:register.html')
+        #     else:
+        #         return redirect('create_profile/http404.html')
+        # cal = f'<table border="0" cellpadding="0" cellspacing="0" class="calendar">\n'
+        # cal += f'{self.formatmonthname(self.year, self.month, withyear=withyear)}\n'
+        # cal += f'{self.formatweekheader()}\n'
+        # for week in self.monthdays2calendar(self.year, self.month):
+        #     cal += f'{self.formatweek(week, events)}\n'
+        # return cal
+        #
+        # try:
+        #     profile = user.user_profile  # user -> profile
+        # except Exception:
+        #     if user == request.user:
+        #         return redirect('accounts:signup_profile')
+        #     else:
+        #         return render(request, 'http404.html')

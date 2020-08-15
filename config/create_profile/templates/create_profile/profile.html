@@ -6,9 +6,7 @@
 {% endblock %}
 {% block content %}
     <div id="profile">
-
         <h2>{{ profile.nickname }}'s Profile</h2>
-
         {% if profile.photo %}
             <img src='{{ profile.photo.url }}' style="height: 200px; width: 200px;">
             {#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}

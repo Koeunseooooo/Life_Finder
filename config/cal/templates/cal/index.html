@@ -1,70 +1,42 @@
-
-
-
 {% extends 'cal/base.html' %}
 {% block content %}
-        <div style="height: 200px"></div>
-{#    <h5>{{ exercise_field }}</h5>#}
-    <h5>30일 간 운동 선택한 이벤트의 개수: {{ exercise_field_count }}</h5>
-
-{#        <h5>{{ travel_field }}</h5>#}
-    <h5>30일 간 여행 선택한 이벤트의 개수: {{ travel_field_count }}</h5>
-
-{#        <h5>{{ etc_field }}</h5>#}
-    <h5>30일 간 기타 선택한 이벤트의 개수: {{ etc_field_count }}</h5>
-
-    {#{{ wanted_goal }}#}
-    {#    <div class="user_goal_position">#}
-    {#        {% for value in wanted_goal %}#}
-    {#            <span class="user_goal_des">라이프 목표 뱃지 개수 |</span>#}
-    {#            <span class="user_goal_number">#}
-    {#        {{ value.goal_count }}개#}
-    {#        </span>#}
-    {#        수정하기 누르면 전에 있던 페이지로 연결되는 작업 profile에서 추후 해야할 듯#}
-    {#            <button><a href="{% url 'create_profile:goal_get' %}">수정하기</a></button>#}
-    {##}
-    {#        {% endfor %}#}
-    {#    </div>#}
-
-{#        {% for value in wanted_goal %}#}
-{#            <span class="user_goal_des">라이프 목표 뱃지 개수 |g</span>#}
-{#            <span class="user_goal_number">#}
-{#        {{ value.goal_count }}개#}
-{#        </span>#}
-{#            <button><a href="{% url 'create_profile:goal_get' %}">수정하기</a></button>#}
-{#        {% endfor %}#}
-
-
-
-
-
-
+    <div style="height: 100px"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
-
+{{ today }}
+    {{ year }}
     <div class="line"> '당신이 등록한 라이프 뱃지'를 활용하여 여러관점에서의 통계 데이터들을 한곳에 모았습니다. </div>
     <br/>
     <br/>
 
-    <div class="total">
+    <div class="dash_detail" style="text-align: center">
+        <button><a href="{% url 'cal:dash_detail' %}"> 한 눈에 보러가기 </a></button>
+    </div>
 
-        <div class="left">
-    <h3 class="first_string">★이번달 라이프 현황★ </h3>
+    <br/>
+    <br/>
+{#    {{ today }}#}
+{#{{ one_days_ago }}#}
+
+
+
+    <h2 class="first_string">★이번달 라이프 현황★ </h2>
     <br/>
 
     {% for value in wanted_goal %}
-        <div class="user_goal_des">라이프 목표 뱃지 개수 |
+        <h4 class="user_goal_des">라이프 목표 뱃지 개수 |
             <div class="user_goal_number"></div>
             <div class="goal">
                 {{ value.goal_count }}개
 {#                <button><a href="{% url 'create_profile:goal_get' %}">수정하기</a></button>#}
             </div>
 
-        </div>
+        </h4>
 
         <div class="mychart0" style="width:700px; height: 200px ">
             <canvas id="myChart0"></canvas>
         </div>
+
 
         <script>
             var ctxx = document.getElementById("myChart0").getContext('2d');
@@ -75,7 +47,7 @@
                     datasets: [{
                         {#label: 1,#}
                         {#라벨 안쓰고 싶은데... ?#}
-                        data: [{{ value.goal_count }}, 35],
+                        data: [{{ value.goal_count }}, {{ing}}],
                         backgroundColor: [
                             'rgba(54, 162, 235, 0.2)',
                             'rgba(54, 162, 78, 0.2)',
@@ -106,24 +78,24 @@
 
 
     {% endfor %}
-    </div>
+
 
     <br/>
     <br/>
 
-    <h3 class="second_string">★최근 7일간 라이프 현황★ </h3>
+    <h2 class="second_string">★최근 7일간 라이프 현황★ </h2>
     <br/>
 
-    <div class="mychart" style="width:600px; height:400px">
-        <canvas id="myChart"></canvas>
-    </div>
+    <h4 style="text-align: center">지난 7일간 모은 라이프 뱃지들을 살펴볼까요?</h4>
+    <div class="mychart" style="width:600px; height:400px"><canvas id="myChart"></canvas></div>
 
     <script>
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["8/7", "8/8", "8/9", "8/10", "8/11", "8/12", "today"],
+                labels: [{{year}},'안되네요' , "ㅠㅠ", "왜", "안되냐고 ㅠ", "8/12", "8/13"],
+                {# labels 날짜 좀 바뀌어라 제발 #}
                 datasets: [{
                     {#label: 1,#}
                     {#라벨 안쓰고 싶은데... ?#}
@@ -151,8 +123,7 @@
             },
             options: {
                 title: {
-                    display: true,
-                    text: '지난 7일 간 모은 라이프 뱃지들을 살펴볼까요?'
+                    display: false,
                 },
                 maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
                 scales: {
@@ -166,23 +137,137 @@
             }
         });
     </script>
-    {#            <div>지난 7일간 최고의 순간!</div>#}
-    {#            {{ best1_start_time }}#}
-    {#            {{ select_event_str }}#}
-        <div class="gura">지난 7일간 가장 최고의 순간!</div>
-        <h1 class="gura_date"> "8/12" </h1>
-        <div class="gura_event_1"> 8/12's 첫 기록 | 코딩오류 한시간 만에 잡음</div>
-        <div class="gura_event_2"> 8/12's 두번째 기록 | 저녁먹고 한강러닝</div>
+        <h4 style="text-align: center">지난 7일간 최고의 순간!</h4>
+        <div style="text-align: center">{{ best1_start_time }}</div>
+        <div style="text-align: center">{{ select_event_str }}</div>
     <br/>
     <br/>
     <br/>
 
-        </div>
 
 
-    <div calss="mychart4" style="width:1000px; margin: 0 auto;">
-        <canvas id="myChart4"></canvas>
-    </div>
+    <h4 style="text-align: center">지난 7일간 어떤 카테고리의 라이프를 가장 많이 즐겼나요?</h4>
+    <br/>
+    <div class="mychart9" style="width:800px; height:500px; margin: 0 auto; "><canvas id="myChart9"></canvas></div>
+
+    <script>
+        var ctx = document.getElementById("myChart9").getContext('2d');
+        var myChart9 = new Chart(ctx, {
+            type: 'bubble',
+            data: {
+                labels: "?",
+                datasets: [
+                    {
+                      label: ["운동"],
+                      backgroundColor: "rgba(255,221,50,0.2)",
+                      borderColor: "rgba(255,221,50,1)",
+                      data: [{
+                        x: {{exercise_field_count}},
+                        y: 1,
+                        r: 3*{{ value1 }} +3
+                      }]
+                    }, {
+                      label: ["여행"],
+                      backgroundColor: "rgba(60,186,159,0.2)",
+                      borderColor: "rgba(60,186,159,1)",
+                      data: [{
+                        x: {{travel_field_count}},
+                        y: 1,
+                        r: 3*{{ value2 }}+3
+                      }]
+                    }, {
+                      label: ["기타"],
+                      backgroundColor: "rgba(644,90,159,0.2)",
+                      borderColor: "rgba(644,90,159,1)",
+                      data: [{
+                        x: {{etc_field_count}},
+                        y: 1,
+                        r: 3*{{value3}} +3
+                      }]
+                    }, {
+                      label: ["친구"],
+                      backgroundColor: "rgba(32,322,159,0.2)",
+                      borderColor: "rgba(32,322,159,1)",
+                      data: [{
+                        x: {{friend_field_count}},
+                        y: 1,
+                        r: 3*{{value4}}+3
+                      }]
+                    } ,{
+                      label: ["자기계발"],
+                      backgroundColor: "rgba(12,99,159,0.2)",
+                      borderColor: "rgba(12,99,159,1)",
+                      data: [{
+                        x: {{self_field_count}},
+                        y: 1,
+                        r: 3*{{value5}}+3
+                      }]
+                    }, {
+                      label: ["취미생활"],
+                      backgroundColor: "rgba(644,90,159,0.2)",
+                      borderColor: "rgba(644,90,159,1)",
+                      data: [{
+                        x: {{hobby_field_count}},
+                        y: 1,
+                        r: 3*{{value6}}+3
+                      }]
+                    }, {
+                      label: ["여가생활"],
+                      backgroundColor: "rgba(255,221,50,0.2)",
+                      borderColor: "rgba(255,221,50,1)",
+                      data: [{
+                        x: {{leisure_field_count}},
+                        y: 1,
+                        r: 3*{{value7}}+3
+                      }]
+                    }, {
+                      label: ["일"],
+                      backgroundColor: "rgba(12,99,159,0.2)",
+                      borderColor: "rgba(12,99,159,1)",
+                      data: [{
+                        x: {{work_field_count}},
+                        y: 1,
+                        r: 3*{{value8}}+3
+                      }]
+                    }
+                ]
+            },
+            options: {
+                title: {
+                display: false,
+            }, scales: {
+                yAxes: [{
+                    ticks: {
+                            beginAtZero: true,
+                            stepSize: 3,
+                            max: 2,
+                            display:false
+                        },
+                    scaleLabel: {
+                    display: false,
+              }
+            }]
+        ,
+                xAxes: [{
+                     ticks: {
+                            beginAtZero: true,
+                            fontSize: 15,
+                            max:10,
+                            stepSize:1
+                        },
+                    scaleLabel: {
+                    display: true,
+                    labelString: "GDP (PPP)",
+              }
+            }]
+          }
+        }
+    });
+    </script>
+
+
+    <h4 style="text-align: center">뱃지개수 당 몇개의 라이프 기록을 줬더라?</h4>
+    <div calss="mychart4" style="width:1000px; margin: 0 auto;"><canvas id="myChart4"></canvas></div>
 
     <script>
         var ctx = document.getElementById("myChart4").getContext('2d');
@@ -213,7 +298,7 @@
             },
             options: {
                 title: {
-                    display: true,
+                    display: false,
                     text: '뱃지개수 당 몇개의 라이프 기록을 줬더라?'
                 },
                 maintainAspectRatio: false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
@@ -230,14 +315,12 @@
 
     <br/>
     <br/>
+
+    <h2 class="second_string">★OH! HAPPY DAY!!★ </h2>
+
     <br/>
 
-    <h3 class="second_string">★OH! HAPPY DAY!!★ </h3>
-    <br/>
-
-    <div class="mychart3" style="width:600px">
-        <canvas id="myChart3"></canvas>
-    </div>
+    <div class="mychart3" style="width:600px"><canvas id="myChart3"></canvas></div>
     <script>
         var ctx = document.getElementById("myChart3").getContext('2d');
         var myChart3 = new Chart(ctx, {
@@ -271,8 +354,7 @@
             },
             options: {
                 title: {
-                    display: true,
-                    text: '14 Days 요일별 통계 [ Oh! Happy Day ]'
+                    display: false,
                 },
                 maintainAspectRatio: false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
                 scales: {
@@ -289,17 +371,18 @@
         });
     </script>
 
+    <br/>
+    <h5 style="text-align: center"> 당신은 {{ ing }}에 가장 오롯히 라이프를 즐기고 계시군요! </h5>
+{#   {{ ing }} 대신 view에 넣을 변수 context에 넣어서 나중에 확인하기  #}
 
     <br/>
     <br/>
+
+    <h2 class="second_string">★월별 라이프 비교★ </h2>
     <br/>
 
-    <h3 class="second_string">★월별 라이프 비교★ </h3>
-    <br/>
+    <div class="mychart5" style="width:600px; height:400px; margin:0 auto"><canvas id="myChart5"></canvas></div>
 
-    <div class="mychart5" style="width:600px; height:400px; margin:0 auto">
-        <canvas id="myChart5"></canvas>
-    </div>
     <script>
         var ctx = document.getElementById("myChart5").getContext('2d');
         var myChart3 = new Chart(ctx, {
@@ -328,8 +411,7 @@
             },
             options: {
                 title: {
-                    display: true,
-                    text: '14 Days 요일별 통계 [ Oh! Happy Day ]'
+                    display: false
                 },
                 maintainAspectRatio: false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
                 scales: {
@@ -346,107 +428,54 @@
 
     <br/>
     <br/>
-    <br/>
+
+    <h4 style="text-align: center"> 이전달 총 뱃지 개수 : {{ ing  }}     이전달 평균 뱃지 개수 : {{ing}} </h4>
+    <h4 style="text-align: center"> 이번달 총 뱃지 개수 : {{ ing  }}     이번달 평균 뱃지 개수 : {{ing}} </h4>
+
+{#추후 메세지도 넣어질 예정#}
+
+
+{% endblock %}
 
 
 
+{#    <h5>각 카테고리별 라이프 기록 개수 </h5>#}
+{#    {{ exercise_field_count }}#}
+{#    {{ travel_field_count }}#}
+{#    {{ etc_field_count }}#}
+{#    {{ friend_field_count }}#}
+{#    {{ self_field_count }}#}
+{#    {{ hobby_field_count }}#}
+{#    {{ leisure_field_count }}#}
+{#    {{ work_field_count }}#}
+{##}
+{#    <h5>각 카테고리별 라이프 기록 개수의 뱃지 개수</h5>#}
+{#    {{ value1 }}#}
+{#    {{ value2 }}#}
+{#    {{ value3 }}#}
+{#    {{ value4 }}#}
+{#    {{ value5 }}#}
+{#    {{ value6 }}#}
+{#    {{ value7 }}#}
+{#    {{ value8 }}#}
+{##}
+{#    <h5>지난 한달간 모은 총 뱃지수</h5>#}
+{#    {{ ing }}#}
+{##}
+{#    <h5>하루전 모든 rating</h5>#}
+{#    {{ one_days_ago }}#}
+{#    {{ one_days_ago_rating}}#}
+{#    {% for i in one_days_ago_rating %}#}
+{#    {{ i }}#}
+{#    {% endfor %}#}
+{##}
+{#    {% for j in three_days_ago_rating %}#}
+{#    {{ j }}#}
+{#    {% endfor %}#}
+{##}
 
 
 
-    {#{{ one_start_time }}#}
-    {#        {{ one_str }}#}
-    {#    {{ two_str }}#}
-    {#    {{ three_str }}#}
-    {#    {{ four_str }}#}
-    {#    {{ five_str }}#}
-    {#    {{ six_str }}#}
-    {#    {{ seven_str }}#}
-
-
-    {#<div style="width:800px">#}
-    {#     <canvas id="bar_chart" width="800" height="450"></canvas>#}
-    {#</div>#}
-
-
-    {#<script>#}
-    {#    var c = document.getElemetById("bar_chart").getContext('2d');#}
-    {##}
-    {#    var bar_chart = new Chart(c, {#}
-    {#        type: 'bar',#}
-    {#        data: {#}
-    {#          labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],#}
-    {#          datasets: [#}
-    {#            {#}
-    {#              label: "Population (millions)",#}
-    {#              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],#}
-    {#              data: [2478,5267,734,784,433]#}
-    {#            }#}
-    {#          ]#}
-    {#        },#}
-    {#        options: {#}
-    {#            maintainAspectRatio: false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.#}
-    {#            scales: {#}
-    {#                yAxes: [{#}
-    {#                    ticks: {#}
-    {#                        beginAtZero:true#}
-    {#                    }#}
-    {#                }]#}
-    {#            }#}
-    {#legend: { display: false },#}
-    {#title: {#}
-    {#  display: true,#}
-    {#  text: 'Predicted world population (millions) in 2050'#}
-    {#          }#}
-    {#        #}
-    {#    });#}
-
-    {#</script>#}
-
-
-    {#<ul>#}
-    {#    {% for event in events %}#}
-    {#        <li>{{ event }}</li>#}
-    {#    {% endfor %}#}
-    {#////#}
-    {#    {% for one_selectevent in one_select_events %}#}
-    {#        <li>{{ one_selectevent }}</li>#}
-    {#    {% endfor %}#}
-    {#//#}
-    {#    {% for two_selectevent in two_select_events %}#}
-    {#        <li>{{ two_selectevent }}</li>#}
-    {#    {% endfor %}#}
-    {#//#}
-    {#    {% for three_selectevent in three_select_events %}#}
-    {#        <li>{{ three_selectevent }}</li>#}
-    {#    {% endfor %}#}
-    {#//#}
-    {#    {% for four_selectevent in four_select_events %}#}
-    {#        <li>{{ four_selectevent }}</li>#}
-    {#    {% endfor %}#}
-    {#//#}
-    {#    {% for five_selectevent in five_select_events %}#}
-    {#        <li>{{ five_selectevent }}</li>#}
-    {#    {% endfor %}#}
-    {#//#}
-    {#    {% for six_selectevent in six_select_events %}#}
-    {#        <li>{{ six_selectevent }}</li>#}
-    {#    {% endfor %}#}
-    {#//#}
-    {#    {% for seven_selectevent in seven_select_events %}#}
-    {#        <li>{{ seven_selectevent }}</li>#}
-    {#    {% endfor %}#}
-    {##}
-    {#    {{ count }}#}
-    {#    {{ best1}}#}
-    {#    {{ best2 }}#}
-    {#    {{ best3 }}#}
-
-
-    {#    #}
-    {#    {% for event in events %}#}
-    {#        <li>{{ event }}</li>#}
-    {#    {% endfor %}#}
-    {##}
     {#    {{ mon }}#}
     {#    {{ tue }}#}
     {#    {{ wed }}#}
@@ -456,6 +485,6 @@
     {#    {{ sun }}#}
     {#    {{ a }}#}
 
-    </div>
 
-{% endblock %}
+
+

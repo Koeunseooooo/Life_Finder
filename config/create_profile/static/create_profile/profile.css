@@ -39,6 +39,7 @@ img {
 }
 
 #profile {
+    margin: 0 auto 0;
     /*margin-top: 7rem;*/
     text-align: center;
 }

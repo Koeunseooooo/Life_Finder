@@ -12,6 +12,7 @@ urlpatterns = [
     path('dash/',include('dashboard.urls')),
 
     path('accounts/',include('allauth.urls')),
+    path('photo/', include('photo.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
