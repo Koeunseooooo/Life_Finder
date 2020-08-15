@@ -64,17 +64,19 @@
         {#            <li><a href="{% url 'create_profile:need_login' %}">DASH BOARD</a></li>#}
         {#        {% endif %}#}
         {% if user.is_authenticated %}
-                <li><a href="{% url 'create_profile:need_profile' %}">LIFE FINDER</a></li>
-                <li><a href="{% url 'create_profile:need_profile' %}">DASH BOARD</a></li>
-            {% else %}
-                <li><a href="{% url 'cal:calendar' %}">LIFE FINDER</a></li>
-                <li><a href="{% url 'cal:dash' %}">DASH BOARD</a></li>
-            {% endif %}
+                {% if not user.user_profile %}
+                    <li><a href="{% url 'create_profile:need_profile' %}">LIFE FINDER</a></li>
+                    <li><a href="{% url 'create_profile:need_profile' %}">DASH BOARD</a></li>
+                    <li><a href="{% url 'create_profile:need_profile' %}">COMMUNITY</a></li>
+                {% else %}
+                    <li><a href="{% url 'cal:calendar' %}">LIFE FINDER</a></li>
+                    <li><a href="{% url 'cal:dash' %}">DASH BOARD</a></li>
+                    <li><a href="{% url 'photo:index' %}">COMMUNITY</a></li>
+                {% endif %}
         {% else %}
         <li><a href="{% url 'create_profile:need_login' %}">LIFE FINDER</a></li>
         <li><a href="{% url 'create_profile:need_login' %}">DASH BOARD</a></li>
-        <li><a href="{% url 'photo:index' %}">COMMUNITY</a></li>
-
+        <li><a href="{% url 'create_profile:need_login' %}">COMMUNITY</a></li>
         {% endif %}
 
         {% if user.is_authenticated %}
