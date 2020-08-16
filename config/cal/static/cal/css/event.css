@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal; }
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.r_contents{
+    height: 40rem;
+}
+#top_b{
+    padding-top: 5rem;
+    padding-left: 4rem;
+    width: 30rem;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'yg-jalnan', "cursive";
+}
+
+
+#bow{
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    width: 50rem;
+    padding-left: 5rem;
+    margin: 0 auto;
+    font-family: 'yg-jalnan', "cursive";
+    color: #0B2752;
+}
+
+select{
+    margin-top: 20px;
+}
+input, select{
+    width: 90%;
+    margin-left: 2rem;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 1.5rem;
+    border: 1px solid lightgray;
+}
+label{
+    line-height: 30px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+/*label{*/
+/*    line-height: 30px;*/
+/*    display: block;*/
+/*    padding: 0;*/
+/*    margin-left: 2rem;*/
+/*}*/
+
+input[name="title"]{
+
+    margin-left: 2rem;
+
+}
+
+input[name="rating"]{
+    display: none;
+}
+
+#lb{
+    margin-top: 2.5rem;
+    background-color: #717FFF;
+    color: white;
+    text-align: center;
+    margin-left: 12rem;
+    border: none;
+    font-family: "Syncopate", sans-serif;
+    font-weight: 900;
+    padding: 20px 10rem;
+}
+
+#lb:hover{
+    background-color: orangered;
+}
+#rateit-range-2{
+    margin-left: 2rem;
+    margin-top: 1.5rem;
+}

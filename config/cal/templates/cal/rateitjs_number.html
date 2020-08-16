@@ -1,0 +1,46 @@
+{#{% extends 'cal/base.html' %}#}
+{##}
+{#{% block title %}#}
+{#{% endblock %}#}
+{##}
+{#{% block content_cal %}#}
+    {% load static %}
+    {#{% load staticfiles %}#}
+    {% include 'django/forms/widgets/input.html' %}
+    {#hello#}
+    <link rel="stylesheet" href="{% static 'cal/widgets/rateit/rateit.css' %}"/>
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="{% static 'cal/widgets/rateit/jquery.rateit.min.js' %}"></script>
+    {##}
+    {#<div id='rateit_{{ widget.attrs.id }}' class="rateit" data-rateit-backingfld="#{{ widget.attrs.id }}" ></div>#}
+
+{#    <input type="rating" name="rating" value="some_value" id="id_rating" step="1" starwidth="32" starheight="32">#}
+    <div id='rateit_{{ widget.attrs.id }}' class="rateit" data-rateit-starwidth="64" data-rateit-starheight="64" data-rateit-step="1" ></div>
+
+{#   <div id='rateit_{{ widget.attrs.id }}' class="rateit" data-rateit-backingfld="#{{ widget.attrs.id }} ></div>#}
+{##}
+
+{#    <input type="rating" name="rating" required="" id="id_rating" step="1" class="">#}
+    {#data-rateit-starwidth="16" data-rateit-starheight="16"#}
+    {#data-rateit-backingfld="#{{ widget.attrs.id }}"#}
+
+{#    <input type="rating" name="rating" value="some_value" id="id_rating" step="1" starwidth="32" starheight="32">#}
+
+    <script>
+        $(function() {
+            $('#rateit_{{ widget.attrs.id }}').bind('rated',function(){
+                var value =$(this).rateit('value');
+                $('#{{ widget.attrs.id }}').val(value);
+            });
+        });
+    </script>
+
+{#    <style>#}
+{#        #id_rating{#}
+{#            display:none;#}
+{#        }#}
+{#    </style>#}
+
+
+
+{#{% endblock %}#}

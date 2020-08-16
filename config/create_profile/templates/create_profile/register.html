@@ -1,6 +1,14 @@
 {% extends 'main/base.html' %}
+{% load static %}
+{% load staticfiles %}
+
+{% block style %}
+        <link rel="stylesheet" type="text/css" href="{% static 'create_profile/register.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet">
+
+{% endblock %}
 {% block content %}
-    <div style="height: 100px"></div>
+
         <h2>당신의 프로필을 작성해주세요!</h2>
             <form action="" method="post" enctype="multipart/form-data">
                 <div>
@@ -8,7 +16,40 @@
                     <table>
                         <div id="box">{{ profile_form.as_table }}</div>
                     </table>
-                    <input type="submit" value="제출"/>
+                    <input type="submit" id="save" value="SAVE"/>
                 </div>
             </form>
 {% endblock %}
+
+
+
+
+{#만약 체크박스 넣으면 하단부분에 넣어야할듯?#}
+
+{#{% block content %}#}
+{#    <div style="height: 100px"></div>#}
+{#    <h3>로고</h3>#}
+{#    <h3>당신의 프로필을 설정해주세요!</h3>#}
+{#    <form action="" method="post" enctype="multipart/form-data">#}
+{#        <div>#}
+{#            {% csrf_token %}#}
+{#            <div class="input_file">#}
+{#                <input class="input_file_show" name="photo" type="file"></div>#}
+{#            <br/>#}
+{#                        <script>#}
+{#                            $(document).ready(function () {#}
+{#                                $('.input_file').click(function () {#}
+{#                                    $('.input_file_show').show();#}
+{#                                })#}
+{#                            });#}
+{#                        </script>#}
+{#            <label for="nickname">닉네임</label><br/>#}
+{#            <input name="nickname" type="text" id="nickname"><br/>#}
+{#            <label for="job">직업</label><br/>#}
+{#            <input name="job" type="text" id="job"><br/>#}
+{#            <label for="description">소개글</label><br/>#}
+{#            <input name="description" type="text" id="description"><br/>#}
+{#            <input type="submit" id="save" value="저장하기"/>#}
+{#        </div>#}
+{#    </form>#}
+{#{% endblock %}#}

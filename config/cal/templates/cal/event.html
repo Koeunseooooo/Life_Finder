@@ -1,34 +1,52 @@
 {% extends 'cal/base.html' %}
+{% load static %}
+{% load staticfiles %}
 
-{% block title %}
-Event
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cal/css/event.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<div class="clearfix">
-  <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a>
-</div>
+    <div id="top_b"><h1>라이프 기록을 생성해주세요</h1></div>
+    <div id="bow">
+        {% block content_cal %}
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            {{ field.label }} <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ field.label }} <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
 
-{% if form.errors %}
-    {% for field in form %}
-        {% for error in field.errors %}
-            <div class="alert alert-danger">
-                {{ field.label }} <strong>{{ error|escape }}</strong>
-            </div>
-        {% endfor %}
-    {% endfor %}
-    {% for error in form.non_field_errors %}
-        <div class="alert alert-danger">
-            {{ field.label }} <strong>{{ error|escape }}</strong>
-        </div>
-    {% endfor %}
-{% endif %}
-
-<form method="post">
-  {% csrf_token %}
-  <table class="form form-table">
-    {{ form }}
-    <tr><td colspan="2"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>
-  </table>
-</form>
+            <form method="post" action="">
+                {% csrf_token %}
+                {# 이건 이전 코드#}
+                <table class="form form-table">
+                    {{ form }}
+                    <tr>
+                        <td colspan="2">
+                            <button id="lb" type="submit" class="btn btn-info right" name="action_add"> submit</button>
+                        </td>
+                    </tr>
+                </table>
+                {#                <div>#}
+                {#                    {{ form }}#}
+                {#                    <tr>#}
+                {#                        <td colspan="2">#}
+                {#                            <button id="lb" type="submit" class="btn btn-info right" name="action_add"> submit</button>#}
+                {#                        </td>#}
+                {#                    </tr>#}
+                {#                </div>#}
+                {#    <a href="{% url 'cal:delete' event.pk %}"> delete </a>#}
+            </form>
+        {% endblock %}
+    </div>
 {% endblock %}

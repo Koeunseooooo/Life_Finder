@@ -1,82 +1,328 @@
 /* Common styles */
-body {
-  font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+/*body {*/
+/*    font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+
+/*}*/
+
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal; }
+
+input[name="start_time"]{
+     margin-top: 30px;
+}
+input[name="rating"]{
+    margin-top: 30px;
+    display: block;
+}
+/*.btn {*/
+/*    outline: none;*/
+/*    color: #0B2752;*/
+/*    background-color: #F1F1F1;*/
+/*    box-shadow: 0 0 0 0;*/
+/*    font-family: "Syncopate", sans-serif;*/
+/*    font-weight: 900;*/
+/*    font-size: 0.9rem;*/
+/*    border: none;*/
+/*    border-radius: 3rem;*/
+/*    margin-top: 5.5rem;*/
+/*    width: 14rem;*/
+/*    margin-bottom: 1rem;*/
+/*}*/
+/*.btn:nth-child(2){*/
+/*    margin-left: 5.7rem;*/
+/*    margin-right: 5.7rem;*/
+/*}*/
+
+
+.button_2{
+    margin-left: 10rem;
+    border: none;
+    outline: none;
+    background-color: #F1F1F1;
+    border-radius: 3rem;
+    width: 7rem;
+    height: 3.5rem;
+    text-align: center;
+    line-height: 2rem;
+    font-family: "yg-jalnan", 'sans-serif';
 }
 
-.left {
-  float: left;
+.button_2 a{
+color: #0B2752;
 }
 
-.right {
-  float: right;
+.button_2:hover{
+    background-color: #717FFF;
 }
 
-.btn {
-  outline: none;
-  color: black;
-  background-color: transparent;
-  box-shadow: 0 0 0 0;
-  margin-right: 3px;
+.button_6{
+    margin-top: 5rem;
+    border: none;
+    outline: none;
+    background-color: #F1F1F1;
+    border-radius: 3rem;
+    width: 4rem;
+    height: 3.5rem;
+    text-align: center;
+    line-height: 2rem;
+    float: right;
+    margin-right: 12rem;
 }
 
+.button_4{
+    margin-top: 5rem;
+    border: none;
+    outline: none;
+    background-color: #F1F1F1;
+    border-radius: 3rem;
+    width: 4rem;
+    height: 3.5rem;
+    text-align: center;
+    line-height: 2rem;
+    margin-right: 10rem;
+}
+.button_4 a, .button_6 a{
+    padding: 10px;
+    color: #0B2752;
+    font-weight: 900;
+    font-size: 0.9rem;
+    font-family: "Syncopate", sans-serif;
+}
+.button_4:nth-child(2), .button_6:nth-child(2){
+    margin-left: 5.7rem;
+    margin-right: 5.7rem;
+}
+
+.button_4:hover, .button_6:hover{
+    background-color: #717FFF;
+}
+
+
+
+#cal{
+    margin-top: 1rem;
+    width: 100%;
+    height: 57rem;
+}
 .clearfix {
-  margin: 15px;
-}
-
-.form {
-  margin: auto;
-}
-
-.form input, .form select, .form textarea {
-  border-radius: 5px;
-  border: 1px solid #17a2b8;
-  outline: none;
-  background: none;
-  padding: 5px;
-  width: 100%;
+    margin-bottom: 2rem;
+    width: 70%;
 }
 
 /* App styles */
-.title {
-  text-align: center;
-  margin: 10px;
-}
-
 .calendar {
-  width: 98%;
-  margin: auto;
-  font-size: 13px;
+    float: left;
+    width: 57%;
+    font-size: 13px;
 }
 
-.calendar tr, .calendar td {
-  border: 1px solid black;
+/*calendar line here!*/
+.calendar tr{
+    border: 2px solid #0B2752;
+    background-color: #0B2752;
+    color: white;
+
+}
+.calendar tr:nth-child(1){
+    height: 5rem;
+    border: none;
 }
 
-.calendar th {
-  padding: 10px;
-  text-align: center;
-  font-size: 18px;
+.calendar tr:nth-child(2){
+    height: 5rem;
+    margin-left: 5rem;
+}
+
+.calendar td{
+    height: 1rem;
+    border: 2px solid #0B2752;
+    color: white;
+}
+.calendar tr:nth-child(1){
+    height: 7rem;
+    border: none;
+}
+
+.calendar th:nth-child(0) {
+    padding: 5px;
+    text-align: center;
+    font-size: 18px;
+
 }
 
 .calendar td {
-  width: 200px;
-  height: 150px;
-  padding: 20px 0px 0px 5px;
+    width: 200px;
+    height: 80px;
+    padding: 0px 5px 0px 5px;
+    background-color: #F1F1F1;
+    overflow: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
 
+.calendar td::-webkit-scrollbar { /* WebKit 스크롤바 안 보이게*/
+    width: 0px;
+    height: 0px;
+}
+
+
+.calendar td ul li a {
+    /*color: #717FFF;*/
+    background-color: #717FFF;
+    margin-bottom: 5px;
+    width: 100px;
+    border-radius: 5px;
+    display: block;
+    color: white;
+    font-size: 0.8rem;
+    font-family: "Noto Sans KR", sans-serif;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    /*뱃지 크기와 색깔 정하는 아이*/
+}
+
+
 .month {
-  font-size: 25px;
+    font-size: 3rem;
+    color: #0B2752;
+    background-color: white;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+
+}
+.mon, .tue, .wed, .thu, .fri, .sat, .sun{
+    text-align: center;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.mon, .tue, .wed, .thu, .fri, .sat, .sun{
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
 }
 
 .date {
-  font-size: 16px;
+    font-size: 1rem;
+    color: #0B2752;
+    font-weight: 700;
 }
 
-ul {
-  height: 100%;
-  padding: 0px 5px 0px 20px;
+
+
+
+.calendar ul {
+    height: 50%;
 }
 
-a {
-  color: #17a2b8;
+/*캘린더 밑에 나오는 오늘 리스트부분 스타일 시작*/
+
+.contain{
+    float: right;
+    text-align: center;
+    width: 40rem;
+    margin-top: 5rem;
+    height: 76%;
+
+}
+.today_list_total {
+    text-align: center;
+    /*position: relative;*/
+    /*top: 80rem;*/
+
+}
+
+.today_list_total .today{
+    color: #0B2752;
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: "yg-jalnan", 'sans-serif';
+    margin: 0 auto;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+
+}
+.today_rating {
+    font-family: "yg-jalnan",'sans-serif';
+      font-weight: 900;
+    margin-top: 2rem;
+     color: #0B2752;
+    font-size: 1.2rem;
+
+}
+
+.contain h5{
+    padding: 5rem;
+    font-family: "SF Pro", 'sans-serif';
+    font-size: 1.7rem;
+}
+
+.r_contents {
+    margin: 0 auto;
+    width: 80%;
+    height: 55rem;
+}
+.today_list_item {
+    width: 35rem;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    color: #717FFF;
+    font-size: 1.5rem;
+    background-color: #F1F1F1;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    font-family: "yg-jalnan",'sans-serif';
+    /*overflow: scroll;*/
+
+}
+
+.button_middle{
+        padding: 20px;
+}
+i{
+    /*아이콘 주변을 클릭해도 클릭이 되게 하기 위해 패딩을 줬어요*/
+    padding: 20px;
+}
+.today_list_total .total{
+    color: #0B2752;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.today_list_item .each_rating{
+    font-weight: bold;
+    color: #717FFF;
+    margin-left: 10px;
+}
+
+/*대시보드 보러가기 버튼 css*/
+.go_dashboard button{
+        background-color: #0B2752;
+        width: 20rem;
+        height: 4rem;
+        line-height: 50px;
+        border-radius: 4rem;
+        margin-top: 40px;
+        border: none;
+        padding-left: 10px;
+}
+.go_dashboard a{
+    font-family: "yg-jalnan",'sans-serif';
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.go_dashboard button:hover{
+    background-color: orangered;
 }

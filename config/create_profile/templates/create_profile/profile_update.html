@@ -1,16 +1,58 @@
 {% extends 'main/base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'create_profile/profile_update.css' %}">
+{% endblock %}
 {% block content %}
-    <div style="height: 100px"></div>
-    <h2>당신의 프로필을 변경해주세요!</h2>
-    <form action="" method="post" enctype="multipart/form-data">
-        <div>
-            {% csrf_token %}
-            <table>
-                <div id="box">{{ profile_form.as_table }}
-                {{ goal_form.as_table }}
-                </div>
-            </table>
-            <input type="submit" value="수정완료"/>
-        </div>
-    </form>
+
+    <div id="upd">
+
+        <h2>당신의 프로필을 변경해주세요!</h2>
+        <form id="updf" action="" method="post" enctype="multipart/form-data">
+            <div>
+                {% csrf_token %}
+                <table>
+                    <div id="box">
+                        {{ profile_form.as_table }}
+                        {#                         {{ goal_form.as_table }}#}
+                    </div>
+                </table>
+
+                {# #########3이거는 목표 개수 부분!##################}
+                <input type="range" min="0" step="1" max="100" value="{{ profile.goal_count }}" name="goal_count"
+                       id="myRange">
+                <p>목표 라이프 뱃지 개수: <span id="demo"></span></p>
+                {# #########3이거는 목표 개수 부분!##################}
+
+
+                <input type="submit" id="save" value="수정완료"/>
+            </div>
+        </form>
+
+
+        <script>
+            let slider = document.getElementById("myRange");
+            let output = document.getElementById("demo");
+            output.innerHTML = slider.value;
+
+            slider.oninput = function () {
+                output.innerHTML = this.value;
+            }
+        </script>
+    </div>
+    {#    <div style="height: 100px"></div>#}
+    {#    <h2>당신의 프로필을 변경해주세요!</h2>#}
+    {#    <form action="" method="post" enctype="multipart/form-data">#}
+    {#        <div>#}
+    {#            {% csrf_token %}#}
+    {#            <table>#}
+    {#                <div id="box">#}
+    {#                    {{ profile_form.as_table }}#}
+    {#                    {{ goal_form.as_table }}#}
+    {#                </div>#}
+    {#            </table>#}
+    {#            <input type="submit" id="save" value="수정완료"/>#}
+    {#        </div>#}
+    {#    </form>#}
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+<!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+
+{% block content %}
+<div style="height: 100px; margin: 0 auto;"></div>
+        {% if user.is_authenticated %}
+        <button><a href="{% url 'photo:create' %}">글 등록하기</a></button>
+        <button><a class="nav-link" href="{% url 'photo:like_list' %}">좋아요한 사진보기</a></button>
+        {% endif %}
+
+<div class='community_content' style="margin-top: 40px;">
+    {% if messages %}
+        <div style="width:800px">
+            {% for message in messages %}
+            <div class="alert alert-{{message.tag}}">{{message}}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% block photo%}
+{% endblock %}
+{% endblock %}
+
+
+

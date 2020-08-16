@@ -1,15 +1,63 @@
 {% extends 'cal/base.html' %}
+{% load static %}
+{% load staticfiles %}
 
-{% block title %}
-Calendar
+
+
+{% block script %}
+
 {% endblock %}
+{% block content_cal %}
 
-{% block content %}
-<div class="clearfix">
-	<a class="btn btn-info left" href="{% url 'cal:calendar' %}?{{ prev_month }}"> Previous Month </a>
-	<a class="btn btn-info right" href="{% url 'cal:calendar' %}?{{ next_month }}"> Next Month </a>
-	<a class="btn btn-info right" href="{% url 'cal:event_new' %}"> New Event </a>
-</div>
 
-{{ calendar }}
+
+    <div id="cal">
+        <div class="clearfix">
+            <button class="button_4"><a class="button_first" href="{% url 'cal:calendar' date %}?{{ prev_month }}"><i class="fas fa-arrow-left"></i></a></button>
+            <button class="button_2"><a class="button_middle" href="{% url 'cal:event_new' %}"> New Event </a></button>
+            <button class="button_6"><a class="button_last" href="{% url 'cal:calendar' date %}?{{ next_month }}"><i class="fas fa-arrow-right"></i></a></button>
+        </div>
+
+        {{ calendar }}
+
+    </div>
+
+                <button class="button_6"><a class="button_last" href="{% url 'cal:calendar' date %}?{{ prev_day }}">Prev day</a></button>
+
+
+
+    <div class="contain">
+        <div class="today_list_total">
+
+            <p class="today">Today</p>
+
+
+            {% if today_list.today_list_items|length %}
+                {% for list in today_list.today_list_items %}
+                    <div class="today_list_item">
+                        <span>{{ list.title }}</span>
+                        <span class="each_rating">{{ list.rating }}</span>
+
+                    </div>
+                {% endfor %}
+                </div>
+
+                <div class="today_rating">
+                    <span class="total">TOTAL</span>
+                    {% for value in today_list.today_list_rating_sum %}
+                        {{ value }}
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <h5>오늘 등록한 뱃지가 없습니다😥</h5>
+            {% endif %}
+        {#                    {{ object_list.today_list_items }}#}
+        <div class="go_dashboard">
+            {#  추후 url추가해서 만약 user가 7일 이상 활동했으면 dashboard보여주고 아니면 7일 후 볼 수 있다는 안내 페이지로 이동#}
+            <button><a href="{% url 'cal:dash' %}">GO DASHBOARD !</a></button>
+        </div>
+
+    </div>
+
 {% endblock %}
