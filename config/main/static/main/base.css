@@ -21,8 +21,6 @@ nav ul {
     width: 80%;
     height: 3rem;
     margin: 0 auto;
-
-
 }
 
 nav li {
@@ -30,12 +28,10 @@ nav li {
     display: inline-block;
     padding-top: 1.5rem;
     margin-left: 2rem;
-
 }
 
 nav li:nth-child(2) {
     margin-left: 3rem;
-
 }
 
 nav li:nth-child(3) {
@@ -47,9 +43,8 @@ nav a{
 
 }
 
-.r_contents {
-    margin: 0 auto;
-    width: 80%;
-    height: 100rem;
-
-}
+/*.r_contents {*/
+/*    margin: 0 auto;*/
+/*    width: 80%;*/
+/*    height: 100rem;*/
+/*}*/

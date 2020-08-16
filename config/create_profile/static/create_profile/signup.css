@@ -6,8 +6,9 @@
     }
 
     #logoimg{
-        padding-top: 13rem;
-        margin-left: 34rem;
+        padding-top: 10rem;
+        /*margin-left: 34rem;*/
+        text-align: center;
     }
 
     table {
@@ -51,5 +52,6 @@
         list-style: none;
     }
     li{
-        line-height: 30px;
+        /*여기에 스타일 주면 nav바에도 같이 주게 되어서 지움*/
+        /*line-height: 30px;*/
     }

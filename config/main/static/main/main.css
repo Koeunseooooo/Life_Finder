@@ -1,18 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
 .r_contents {
     width: 100%;
 }
 
 .card_01 {
     width: 100%;
-    height: 50rem;
+    height: 53rem;
     padding-top: 12rem;
     overflow: hidden;
     background-color: #0B2752;
 }
 
-#top{
+#top {
+    padding-top: 5rem;
     margin-left: 32rem;
-
 }
 
 .card_01 h1 {
@@ -75,7 +81,7 @@
     background-color: white;
     height: 3.5rem;
     color: #717FFF;
-    font-family: "Syncopate", sans-serif;
+    font-family: "yg-jalnan", 'sans-serif';
     font-weight: 900;
     font-size: 1rem;
     border-radius: 2rem;
@@ -84,7 +90,11 @@
     line-height: 3.5rem;
 }
 
-#btn #first_btn:hover, #btn #second_btn:hover {
+#btn #third_btn a{
+    color: #0B2752;
+}
+
+#btn #first_btn:hover, #btn #second_btn:hover, #btn #third_btn:hover {
     background-color: #717FFF;
     color: white;
 }
@@ -108,21 +118,23 @@
     font-family: 'yg-jalnan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
     font-weight: normal;
-    font-style: normal; }
+    font-style: normal;
+}
 
-.card_02 h1, .card_03 h1, .card_04 h1, .card_05 h1{
+.card_02 h1, .card_03 h1, .card_04 h1, .card_05 h1 {
     margin-left: 10rem;
     font-family: 'yg-jalnan', "cursive";
     font-size: 4rem;
-    width: 30%;
     color: #0B2752;
 }
 
-.card_04 h1{
+.card_04 h1 {
     color: white;
 }
 
-.card_04 h3{color: #1B4382 }
+.card_04 h3 {
+    color: #1B4382
+}
 
 .card_02 p, .card_03 p, .card_04 p, .card_05 p {
     margin-left: 10rem;
@@ -133,11 +145,11 @@
     font-family: "Noto Sans KR", sans-serif;
 }
 
-.card_04 p{
+.card_04 p {
     color: white;
 }
 
-.card_02 #lf{
+.card_02 #lf {
     background-color: #0B2752;
     width: 16rem;
     height: 4rem;
@@ -148,10 +160,11 @@
     line-height: 4rem;
 }
 
-.card_02 #lf:hover{
+.card_02 #lf:hover {
     background-color: #717FFF;
 }
-    .card_02 a {
+
+.card_02 a {
     color: white;
     font-family: "Syncopate", sans-serif;
     font-weight: 900;
@@ -162,19 +175,34 @@
 
 }
 
+.card_03 #03l{
+    background-color: red;
+    width: 40%;
+    height: 30rem;
+    float: left;
+
+}
+
+#03l p {
+
+}
+
+#dialog{
+    float: right;
+    width: 60%;
+}
 
 
+.vid_01 {
+    background-color: white;
+    width: 100%;
+}
 
-    .vid_01{
-        background-color: white;
-        width: 100%;
-    }
-
-    .vid_01 video{
-        max-width: 100%;
-        display: block;
-        margin: 0 auto;
-    }
+.vid_01 video {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
 
 
 .card_02 p span, .card_03 p span, .card_04 p span {
@@ -185,29 +213,79 @@
     width: 100%;
     height: 45rem;
     background-color: white;
+    margin: 0 auto;
 }
+
+
+
+
+
+
+
 
 .card_04 {
     width: 100%;
-    height: 45rem;
+    height: 50rem;
     background-color: #0B2752;
+    margin: 0 auto;
 }
 
-.card_05{
-    background-color: #E5E5E5;
-    width: 100%;
-    height: 40rem;
+.card_04 p{
+display: inline-block;
 }
 
+#smile{
+    float: right;
+    display: inline;
+    margin-right: 13rem;
+    position:absolute;
+    animation: move 2s infinite alternate;
+    animation-timing-function: ease-in-out;
+  /*left:100px;*/
+  /*width:100px;*/
+  /*height:50px;*/
+  /*margin-left:-100px;*/
+  /*background-color:#000;*/
+  /*color:#fff;*/
+
+
+}
+
+@keyframes move{
+  from{
+    left:750px;
+  }
+  to{
+    left:800px;
+  }
+}
+
+
+
+
+.card_04 img{
+    width: 180px;
+    height: 180px;
+    float: right;
+}
+
+
+
+#ant{
+    width: 500px;
+    height: 300px;
+}
 footer {
     width: 100%;
-    height: 20rem;
-    background-color: #F1F1F1;
+    height: 10rem;
+    background-color: lightgray;
     color: white;
+    text-align: center;
 }
 
-footer h1 {
-    color: black;
-    padding-left: 45%;
-    padding-top: 7rem;
+footer p {
+    color: #4f4f4f;
+    display: block;
+    padding-top: 5rem;
+
 }

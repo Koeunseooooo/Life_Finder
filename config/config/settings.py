@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django.contrib.sites',
+
     'cal',
     'main',
     'create_profile',
@@ -43,6 +45,14 @@ INSTALLED_APPS = [
     'django.forms',
 
     'multiselectfield',
+    'photo',
+
+    # allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # provider
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +160,14 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+AUTHENTICATION_BACKENDS = (
+ 'django.contrib.auth.backends.ModelBackend',
+ 'allauth.account.auth_backends.AuthenticationBackend',)
+
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
+SITE_ID = 1
+
+# LOGIN_REDIRECT_URL = '/' ### 오류가 나면 홈으로 돌아와라
+LOGIN_REDIRECT_URL = '/create/login_success' ### 오류가 나면 홈으로 돌아와라

@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% block style %}
+    <style>
+        .need_login {
+            width: 60rem;
+            margin: 0 auto;
+            padding-top: 10rem;
+        }
+
+        @font-face {
+            font-family: 'yg-jalnan';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .button_5 {
+            margin: 0 auto;
+            width: 12rem;
+            background-color: #0B2752;
+            height: 3rem;
+            border-radius: 3rem;
+            text-align: center;
+            line-height: 3rem;
+            font-family: 'yg-jalnan', "cursive";
+        }
+
+        .need_login_button {
+            text-decoration: none;
+            color: white;
+            padding: 20px;
+
+        }
+
+        .button_5:hover {
+            background-color: orangered;
+        }
+
+        .login_need_desc {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            font-family: 'yg-jalnan', "cursive";
+        }
+        .buttons{
+            display: flex;
+            margin: 0 auto;
+            width: 450px;
+        }
+    </style>
+
+{% endblock %}
+{% block content %}
+    <div class="need_login">
+        <p class="login_need_desc">로그인 후 이용 가능합니다.</p>
+        <div class="buttons">
+            <button class="button_5"><a class="need_login_button" href="{% url 'create_profile:login' %}">로그인하러 가기</a></button>
+            <button class="button_5"><a class="need_login_button" href="{% url 'create_profile:signup' %}">회원가입하러 가기</a></button>
+        </div>
+    </div>
+{% endblock %}

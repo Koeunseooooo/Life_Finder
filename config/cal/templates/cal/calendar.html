@@ -1,28 +1,88 @@
 {% extends 'cal/base.html' %}
+{% load static %}
+{% load staticfiles %}
 
 
-{% block content %}
+
+{% block script %}
+    {#      $('#calendar').Calendar({#}
+    {#    eventClick: function (event) {#}
+    {#        ShowEditScreen(event.id);#}
+    {#    },#}
+    {#    dayClick: function (date) {#}
+    {#        var events = $('#calendar').Calendar('clientEvents');#}
+    {#        for (var i = 0; i < events.length; i++) {#}
+    {#            if (moment(date).isSame(moment(events[i].start))) {#}
+    {#                ShowEditScreen(events[i].id);#}
+    {#                break;#}
+    {#            }#}
+    {#            else if (i == events.length - 1) {#}
+    {#                ShowCreateNew(date);#}
+    {#            }#}
+    {#        }#}
+    {#    }#}
+
+    {#var date = document.querySelector('td')#}
+    {#$(date).on(onclick, function(){#}
+    {#    alert('day clicked');#}
+
+    {#      dayClick: function(date, allDay, jsEvent, view) {#}
+    {#  $('#calendar').Calendar('clientEvents', function(event) {#}
+    {#    // match the event date with clicked date if true render clicked date events#}
+    {#    if (moment(date).format('YYYY-MM-DD') == moment(event._start).format('YYYY-MM-DD')) {#}
+    {#      // do your stuff here#}
+    {#      console.log(event.title);#}
+    {##}
+    {#      // if you have subarray i mean array within array then#}
+    {#      console.log(event.subarray[0].yoursubarrayKey);#}
+    {#    }#}
+    {#  }#}
+            {#document.write('<li><a href="#" title="' + _i + '" data-value="' + _i + '"' + _addClass + '>' + _i + '</a></li>');#}
+{#    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>#}
+{#    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>#}
+{##}
+
+
+{#    <script type="text/javascript">#}
+{#           $(document).ready(function() {#}
+{#               $(function() {#}
+{#                   $( "#error" ).dialog({#}
+{#                       modal: true,#}
+{#                       closeOnEscape: false,#}
+{#                       dialogClass: "no-close",#}
+{#                       resizable: false,#}
+{#                       draggable: false,#}
+{#                       width: 600,#}
+{#                       buttons: [#}
+{#                           {#}
+{#                               text: "OK",#}
+{#                               click: function() {#}
+{#                               $( this ).dialog( "close" );#}
+{#                               }#}
+{#                           }#}
+{#                       ]#}
+{#                   });#}
+{#               });#}
+{#           });#}
+{#       </script>#}
+{##}
+{% endblock %}
+{% block content_cal %}
 
 
 
-    {% block content_cal %}
-        <div id="cal">
-            <div class="clearfix">
-                <a class="btn btn-info left" href="{% url 'cal:calendar' %}?{{ prev_month }}"> Previous Month </a>
-                <a class="btn btn-info middle" href="{% url 'cal:event_new' %}"> New Event </a>
-                 <a class="btn btn-info right" href="{% url 'cal:calendar' %}?{{ next_month }}"> Next Month </a>
+    <div id="cal">
+        <div class="clearfix">
+            <button class="button_4"><a class="button_first" href="{% url 'cal:calendar' %}?{{ prev_month }}"><i class="fas fa-arrow-left"></i></a></button>
+            <button class="button_2"><a class="button_middle" href="{% url 'cal:event_new' %}"> New Event </a></button>
+            <button class="button_6"><a class="button_last" href="{% url 'cal:calendar' %}?{{ next_month }}"><i class="fas fa-arrow-right"></i></a></button>
 
-            </div>
-          {{ calendar }}
         </div>
-    {% endblock %}
 
+        {{ calendar }}
 
+    </div>
 
-
-
-
-    {#    top 830px로 줬는데 만약 사용자가 하루에 7개 이상 등록해서 달력의 높이가 높아지면 문제가-> today리스트 값이 달력 위로 올라감#}
     <div class="contain">
         <div class="today_list_total">
 
@@ -49,13 +109,12 @@
             {% else %}
                 <h5>오늘 등록한 뱃지가 없습니다😥</h5>
             {% endif %}
-
-{#                    {{ object_list.today_list_items }}#}
-            <div class="go_dashboard">
-                {#  추후 url추가해서 만약 user가 7일 이상 활동했으면 dashboard보여주고 아니면 7일 후 볼 수 있다는 안내 페이지로 이동#}
-                <button><a href="{% url 'cal:dash' %}">뭐 보러 가볼래?</a></button>
-            </div>
-
+        {#                    {{ object_list.today_list_items }}#}
+        <div class="go_dashboard">
+            {#  추후 url추가해서 만약 user가 7일 이상 활동했으면 dashboard보여주고 아니면 7일 후 볼 수 있다는 안내 페이지로 이동#}
+            <button><a href="{% url 'cal:dash' %}">GO DASHBOARD !</a></button>
         </div>
+
+    </div>
 
 {% endblock %}
