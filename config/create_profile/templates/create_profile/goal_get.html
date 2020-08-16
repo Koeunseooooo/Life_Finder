@@ -3,28 +3,23 @@
 {% load staticfiles %}
 
 {% block style %}
-    <style>
-        h4 {
-            border: 1px solid lightgray;
-            border-radius: 20px;
-            width: 400px;
-            padding: 15px;
-            text-align: center;
-        }
-    </style>
+
+     <link rel="stylesheet" type="text/css" href="{% static 'create_profile/goal_get.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet">
+
 
 
 {% endblock %}
 {% block content %}
-    <div style="height: 300px"></div>
+    <div>
     <h4>한달 목표 라이프 뱃지 개수를 설정해주세요</h4>
 
     <form action="" method="post" enctype="multipart/form-data">
 
         {% csrf_token %}
         <input type="range" min="0" step="1" max="100" value="50" name="goal_count" id="myRange">
-        <p>목표 라이프 뱃지 갯수: <span id="demo"></span></p>
-        <input type="submit" id="save" value="뱃지 설정하기"/>
+        <p id="lifegoal">목표 라이프 뱃지 갯수: <span id="demo"></span></p>
+        <input type="submit" id="save" value="SAVE"/>
     </form>
 
     <script>
@@ -35,20 +30,8 @@
         slider.oninput = function () {
             output.innerHTML = this.value;
         }
+
     </script>
+    </div>
 {% endblock %}
-
-
-
-{#def client_update(request, pk):#}
-{#    client = get_object_or_404(Client, pk=pk)#}
-{#    if request.method == 'POST':#}
-{#        name = request.POST['name']#}
-{#        call = request.POST['call']#}
-{#        address = request.POST['address']#}
-{#        client.name = name#}
-{#        client.call = call#}
-{#        client.address = address#}
-{#        client.save()#}
-{#        return redirect(client)#}
 
