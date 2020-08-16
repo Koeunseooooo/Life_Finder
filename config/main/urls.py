@@ -7,5 +7,6 @@ app_name = 'main'
 urlpatterns = [
  # path('',views.base, name='base'),
  path('',views.first, name='first'),
+ path('just/',views.base, name='base')
 ]
 

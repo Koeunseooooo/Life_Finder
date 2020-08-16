@@ -16,7 +16,11 @@ class PhotoList(ListView):
     template_name_suffix = '_list'
     #
     # def get_queryset(self):
-    #     return PhotoList.objects.filter(user=self.request.user)
+    #     queryset = {
+    #         'get_profile' = Photo.objects.all().
+    #         # 'get_profile': Profile.objects.all().filter(user=self.request.user.user_profile)
+    #     }
+    #     return queryset
 
 class PhotoCreate(CreateView):
     model = Photo

@@ -72,3 +72,4 @@ class Calendar(HTMLCalendar):
         #         return redirect('accounts:signup_profile')
         #     else:
         #         return render(request, 'http404.html')
+

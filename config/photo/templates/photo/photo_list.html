@@ -16,10 +16,10 @@
     {% for object in object_list %}
 
     <div style="width:500px; margin-bottom:20px; border: 1px solid lightgray;">
-        <div style="height:200px">
-            {{ object.author }}
+        <div style="height:200px;">
+        {{ object.author.nickname }}
             {% if object.image %}
-            <img src=" {{ object.image.url }}" style="width: 100%;" alt="...">
+             <img src="{{ object.image.url }}" style="height: 70px" alt="...">
             {% endif %}
         </div>
 

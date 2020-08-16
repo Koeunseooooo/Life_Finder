@@ -24,12 +24,94 @@ from django.contrib import messages
 from django.views.generic.dates import DayArchiveView
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-
-
+from django.http import HttpResponse
+# def show_daily(request,date):
+#     ctx = {
+#     'daily_list': Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=date)
+#     }
+#     return render(request,'cal/show_daily.html',ctx)
 class CalendarView(generic.ListView):
     model = Event
     template_name = 'cal/calendar.html'
     context_object_name = 'today_list'  # today_list에는 오늘 등록한 객체들이 포함됨
+
+    @property
+    def date(self):
+       return self.kwargs['date']
+
+
+    def get_queryset(self, **kwargs):
+        date = self.kwargs['date'] or None
+        queryset = {
+            'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=self.kwargs['date']),
+            'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=self.kwargs['date']).aggregate(Sum('rating')).values(),
+            # 'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()),
+            # 'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()).aggregate(Sum('rating')).values(),
+        }
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        if self.request.user.user_profile is None:
+            return render(self.request, 'cal/calendar.html', {'error': '프로필을 작성해주세요'})
+        context = super().get_context_data(**kwargs)
+        d = get_date(self.request.GET.get('month', None))
+        # date = get_date(self.request.GET.get('date', None))
+        # date = self.kwargs.get('date')
+        # context['date'] = date
+        # cal = Calendar(d.year, d.month, day.day)
+        cal = Calendar(d.year, d.month)
+        # issue self.request.user 추가해서 달력에서 다른 사람이 등록한 이벤트 안 보이게 문제 해결
+        html_cal = cal.formatmonth(self.request.user, withyear=True)
+        context['calendar'] = mark_safe(html_cal)
+        context['prev_month'] = prev_month(d)
+        context['next_month'] = next_month(d)
+        # date = get_specifiec_date(self.request.GET.get('date', None))
+        context['date'] = self.date
+
+
+        day = get_specifiec_date(self.request.GET.get('day', None))
+        context['prev_day'] = prev_day(day)
+        return context
+    # def get_qeryset(self):
+    #     qs = super().get_queryset()
+    #     date_term = self.request.GET.get("date", None)
+    #     if date_term is not None:
+    #         qs = qs.filter(start_time__date=date_term)
+    #     return qs
+    # def get_queryset(self):
+    #
+    #     queryset = Product.objects.all()
+    #
+    #     name = self.request.GET.get('name', None)
+    #     if name:
+    #         queryset = queryset.filter(name__icontains=name)
+    #
+    #     return queryset
+
+    # def get_queryset(self, **kwargs):
+    #     queryset= Event.objects.all()
+    #     date = self.kwargs['date'] or None
+    #         # self.request.GET.get('date',None)
+    #     if date:
+    #         queryset = queryset.filter(start_time__date=date)
+    #     return queryset
+    # def dispatch(self, request, *args, **kwargs):
+    #     self.date = kwargs.get('date', "today_date")
+    #     return HttpResponse(date)
+
+    # def get_queryset(self, **kwargs):
+    #     queryset={
+    #         'today_list_items' : Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=self.kwargs['date']),
+    #         'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=self.kwargs['date']).aggregate(Sum('rating')).values(),
+    #         'wanted_goal': Profile.objects.all().values().filter(user=self.request.user),
+    #     }
+    #     return queryset
+    # q = request.GET.get('q', '')  # GET request의 인자중에 q 값이 있으면 가져오고, 없으면 빈 문자열 넣기
+
+    # def get_queryset(self):
+    #     self.date = self.kwargs['date']
+    #     queryset = super(CalendarView, self).get_queryset()
+    #     return queryset
 
     # def get(self, request, *args, **kwargs):
     #     profile = self.request.user.user_profile
@@ -46,58 +128,9 @@ class CalendarView(generic.ListView):
     #     selected_queryset = Event.objects.filter(start_time__day=date)
     #     return selected_queryset
 
-    def get_context_data(self, **kwargs):
-        if self.request.user.user_profile is None:
-            return render(self.request, 'cal/calendar.html', {'error': '프로필을 작성해주세요'})
-        context = super().get_context_data(**kwargs)
-        d = get_date(self.request.GET.get('month', None))
-        # day = get_specifiec_date(self.request.GET.get('day', None))
-        # cal = Calendar(d.year, d.month, day.day)
-        cal = Calendar(d.year, d.month)
-        # issue self.request.user 추가해서 달력에서 다른 사람이 등록한 이벤트 안 보이게 문제 해결
-        html_cal = cal.formatmonth(self.request.user, withyear=True)
-        context['calendar'] = mark_safe(html_cal)
-        context['prev_month'] = prev_month(d)
-        context['next_month'] = next_month(d)
-
-
-        # context['my_date_view'] = my_date_view(date)
-        # context['prev_day'] = prev_day(day)
-        # context['date_queryset'] = my_date_view(yyyy)
-        # context['date_url'] = date_url(date)
-
-        # context['prev_day'] = prev_day(day)
-        # context['selected_date'] = prev_day_query(self,day)
 
 
 
-        # context['next_day'] = next_day(d)
-        # day = get_specifiec_date(self.request.GET.get('day',None))
-        # context['prev_day'] =prev_day(day)
-        return context
-
-
-    def get_queryset(self, **kwargs):
-        # if self.request.user.user_profile is None:
-            # return render('create_profile/register.html', {'error': '아이디 또는 비밀번호가 올바르지 않습니다'})
-            # messages.info(self, '프로필을 먼저 등록해주세요.')
-        # date_after_day = datetime.today() + relativedelta(days=1)
-        # today = datetime.today().strftime('%d/%m/%Y')
-        # after_day = date_after_day.strftime('%d/%m/%Y')
-
-        # profile_value = Profile.objects.all()
-        # today = datetime.today() #August 14, 2020 - 17:57:14
-        # selected_date = prev_day(day)
-        # print(selected_date)
-        # start_date = self.kwargs.get('start_date')
-        queryset = {
-            'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()),
-            'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()).aggregate(Sum('rating')).values(),
-
-            'wanted_goal': Profile.objects.all().values().filter(user=self.request.user),
-            'every_events': Event.objects.all().filter(profile=self.request.user.user_profile),
-        }
-        return queryset
         # try:
         #     queryset = {
         #         'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()),
@@ -113,6 +146,28 @@ class CalendarView(generic.ListView):
         #     return redirect('create_profile/http404.html')
 
         # CartItem.objects.select_related('product').filter(cart=cart)
+
+
+
+def get_specifiec_date(req_month):
+    if req_month:
+        year, month, day = (int(x) for x in req_month.split('-'))
+        return date(year, month, day)
+    return datetime.today()
+
+# def today(d):
+#     today_date = date.today()
+#     return today_date
+def prev_day(day):
+    prev_day = day - timedelta(days=1)
+    # day = str(prev_day.year) + '-' + str(prev_day.month)+ '-'+str(prev_day.day)
+    day = str(prev_day.year) + '-' + str(prev_day.month).zfill(2)+ '-'+str(prev_day.day)
+    return day
+
+# def prev_day(self,day):
+#     prev_day = day - timedelta(days=1)
+#     day = str(prev_day.year) + '-' + str(prev_day.month).zfill(2)+ '-'+str(prev_day.day)
+#     return day
 
 
 
@@ -139,34 +194,37 @@ def next_month(d):
     return month
 
 def event_edit(request, event_id):
+    today_date = datetime.date.today().isoformat()
     instance = get_object_or_404(Event, pk=event_id)
     form = EventForm(request.POST or None, instance=instance)
     if "action_add" in request.POST and form.is_valid():
         instance = form.save(commit=False)
         instance.profile = request.user.user_profile
         instance.save()
-        return redirect('cal:calendar')
+        return redirect('cal:calendar',kwargs={'today_date': 'today_date'})
     elif "action_remove" in request.POST:  # 삭제하기 버튼
         instance.delete()
-        return redirect('cal:calendar')
+        return redirect('cal:calendar',kwargs={'today_date': 'today_date'})
     return render(request, 'cal/event_edit.html', {'form': form})
 
 
 
 
 def event(request, event_id=None):
+    today_date = datetime.date.today().isoformat()
     instance = Event()
     form = EventForm(request.POST or None, instance=instance)
     if "action_add" in request.POST and form.is_valid():
         instance = form.save(commit=False)
         instance.profile = request.user.user_profile
         instance.save()
-        return redirect('cal:calendar')
+        return redirect('cal:calendar',kwargs={'today_date': 'today_date'})
     return render(request, 'cal/event.html', {'form': form})
 
 
 
 def dash(request):
+    # date = self.kwargs['date']
     queryset = Event.objects.all()
     wanted_goal = Profile.objects.all().values().filter(user=request.user)
 
@@ -649,7 +707,7 @@ def dash(request):
         'five_count':five_count,
 
         'a':a,
-        #a는 뭐야?
+        #a는 뭐야? # 나도 몰라 은서가 넣은 거 아니였어?
         'wanted_goal': wanted_goal,
 
         # 'queryset':queryset
@@ -689,7 +747,9 @@ def dash(request):
         'one_days_ago_rating':one_days_ago_rating,
         'three_days_ago_rating':three_days_ago_rating,
 
-        'year':year
+        'year':year,
+
+        # 'date':date,
     }
 
     if(count >= 7):

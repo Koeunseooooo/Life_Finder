@@ -6,7 +6,7 @@
             {% if object.image %}
             <img src=" {{ object.image.url }}" alt="...">
             {% endif %}
-                <h5>{{ object.author }}</h5>
+                <h5> {{ object.author.nickname }}</h5>
                 <p> {{ object.text }} </p>
 
             <ul>
