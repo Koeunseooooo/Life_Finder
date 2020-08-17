@@ -61,6 +61,7 @@ def signup(request):
 
 @login_required
 def goal_get(request):
+    import datetime
     user = request.user
     profile = request.user.user_profile
     goal_form = ObjectGoalNumberForm(request.POST)
@@ -81,12 +82,13 @@ def logout(request):
 
 @login_required
 def profile_look(request, pk):
+    import datetime
     user = User.objects.get(id=pk)
     try:
     # profile = request.user.user_profile(id=pk)
         profile = user.user_profile
         ctx = {
-            'profile': profile
+            'profile': profile,
         }
         return render(request, 'create_profile/profile.html', ctx)
     except Exception:
@@ -124,6 +126,7 @@ def register(request):
 
 
 def profile_edit(request, pk):
+    import datetime
     profile = Profile.objects.get(pk=pk)
     if request.method == "POST":
         profile_form = RegisterProfileForm(request.POST, request.FILES, instance=profile)
