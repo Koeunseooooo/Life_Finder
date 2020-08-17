@@ -73,6 +73,21 @@ color: #0B2752;
     margin-right: 12rem;
 }
 
+/*prev_day, next_day버튼*/
+.button_7{
+    border: none;
+    outline: none;
+    background-color: #F1F1F1;
+    border-radius: 3rem;
+    width: 4rem;
+    height: 3.5rem;
+    text-align: center;
+    line-height: 2rem;
+}
+.button_last{
+    font-family: "yg-jalnan", 'sans-serif';
+}
+
 .button_4{
     margin-top: 5rem;
     border: none;

@@ -170,4 +170,9 @@ SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
 SITE_ID = 1
 
 # LOGIN_REDIRECT_URL = '/' ### 오류가 나면 홈으로 돌아와라
-LOGIN_REDIRECT_URL = '/create/login_success' ### 오류가 나면 홈으로 돌아와라
+LOGIN_REDIRECT_URL = '/create/login_success'
+
+
+# 이렇게하면 모든 뷰에 하나하나 today_date라는 변수를 안 넘겨줘도 된다
+TEMPLATES[0]['OPTIONS']['context_processors'].append("cal.views.give_today_date")
+

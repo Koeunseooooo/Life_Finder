@@ -13,23 +13,31 @@
 
     <div id="cal">
         <div class="clearfix">
-            <button class="button_4"><a class="button_first" href="{% url 'cal:calendar' date %}?{{ prev_month }}"><i class="fas fa-arrow-left"></i></a></button>
+            <button class="button_4"><a class="button_first" href="{% url 'cal:calendar' today_date %}?{{ prev_month }}"><i class="fas fa-arrow-left"></i></a></button>
             <button class="button_2"><a class="button_middle" href="{% url 'cal:event_new' %}"> New Event </a></button>
-            <button class="button_6"><a class="button_last" href="{% url 'cal:calendar' date %}?{{ next_month }}"><i class="fas fa-arrow-right"></i></a></button>
+            <button class="button_6"><a class="button_last" href="{% url 'cal:calendar' today_date %}?{{ next_month }}"><i class="fas fa-arrow-right"></i></a></button>
         </div>
 
         {{ calendar }}
 
     </div>
+{#                <button class="button_6"><a class="button_last" href="{% url 'cal:prev_day' today_date %}?{{ prev_day }}">Prev day</a></button>#}
+{#                    <button class="button_6"><a class="button_last" href="{% url 'cal:calendar' day %}">Prev day</a></button>#}
 
-                <button class="button_6"><a class="button_last" href="{% url 'cal:calendar' date %}?{{ prev_day }}">Prev day</a></button>
+
+{#                    <button class="button_6"><a class="button_last" href="{% url 'cal:calendar' today_date %}">Prev day</a></button>#}
+
+
 
 
 
     <div class="contain">
         <div class="today_list_total">
+            <button class="button_7"><a class="button_last" href="{% url 'cal:calendar' prev_day %}">Prev day</a></button>
+            <button class="button_7"><a class="button_last" href="{% url 'cal:calendar' real_today %}">Today</a></button>
 
-            <p class="today">Today</p>
+            <button class="button_7"><a class="button_last" href="{% url 'cal:calendar' next_day %}">Next day</a></button>
+            <p class="today"><a href="{% url 'cal:calendar' real_today %}">{{ date }} </a></p>
 
 
             {% if today_list.today_list_items|length %}
