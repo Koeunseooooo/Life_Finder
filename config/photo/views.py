@@ -41,6 +41,7 @@ class PhotoCreate(CreateView):
             # form : 모델폼
             form.instance.save()
             return redirect('photo:index')
+
         else:
             # 올바르지 않다면
             return self.render_to_response({'form': form,})

@@ -1,8 +1,10 @@
 {% extends 'cal/base.html' %}
+
+
 {% block content %}
     <div style="height: 100px"></div>
+    <div id="go_up"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-
 {{ today }}
     {{ year }}
     <div class="line"> '당신이 등록한 라이프 뱃지'를 활용하여 여러관점에서의 통계 데이터들을 한곳에 모았습니다. </div>
@@ -430,8 +432,10 @@
     <br/>
 
     <h4 style="text-align: center"> 이전달 총 뱃지 개수 : {{ ing  }}     이전달 평균 뱃지 개수 : {{ing}} </h4>
-    <h4 style="text-align: center"> 이번달 총 뱃지 개수 : {{ ing  }}     이번달 평균 뱃지 개수 : {{ing}} </h4>
+   <h4 style="text-align: center"> 이번달 총 뱃지 개수 : {{ ing  }}     이번달 평균 뱃지 개수 : {{ing}} </h4>
 
+{###########맨 위로 올라가는 버튼##########}
+  <a href="#go_up"><button class="button_8"><i class="fas fa-chevron-up" style="padding: 10px;"></i></button></a>
 {#추후 메세지도 넣어질 예정#}
 
 

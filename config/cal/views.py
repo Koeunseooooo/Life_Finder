@@ -25,10 +25,17 @@ from django.views.generic.dates import DayArchiveView
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.http import HttpResponse
+
+#setings.py에 보내서 다른 앱의 view에도 today_date라는 변수 넘기기
 def give_today_date(request):
     import datetime
     today_date = datetime.date.today().isoformat()
     return {'today_date':today_date}
+
+def send_to_calendar(request):
+    import datetime
+    today_date = datetime.date.today().isoformat()
+    return redirect('cal:calendar',today_date)
 
 class CalendarView(generic.ListView):
     model = Event
@@ -40,7 +47,7 @@ class CalendarView(generic.ListView):
        return self.kwargs['date']
 
     def get_queryset(self, **kwargs):
-        date = self.kwargs['date'] or None
+        # date = self.kwargs['date'] or None
         queryset = {
             'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=self.kwargs['date']),
             'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=self.kwargs['date']).aggregate(Sum('rating')).values(),
@@ -50,12 +57,8 @@ class CalendarView(generic.ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        if self.request.user.user_profile is None:
-            return render(self.request, 'cal/calendar.html', {'error': '프로필을 작성해주세요'})
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))
-
-        import datetime
 
         cal = Calendar(d.year, d.month)
         # issue self.request.user 추가해서 달력에서 다른 사람이 등록한 이벤트 안 보이게 문제 해결
@@ -63,13 +66,14 @@ class CalendarView(generic.ListView):
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
-        # date = get_specifiec_date(self.request.GET.get('date', None))
         context['today_date'] = self.date
         context['date'] = self.date
+
+        #2020-08-16대신 08월 16일이라고 전달하는 text
+        context['date_text'] = self.date[5:7] +'월 ' + self.date[8:] +'일'
         # context['day'] =self.day
 
         day = self.date
-
         # day = get_specifiec_date(self.request.GET.get('day', None))
         context['prev_day'] = prev_day(day)
         context['real_today'] = real_today(day)
@@ -80,11 +84,10 @@ class CalendarView(generic.ListView):
 def prev_day(day):
     import datetime
     date_time_str = day
+    #현재 date_time_str은 str타입이라서 이를 날짜로 바꿔주기
     day_object = datetime.datetime.strptime(date_time_str, '%Y-%m-%d')
-    print(day_object)
     prev_day = day_object - datetime.timedelta(days=1)
     day = prev_day.isoformat()[:10]
-    print(day)
     return day
 
 #TODAY라는 글씨에 오늘 날짜를 전달해주기
@@ -103,12 +106,14 @@ def next_day(day):
     day = next_day.isoformat()[:10]
     return day
 
+
+
+
 def get_date(req_month):
     if req_month:
         year, month = (int(x) for x in req_month.split('-'))
         return date(year, month, day=1)
     return datetime.today()
-
 
 def prev_month(d):
     first = d.replace(day=1)
@@ -161,14 +166,10 @@ def dash(request):
     # today=datetime.today().date -> 나중에 이거 형식변환 및 스트링 형변환해서 첫번째 그래프에 낳으면 될듯.
     today=datetime.today()
 
-    # 절대 이 사이를 삭제하면 안돼요
+    # today_date 변수를 넘겨주기
     today_date = today.isoformat()[:10]
-    # 절대 이 사이를 삭제하면 안돼요
 
     year = today.strftime("%Y")
-
-
-
 
     one_days_ago = today - timedelta(days=1)
     one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=one_days_ago).aggregate(Sum('rating')).values()

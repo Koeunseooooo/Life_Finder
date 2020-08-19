@@ -33,11 +33,10 @@
 
     <div class="contain">
         <div class="today_list_total">
-            <button class="button_7"><a class="button_last" href="{% url 'cal:calendar' prev_day %}">Prev day</a></button>
-            <button class="button_7"><a class="button_last" href="{% url 'cal:calendar' real_today %}">Today</a></button>
-
-            <button class="button_7"><a class="button_last" href="{% url 'cal:calendar' next_day %}">Next day</a></button>
-            <p class="today"><a href="{% url 'cal:calendar' real_today %}">{{ date }} </a></p>
+            <button class="button_7"><a class="button_date" href="{% url 'cal:calendar' prev_day %}">Prev day</a></button>
+            <button class="button_7"><a class="button_date" href="{% url 'cal:calendar' real_today %}">Today</a></button>
+            <button class="button_7"><a class="button_date" href="{% url 'cal:calendar' next_day %}">Next day</a></button>
+            <p class="today">{{ date_text }}</p>
 
 
             {% if today_list.today_list_items|length %}

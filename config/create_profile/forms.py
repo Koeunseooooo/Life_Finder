@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm,PasswordChangeForm
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from .models import Profile
 from django.forms.widgets import RadioSelect, CheckboxSelectMultiple
@@ -13,14 +13,15 @@ from django.forms.widgets import RadioSelect, CheckboxSelectMultiple
 
 
 class CreateUserForm(UserCreationForm):  # 회원가입 폼
+    email = forms.EmailField(required=True)
     class Meta:
         model = User
-        fields = ("username", "password1", "password2")
+        fields = ("username", "password1", "password2","email")
 
     def __init__(self, *args, **kwargs):
         super(CreateUserForm, self).__init__(*args, **kwargs)
 
-        for fieldname in ['username', 'password1', 'password2']:
+        for fieldname in ['username', 'password1', 'password2','email']:
             self.fields[fieldname].help_text = None
             self.fields['username'].widget.attrs.update({'placeholder': '    아이디'})
             self.fields['username'].label = ''
@@ -28,13 +29,18 @@ class CreateUserForm(UserCreationForm):  # 회원가입 폼
             self.fields['password1'].label = ''
             self.fields['password2'].widget.attrs.update({'placeholder': '    비밀번호 재확인'})
             self.fields['password2'].label = ''
+            self.fields['email'].widget.attrs.update({'placeholder': '    이메일'})
+            self.fields['email'].label = ''
+
 
     def save(self, commit=True):
         user = super(CreateUserForm, self).save(commit=False)
-
+        user.email = self.cleaned_data["email"]
         if commit:
             user.save()
         return user
+
+
 
 
 class CustomAuthenticationForm(AuthenticationForm):

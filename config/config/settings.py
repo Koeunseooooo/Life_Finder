@@ -176,3 +176,10 @@ LOGIN_REDIRECT_URL = '/create/login_success'
 # 이렇게하면 모든 뷰에 하나하나 today_date라는 변수를 안 넘겨줘도 된다
 TEMPLATES[0]['OPTIONS']['context_processors'].append("cal.views.give_today_date")
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'yaho.piro13@gmail.com'
+EMAIL_HOST_PASSWORD = 'fgqizttebbnuutcj'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Yaho Team <noreply@Yaho.com>'

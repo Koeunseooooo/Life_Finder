@@ -31,6 +31,10 @@ class Event(models.Model):
     def __str__(self):
         return '{}/ {}/ {}'.format(self.id, self.title, self.start_time, self.rating)
 
+
+
+
+
     # @property
     # def get_html_url(self):
     #     url = reverse('cal:event_edit', args=(self.id,))
