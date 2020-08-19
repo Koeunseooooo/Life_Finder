@@ -1,31 +1,135 @@
-        input[type=file] {
-            padding-top: 30px;
-            padding-left: 20px;
-        }
-
-        input[type=text], input[type=number] {
-            margin-bottom: 10px;
-            width: 250px;
-            height: 40px;
-            border-radius: 5px;
-            border: solid 1px #b0bec9;
-            margin-top: 10px;
-            padding-left: 10px;
-        }
-
-        #save {
-
-            background-color: #717FFF;
-            border-radius: 5px;
-            border: none;
-            color: white;
-            width: 100px;
-            text-align: center;
-            line-height: 30px;
-            margin: 0 auto;
-        }
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
-        h2{
-            color: red;
-        }
+.r_contents {
+    width: 80%;
+    margin: 0 auto;
+    height: 1110px;
+}
+
+#profilecreate {
+    width: 460px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+
+h1 {
+    padding-top: 11rem;
+    color: black;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'yg-jalnan', "cursive";
+    font-size: 37px;
+    padding-bottom: 5rem;
+}
+
+#regtxt {
+
+}
+
+#regtxt label {
+    width: 460px;
+    display: inline-block;
+}
+#box{
+    display: inline-block;
+}
+
+
+input[type=text], input[type=number] {
+
+    width: 460px;
+    height: 50px;
+    border: solid 1px #b0bec9;
+
+}
+
+
+form label {
+
+    font-size: 20px;
+    color: #4f4f4f;
+        font-family: "yg-jalnan", sans-serif;
+
+}
+
+#id_nickname {
+    margin-top: 10px;
+    padding-left: 20px;
+    width: 440px;
+    height: 50px;
+    background-color: #F5F5F5;
+    color: black;
+    font-size: 15px;
+    margin-bottom: 4rem;
+
+}
+
+
+#id_job {
+    margin-top: 10px;
+    padding-left: 20px;
+    width: 440px;
+    height: 50px;
+    background-color: #F5F5F5;
+    color: black;
+    font-size: 15px;
+    font-family: "Noto Sans KR", sans-serif;
+    margin-bottom: 4rem;
+
+}
+
+#id_photo{
+
+    margin-top: 0.5rem;
+    margin-bottom: 4rem;
+
+}
+
+#id_description {
+    margin-top: 10px;
+    width: 440px;
+    height: 90px;
+    background-color: #F5F5F5;
+    padding-left: 20px;
+    padding-top: 10px;
+    color: black;
+    font-size: 15px;
+    font-family: "Noto Sans KR", sans-serif;
+    margin-bottom: 4rem;
+
+}
+
+
+
+#save {
+    background-color: #0B2752;
+    border: none;
+    color: white;
+    width: 460px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+    font-family: "Syncopate", sans-serif;
+    font-weight: 900;
+    margin-top: 10rem;
+    margin-bottom: 15rem;
+
+}
+
+#save:hover {
+    background-color: orangered;
+}
+
+#id_interested_0{
+    color: red;
+    margin-top: 3rem;
+    font-family: "Noto Sans KR",'sans-serif';
+}

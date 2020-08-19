@@ -5,7 +5,8 @@
 
 #upd h2 {
     margin-left: 4.5rem;
-    margin-top: 7rem;
+    padding-top: 10rem;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 input[type=file] {
@@ -37,8 +38,7 @@ td a {
 }
 
 label {
-    color: #c4c4c4;
-    /*font-family*/
+    display: none;
 }
 
 td {

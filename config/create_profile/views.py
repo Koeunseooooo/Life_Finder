@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect,HttpResponse
+from django.shortcuts import render, redirect,HttpResponse,reverse
 from django.contrib.auth.decorators import login_required  # 프로필 창 로그인 필요
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
@@ -7,12 +7,12 @@ from .forms import RegisterProfileForm, ObjectGoalNumberForm
 from django import forms
 from .forms import CreateUserForm, CustomAuthenticationForm  # 회원가입
 from django.contrib.auth.forms import AuthenticationForm  # 로그인
-from django.contrib.auth import login as auth_login  # 로그인
-
+from django.contrib.auth import login as auth_login,update_session_auth_hash  # 로그인 및 비번 변경
+from photo.models import Photo
 from django.contrib.auth import logout as auth_logout  # 로그아웃
 from django.contrib import messages
-
-
+from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView, PasswordChangeView
+from django.urls import reverse_lazy
 def login(request):
     if request.method == 'POST':
         login_form = CustomAuthenticationForm(request, request.POST)
@@ -61,6 +61,7 @@ def signup(request):
 
 @login_required
 def goal_get(request):
+    import datetime
     user = request.user
     profile = request.user.user_profile
     goal_form = ObjectGoalNumberForm(request.POST)
@@ -72,28 +73,40 @@ def goal_get(request):
             return redirect('main:first')
     else:
         goal_form = ObjectGoalNumberForm()
-    return render(request, 'create_profile/goal_get.html', {'goal_form': goal_form})
+    return render(request, 'create_profile/goal_get.html', {'goal_form': goal_form,'profile':profile})
 
 
 def logout(request):
     auth_logout(request)
     return redirect('main:first')
 
+# @login_required
+# def profile_look(request, pk):
+#     user = User.objects.get(id=pk)
+#     try:
+#     # profile = request.user.user_profile(id=pk)
+#         profile = user.user_profile
+#         ctx = {
+#             'profile': profile,
+#         }
+#         return render(request, 'create_profile/profile.html', ctx)
+#     except Exception:
+#         if user == request.user:
+#             return redirect('create_profile:register')
+#         else:
+#             return render(request,'http404.html')
+
 @login_required
 def profile_look(request, pk):
     user = User.objects.get(id=pk)
-    try:
-    # profile = request.user.user_profile(id=pk)
-        profile = user.user_profile
-        ctx = {
-            'profile': profile
-        }
-        return render(request, 'create_profile/profile.html', ctx)
-    except Exception:
-        if user == request.user:
-            return redirect('create_profile:register')
-        else:
-            return render(request,'http404.html')
+    profile = user.user_profile
+    user_registered_photos = Photo.objects.filter(author=profile)
+    ctx = {
+        'profile': profile,
+        'user_registered_photos':user_registered_photos,
+    }
+    return render(request, 'create_profile/profile.html', ctx)
+
 
 @login_required
 def register(request):
@@ -124,6 +137,7 @@ def register(request):
 
 
 def profile_edit(request, pk):
+    import datetime
     profile = Profile.objects.get(pk=pk)
     if request.method == "POST":
         profile_form = RegisterProfileForm(request.POST, request.FILES, instance=profile)

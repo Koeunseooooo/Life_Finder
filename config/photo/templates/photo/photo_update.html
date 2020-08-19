@@ -1,14 +1,19 @@
-{% extends 'photo/base.html' %}
-<form action="" method="POST" enctype='multipart/form-data'>
-{% block photo %}
-    <div style="width: 500px">
+{% extends 'main/base.html' %}
+{% load static %}
+{% block style %}
+        <link rel="stylesheet" type="text/css" href="{% static 'photo/photo_update.css' %}">
+
+{% endblock %}
+{% block content %}
+    <div id="all">
+    <div id="sub">
+        <h1>게시글을 수정해주세요</h1>
         <form action="" method="POST">
             {% csrf_token %}
             {{form.as_p}}
-            <input type="submit" value="수정완료">
-            <button class="button_7"><a href="{% url 'photo:delete' object.id %}">삭제하기</a></button>
-
-
+            <input id="last" type="submit" value="UPDATE">
+            <button id="del" type="submit" value="DELETE"><a href="{% url 'photo:delete' object.id %}">삭제하기</a></button>
         </form>
+    </div>
     </div>
 {% endblock %}

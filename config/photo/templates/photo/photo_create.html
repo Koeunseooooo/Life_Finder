@@ -1,17 +1,24 @@
-{% extends 'photo/base.html' %}
-{% block photo %}
-<div style="height:100px"></div>
 
-    <div style="width: 500px">
-<!--        <div class="alert alert-primary" role="alert">-->
-<!--            모든 부분을 다 채워넣어주세요!!-->
-<!--        </div>-->
+{% extends 'main/base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/photo_create.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="all">
+<div id="sub">
+    <h1>게시글을 작성해주세요</h1>
+{#        <div class="alert alert-primary" role="alert">#}
+{#            모든 부분을 다 채워넣어주세요!!#}
+{#        </div>#}
         <form action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
-
             {{form.as_p}}
-            <input type="submit" value="Upload">
+            <input id="last" type="submit" value="Upload">
         </form>
     </div>
 </div>
+
 {% endblock %}
+

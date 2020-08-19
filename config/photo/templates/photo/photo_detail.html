@@ -1,43 +1,47 @@
-{% extends 'photo/base.html' %}
+{% extends 'main/base.html' %}
+{% load static %}
+{% block style %}
+        <link rel="stylesheet" type="text/css" href="{% static 'photo/photo_detail.css' %}">
 
-{% block photo %}
-    <div style="width: 1000px">
-
-        <div style="height:200px;">
-            {% if object.image %}
-            <img src=" {{ object.image.url }}" alt="...">
-            {% endif %}
-                <h5>{{ object.author.nickname }}</h5>
-                <p> {{ object.text }} </p>
-
-
-                <li class="list-group-item">
-                        <a href="{% url 'photo:like' object.id %}" class="float-left btn-like {%if user in object.like.all %} active {%endif%}">좋아요!</a>
-                        {% if object.like.all.count %}
-                        <span class = "float-left">
-                            {{object.like.all.count}}
-                        </span>
-                        {% endif %}
-                        <a href="{% url 'photo:favorite' object.id %}" class="float-right btn-favorite {%if user in object.favorite.all %} active {%endif%}">저장하기!</a>
-                    </li>
-
-                <li class="list-group-item">생성일 : {{ object.created }}</li>
-                <li class="list-group-item">
-
-
-                </li>
-            </ul>
-            <div class="card-body">
-                <a href="{% url 'photo:update' object.id %}" class="card-link">수정하기</a>
-                <!--<a href="{% url 'photo:delete' object.id %}" class="card-link">삭제하기</a>-->
+{% endblock %}
+{% block content %}
+<div id="all">
+            <div id="editbtn">
+            {%if object.author == request.user.user_profile %}
+            <button class="button_7"><a href="{% url 'photo:update' object.id %}">EDIT</a></button>
+            {%endif%}
+            </div>
+            <div id="imgwrap">
+                {% if object.image %}
+                <img src=" {{ object.image.url }}" alt="...">
+                {% endif %}
             </div>
 
+    <div id="wrap4">
 
 
-        </div>
+            <ul>
+                <li>
+                    {% if object.like.all.count %}
+                        <span>{{object.like.all.count}}</span>
+                        {% endif %}
+                        <a href="{% url 'photo:like' object.id %}" class="{%if user in object.like.all %} active {%endif%}">좋아요!</a>
+
+                    </li>
+
+            <p> {{ object.text }} </p>
+                <li>{{ object.created }}</li>
+
+            </ul>
+
+
+
     </div>
 
-    <div class="col"></div>
+<div id="comment">
+    댓글 쓰는 칸입니다요!
+
 </div>
 
-
+</div>
+{% endblock %}
