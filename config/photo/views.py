@@ -1,9 +1,11 @@
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect,reverse
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic.detail import DetailView
 
 from .models import Photo
+from django.views.generic.edit import FormMixin
+from django.shortcuts import get_object_or_404
 # from .forms import PhotoForm
 from create_profile.models import Profile
 from django.contrib.auth.models import User
@@ -101,10 +103,34 @@ class PhotoDelete(DeleteView):
         else:
             return super(PhotoDelete, self).dispatch(request, *args, **kwargs)
 
-
-class PhotoDetail(DetailView):
+from .forms import CommentForm
+class PhotoDetail(DetailView, FormMixin):
     model = Photo
     template_name_suffix = '_detail'
+    form_class =CommentForm
+    def get_success_url(self,**kwargs):
+        return reverse('photo:detail',kwargs={'pk':self.object.pk})
+    def get_context_data(self, **kwargs):
+        context = super(PhotoDetail, self).get_context_data(**kwargs)
+        context['form'] = CommentForm(initial={
+            'text': '댓글을 입력해주세요.',
+        })
+        context['user'] = self.request.user
+        context['comments'] = self.object.photo_comment
+        return context
+    def post(self,request,*args,**kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+    def form_valid(self, form):
+        comment = form.save(commit = False)
+        comment.photo = get_object_or_404(Photo,pk=self.object.pk)
+        comment.comment_author = self.request.user.user_profile
+        comment.save()
+        return super(PhotoDetail,self).form_valid(form)
 
 
 from django.views.generic.base import View
