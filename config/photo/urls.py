@@ -16,6 +16,9 @@ urlpatterns = [
     path("like/", PhotoLikeList.as_view(), name="like_list"),
     path("", PhotoList.as_view(), name='index'),
 
+    path('comment/<int:pk>/remove', views.comment_remove, name='comment_remove'),
+    # path('comment/<int:pk>/edit', views.comment_edit, name='comment_edit')
+
 ]
 
 from django.conf.urls.static import static

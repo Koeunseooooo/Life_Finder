@@ -22,23 +22,40 @@ body{
     width: 100%;
 }
 #save {
-    width: 100px;
+    width: 200px;
     height: 40px;
     border-radius: 3rem;
-    padding: 10px;
+
     border: none;
     background-color: white;
     margin-top: 2rem;
+    color: #717FFF;
+    font-family: "yg-jalnan", sans-serif;
+    display: inline-block;
+        font-size: 14px;
+
+
 }
 #save:hover{
     background-color: orangered;
 }
-#save a {
-    padding: 10px;
+
+#change_pw{
+    width: 200px;
+    height: 40px;
+    border-radius: 3rem;
+    font-family: "yg-jalnan", sans-serif;
+
+    border: none;
+    background-color: white;
+    margin-top: 1rem;
     color: #717FFF;
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 1rem;
-    font-weight: 800;
+    font-size: 14px;
+
+}
+
+#change_pw:hover{
+    background-color: orangered;
 }
 
 #intlife{
@@ -53,7 +70,9 @@ body{
 }
 
 #proname{
+    margin-top: 1rem;
     font-family: "yg-jalnan", sans-serif;
+    font-size: 20px;
 
 }
 
@@ -130,28 +149,13 @@ body{
 
 
 
-/*비밀번호 변경*/
-.change_pw{
-        width: 460px;
-    height: 56px;
-    border-radius: 5px;
-    padding: 10px;
-    border: solid 1px #6570CE;
-    margin-top: 5rem;
-    background-color: #717FFF;
-}
-.change_pw a{
-     padding: 20px;
-    color: white;
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 800;
-    font-size: 1rem;
-}
+
 
 #le{
     width: 20%;
+    margin-top: 30px;
     float: left;
-    height: 980px;
+    height: 950px;
     border-radius: 1rem;
     -webkit-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
     -moz-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
@@ -160,9 +164,10 @@ body{
 
 #ri{
     width: 80%;
+    margin-top: 30px;
     float: left;
     background-color: white;
-    height: 980px;
+    height: 950px;
     -webkit-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
     -moz-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
     box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
@@ -173,8 +178,8 @@ body{
 #hello{
     margin-top: 7rem;
     margin-left: 7rem;
-    width: 25rem;
-    height: 10rem;
+    width: 900px;
+    height: 15rem;
 }
 #hello h1{
     display: block;
@@ -187,7 +192,7 @@ body{
     float: left;
    width: 300px;
     height: 260px;
-    margin-top: 10rem;
+    margin-top: 5rem;
     margin-left: 7rem;
     margin-bottom: 1rem;
     background-color: lightgray;
