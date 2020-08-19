@@ -9,11 +9,11 @@ class EventForm(ModelForm):
         model = Event
         # datetime-local is a HTML5 input type, format to make date time show on fields
         widgets = {
-            'title': TextInput(attrs={'placeholder': 'ex) 반려견과 산책하기'}),
+            'title': TextInput(attrs={'placeholder': '  ex)  야호!  오늘 코딩 오류 한번에 잡았다! '}),
             'rating': RateitjsWidget,
             'start_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
         }
-        fields = ['title', 'start_time', 'rating','category']
+        fields = ['title', 'start_time','category', 'rating']
         # , 'profile'
 
 

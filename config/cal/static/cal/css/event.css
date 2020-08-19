@@ -9,46 +9,44 @@
     padding: 0;
 }
 
+label{
+    line-height: 30px;
+    display: block;
+    padding: 0;
+    color: lightgray;
+}
+
 .r_contents{
-    height: 40rem;
+    height: 1100px;
 }
 #top_b{
-    padding-top: 5rem;
-    padding-left: 4rem;
-    width: 30rem;
+    padding-top: 11rem;
+    padding-bottom: 4rem;
+    width: 540px;
     margin: 0 auto;
     text-align: center;
     font-family: 'yg-jalnan', "cursive";
+    font-size: 17px;
+    color: black;
 }
 
 
 #bow{
-    padding-top: 5rem;
-    padding-bottom: 3rem;
-    width: 50rem;
-    padding-left: 5rem;
+    width: 540px;
     margin: 0 auto;
     font-family: 'yg-jalnan', "cursive";
     color: #0B2752;
 }
 
-select{
-    margin-top: 20px;
-}
+
 input, select{
-    width: 90%;
-    margin-left: 2rem;
-    height: 30px;
+    width: 540px;
+    height: 50px;
     line-height: 30px;
-    margin-bottom: 1.5rem;
     border: 1px solid lightgray;
+    margin-bottom: 2rem;
 }
-label{
-    line-height: 30px;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-}
+
 /*label{*/
 /*    line-height: 30px;*/
 /*    display: block;*/
@@ -57,31 +55,59 @@ label{
 /*}*/
 
 input[name="title"]{
-
-    margin-left: 2rem;
+    padding-left: 20px;
+    font-size: 15px;
+    font-family: "Noto Sans KR", sans-serif;
+    width: 520px;
+    height: 50px;
 
 }
 
+input[name="start_time"]{
+    padding-left: 20px;
+    font-size: 15px;
+    font-family: "Noto Sans KR", sans-serif;
+    width: 520px;
+    height: 50px;
+}
 input[name="rating"]{
     display: none;
 }
 
+select[name="category"]{
+    padding-left: 20px;
+    font-size: 15px;
+    font-family: "Noto Sans KR", sans-serif;
+    width: 540px;
+    height: 50px;
+
+}
+
+
+
+
 #lb{
-    margin-top: 2.5rem;
-    background-color: #717FFF;
+    margin-top: 3rem;
+    background-color: #0B2752;
     color: white;
     text-align: center;
-    margin-left: 12rem;
     border: none;
     font-family: "Syncopate", sans-serif;
     font-weight: 900;
-    padding: 20px 10rem;
+    font-size: 20px;
+    width: 540px;
+    height: 60px;
 }
 
 #lb:hover{
     background-color: orangered;
 }
 #rateit-range-2{
-    margin-left: 2rem;
-    margin-top: 1.5rem;
+   margin-left: 110px;
+}
+
+
+#rateit_id_rating{
+    width: 540px;
+    height: 65px;
 }
