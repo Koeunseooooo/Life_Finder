@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'photo/photo_detail.css' %}">
 
+
 {% endblock %}
 {% block content %}
     <div id="all">
@@ -22,18 +23,16 @@
         </div>
 
         <div id="wrap4">
-
-
             <ul>
                 <li>
                     {% if user in object.like.all %}
                         <a href="{% url 'photo:like' object.id %}">
-<!--                             사용자가 like 버튼 누르면 보이게 할 색-->
+                            <!--                             사용자가 like 버튼 누르면 보이게 할 색-->
                             <i style="color: orangered" class="fas fa-heart"></i>
                         </a>
                     {% else %}
                         <a href="{% url 'photo:like' object.id %}">
-<!--{#                             사용자가 like 버튼 안 누르면 보이게 할 색#}-->
+                            <!--{#                             사용자가 like 버튼 안 누르면 보이게 할 색#}-->
                             <i style="color: cornflowerblue" class="fas fa-heart"></i>
                         </a>
                     {% endif %}
@@ -50,23 +49,64 @@
                 {% endif %}
                 <li>{{ object.title }}</li>
                 <div class="content_text"> {{ object.text|safe }} </div>
-<!--                {# 이 밑에 지우지 말아요#}-->
+                {# 이 밑에 지우지 말아요#}
                 <li>{{ object.created|date:'Y-m-d' }}</li>
 
             </ul>
 
 
         </div>
-
         <div id="comment">
-            {{ comments }}
-            댓글 쓰는 칸입니다요!
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                 <input type="submit" id="save" value="SAVE"/>
-                </form>
-        </div>
+            {% for comment in comments %}
+                <div class="each_comment">
+                    <div class="comment_info">
+                        <div class="comment_author_image">
+                            {% if comment.comment_author.photo %}
+                                {% if not  comment.comment_author == request.user.user_profile %}
+                                    <a href="{% url 'create_profile:show_each_profile' comment.comment_author.user.pk %}">
+                                    <img id="user_photo" src='{{ comment.comment_author.photo.url }}'></a>
+                                {% else %}
+                                    <img id="user_photo" src='{{ comment.comment_author.photo.url }}'>
+                                {% endif %}
 
-    </div>
+                                {#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
+                            {% else %}
+                                {% if not  comment.comment_author == request.user.user_profile %}
+                                    <a href="{% url 'create_profile:show_each_profile' comment.comment_author.user.pk %}">
+                                     <img id="smile01" src="{% static 'face.png' %}"></a>
+                                {% else %}
+                                    <img id="smile01" src="{% static 'face.png' %}">
+                                {% endif %}
+
+                            {% endif %}
+                        </div>
+                        <div class="comment_author_info">
+                                    {{ comment.comment_author.nickname }} : {{ comment.text }}
+                        </div>
+
+
+
+                    </div>
+                    {% if request.user.user_profile == comment.comment_author %}
+
+
+                        <button class="delete_comment"><a href="{% url 'photo:comment_remove' comment.pk %}">댓글 삭제</a>
+                        </button>
+
+
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p>댓글이 아직 없습니다.</p>
+            {% endfor %}
+
+            {% if user.is_authenticated %}
+                <form class="comment_register" action="{% url 'photo:detail' object.pk %}" method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <span><button class="comment_write" type="submit">작성</button></span>
+                </form>
+            {% endif %}
+
+        </div>
 {% endblock %}

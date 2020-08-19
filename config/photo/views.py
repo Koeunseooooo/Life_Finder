@@ -15,6 +15,10 @@ from django.contrib import messages
 
 import datetime
 from photo.forms import PhotoForm
+from django.contrib.auth.decorators import login_required
+
+from django.http import JsonResponse
+
 
 
 class PhotoList(ListView):
@@ -103,23 +107,27 @@ class PhotoDetail(DetailView, FormMixin):
     model = Photo
     template_name_suffix = '_detail'
     form_class =CommentForm
+
+    #성공하면 다시 detail페이지 보여주기
     def get_success_url(self,**kwargs):
         return reverse('photo:detail',kwargs={'pk':self.object.pk})
+
+    #댓글 등록 폼과 해당 포토에 등록한 댓글들을 보여주는 context값 전달
     def get_context_data(self, **kwargs):
         context = super(PhotoDetail, self).get_context_data(**kwargs)
-        context['form'] = CommentForm(initial={
-            'text': '댓글을 입력해주세요.',
-        })
+        context['form'] = CommentForm()
         context['user'] = self.request.user
-        context['comments'] = self.object.photo_comment
+        context['comments'] = self.object.photo_comment.all()
         return context
-    def post(self,request,*args,**kwargs):
-        self.object = self.get_object()
+
+    def post(self,request,*args,**kwargs): # post요청이 들어왔을때.
+        self.object = self.get_object() #현재 포토의 pk데이터 가져오기
         form = self.get_form()
         if form.is_valid():
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
+
     def form_valid(self, form):
         comment = form.save(commit = False)
         comment.photo = get_object_or_404(Photo,pk=self.object.pk)
@@ -129,9 +137,26 @@ class PhotoDetail(DetailView, FormMixin):
 
 
 
+
+
+    def updateField(request):
+        print(request.body.get('order_id'))
+        # you should update you model field here
+        return JsonResponse({'ok': True}, status=200)
+
+
+
 from django.views.generic.base import View
 from django.http import HttpResponseForbidden
 from urllib.parse import urlparse
+
+from .models import Comment
+
+@login_required
+def comment_remove(request,pk):
+    comment = get_object_or_404(Comment,pk=pk)
+    comment.delete()
+    return redirect('photo:detail', comment.photo.pk)
 
 
 class PhotoLike(View):

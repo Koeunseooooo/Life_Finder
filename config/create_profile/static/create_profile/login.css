@@ -74,6 +74,8 @@
 
     #google_login span {
         padding-left: 60px;
+        display: inline-block;
+        line-height: 60px;
     }
 
     #google_login:hover {
@@ -100,15 +102,14 @@
         list-style: none;
     }
 
-    li {
-
+    li
     /*여기에 스타일 주면 nav바에도 같이 주게 되어서 지움*/
     {
         #line-height: 30px
     ;
-        #
+
     }
-    }
+
 
     #id_username {
         width: 460px;

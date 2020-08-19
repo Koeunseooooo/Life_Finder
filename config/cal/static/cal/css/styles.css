@@ -255,7 +255,7 @@
 #ttt{
     height: 400px;
     overflow: scroll;
-     scrollbar-width: none; /* Firefox */
+    scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
 
@@ -263,7 +263,7 @@
     width: 0;
     height: 0;
 }
-}
+
 
 
 
@@ -278,7 +278,7 @@
     background-color: white;
     border-radius: 1rem;
     font-family: "yg-jalnan",'sans-serif';
-    overflow: scroll;
+    /*overflow: scroll;*/
 
 }
 
@@ -310,7 +310,7 @@
     background-color: #717FFF;
     border-radius: 1rem;
     font-family: "yg-jalnan",'sans-serif';
-    overflow: scroll;
+    /*overflow: scroll;*/
 
 
 }
