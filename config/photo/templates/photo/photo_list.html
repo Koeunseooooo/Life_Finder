@@ -9,41 +9,175 @@
     margin: 0 auto;
     }
 </style>
+
 {% endblock %}
+
 {% block photo %}
 
 <div class="community_content">
+
     {% for object in object_list %}
 
     <div style="width:500px; margin-bottom:20px; border: 1px solid lightgray;">
         <div style="height:200px">
-            {{ object.author }}
+            {{ object.author.nickname }}
             {% if object.image %}
             <img src=" {{ object.image.url }}" style="width: 100%;" alt="...">
             {% endif %}
         </div>
+         <ul class="list-group list-group-flush">
 
-        <ul>
-            <li>
-                <a href="{% url 'photo:like' object.id %}"
-                   class="{%if user in object.like.all %} active {%endif%}">좋아요!</a>
-                {% if object.like.all.count %}
-                <span>{{object.like.all.count}}</span>
-                {% endif %}
-            </li>
-            <li>생성일 : {{ object.created }}</li>
-        </ul>
+             <li class="list-group-item">
+                 <a href="{% url 'photo:like' object.id %}" class="float-left btn-like {%if user in object.like.all %} active {%endif%}">좋아요!</a>
+                 {% if object.like.all.count %}
+                 <span class = "float-left">
+                     {{object.like.all.count}}
+                 </span>
+                 {% endif %}
+             </li>
+             <li class="list-group-item">생성일 : {{ object.created }}</li>
+         </ul>
+
+
         <p> {{ object.text }} </p>
 
         <div style="display: flex;">
-            <button class="button_7"><a href="{% url 'photo:detail' object.id %}">댓글달기</a></button>
+<!--            <button class="button_7"><a href="{% url 'photo:detail' object.id %}">댓글달기</a></button>-->
             {%if object.author == request.user.user_profile %}
             <button class="button_7"><a href="{% url 'photo:update' object.id %}">수정하기</a></button>
-            <button class="button_7"><a href="{% url 'photo:delete' object.id %}">삭제하기</a></button>
             {%endif%}
+
+            <!-- ################ COMMENT ###################-->
+
+
+
+            <!-- ################# COMMENT END ###################-->
         </div>
-    </div>
     {% endfor %}
 </div>
 
 {% endblock %}
+
+
+{% block javascript %}
+
+<script>
+// Create Django Ajax Call
+$("form#addUser").submit(function() {
+    var nameInput = $('input[name="name"]').val().trim();
+    var addressInput = $('input[name="address"]').val().trim();
+    if (nameInput && addressInput) {
+        // Create Ajax Call
+        $.ajax({
+            url: '{% url "crud_ajax_create" %}',
+            data: {
+                'name': nameInput,
+                'address': addressInput,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.user) {
+                  appendToUsrTable(data.user);
+                }
+            }
+        });
+
+    } else {
+        alert("All fields must have a valid value.");
+    }
+    $('form#addUser').trigger("reset");
+    return false;
+});
+
+
+// Delete Django Ajax Call
+function deleteUser(id) {
+  var action = confirm("Are you sure you want to delete this user?");
+  if (action != false) {
+    $.ajax({
+        url: '{% url "crud_ajax_delete" %}',
+        data: {
+            'id': id,
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.deleted) {
+              $("#userTable #user-" + id).remove();
+            }
+        }
+    });
+  }
+}
+
+
+// Create Django Ajax Call
+$("form#updateUser").submit(function() {
+    var idInput = $('input[name="formId"]').val().trim();
+    var nameInput = $('input[name="formName"]').val().trim();
+    var addressInput = $('input[name="formAddress"]').val().trim();
+    if (nameInput && addressInput) {
+        // Create Ajax Call
+        $.ajax({
+            url: '{% url "crud_ajax_update" %}',
+            data: {
+                'id': idInput,
+                'name': nameInput,
+                'address': addressInput,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.user) {
+                  updateToUserTabel(data.user);
+                }
+            }
+        });
+
+    } else {
+        alert("All fields must have a valid value.");
+    }
+    $('form#updateUser').trigger("reset");
+    $('#myModal').modal('hide');
+    return false;
+});
+
+
+// Update Django Ajax Call
+function editUser(id) {
+  if (id) {
+    tr_id = "#user-" + id;
+    name = $(tr_id).find(".userName").text();
+    address = $(tr_id).find(".userAddress").text();
+    $('#form-id').val(id);
+    $('#form-name').val(name);
+    $('#form-address').val(address);
+  }
+}
+
+function appendToUsrTable(user) {
+  $("#userTable > tbody:last-child").append(`
+        <tr id="user-${user.id}">
+            <td class="userName" name="name">${user.name}</td>
+            '<td class="userAddress" name="address">${user.address}</td>
+            '<td align="center">
+                <button class="btn btn-success form-control" onClick="editUser(${user.id})" data-toggle="modal" data-target="#myModal")">EDIT</button>
+            </td>
+            <td align="center">
+                <button class="btn btn-danger form-control" onClick="deleteUser(${user.id})">DELETE</button>
+            </td>
+        </tr>
+    `);
+}
+
+function updateToUserTabel(user){
+    $("#userTable #user-" + user.id).children(".userData").each(function() {
+        var attr = $(this).attr("name");
+        if (attr == "name") {
+          $(this).text(user.name);
+        } else if (attr == "address") {
+          $(this).text(user.address);
+        }
+      });
+}
+</script>
+
+{% endblock javascript %}

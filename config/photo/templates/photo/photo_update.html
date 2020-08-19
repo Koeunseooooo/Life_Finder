@@ -1,10 +1,14 @@
 {% extends 'photo/base.html' %}
+<form action="" method="POST" enctype='multipart/form-data'>
 {% block photo %}
     <div style="width: 500px">
         <form action="" method="POST">
             {% csrf_token %}
             {{form.as_p}}
-            <input type="submit" value="Create">
+            <input type="submit" value="수정완료">
+            <button class="button_7"><a href="{% url 'photo:delete' object.id %}">삭제하기</a></button>
+
+
         </form>
     </div>
 {% endblock %}
