@@ -60,7 +60,7 @@ color: #0B2752;
 }
 
 .button_6{
-       margin-top: 10rem;
+    margin-top: 5rem;
     border: none;
     outline: none;
     background-color: #F1F1F1;
@@ -73,8 +73,31 @@ color: #0B2752;
     margin-right: 12rem;
 }
 
+/*prev_day, next_day버튼*/
+.button_7{
+    border: none;
+    outline: none;
+    background-color: #F1F1F1;
+    border-radius: 1rem;
+    width: 5rem;
+    padding: 5px;
+    height: 2.5rem;
+    text-align: center;
+    line-height: 2rem;
+}
+
+.button_7:hover{
+    background-color: orangered;
+}
+
+.button_date{
+    font-family: "yg-jalnan", 'sans-serif';
+     color: #0B2752;
+}
+
+
 .button_4{
-    margin-top: 10rem;
+    margin-top: 5rem;
     border: none;
     outline: none;
     background-color: #F1F1F1;
@@ -186,9 +209,7 @@ color: #0B2752;
     /*뱃지 크기와 색깔 정하는 아이*/
 }
 
-.date{
 
-}
 .month {
     font-size: 3rem;
     color: #0B2752;
@@ -283,8 +304,16 @@ color: #0B2752;
     border-radius: 1rem;
     margin-top: 1rem;
     font-family: "yg-jalnan",'sans-serif';
-    overflow: scroll;
+    /*overflow: scroll;*/
 
+}
+
+.button_middle{
+        padding: 20px;
+}
+i{
+    /*아이콘 주변을 클릭해도 클릭이 되게 하기 위해 패딩을 줬어요*/
+    padding: 20px;
 }
 .today_list_total .total{
     color: #0B2752;

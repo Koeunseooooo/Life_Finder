@@ -1,8 +1,9 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from create_profile import views
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 app_name = 'create_profile'
 urlpatterns = [
     # path('', views.page, name='page'),

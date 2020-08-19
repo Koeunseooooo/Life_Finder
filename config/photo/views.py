@@ -10,13 +10,21 @@ from django.http import HttpResponseRedirect
 
 from django.contrib import messages
 
+import datetime
+
+
 
 class PhotoList(ListView):
     model = Photo
     template_name_suffix = '_list'
+
     #
     # def get_queryset(self):
-    #     return PhotoList.objects.filter(user=self.request.user)
+    #     queryset = {
+    #         'get_profile' = Photo.objects.all().
+    #         # 'get_profile': Profile.objects.all().filter(user=self.request.user.user_profile)
+    #     }
+    #     return queryset
 
 class PhotoCreate(CreateView):
     model = Photo
@@ -33,9 +41,10 @@ class PhotoCreate(CreateView):
             # form : 모델폼
             form.instance.save()
             return redirect('photo:index')
+
         else:
             # 올바르지 않다면
-            return self.render_to_response({'form': form})
+            return self.render_to_response({'form': form,})
 
 
 
@@ -119,6 +128,7 @@ class PhotoMyList(ListView):
     template_name = 'photo/photo_mylist.html'
 
     def dispatch(self, request, *args, **kwargs):
+
         if not request.user.is_authenticated:  # 로그인확인
             messages.warning(request, '로그인을 먼저하세요')
             return HttpResponseRedirect('/')

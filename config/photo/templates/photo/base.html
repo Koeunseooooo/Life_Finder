@@ -1,13 +1,21 @@
 {% extends 'main/base.html' %}
 {% load static %}
-
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/base.css' %}">
+    {#fontawesome cdn#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+{% endblock %}
+{% block anotherstyle %}
+{% endblock %}
 <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
 <!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
 
 {% block content %}
 <div style="height: 100px; margin: 0 auto;"></div>
+        {% if user.is_authenticated %}
         <button><a href="{% url 'photo:create' %}">글 등록하기</a></button>
         <button><a class="nav-link" href="{% url 'photo:like_list' %}">좋아요한 사진보기</a></button>
+        {% endif %}
 
 <div class='community_content' style="margin-top: 40px;">
     {% if messages %}
