@@ -40,3 +40,18 @@
 .mychart3{
     margin: 0 auto;
 }
+
+
+/*맨 위로 올라가는 버튼 스타일*/
+.button_8{
+    border: none;
+    outline: none;
+    background-color: #F1F1F1;
+    border-radius: 5rem;
+    width: 4rem;
+    height: 3.5rem;
+    text-align: center;
+    line-height: 2rem;
+    float: right;
+}
+

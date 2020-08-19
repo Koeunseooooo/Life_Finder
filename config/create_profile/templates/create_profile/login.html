@@ -134,6 +134,13 @@
         padding: 0;
         font-family: "Noto Sans KR", sans-serif;
     }
+    .forget_password{
+          font-family: "Noto Sans KR", sans-serif;
+        margin-left: 70px;
+        margin-top: 2rem;
+              font-weight: bolder;
+        color: black;
+    }
     </style>
 {% endblock %}
 
@@ -164,6 +171,8 @@
             <div class="google_login">
                 <a href="{% provider_login_url 'google' %}">구글로 로그인하기</a>
             </div>
+            <div class="forget_password"><a href="{% url "password_reset" %}">비밀번호 찾기</a></div>
+
         </div>
     {% endif %}
 {% endblock %}

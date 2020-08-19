@@ -31,11 +31,9 @@ class Event(models.Model):
     def __str__(self):
         return '{}/ {}/ {}'.format(self.id, self.title, self.start_time, self.rating)
 
-    #적용이 안되는 property,,,,
-    # @property
-    # def created_at_korean_time(self):
-    #     korean_timezone = timezone(settings.TIME_ZONE)
-    #     return self.created_at_korean_time(korean_timezone)
+
+
+
 
     # @property
     # def get_html_url(self):

@@ -49,6 +49,12 @@ label{
     padding: 0;
     margin: 0;
 }
+/*label{*/
+/*    line-height: 30px;*/
+/*    display: block;*/
+/*    padding: 0;*/
+/*    margin-left: 2rem;*/
+/*}*/
 
 input[name="title"]{
 

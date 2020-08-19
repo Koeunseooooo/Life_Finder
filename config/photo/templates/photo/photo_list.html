@@ -31,7 +31,7 @@
                     <ul>
                         <li>
                             <a href="{% url 'photo:like' object.id %}"
-                               class="{% if user in object.like.all %} active {% endif %}">좋아요!</a>
+                               class="{% if user in object.like.all %} active {% endif %}"><i class="fas fa-heart"></i></a>
                             {% if object.like.all.count %}
                                 <span>{{ object.like.all.count }}</span>
                             {% endif %}

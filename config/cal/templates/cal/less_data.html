@@ -15,7 +15,7 @@
 
         <p>데이터는 2주일치 기록이 쌓이면 열람할 수 있어요!</p>
         <div id="lessbtn">
-            <h3><a href="{% url 'cal:calendar' %}" class="return">돌아가기</a></h3>
+            <h3><a href="{% url 'cal:calendar' today_date %}" class="return">돌아가기</a></h3>
         </div>
     </div>
 {% endblock %}
