@@ -28,12 +28,12 @@
                 <li>
                     {% if user in object.like.all %}
                         <a href="{% url 'photo:like' object.id %}">
-{#                             사용자가 like 버튼 누르면 보이게 할 색#}
+<!--                             사용자가 like 버튼 누르면 보이게 할 색-->
                             <i style="color: orangered" class="fas fa-heart"></i>
                         </a>
                     {% else %}
                         <a href="{% url 'photo:like' object.id %}">
-{# 사용자가 like 버튼 안 누르면 보이게 할 색#}
+<!--{#                             사용자가 like 버튼 안 누르면 보이게 할 색#}-->
                             <i style="color: cornflowerblue" class="fas fa-heart"></i>
                         </a>
                     {% endif %}
@@ -50,7 +50,7 @@
                 {% endif %}
                 <li>{{ object.title }}</li>
                 <div class="content_text"> {{ object.text|safe }} </div>
-                {# 이 밑에 지우지 말아요#}
+<!--                {# 이 밑에 지우지 말아요#}-->
                 <li>{{ object.created|date:'Y-m-d' }}</li>
 
             </ul>

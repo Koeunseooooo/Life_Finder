@@ -160,7 +160,7 @@ def event(request, event_id=None):
 
 
 def dash(request):
-    queryset = Event.objects.all()
+    # events = Event.objects.all()
     wanted_goal = Profile.objects.all().values().filter(user=request.user)
     goal_count = Profile.objects.all().filter(user=request.user).aggregate(Sum('goal_count')).values()
 
@@ -183,6 +183,9 @@ def dash(request):
     present_month_total = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__gte=present_month).aggregate(Sum('rating')).values()
     for real_present_month_total in present_month_total:
         real_present_month_total
+    if real_present_month_total==None:
+        real_present_month_total=0
+
     present_month_total_count = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__gte=present_month).count()
     present_month_meanvalue = real_present_month_total / (present_month_total_count + 1e-7 )
     present_month_meanvalue=round(present_month_meanvalue,2)
@@ -1083,4 +1086,3 @@ def dash(request):
 
 def dash_detail(request):
     return render(request, 'cal/dash_detail.html')
-

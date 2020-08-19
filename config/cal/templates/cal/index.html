@@ -38,8 +38,6 @@
                 data: {
                     labels: ["목표뱃지", "현재뱃지"],
                     datasets: [{
-                        {#label: 1,#}
-                        {#라벨 안쓰고 싶은데... ?#}
                         data: [{{ value.goal_count }}, {{ing}}],
                         backgroundColor: [
                             'rgba(113, 127, 255, 0.6)',
@@ -95,10 +93,9 @@
             type: 'bar',
             data: {
                 labels: [{{ mychart_month }}+'/'+{{mychart_six_days_ago}},{{ mychart_month }}+'/'+{{ mychart_five_days_ago}} , {{mychart_month }}+'/'+{{mychart_four_days_ago}}, {{ mychart_month }}+'/'+{{mychart_three_days_ago}}, {{ mychart_month }}+'/'+{{mychart_two_days_ago}}, {{ mychart_month }}+'/'+{{mychart_one_days_ago}}, {{ mychart_month }}+'/'+{{mychart_day}}],
-                {# labels 날짜 좀 바뀌어라 제발 #}
+
                 datasets: [{
-                    {#label: 1,#}
-                    {#라벨 안쓰고 싶은데... ?#}
+
                     data: [{{one_total}}, {{two_total}}, {{three_total}}, {{ four_total }}, {{five_total}}, {{six_total}}, {{seven_total}}],
                     backgroundColor: [
                         'rgba(113, 127, 255, 0.2)',
@@ -138,14 +135,14 @@
         });
     </script>
    </div>
-   
+
     <div id="grp03">
         <h1>🥳     지난 7일간 최고의 순간!     🥳</h1>
-        <div>{{mychart_month }}/{{ real_best1_start_time_day }}</div>
+        <div id="grp03_1">{{mychart_month }}/{{ real_best1_start_time_day }}</div>
         <div>{{ select_event_str }}</div>
     <br/>
     <br/>
-     
+
 
 
 
@@ -291,7 +288,7 @@
                 labels: ["뱃지 1개 기록들", "뱃지 2개 기록들", "뱃지 3개 기록들", "뱃지 4개 기록들", "뱃지 5개 기록들"],
                 datasets: [{
                     label: "안녕",
-                    {#라벨 안쓰고 싶은데... ?#}
+
                     data: [{{one_count}}, {{two_count}}, {{three_count}}, {{ four_count }}, {{five_count}}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -345,7 +342,7 @@
                 labels: ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
                 datasets: [{
                     label: "안녕",
-                    {#라벨 안쓰고 싶은데... ?#}
+
                     data: [{{mon}}, {{tue}}, {{wed}}, 10, {{fri}}, {{sat}}, {{sun}}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -389,13 +386,12 @@
         </div>
 
     <div id="grp07">
-{#    <h5 style="text-align: center"> 당신은 {{ ing }}에 가장 오롯히 라이프를 즐기고 계시군요! </h5>#}
-{#   {{ ing }} 대신 view에 넣을 변수 context에 넣어서 나중에 확인하기  #}
+
 
     <h1>★월별 라이프 비교★ </h1>
     <br/>
 
-    <div class="mychart5">
+    <div class="mychart5" style="width:1000px">
         <canvas id="myChart5"></canvas>
     </div>
 
@@ -407,7 +403,6 @@
                 labels: ["1일", "2일", "3일", "4일", "5일", "6일", "7일","8일", "9일", "10일", "11일", "12일", "13일", "14일","15일", "16일", "17일", "18일", "19일", "20일", "21일","22일", "23일", "24일", "25일", "26일", "27일", "28일","29일", "30일"],
                 datasets: [{
                     label: "이전달",
-                    {#라벨 안쓰고 싶은데... ?#}
                     data: [{{real_pre_thirty_days_ago_rating}},{{real_pre_twentynine_days_ago_rating}},{{real_pre_twentyeight_days_ago_rating}},{{real_pre_twentyseven_days_ago_rating}},{{real_pre_twentysix_days_ago_rating}},{{real_pre_twentyfive_days_ago_rating}},{{real_pre_twentyfour_days_ago_rating}},{{real_pre_twentythree_days_ago_rating}},{{real_pre_twentytwo_days_ago_rating}},{{real_pre_twentyone_days_ago_rating}},{{real_pre_twenty_days_ago_rating}},{{real_pre_nineteen_days_ago_rating}},{{real_pre_eighteen_days_ago_rating}},{{real_pre_seventeen_days_ago_rating}},{{real_pre_sixteen_days_ago_rating}},{{real_pre_fifteen_days_ago_rating}},{{real_pre_fourteen_days_ago_rating}},{{real_pre_thirteen_days_ago_rating}},{{real_pre_twelve_days_ago_rating}},{{real_pre_eleven_days_ago_rating}},{{real_pre_ten_days_ago_rating}},{{real_pre_nine_days_ago_rating}},{{real_pre_eight_days_ago_rating}},{{real_pre_seven_days_ago_rating}},{{real_pre_six_days_ago_rating}},{{real_pre_five_days_ago_rating}},{{real_pre_four_days_ago_rating}},{{real_pre_three_days_ago_rating}},{{real_pre_two_days_ago_rating}},{{real_pre_one_days_ago_rating}}],
                     borderColor: [
                         'rgba(255, 206, 86, 1)',
@@ -454,8 +449,6 @@
 
         </div>
 
-{#추후 메세지도 넣어질 예정#}
-
 
     {%  if pre_month_end_total_count < 10 %}
         <div> 저번달 데이터가 너무 부족해서 메세지(?) or 조언(?) 을 띄울 수 없습니다</div>
@@ -474,11 +467,8 @@
             {% endif %}
         {% endif %}
     {% endif %}
-  
+
 
     </div>
     </div>
 {% endblock %}
-
-
-
