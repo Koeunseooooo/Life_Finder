@@ -162,146 +162,467 @@ def event(request, event_id=None):
 def dash(request):
     queryset = Event.objects.all()
     wanted_goal = Profile.objects.all().values().filter(user=request.user)
+    goal_count = Profile.objects.all().filter(user=request.user).aggregate(Sum('goal_count')).values()
+
+    for real_goal_count in goal_count:
+        real_goal_count
+
+    half=real_goal_count/2
+
+
+    today = datetime.today()
+
+    mychart_day = today.strftime("%d")
+    mychart_month = today.strftime("%m")
 
     # today=datetime.today().date -> 나중에 이거 형식변환 및 스트링 형변환해서 첫번째 그래프에 낳으면 될듯.
-    today=datetime.today()
 
-    # today_date 변수를 넘겨주기
-    today_date = today.isoformat()[:10]
+    present_month=today- timedelta(days=30)
+    pre_month_end= today - timedelta(days=60)
 
-    year = today.strftime("%Y")
+    present_month_total = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__gte=present_month).aggregate(Sum('rating')).values()
+    for real_present_month_total in present_month_total:
+        real_present_month_total
+    present_month_total_count = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__gte=present_month).count()
+    present_month_meanvalue = real_present_month_total / (present_month_total_count + 1e-7 )
+    present_month_meanvalue=round(present_month_meanvalue,2)
+
+
+
+    pre_month_end_total = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__gte=pre_month_end)
+    pre_month_end_total_2= pre_month_end_total.filter(start_time__lte=present_month).aggregate(Sum('rating')).values()
+
+    for real_pre_month_end_total in pre_month_end_total_2 :
+        real_pre_month_end_total
+    pre_month_end_total_count = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__gte=pre_month_end).filter(start_time__lte=present_month).count()
+    pre_month_end_meanvalue = real_pre_month_end_total / (pre_month_end_total_count + 1e-7)
+    pre_month_end_meanvalue = round(pre_month_end_meanvalue, 2)
 
     one_days_ago = today - timedelta(days=1)
     one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=one_days_ago).aggregate(Sum('rating')).values()
-
+    mychart_one_days_ago = one_days_ago.strftime("%d")
+    for real_one_days_ago_rating in one_days_ago_rating:
+        real_one_days_ago_rating
+    if (real_one_days_ago_rating == None):
+        real_one_days_ago_rating = 0
 
     two_days_ago = one_days_ago - timedelta(days=1)
     two_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=two_days_ago).aggregate(Sum('rating')).values()
+    mychart_two_days_ago = two_days_ago.strftime("%d")
+    for real_two_days_ago_rating in two_days_ago_rating:
+        real_two_days_ago_rating
+    if (real_two_days_ago_rating == None):
+        real_two_days_ago_rating = 0
 
     three_days_ago = two_days_ago - timedelta(days=1)
     three_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=three_days_ago).aggregate(Sum('rating')).values()
+    mychart_three_days_ago = three_days_ago.strftime("%d")
+    for real_three_days_ago_rating in three_days_ago_rating:
+        real_three_days_ago_rating
+    if (real_three_days_ago_rating == None):
+        real_three_days_ago_rating = 0
 
     four_days_ago = three_days_ago - timedelta(days=1)
     four_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=four_days_ago).aggregate(Sum('rating')).values()
+    mychart_four_days_ago = four_days_ago.strftime("%d")
+    for real_four_days_ago_rating in four_days_ago_rating:
+        real_four_days_ago_rating
+    if (real_four_days_ago_rating == None):
+        real_four_days_ago_rating = 0
 
     five_days_ago = four_days_ago - timedelta(days=1)
     five_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=five_days_ago).aggregate(Sum('rating')).values()
+    mychart_five_days_ago = five_days_ago.strftime("%d")
+    for real_five_days_ago_rating in five_days_ago_rating:
+        real_five_days_ago_rating
+    if (real_five_days_ago_rating == None):
+        real_five_days_ago_rating = 0
 
     six_days_ago = five_days_ago - timedelta(days=1)
     six_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=six_days_ago).aggregate(Sum('rating')).values()
+    mychart_six_days_ago = six_days_ago.strftime("%d")
+    for real_six_days_ago_rating in six_days_ago_rating:
+        real_six_days_ago_rating
+    if (real_six_days_ago_rating == None):
+        real_six_days_ago_rating = 0
 
     seven_days_ago = six_days_ago - timedelta(days=1)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    seven_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=seven_days_ago).aggregate(Sum('rating')).values()
+    for real_seven_days_ago_rating in seven_days_ago_rating:
+        real_seven_days_ago_rating
+    if (real_seven_days_ago_rating == None):
+        real_seven_days_ago_rating = 0
 
     eight_days_ago = seven_days_ago - timedelta(days=1)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    eight_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=eight_days_ago).aggregate(Sum('rating')).values()
+    for real_eight_days_ago_rating in eight_days_ago_rating:
+        real_eight_days_ago_rating
+    if (real_eight_days_ago_rating == None):
+        real_eight_days_ago_rating = 0
 
     nine_days_ago = eight_days_ago - timedelta(days=1)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    nine_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=nine_days_ago).aggregate(Sum('rating')).values()
+    for real_nine_days_ago_rating in nine_days_ago_rating:
+        real_nine_days_ago_rating
+    if (real_nine_days_ago_rating == None):
+        real_nine_days_ago_rating = 0
 
     ten_days_ago = nine_days_ago - timedelta(days=1)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    ten_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=ten_days_ago).aggregate(Sum('rating')).values()
+    for real_ten_days_ago_rating in ten_days_ago_rating:
+        real_ten_days_ago_rating
+    if (real_ten_days_ago_rating == None):
+        real_ten_days_ago_rating = 0
 
-    eleven_days_ago = datetime.today() - timedelta(days=11)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    eleven_days_ago = ten_days_ago - timedelta(days=11)
+    eleven_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=eleven_days_ago).aggregate(Sum('rating')).values()
+    for real_eleven_days_ago_rating in eleven_days_ago_rating:
+        real_eleven_days_ago_rating
+    if (real_eleven_days_ago_rating == None):
+        real_eleven_days_ago_rating = 0
 
-    twelve_days_ago = datetime.today() - timedelta(days=12)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    twelve_days_ago = eleven_days_ago - timedelta(days=12)
+    twelve_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twelve_days_ago).aggregate(Sum('rating')).values()
+    for real_twelve_days_ago_rating in twelve_days_ago_rating:
+        real_twelve_days_ago_rating
+    if (real_twelve_days_ago_rating == None):
+        real_twelve_days_ago_rating = 0
 
-    thirteen_days_ago = datetime.today() - timedelta(days=13)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    thirteen_days_ago = twelve_days_ago - timedelta(days=13)
+    thirteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=thirteen_days_ago).aggregate(Sum('rating')).values()
+    for real_thirteen_days_ago_rating in thirteen_days_ago_rating:
+        real_thirteen_days_ago_rating
+    if (real_thirteen_days_ago_rating == None):
+        real_thirteen_days_ago_rating = 0
 
-    fourteen_days_ago = datetime.today() - timedelta(days=14)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    fourteen_days_ago = thirteen_days_ago - timedelta(days=14)
+    fourteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=fourteen_days_ago).aggregate(Sum('rating')).values()
+    for real_fourteen_days_ago_rating in fourteen_days_ago_rating:
+        real_fourteen_days_ago_rating
+    if (real_fourteen_days_ago_rating == None):
+        real_fourteen_days_ago_rating = 0
 
-    fifteen_days_ago = datetime.today() - timedelta(days=15)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    fifteen_days_ago = fourteen_days_ago - timedelta(days=15)
+    fifteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=fifteen_days_ago).aggregate(Sum('rating')).values()
+    for real_fifteen_days_ago_rating in fifteen_days_ago_rating:
+        real_fifteen_days_ago_rating
+    if (real_fifteen_days_ago_rating == None):
+        real_fifteen_days_ago_rating = 0
 
-    sixteen_days_ago = datetime.today() - timedelta(days=16)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    sixteen_days_ago = fifteen_days_ago - timedelta(days=16)
+    sixteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=sixteen_days_ago).aggregate(Sum('rating')).values()
+    for real_sixteen_days_ago_rating in sixteen_days_ago_rating:
+        real_sixteen_days_ago_rating
+    if (real_sixteen_days_ago_rating == None):
+        real_sixteen_days_ago_rating = 0
 
-    seventeen_days_ago = datetime.today() - timedelta(days=17)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    seventeen_days_ago = sixteen_days_ago - timedelta(days=17)
+    seventeen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=seventeen_days_ago).aggregate(Sum('rating')).values()
+    for real_seventeen_days_ago_rating in seventeen_days_ago_rating:
+        real_seventeen_days_ago_rating
+    if (real_seventeen_days_ago_rating == None):
+        real_seventeen_days_ago_rating = 0
 
-    eighteen_days_ago = datetime.today() - timedelta(days=18)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    eighteen_days_ago = seventeen_days_ago - timedelta(days=18)
+    eighteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=eighteen_days_ago).aggregate(Sum('rating')).values()
+    for real_eighteen_days_ago_rating in eighteen_days_ago_rating:
+        real_eighteen_days_ago_rating
+    if (real_eighteen_days_ago_rating == None):
+        real_eighteen_days_ago_rating = 0
 
-    nineteen_ago = datetime.today() - timedelta(days=19)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    nineteen_days_ago = eighteen_days_ago - timedelta(days=19)
+    nineteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=nineteen_days_ago).aggregate(Sum('rating')).values()
+    for real_nineteen_days_ago_rating in nineteen_days_ago_rating:
+        real_nineteen_days_ago_rating
+    if (real_nineteen_days_ago_rating == None):
+        real_nineteen_days_ago_rating = 0
 
-    twenty_days_ago = datetime.today() - timedelta(days=20)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    twenty_days_ago = nineteen_days_ago - timedelta(days=20)
+    twenty_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twenty_days_ago).aggregate(Sum('rating')).values()
+    for real_twenty_days_ago_rating in twenty_days_ago_rating:
+        real_twenty_days_ago_rating
+    if (real_twenty_days_ago_rating == None):
+        real_twenty_days_ago_rating = 0
 
-    twentyone_days_ago = datetime.today() - timedelta(days=21)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    twentyone_days_ago = twenty_days_ago - timedelta(days=21)
+    twentyone_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twentyone_days_ago).aggregate(Sum('rating')).values()
+    for real_twentyone_days_ago_rating in twentyone_days_ago_rating:
+        real_twentyone_days_ago_rating
+    if (real_twentyone_days_ago_rating == None):
+        real_twentyone_days_ago_rating = 0
 
-    twentytwo_days_ago = datetime.today() - timedelta(days=22)
-    one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(
-        start_time__date=one_days_ago).aggregate(Sum('rating')).values()
+    twentytwo_days_ago = twentyone_days_ago - timedelta(days=22)
+    twentytwo_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twentytwo_days_ago).aggregate(Sum('rating')).values()
+    for real_twentytwo_days_ago_rating in twentytwo_days_ago_rating:
+        real_twentytwo_days_ago_rating
+    if (real_twentytwo_days_ago_rating == None):
+        real_twentytwo_days_ago_rating = 0
 
-    twentythree_days_ago = datetime.today() - timedelta(days=23)
-    twentyfour_days_ago = datetime.today() - timedelta(days=24)
-    twentyfive_days_ago = datetime.today() - timedelta(days=25)
-    twentysix_days_ago = datetime.today() - timedelta(days=26)
-    twentyseven_days_ago = datetime.today() - timedelta(days=27)
-    twentyeight_days_ago = datetime.today() - timedelta(days=28)
-    twentynine_days_ago = datetime.today() - timedelta(days=29)
-    thirty_daytwenys_ago = datetime.today() - timedelta(days=30)
+    twentythree_days_ago = twentytwo_days_ago - timedelta(days=23)
+    twentythree_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twentythree_days_ago).aggregate(Sum('rating')).values()
+    for real_twentythree_days_ago_rating in twentythree_days_ago_rating:
+        real_twentythree_days_ago_rating
+    if (real_twentythree_days_ago_rating == None):
+        real_twentythree_days_ago_rating = 0
+
+    twentyfour_days_ago = twentythree_days_ago - timedelta(days=24)
+    twentyfour_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twentyfour_days_ago).aggregate(Sum('rating')).values()
+    for real_twentyfour_days_ago_rating in twentyfour_days_ago_rating:
+        real_twentyfour_days_ago_rating
+    if (real_twentyfour_days_ago_rating == None):
+        real_twentyfour_days_ago_rating = 0
+
+    twentyfive_days_ago = twentyfour_days_ago - timedelta(days=25)
+    twentyfive_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twentyfive_days_ago).aggregate(Sum('rating')).values()
+    for real_twentyfive_days_ago_rating in twentyfive_days_ago_rating:
+        real_twentyfive_days_ago_rating
+    if (real_twentyfive_days_ago_rating == None):
+        real_twentyfive_days_ago_rating = 0
+
+    twentysix_days_ago = twentyfive_days_ago - timedelta(days=26)
+    twentysix_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twentysix_days_ago).aggregate(Sum('rating')).values()
+    for real_twentysix_days_ago_rating in twentysix_days_ago_rating:
+        real_twentysix_days_ago_rating
+    if (real_twentysix_days_ago_rating == None):
+        real_twentysix_days_ago_rating = 0
+
+    twentyseven_days_ago = twentysix_days_ago - timedelta(days=27)
+    twentyseven_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twentyseven_days_ago).aggregate(Sum('rating')).values()
+    for real_twentyseven_days_ago_rating in twentyseven_days_ago_rating:
+        real_twentyseven_days_ago_rating
+    if (real_twentyseven_days_ago_rating == None):
+        real_twentyseven_days_ago_rating = 0
+
+    twentyeight_days_ago = twentyseven_days_ago - timedelta(days=28)
+    twentyeight_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twentyeight_days_ago).aggregate(Sum('rating')).values()
+    for real_twentyeight_days_ago_rating in twentyeight_days_ago_rating:
+        real_twentyeight_days_ago_rating
+    if (real_twentyeight_days_ago_rating == None):
+        real_twentyeight_days_ago_rating = 0
+
+    twentynine_days_ago = twentyeight_days_ago - timedelta(days=29)
+    twentynine_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=twentynine_days_ago).aggregate(Sum('rating')).values()
+    for real_twentynine_days_ago_rating in twentynine_days_ago_rating:
+        real_twentynine_days_ago_rating
+    if (real_twentynine_days_ago_rating == None):
+        real_twentynine_days_ago_rating = 0
+
+    thirty_days_ago = twentynine_days_ago - timedelta(days=30)
+    thirty_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=thirty_days_ago).aggregate(Sum('rating')).values()
+    for real_thirty_days_ago_rating in thirty_days_ago_rating:
+        real_thirty_days_ago_rating
+    if (real_thirty_days_ago_rating == None):
+        real_thirty_days_ago_rating = 0
 
     pre_one_days_ago = datetime.today() - timedelta(days=31)
+    pre_one_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_one_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_one_days_ago_rating in pre_one_days_ago_rating:
+        real_pre_one_days_ago_rating
+    if(real_pre_one_days_ago_rating==None):
+        real_pre_one_days_ago_rating=0
+
     pre_two_days_ago = datetime.today() - timedelta(days=32)
+    pre_two_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_two_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_two_days_ago_rating in pre_two_days_ago_rating:
+        real_pre_two_days_ago_rating
+    if (real_pre_two_days_ago_rating == None):
+        real_pre_two_days_ago_rating = 0
+
     pre_three_days_ago = datetime.today() - timedelta(days=33)
+    pre_three_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_three_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_three_days_ago_rating in pre_three_days_ago_rating:
+        real_pre_three_days_ago_rating
+    if (real_pre_three_days_ago_rating == None):
+        real_pre_three_days_ago_rating = 0
+
     pre_four_days_ago = datetime.today() - timedelta(days=34)
+    pre_four_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_four_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_four_days_ago_rating in pre_four_days_ago_rating:
+        real_pre_four_days_ago_rating
+    if (real_pre_four_days_ago_rating == None):
+        real_pre_four_days_ago_rating = 0
+
     pre_five_days_ago = datetime.today() - timedelta(days=35)
+    pre_five_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_five_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_five_days_ago_rating in pre_five_days_ago_rating:
+        real_pre_five_days_ago_rating
+    if (real_pre_five_days_ago_rating == None):
+        real_pre_five_days_ago_rating = 0
+
     pre_six_days_ago = datetime.today() - timedelta(days=36)
+    pre_six_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_six_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_six_days_ago_rating in pre_six_days_ago_rating:
+        real_pre_six_days_ago_rating
+    if (real_pre_six_days_ago_rating == None):
+        real_pre_six_days_ago_rating = 0
+
     pre_seven_days_ago = datetime.today() - timedelta(days=37)
+    pre_seven_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_seven_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_seven_days_ago_rating in pre_seven_days_ago_rating:
+        real_pre_seven_days_ago_rating
+    if (real_pre_seven_days_ago_rating == None):
+        real_pre_seven_days_ago_rating = 0
+
     pre_eight_days_ago = datetime.today() - timedelta(days=38)
+    pre_eight_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_eight_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_eight_days_ago_rating in pre_eight_days_ago_rating:
+        real_pre_eight_days_ago_rating
+    if (real_pre_eight_days_ago_rating == None):
+        real_pre_eight_days_ago_rating = 0
+
     pre_nine_days_ago = datetime.today() - timedelta(days=39)
+    pre_nine_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_nine_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_nine_days_ago_rating in pre_nine_days_ago_rating:
+        real_pre_nine_days_ago_rating
+    if (real_pre_nine_days_ago_rating == None):
+        real_pre_nine_days_ago_rating = 0
+
     pre_ten_days_ago = datetime.today() - timedelta(days=40)
+    pre_ten_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_ten_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_ten_days_ago_rating in pre_ten_days_ago_rating:
+        real_pre_ten_days_ago_rating
+    if (real_pre_ten_days_ago_rating == None):
+        real_pre_ten_days_ago_rating = 0
 
     pre_eleven_days_ago = datetime.today() - timedelta(days=41)
+    pre_eleven_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_eleven_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_eleven_days_ago_rating in pre_eleven_days_ago_rating:
+        real_pre_eleven_days_ago_rating
+    if (real_pre_eleven_days_ago_rating == None):
+        real_pre_eleven_days_ago_rating = 0
+
     pre_twelve_days_ago = datetime.today() - timedelta(days=42)
+    pre_twelve_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twelve_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twelve_days_ago_rating in pre_twelve_days_ago_rating:
+        real_pre_twelve_days_ago_rating
+    if (real_pre_twelve_days_ago_rating == None):
+        real_pre_twelve_days_ago_rating = 0
+
     pre_thirteen_days_ago = datetime.today() - timedelta(days=43)
+    pre_thirteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_thirteen_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_thirteen_days_ago_rating in pre_thirteen_days_ago_rating:
+        real_pre_thirteen_days_ago_rating
+    if (real_pre_thirteen_days_ago_rating == None):
+        real_pre_thirteen_days_ago_rating = 0
+
     pre_fourteen_days_ago = datetime.today() - timedelta(days=44)
+    pre_fourteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_fourteen_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_fourteen_days_ago_rating in pre_fourteen_days_ago_rating:
+        real_pre_fourteen_days_ago_rating
+    if (real_pre_fourteen_days_ago_rating == None):
+        real_pre_fourteen_days_ago_rating = 0
+
     pre_fifteen_days_ago = datetime.today() - timedelta(days=45)
+    pre_fifteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_fifteen_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_fifteen_days_ago_rating in pre_fifteen_days_ago_rating:
+        real_pre_fifteen_days_ago_rating
+    if (real_pre_fifteen_days_ago_rating == None):
+        real_pre_fifteen_days_ago_rating = 0
+
     pre_sixteen_days_ago = datetime.today() - timedelta(days=46)
+    pre_sixteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_sixteen_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_sixteen_days_ago_rating in pre_sixteen_days_ago_rating:
+        real_pre_sixteen_days_ago_rating
+    if (real_pre_sixteen_days_ago_rating == None):
+        real_pre_sixteen_days_ago_rating = 0
+
     pre_seventeen_days_ago = datetime.today() - timedelta(days=47)
+    pre_seventeen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_seventeen_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_seventeen_days_ago_rating in pre_seventeen_days_ago_rating:
+        real_pre_seventeen_days_ago_rating
+    if (real_pre_seventeen_days_ago_rating == None):
+        real_pre_seventeen_days_ago_rating = 0
+
     pre_eighteen_days_ago = datetime.today() - timedelta(days=48)
+    pre_eighteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_eighteen_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_eighteen_days_ago_rating in pre_eighteen_days_ago_rating:
+        real_pre_eighteen_days_ago_rating
+    if (real_pre_eighteen_days_ago_rating == None):
+        real_pre_eighteen_days_ago_rating = 0
+
     pre_nineteen_ago = datetime.today() - timedelta(days=49)
+    pre_nineteen_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_nine_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_nineteen_days_ago_rating in pre_nineteen_days_ago_rating:
+        real_pre_nineteen_days_ago_rating
+    if (real_pre_nineteen_days_ago_rating == None):
+        real_pre_nineteen_days_ago_rating = 0
+
     pre_twenty_days_ago = datetime.today() - timedelta(days=50)
+    pre_twenty_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twenty_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twenty_days_ago_rating in pre_twenty_days_ago_rating:
+        real_pre_twenty_days_ago_rating
+    if (real_pre_twenty_days_ago_rating == None):
+        real_pre_twenty_days_ago_rating = 0
 
     pre_twentyone_days_ago = datetime.today() - timedelta(days=51)
+    pre_twentyone_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twentyone_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twentyone_days_ago_rating in pre_twentyone_days_ago_rating:
+        real_pre_twentyone_days_ago_rating
+    if (real_pre_twentyone_days_ago_rating == None):
+        real_pre_twentyone_days_ago_rating = 0
+
     pre_twentytwo_days_ago = datetime.today() - timedelta(days=52)
+    pre_twentytwo_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twentytwo_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twentytwo_days_ago_rating in pre_twentytwo_days_ago_rating:
+        real_pre_twentytwo_days_ago_rating
+    if (real_pre_twentytwo_days_ago_rating == None):
+        real_pre_twentytwo_days_ago_rating = 0
+
     pre_twentythree_days_ago = datetime.today() - timedelta(days=53)
+    pre_twentythree_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twentythree_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twentythree_days_ago_rating in pre_twentythree_days_ago_rating:
+        real_pre_twentythree_days_ago_rating
+    if (real_pre_twentythree_days_ago_rating == None):
+        real_pre_twentythree_days_ago_rating = 0
+
     pre_twentyfour_days_ago = datetime.today() - timedelta(days=54)
+    pre_twentyfour_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twentyfour_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twentyfour_days_ago_rating in pre_twentyfour_days_ago_rating:
+        real_pre_twentyfour_days_ago_rating
+    if (real_pre_twentyfour_days_ago_rating == None):
+        real_pre_twentyfour_days_ago_rating = 0
+
     pre_twentyfive_days_ago = datetime.today() - timedelta(days=55)
+    pre_twentyfive_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twentyfive_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twentyfive_days_ago_rating in pre_twentyfive_days_ago_rating:
+        real_pre_twentyfive_days_ago_rating
+    if (real_pre_twentyfive_days_ago_rating == None):
+        real_pre_twentyfive_days_ago_rating = 0
+
     pre_twentysix_days_ago = datetime.today() - timedelta(days=56)
+    pre_twentysix_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twentysix_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twentysix_days_ago_rating in pre_twentysix_days_ago_rating:
+        real_pre_twentysix_days_ago_rating
+    if (real_pre_twentysix_days_ago_rating == None):
+        real_pre_twentysix_days_ago_rating = 0
+
     pre_twentyseven_days_ago = datetime.today() - timedelta(days=57)
+    pre_twentyseven_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twentyseven_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twentyseven_days_ago_rating in pre_twentyseven_days_ago_rating:
+        real_pre_twentyseven_days_ago_rating
+    if (real_pre_twentyseven_days_ago_rating == None):
+        real_pre_twentyseven_days_ago_rating = 0
+
     pre_twentyeight_days_ago = datetime.today() - timedelta(days=58)
+    pre_twentyeight_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twentyeight_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twentyeight_days_ago_rating in pre_twentyeight_days_ago_rating:
+        real_pre_twentyeight_days_ago_rating
+    if (real_pre_twentyeight_days_ago_rating == None):
+        real_pre_twentyeight_days_ago_rating = 0
+
     pre_twentynine_days_ago = datetime.today() - timedelta(days=59)
-    pre_thirty_daytwenys_ago = datetime.today() - timedelta(days=60)
+    pre_twentynine_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_twentynine_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_twentynine_days_ago_rating in pre_twentynine_days_ago_rating:
+        real_pre_twentynine_days_ago_rating
+    if (real_pre_twentynine_days_ago_rating == None):
+        real_pre_twentynine_days_ago_rating = 0
 
-
-
-
-
-
-
+    pre_thirty_days_ago = datetime.today() - timedelta(days=60)
+    pre_thirty_days_ago_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(start_time__date=pre_thirty_days_ago).aggregate(Sum('rating')).values()
+    for real_pre_thirty_days_ago_rating in pre_thirty_days_ago_rating:
+        real_pre_thirty_days_ago_rating
+    if (real_pre_thirty_days_ago_rating == None):
+        real_pre_thirty_days_ago_rating = 0
 
     #현재를 기준으로 한달 라이프뱃지들을 가져오는 쿼리문
     one_month_ago = datetime.today() - timedelta(days=30)
@@ -452,6 +773,7 @@ def dash(request):
     seven=0
     #one~six는 0에서 6의 값이 랜덤하게 차곡차곡 들어간다.
 
+
     one_total = 0
     for one_select_event in one_select_events:
         one_total += one_select_event.rating
@@ -514,72 +836,75 @@ def dash(request):
     sat=list[5]
     sun=list[6]
 
-#best1(2번째 항목)를 위해 list 생성 및 for문 돌려서 best 1에 해당하는 날짜랑 event_title(best1한정) 값 불러오기
-    # 아직 하지 못한것 : best1 rating값이 best2와 같을땐? 두개를 못 띄우는 상황임.
+    #best1(2번째 항목)를 위해 list 생성 및 for문 돌려서 best 1에 해당하는 날짜랑 event_title(best1한정) 값 불러오기
+    #아직 하지 못한것 : best1 rating값이 best2와 같을땐? 두개를 못 띄우는 상황임.
     third_graphs = [one_total, two_total, three_total, four_total, five_total, six_total, seven_total]
     third_graphs.sort(reverse=True)
     best1 = third_graphs[0]
 
-    select_event_str = []
-    best1_start_time = ''
+    select_event_str_list = []
+
+    best1_start_time_one = []
+    best1_start_time_two = []
+    best1_start_time_three = []
+    best1_start_time_four = []
+    best1_start_time_five = []
+    best1_start_time_six = []
+    best1_start_time_seven = []
+
+
+
+    real_best1_start_time = []
 
     if best1==one_total :
         for one_select_event in one_select_events:
-            select_event_str.append(one_select_event.title)
-            # one_best1_str=' '.join(select_event_str)
-            # 각기 변수명 각기 다르게 지정해야 할 듯
-            best1_start_time = one_select_event.start_time
-
-            # one_best1_start_time = best1_start_time
-            # 여기도 똑같아
+            select_event_str_list.append(one_select_event.title)
+            best1_start_time_one.append(one_select_event.start_time.strftime("%d"))
+        real_best1_start_time.append(best1_start_time_one[0])
 
     if best1 == two_total:
         for two_select_event in two_select_events:
-            select_event_str.append(two_select_event.title)
-            # two_best1_str = ' '.join(select_event_str)
-            best1_start_time = two_select_event.start_time
-            # two_best1_start_time = best1_start_time
+            select_event_str_list.append(two_select_event.title)
+            best1_start_time_two.append(two_select_event.start_time.strftime("%d"))
+        real_best1_start_time.append(best1_start_time_two[0])
 
 
     if best1 == three_total:
         for three_select_event in three_select_events:
-            select_event_str.append(three_select_event.title)
-            # three_best1_str = ' '.join(select_event_str)
-            best1_start_time = three_select_event.start_time
-            # three_best1_start_time = best1_start_time
+            select_event_str_list.append(three_select_event.title)
+            best1_start_time_three.append(three_select_event.start_time.strftime("%d"))
+        real_best1_start_time.append(best1_start_time_three[0])
+
 
     if best1 == four_total:
         for four_select_event in four_select_events:
-            select_event_str.append(four_select_event.title)
-            # four_best1_str = ' '.join(select_event_str)
-            best1_start_time = four_select_event.start_time
-            # four_best1_start_time = best1_start_time
+            select_event_str_list.append(four_select_event.title)
+            best1_start_time_four.append(four_select_event.start_time.strftime("%d"))
+        real_best1_start_time.append(best1_start_time_four[0])
 
     if best1 == five_total:
         for five_select_event in five_select_events:
-            select_event_str.append(five_select_event.title)
-            # five_best1_str = ' '.join(select_event_str)
-            best1_start_time = five_select_event.start_time
-            # five_best1_start_time = best1_start_time
-
+            select_event_str_list.append(five_select_event.title)
+            best1_start_time_five.append(five_select_event.start_time.strftime("%d"))
+        real_best1_start_time.append(best1_start_time_five[0])
 
     if best1 == six_total:
         for six_select_event in six_select_events:
-            select_event_str.append(six_select_event.title)
-            # six_best1_str = ' '.join(select_event_str)
-            best1_start_time = six_select_event.start_time
-            # six_best1_start_time = best1_start_time
+            select_event_str_list.append(six_select_event.title)
+            best1_start_time_six.append(six_select_event.start_time.strftime("%d"))
+        real_best1_start_time.append(best1_start_time_six[0])
 
     if best1 == seven_total:
         for seven_select_event in seven_select_events:
-            select_event_str.append(seven_select_event.title)
-            # seven_best1_str = ' '.join(select_event_str)
-            best1_start_time = seven_select_event.start_time
-            # seven_best1_start_time = best1_start_time
-            best1_start_time = best1_start_time.date
+            select_event_str_list.append(seven_select_event.title)
+            best1_start_time_seven.append(seven_select_event.start_time.strftime("%d"))
+        real_best1_start_time.append(best1_start_time_seven[0])
+
+    select_event_str = " ".join(select_event_str_list)
+    real_best1_start_time_day = " ".join(real_best1_start_time)
 
 
-    # graph3를 위한 파이썬 문법~
+
     five_count=0
     four_count=0
     three_count=0
@@ -602,9 +927,6 @@ def dash(request):
         if(event.rating == 1):
             one_count+=1
 
-    # queryset = {
-    #     'wanted_goal': Profile.objects.all().values().filter(user=request.user)
-    # }
 
     count=0
     for event in events:
@@ -626,7 +948,7 @@ def dash(request):
 
         'best1':best1,
         'select_event_str' :select_event_str,
-        'best1_start_time': best1_start_time,
+        'real_best1_start_time_day' : real_best1_start_time_day,
 
         'mon':mon,
         'tue':tue,
@@ -645,15 +967,8 @@ def dash(request):
         'a':a,
         #a는 뭐야? # 나도 몰라 은서가 넣은 거 아니였어?
         'wanted_goal': wanted_goal,
-
-        # 'queryset':queryset
-        # 'one_str':one_str,
-        # 'two_str': two_str,
-        # 'three_str': three_str,
-        # 'four_str': four_str,
-        # 'five_str': five_str,
-        # # 'seven_str': seven_str,
-        # 'one_start_time':one_start_time,
+        'real_goal_count':real_goal_count,
+        'half':half,
 
         'exercise_field_count':exercise_field_count,
         'travel_field_count':travel_field_count,
@@ -678,13 +993,86 @@ def dash(request):
         'today':today,
         'one_days_ago':one_days_ago,
         'two_days_ago':two_days_ago,
+        # test?
 
+        'real_one_days_ago_rating':real_one_days_ago_rating,
+        'real_two_days_ago_rating': real_two_days_ago_rating,
+        'real_three_days_ago_rating':real_three_days_ago_rating,
+        'real_four_days_ago_rating': real_four_days_ago_rating,
+        'real_five_days_ago_rating': real_five_days_ago_rating,
+        'real_six_days_ago_rating': real_six_days_ago_rating,
+        'real_seven_days_ago_rating': real_seven_days_ago_rating,
+        'real_eight_days_ago_rating': real_eight_days_ago_rating,
+        'real_nine_days_ago_rating': real_nine_days_ago_rating,
+        'real_ten_days_ago_rating': real_ten_days_ago_rating,
+        'real_eleven_days_ago_rating': real_eleven_days_ago_rating,
+        'real_twelve_days_ago_rating': real_twelve_days_ago_rating,
+        'real_thirteen_days_ago_rating': real_thirteen_days_ago_rating,
+        'real_fourteen_days_ago_rating': real_fourteen_days_ago_rating,
+        'real_fifteen_days_ago_rating': real_fifteen_days_ago_rating,
+        'real_sixteen_days_ago_rating': real_sixteen_days_ago_rating,
+        'real_seventeen_days_ago_rating': real_seventeen_days_ago_rating,
+        'real_eighteen_days_ago_rating': real_eighteen_days_ago_rating,
+        'real_nineteen_days_ago_rating': real_nineteen_days_ago_rating,
+        'real_twenty_days_ago_rating': real_twenty_days_ago_rating,
+        'real_twentyone_days_ago_rating': real_twentyone_days_ago_rating,
+        'real_twentytwo_days_ago_rating': real_twentytwo_days_ago_rating,
+        'real_twentythree_days_ago_rating': real_twentythree_days_ago_rating,
+        'real_twentyfour_days_ago_rating': real_twentyfour_days_ago_rating,
+        'real_twentyfive_days_ago_rating': real_twentyfive_days_ago_rating,
+        'real_twentysix_days_ago_rating': real_twentysix_days_ago_rating,
+        'real_twentyseven_days_ago_rating':real_twentyseven_days_ago_rating,
+        'real_twentyeight_days_ago_rating': real_twentyeight_days_ago_rating,
+        'real_twentynine_days_ago_rating': real_twentynine_days_ago_rating,
+        'real_thirty_days_ago_rating':real_thirty_days_ago_rating,
 
-        'one_days_ago_rating':one_days_ago_rating,
-        'three_days_ago_rating':three_days_ago_rating,
+        'real_pre_one_days_ago_rating':real_pre_one_days_ago_rating,
+        'real_pre_two_days_ago_rating': real_pre_two_days_ago_rating,
+        'real_pre_three_days_ago_rating': real_pre_three_days_ago_rating,
+        'real_pre_four_days_ago_rating': real_pre_four_days_ago_rating,
+        'real_pre_five_days_ago_rating': real_pre_five_days_ago_rating,
+        'real_pre_six_days_ago_rating': real_pre_six_days_ago_rating,
+        'real_pre_seven_days_ago_rating': real_pre_seven_days_ago_rating,
+        'real_pre_eight_days_ago_rating': real_pre_eight_days_ago_rating,
+        'real_pre_nine_days_ago_rating': real_pre_nine_days_ago_rating,
+        'real_pre_ten_days_ago_rating': real_pre_ten_days_ago_rating,
+        'real_pre_eleven_days_ago_rating': real_pre_eleven_days_ago_rating,
+        'real_pre_twelve_days_ago_rating': real_pre_twelve_days_ago_rating,
+        'real_pre_thirteen_days_ago_rating': real_pre_thirteen_days_ago_rating,
+        'real_pre_fourteen_days_ago_rating': real_pre_fourteen_days_ago_rating,
+        'real_pre_fifteen_days_ago_rating': real_pre_fifteen_days_ago_rating,
+        'real_pre_sixteen_days_ago_rating': real_pre_sixteen_days_ago_rating,
+        'real_pre_seventeen_days_ago_rating': real_pre_seventeen_days_ago_rating,
+        'real_pre_eighteen_days_ago_rating': real_pre_eighteen_days_ago_rating,
+        'real_pre_nineteen_days_ago_rating': real_pre_nineteen_days_ago_rating,
+        'real_pre_twenty_days_ago_rating': real_pre_twenty_days_ago_rating,
+        'real_pre_twentyone_days_ago_rating': real_pre_twentyone_days_ago_rating,
+        'real_pre_twentytwo_days_ago_rating': real_pre_twentytwo_days_ago_rating,
+        'real_pre_twentythree_days_ago_rating': real_pre_twentythree_days_ago_rating,
+        'real_pre_twentyfour_days_ago_rating': real_pre_twentyfour_days_ago_rating,
+        'real_pre_twentyfive_days_ago_rating': real_pre_twentyfive_days_ago_rating,
+        'real_pre_twentysix_days_ago_rating': real_pre_twentysix_days_ago_rating,
+        'real_pre_twentyseven_days_ago_rating': real_pre_twentyseven_days_ago_rating,
+        'real_pre_twentyeight_days_ago_rating': real_pre_twentyeight_days_ago_rating,
+        'real_pre_twentynine_days_ago_rating': real_pre_twentynine_days_ago_rating,
+        'real_pre_thirty_days_ago_rating': real_pre_thirty_days_ago_rating,
 
-        'year':year,
-        'today_date':today_date
+        'real_present_month_total':real_present_month_total,
+        'present_month_total_count':present_month_total_count,
+        'present_month_meanvalue':present_month_meanvalue,
+
+        'real_pre_month_end_total':real_pre_month_end_total,
+        'pre_month_end_total_count': pre_month_end_total_count,
+        'pre_month_end_meanvalue':pre_month_end_meanvalue,
+
+        'mychart_month':mychart_month,
+        'mychart_day':mychart_day,
+        'mychart_one_days_ago': mychart_one_days_ago,
+        'mychart_two_days_ago':mychart_two_days_ago,
+        'mychart_three_days_ago':mychart_three_days_ago,
+        'mychart_four_days_ago':mychart_four_days_ago,
+        'mychart_five_days_ago':mychart_five_days_ago,
+        'mychart_six_days_ago':mychart_six_days_ago,
     }
 
     if(count >= 7):
@@ -692,22 +1080,6 @@ def dash(request):
     else:
         return render(request, 'cal/less_data.html',context=context)
 
-
-  # count=0
-    # # -3에는 3개의 objects가 있어욤
-    # for eventi in events:
-    #     if eventi.start_time == select_datetime:
-    #         count += 1
-    #
-    # all_count=count
-
-    # count = 0
-    # numsum = 0
-    # for event in events:
-    #     count += 1
-    #     numsum += event.rating
-    # mean_value = numsum / (count + 1e-7)
-    # 갖고온 이벤트들 레이팅값
 
 def dash_detail(request):
     return render(request, 'cal/dash_detail.html')

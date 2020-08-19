@@ -10,14 +10,16 @@
 
     <div id="profile">
         <div id="le">
+
             {% if profile.photo %}
-                <img src='{{ profile.photo.url }}'>
+                <img id="user_photo" src='{{ profile.photo.url }}'>
                 {#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
             {% else %}
                 <img id="smile01" src="{% static 'face.png' %}">
-                 <div id="proname">{{ profile.nickname }}</div>
+
             {% endif %}
 
+            <div id="proname">{{ profile.nickname }}</div>
                     <button type="button" id="save"><a href="{% url 'create_profile:profile_edit' profile.pk %}">EDIT</a></button>
 
                     <button class="change_pw"><a href="{% url "password_change" %}">비밀번호 변경</a></button>

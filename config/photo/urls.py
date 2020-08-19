@@ -3,8 +3,7 @@ from django.urls import path
 from . import views
 
 from .views import PhotoList, PhotoDelete, PhotoDetail, PhotoUpdate, PhotoCreate, PhotoLike, PhotoLikeList, PhotoMyList
-
-
+from photo import views
 app_name = "photo"
 urlpatterns = [
     path("mylist/", PhotoMyList.as_view(), name='my_list'),

@@ -1,105 +1,138 @@
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.community_content{
+    display: block;
+}
+#pagination_nav {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
 
+#pagination_nav ul {
+    width: 80%;
+    height: 3rem;
+    margin: 0 auto;
+}
 
-    @font-face {
-        font-family: 'yg-jalnan';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
+#pagination_nav li {
+    font-family: "Syncopate", sans-serif;
+    display: inline-block;
+    padding-top: 1.5rem;
+    margin-left: 2rem;
+}
 
+#pagination_nav li:nth-child(2) {
+    margin-left: 3rem;
+}
 
+#pagination_nav li:nth-child(3) {
+    margin-left: 3rem;
+}
 
-    h1{
-        padding-top: 10rem;
-        text-align: center;
-        font-family: "yg-jalnan", 'sans-serif';
-        color: #0B2752;
-    }
+h1 {
+    padding-top: 10rem;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+    color: #0B2752;
+}
 
-    #wrap05{
-        width: 80%;
-        margin: 0 auto;
-        padding-top: 3rem;
-    }
+#wrap05 {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 3rem;
+}
 
-    /*#wrap05{*/
-    /*    display: flex;*/
-    /*    flex-direction: column;*/
-    /*    */
-    /*}*/
+/*#wrap05{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    */
+/*}*/
 
-.topbtn{
+.topbtn {
     display: flex;
     justify-content: flex-end;
+}
+
+
+#gg, #gd {
+    margin-top: 5rem;
+    width: 10rem;
+    height: 4rem;
+    color: white;
+    background-color: #c4c4c4;
+    border: none;
+    font-family: "yg-jalnan", 'sans-serif';
+    margin-right: 2rem;
+    border-radius: 3rem;
+}
+
+#gg:hover, #gd:hover {
+    background-color: orangered;
+}
+
+#gg a, #gd a {
+    color: white;
+    padding: 20px;
+}
+
+.community_content {
 
 }
-    #gg, #gd{
-        margin-top: 5rem;
-        width: 10rem;
-        height: 4rem;
-        color: white;
-        background-color: #c4c4c4;
-        border: none;
-        font-family: "yg-jalnan",'sans-serif';
-        margin-right: 2rem;
-        border-radius: 3rem;
-    }
 
-        #gg:hover, #gd:hover{
-            background-color: orangered;
-        }
+#box {
+    margin-top: 3rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 470px;
+    margin-bottom: 3rem;
+    border: 1px solid #0B2752;
+    float: left;
+    margin-right: 40px;
+    background-color: orangered;
+    height: 400px;
+    /*overflow: hidden;*/
+}
 
-     #gg a, #gd a{
-        color: white;
-    }
+/*#box{*/
+/*    display: grid;*/
+/*    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;*/
+/*    grid-gap: 3px;*/
+/*}*/
 
+#photo {
+    overflow: hidden;
+    background-color: white;
+    height: 400px;
 
-
-
-    #box{
-        margin-top: 3rem;
-        background-color: rgba(0, 0,0, 0.8);
-        width: 470px;
-        margin-bottom:3rem;
-        border: 1px solid #0B2752;
-        float: left;
-        margin-right: 40px;
-        background-color: orangered;
-        height: 400px;
-        overflow: hidden;
-    }
-
-    /*#box{*/
-    /*    display: grid;*/
-    /*    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;*/
-    /*    grid-gap: 3px;*/
-    /*}*/
-
-    #photo{
-
-        overflow: hidden;
-        background-color: white;
-        height: 400px;
-
-    }
+}
 
 
-    #box img{
-        width:100%;
-
-    }
-
-
-    #box li{
-        color: green;
-         font-family: "Noto Sans KR",'sans-serif';
-        font-size: 1.4rem;
-    }
+#box img {
+    width: 100%;
+    max-height: 300px;
+}
 
 
-#box li a{
-    color: blueviolet;
-    font-family: "Noto Sans KR",'sans-serif';
+#box li {
+    color: green;
+    font-family: "Noto Sans KR", 'sans-serif';
+    font-size: 1.4rem;
+}
+
+.like_button {
+    height: 50px;
+}
+
+
+#box li a {
+    color: cornflowerblue;
+    font-family: "Noto Sans KR", 'sans-serif';
     font-size: 1.4rem;
 
 }

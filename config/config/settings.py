@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'cal',
     'main',
     'create_profile',
-    'dashboard',
     'django.forms',
 
     'multiselectfield',
@@ -53,7 +52,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # provider
     'allauth.socialaccount.providers.google',
+
+    'django_summernote',
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -159,7 +162,7 @@ STATIC_URL = '/static/'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 AUTHENTICATION_BACKENDS = (

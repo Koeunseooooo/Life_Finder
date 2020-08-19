@@ -22,17 +22,20 @@
 
 .button_7{
     background-color: #c4c4c4;
-    width: 100px;
+    width: 130px;
     height: 50px;
     border-radius: 2rem;
+
     text-decoration: none;
     border: none;
-
-
+}
+.button_7:first-child{
+    margin-right: 1rem;
 }
 
 .button_7 a{
     color: white;
+    padding: 20px;
     font-family: "yg-jalnan", 'sans-serif';
 }
 
@@ -73,11 +76,14 @@ img{
     color: #4f4f4f;
     margin-top: 0.8rem;
     font-family: "Noto Sans KR", 'sans-serif';
-    border-top: 1px solid #c4c4c4;
+    /*border-top: 1px solid #c4c4c4;*/
     padding-top: 10px;
     background-color: white;
 }
 
+.content_text{
+    border-bottom: 1px solid #c4c4c4;
+}
 #wrap4 li{
     margin-top: 0.5rem;
     color: #c4c4c4;

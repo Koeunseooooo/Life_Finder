@@ -9,7 +9,6 @@ urlpatterns = [
     path('calendar/', include('cal.urls')),
     path('', include('main.urls')),
     path('create/', include('create_profile.urls')),
-    path('dash/', include('dashboard.urls')),
 
     path('accounts/', include('allauth.urls')),
     path('photo/', include('photo.urls')),
@@ -38,6 +37,8 @@ urlpatterns = [
     path('reset/done/',
          auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'),
          name='password_reset_complete'),
+
+    path('summernote/',include('django_summernote.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

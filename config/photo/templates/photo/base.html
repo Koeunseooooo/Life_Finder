@@ -18,13 +18,6 @@
 
 
 {% block content %}
-
-<div style="height: 100px; margin: 0 auto;"></div>
-    <button><a href="{% url 'photo:create' %}">글 등록하기</a></button>
-    <button><a class="nav-link" href="{% url 'photo:like_list' %}">스크랩한 사진보기</a></button>
-    <button><a href="{% url 'photo:my_list' %}">내 스토리</a></button>
-
-
 <div class='community_content'>
     {% if messages %}
         <div>
@@ -33,7 +26,6 @@
             {% endfor %}
         </div>
     {% endif %}
-</div>
 </div>
 {% block photo%}
 {% endblock %}
