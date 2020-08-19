@@ -43,3 +43,24 @@ img {
     /*margin-top: 7rem;*/
     text-align: center;
 }
+
+
+
+
+/*비밀번호 변경*/
+.change_pw{
+        width: 460px;
+    height: 56px;
+    border-radius: 5px;
+    padding: 10px;
+    border: solid 1px #6570CE;
+    margin-top: 5rem;
+    background-color: #717FFF;
+}
+.change_pw a{
+     padding: 20px;
+    color: white;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+}

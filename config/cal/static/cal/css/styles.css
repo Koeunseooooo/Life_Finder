@@ -78,15 +78,23 @@ color: #0B2752;
     border: none;
     outline: none;
     background-color: #F1F1F1;
-    border-radius: 3rem;
-    width: 4rem;
-    height: 3.5rem;
+    border-radius: 1rem;
+    width: 5rem;
+    padding: 5px;
+    height: 2.5rem;
     text-align: center;
     line-height: 2rem;
 }
-.button_last{
-    font-family: "yg-jalnan", 'sans-serif';
+
+.button_7:hover{
+    background-color: orangered;
 }
+
+.button_date{
+    font-family: "yg-jalnan", 'sans-serif';
+     color: #0B2752;
+}
+
 
 .button_4{
     margin-top: 5rem;
