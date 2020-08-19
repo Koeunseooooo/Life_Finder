@@ -11,49 +11,39 @@
     font-weight: normal;
     font-style: normal; }
 
-input[name="start_time"]{
-     margin-top: 30px;
-}
-input[name="rating"]{
-    margin-top: 30px;
-    display: block;
-}
-/*.btn {*/
-/*    outline: none;*/
-/*    color: #0B2752;*/
-/*    background-color: #F1F1F1;*/
-/*    box-shadow: 0 0 0 0;*/
-/*    font-family: "Syncopate", sans-serif;*/
-/*    font-weight: 900;*/
-/*    font-size: 0.9rem;*/
-/*    border: none;*/
-/*    border-radius: 3rem;*/
-/*    margin-top: 5.5rem;*/
-/*    width: 14rem;*/
-/*    margin-bottom: 1rem;*/
+/*input[name="start_time"]{*/
+/*     margin-top: 30px;*/
 /*}*/
-/*.btn:nth-child(2){*/
-/*    margin-left: 5.7rem;*/
-/*    margin-right: 5.7rem;*/
+/*input[name="rating"]{*/
+/*    margin-top: 30px;*/
+/*    color: darkcyan;*/
+/*    display: block;*/
 /*}*/
+
+
+.r_contents {
+    margin: 0 auto;
+    width: 80%;
+    height: 1100px;
+}
+
+
 
 
 .button_2{
     margin-left: 10rem;
     border: none;
-    outline: none;
     background-color: #F1F1F1;
     border-radius: 3rem;
-    width: 7rem;
-    height: 3.5rem;
+    width: 100px;
+    height: 50px;
     text-align: center;
-    line-height: 2rem;
+    line-height: 50px;
     font-family: "yg-jalnan", 'sans-serif';
+    color: #0B2752;
 }
 
-.button_2 a{
-color: #0B2752;
-}
+
 
 .button_2:hover{
     background-color: #717FFF;
@@ -73,26 +63,27 @@ color: #0B2752;
     margin-right: 12rem;
 }
 
+
+
+
 /*prev_day, next_day버튼*/
 .button_7{
     border: none;
     outline: none;
     background-color: #F1F1F1;
-    border-radius: 1rem;
+   border-radius: 3rem;
     width: 5rem;
     padding: 5px;
     height: 2.5rem;
     text-align: center;
     line-height: 2rem;
+    font-family: "yg-jalnan", 'sans-serif';
+     color: #0B2752;
+    margin-top: 2rem;
 }
 
 .button_7:hover{
-    background-color: orangered;
-}
-
-.button_date{
-    font-family: "yg-jalnan", 'sans-serif';
-     color: #0B2752;
+    background-color: #717FFF;
 }
 
 
@@ -127,12 +118,10 @@ color: #0B2752;
 
 
 #cal{
-    margin-top: 1rem;
     width: 100%;
-    height: 57rem;
 }
 .clearfix {
-    margin-bottom: 2rem;
+    padding-top:4rem;
     width: 70%;
 }
 
@@ -150,21 +139,13 @@ color: #0B2752;
     color: white;
 
 }
-.calendar tr:nth-child(1){
-    height: 5rem;
-    border: none;
-}
 
 .calendar tr:nth-child(2){
     height: 5rem;
     margin-left: 5rem;
 }
 
-.calendar td{
-    height: 1rem;
-    border: 2px solid #0B2752;
-    color: white;
-}
+
 .calendar tr:nth-child(1){
     height: 7rem;
     border: none;
@@ -175,22 +156,20 @@ color: #0B2752;
     text-align: center;
     font-size: 18px;
 
+
 }
 
 .calendar td {
     width: 200px;
-    height: 80px;
+    height: 100px;
+    background-color: white;
     padding: 0px 5px 0px 5px;
-    background-color: #F1F1F1;
-    overflow: scroll;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    border: 2px solid #0B2752;
+    color: white;
+
+
 }
 
-.calendar td::-webkit-scrollbar { /* WebKit 스크롤바 안 보이게*/
-    width: 0px;
-    height: 0px;
-}
 
 
 .calendar td ul li a {
@@ -256,29 +235,60 @@ color: #0B2752;
 }
 .today_list_total {
     text-align: center;
-    /*position: relative;*/
-    /*top: 80rem;*/
+
 
 }
 
+/*오늘 날짜 */
 .today_list_total .today{
     color: #0B2752;
     font-size: 3rem;
     font-weight: 900;
     font-family: "yg-jalnan", 'sans-serif';
     margin: 0 auto;
-    padding-top: 3rem;
+    padding-top: 1rem;
     padding-bottom: 1rem;
     text-align: center;
 
 }
-.today_rating {
-    font-family: "yg-jalnan",'sans-serif';
-      font-weight: 900;
-    margin-top: 2rem;
-     color: #0B2752;
-    font-size: 1.2rem;
 
+#ttt{
+    height: 400px;
+    overflow: scroll;
+     scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+#ttt::-webkit-scrollbar{ /* WebKit 스크롤바 안 보이게*/
+    width: 0;
+    height: 0;
+}
+}
+
+
+
+.today_rating {
+     width: 550px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    font-family: "yg-jalnan",'sans-serif';
+    overflow: scroll;
+
+}
+
+.today_rating h1{
+    font-family: "yg-jalnan",'sans-serif';
+       color: #717FFF;
+}
+
+.today_rating span{
+    font-family: "yg-jalnan",'sans-serif';
 }
 
 .contain h5{
@@ -287,25 +297,56 @@ color: #0B2752;
     font-size: 1.7rem;
 }
 
-.r_contents {
-    margin: 0 auto;
-    width: 80%;
-    height: 55rem;
-}
-.today_list_item {
-    width: 35rem;
-    height: 50px;
-    line-height: 50px;
-    margin: 0 auto;
-    text-align: center;
-    color: #717FFF;
-    font-size: 1.5rem;
-    background-color: #F1F1F1;
-    border-radius: 1rem;
-    margin-top: 1rem;
-    font-family: "yg-jalnan",'sans-serif';
-    /*overflow: scroll;*/
 
+.today_list_item {
+    width: 550px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    background-color: #717FFF;
+    border-radius: 1rem;
+    font-family: "yg-jalnan",'sans-serif';
+    overflow: scroll;
+
+
+}
+
+.today_list_item span.each_rating{
+    color : #0B2752;
+}
+
+.each_rating{
+    color: violet;
+}
+
+.today_rating span{
+    color: #717FFF;
+    font-size: 30px;
+}
+
+
+.today_rating{
+    margin-top: 30px;
+    background-color: white;
+}
+.today_rating h1{
+
+    display: inline-flex;
+    font-size: 30px;
+    text-align: center;
+}
+
+/*.today_rating h1{*/
+/*    color: blue;*/
+/*    font-size: 20px;*/
+
+/*}*/
+#text{
+    color: orangered;
 }
 
 .button_middle{
@@ -334,20 +375,32 @@ i{
         height: 4rem;
         line-height: 50px;
         border-radius: 4rem;
-        margin-top: 40px;
+
         border: none;
         padding-left: 10px;
-        margin-bottom: 3rem;
-}
-.go_dashboard a{
-    font-family: "yg-jalnan",'sans-serif';
+     font-family: "yg-jalnan",'sans-serif';
     color: white;
     text-decoration: none;
     padding: 10px;
     font-weight: 900;
     font-size: 1.2rem;
+
 }
 
 .go_dashboard button:hover{
     background-color: orangered;
+}
+
+
+.calendar td ul{
+    width: 105px;
+    height: 65px;
+    overflow: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.calendar td ul::-webkit-scrollbar { /* WebKit 스크롤바 안 보이게*/
+    width: 0;
+    height: 0;
 }

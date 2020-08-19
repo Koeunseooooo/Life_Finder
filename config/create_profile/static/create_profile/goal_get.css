@@ -28,7 +28,6 @@
 }
 
 #myRange{
-    background-color: lightcoral;
     width: 540px;
     height: 30px;
     margin: 0 auto;
@@ -80,8 +79,25 @@ form{
 }
 
 #des{
-    background-color: red;
-    text-align: center;
+    border-top: 5px solid #717FFF;
+    margin-top: 10rem;
     font-size: 30px;
+    text-align: left;
+    padding-top: 2rem;
+    color: #717FFF;
 
+}
+
+#des span{
+    color: #717FFF;
+    font-family: "yg-jalnan",'sans-serif';
+}
+
+#des_p{
+    color: #717FFF;
+    text-align: left;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 18px;
+    line-height: 35px;
+    font-weight: 700;
 }

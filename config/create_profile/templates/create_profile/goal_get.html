@@ -18,17 +18,21 @@
 
             {% csrf_token %}
             <input id="myRange" type="range" min="0" step="1" max="100" value="50" name="goal_count">
-                <p id="lifegoal"> {{ profile.nickname }} 님의 목표 갯수는   <span id="demo"></span> 입니다 </p>
+                <p id="lifegoal"> {{ profile.nickname }} 님의 목표 뱃지 갯수는   <span id="demo"></span>개 입니다 </p>
              </div>
             <div id="goalbtn">
             <button type="submit" id="goalsave">SAVE</button>
             </div>
         </form>
 
-    <h1 id="des">라이프 뱃지가 뭐예요?</h1>
-    <p>
-        야호는 라이프 벳지 만족도를 표시하는 기준으로 삼고 있습니다
-        라이프 뱃지 갯수를
+    <h1 id="des">
+        <span>라이프 뱃지</span>란?
+    </h1>
+
+    <p id="des_p">
+        야호는 라이프 뱃지를 기록하고 싶은 항목에 대한 만족도의 기준으로 삼고 있습니다<br/>
+        {{ profile.nickname }}님이 한달동안 목표하고자 하는 라이프 뱃지의 갯수를 설정해주세요<br/>
+        뱃지가 모이면 기록한 데이터를 통해 {{ profile.nickname }}님만의 통계 결과를 볼 수 있습니다<br/>
     </p>
 
         <script>

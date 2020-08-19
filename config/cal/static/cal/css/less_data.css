@@ -5,41 +5,48 @@
     font-style: normal; }
 
 #lesscontent{
-    width: 60rem;
+    width: 80%;
     margin: 0 auto;
-    padding-top: 10rem;
 }
 
-p:nth-child(1){
+ #lesscontent h1{
+     padding-top: 25rem;
     color: #0B2752;
+    margin: 0 auto;
     text-align: center;
     font-family: 'yg-jalnan', "cursive";
-    font-size: 1.5rem;
-}
-p:nth-child(2){
+    font-size: 37px;
+ }
+
+#noti{
     color: #c4c4c4;
     text-align: center;
     font-family: 'yg-jalnan', "cursive";
-    font-size: 1rem;
-    margin-top: 3rem;
+    font-size: 25px;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 #lessbtn{
     margin: 0 auto;
-    width: 12rem;
+    width: 540px;
     background-color: #0B2752;
-    height: 3rem;
-    border-radius: 3rem;
+    height: 60px;
     text-align: center;
-    line-height: 3rem;
+    line-height: 60px;
+    border-radius: 3rem;
+    color: white;
+    font-family: "yg-jalnan",'sans-serif';
+    border: none;
+    font-size: 20px;
 }
 
-.return{
-text-decoration: none;
-    color: white;
-    padding: 20px;
-}
 
 #lessbtn:hover{
     background-color: orangered;
+}
+
+#back{
+    width: 540px;
+    margin: 0 auto;
 }
