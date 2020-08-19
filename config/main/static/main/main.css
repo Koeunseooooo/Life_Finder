@@ -16,6 +16,10 @@
     background-color: #0B2752;
 }
 
+
+
+
+
 #top {
     padding-top: 5rem;
     margin-left: 32rem;
@@ -253,10 +257,10 @@ display: inline-block;
 
 @keyframes move{
   from{
-    left:750px;
+    left:950px;
   }
   to{
-    left:800px;
+    left:980px;
   }
 }
 
@@ -264,8 +268,8 @@ display: inline-block;
 
 
 .card_04 img{
-    width: 180px;
-    height: 180px;
+    width: 130px;
+    height: 130px;
     float: right;
 }
 

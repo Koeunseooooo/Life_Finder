@@ -8,7 +8,7 @@ from django import forms
 from .forms import CreateUserForm, CustomAuthenticationForm  # 회원가입
 from django.contrib.auth.forms import AuthenticationForm  # 로그인
 from django.contrib.auth import login as auth_login  # 로그인
-
+from photo.models import Photo
 from django.contrib.auth import logout as auth_logout  # 로그아웃
 from django.contrib import messages
 
@@ -61,6 +61,7 @@ def signup(request):
 
 @login_required
 def goal_get(request):
+    import datetime
     user = request.user
     profile = request.user.user_profile
     goal_form = ObjectGoalNumberForm(request.POST)
@@ -79,21 +80,33 @@ def logout(request):
     auth_logout(request)
     return redirect('main:first')
 
+# @login_required
+# def profile_look(request, pk):
+#     user = User.objects.get(id=pk)
+#     try:
+#     # profile = request.user.user_profile(id=pk)
+#         profile = user.user_profile
+#         ctx = {
+#             'profile': profile,
+#         }
+#         return render(request, 'create_profile/profile.html', ctx)
+#     except Exception:
+#         if user == request.user:
+#             return redirect('create_profile:register')
+#         else:
+#             return render(request,'http404.html')
+
 @login_required
 def profile_look(request, pk):
     user = User.objects.get(id=pk)
-    try:
-    # profile = request.user.user_profile(id=pk)
-        profile = user.user_profile
-        ctx = {
-            'profile': profile
-        }
-        return render(request, 'create_profile/profile.html', ctx)
-    except Exception:
-        if user == request.user:
-            return redirect('create_profile:register')
-        else:
-            return render(request,'http404.html')
+    profile = user.user_profile
+    user_registered_photos = Photo.objects.filter(author=profile)
+    ctx = {
+        'profile': profile,
+        'user_registered_photos':user_registered_photos,
+    }
+    return render(request, 'create_profile/profile.html', ctx)
+
 
 @login_required
 def register(request):
@@ -124,6 +137,7 @@ def register(request):
 
 
 def profile_edit(request, pk):
+    import datetime
     profile = Profile.objects.get(pk=pk)
     if request.method == "POST":
         profile_form = RegisterProfileForm(request.POST, request.FILES, instance=profile)

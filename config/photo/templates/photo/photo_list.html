@@ -1,49 +1,48 @@
 {% extends 'photo/base.html' %}
-{% block style %}
-<style>
-    .button_7{
-        width: 100px;
-    }
-    .community_content{
-    width:800px;
-    margin: 0 auto;
-    }
-</style>
+{% load static %}
+
+{% block anotherstyle %}
+
+
 {% endblock %}
+
+
+
 {% block photo %}
-
-<div class="community_content">
-    {% for object in object_list %}
-
-    <div style="width:500px; margin-bottom:20px; border: 1px solid lightgray;">
-        <div style="height:200px">
-            {{ object.author }}
-            {% if object.image %}
-            <img src=" {{ object.image.url }}" style="width: 100%;" alt="...">
+    <h1 id="title">YAHO COMMUNITY</h1>
+    <div id="wrap05">
+        <div class="topbtn">
+            {% if user.is_authenticated %}
+                <button id="gg"><a href="{% url 'photo:create' %}">글 등록하기</a></button>
+                <button id="gd"><a class="nav-link" href="{% url 'photo:like_list' %}">좋아요한 사진보기</a></button>
             {% endif %}
         </div>
 
-        <ul>
-            <li>
-                <a href="{% url 'photo:like' object.id %}"
-                   class="{%if user in object.like.all %} active {%endif%}">좋아요!</a>
-                {% if object.like.all.count %}
-                <span>{{object.like.all.count}}</span>
-                {% endif %}
-            </li>
-            <li>생성일 : {{ object.created }}</li>
-        </ul>
-        <p> {{ object.text }} </p>
+        <div class="community_content">
+            {% for object in object_list %}
 
-        <div style="display: flex;">
-            <button class="button_7"><a href="{% url 'photo:detail' object.id %}">댓글달기</a></button>
-            {%if object.author == request.user.user_profile %}
-            <button class="button_7"><a href="{% url 'photo:update' object.id %}">수정하기</a></button>
-            <button class="button_7"><a href="{% url 'photo:delete' object.id %}">삭제하기</a></button>
-            {%endif%}
+                <div id="box"><a href="{% url 'photo:detail' object.id %}">
+                    <div id="photo">
+                        {% if object.image %}
+                            <img src="{{ object.image.url }}" alt="...">
+                        {% endif %}
+                    </div>
+
+                    <ul>
+                        <li>
+                            <a href="{% url 'photo:like' object.id %}"
+                               class="{% if user in object.like.all %} active {% endif %}">좋아요!</a>
+                            {% if object.like.all.count %}
+                                <span>{{ object.like.all.count }}</span>
+                            {% endif %}
+                        </li>
+
+                </div>
+
+            {% endfor %}
+
+            </a>
+
         </div>
     </div>
-    {% endfor %}
-</div>
-
 {% endblock %}

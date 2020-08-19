@@ -1,105 +1,78 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% load staticfiles %}
+
 {% block style %}
     <link rel="stylesheet" type="text/css" href="{% static 'create_profile/profile.css' %}">
 {% endblock %}
+
 {% block content %}
     <div id="profile">
-        <h2>{{ profile.nickname }}'s Profile</h2>
-        {% if profile.photo %}
-            <img src='{{ profile.photo.url }}' style="height: 200px; width: 200px;">
-            {#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
-        {% else %}
-            <img src="{% static 'quokka.jpg' %}" style="height: 200px; width: 200px;">
-        {% endif %}
+        <div id="le">
+            {% if profile.photo %}
+                <img src='{{ profile.photo.url }}'>
+                {#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
+            {% else %}
+                <img id="smile01" src="{% static 'face.png' %}">
+                 <div id="proname">{{ profile.nickname }}</div>
+            {% endif %}
 
-        {#        {% if profile.age %}#}
-        {#            <h2>나이: {{ profile.age }}살</h2>#}
-        {#        {% endif %}#}
-        {#    {% if profile.birthday %}#}
-        {#        <h2>생일 {{ profile.birthday }}</h2>#}
-        {#    {% endif %}#}
-
-        {% if profile.interested %}
-            <h2>관심분야: {{ profile.interested }}</h2>
-        {% endif %}
-        {#        {% if profile.interested.choices %}#}
-        {#            <h2>관심분야: {{ profile.interested.choices|selected }}</h2>#}
-        {#        {% endif %}#}
-        {#        {% if profile.interested.value %}#}
-        {#            <h2>관심분야: {{ profile.interested.value }}</h2>#}
-        {#        {% endif %}#}
-
-        {#        {% for value, text in profile.interested.field.choices %}#}
-        {#            <div class="ui slider checkbox">#}
-        {#                <input id="id_providers_{{ forloop.counter0 }}" name="{{ form.providers.name }}" type="checkbox">#}
-        {#                       value="{{ value }}"{% if value in checked_providers %} checked="checked"{% endif %}>#}
-        {#                <label>{{ text }}</label>#}
-        {#            </div>#}
-        {#        {% endfor %}#}
+                    <button type="button" id="save"><a href="{% url 'create_profile:profile_edit' profile.pk %}">EDIT</a></button>
 
 
+            <p id="intlife">관심라이프</p>
+            {% if profile.interested %}
+                <p id="tt">{{ profile.interested }}</p>
+            {% endif %}
+
+            <p id="job">직업</p>
+            {% if profile.job %}
+                <p id="tt">{{ profile.job }}</p>
+            {% endif %}
+            <p id="intro">자기소개</p>
+            {% if profile.description %}
+                <p id="tt">{{ profile.description }}</p>
+            {% endif %}
+            <p id="goalbadge">목표 라이프 뱃지</p>
+            <p id="tt">{{ profile.goal_count }}</p>
+
+        </div>
 
 
+        <div id="ri">
+        <div id="hello">
+            <h1>WELCOME</h1>
+                    <br />
+                   <h1> {{ profile.nickname }}!</h1>
+        </div>
 
 
+            {% for object in user_registered_photos %}
+                <div onclick="location.href='{% url 'photo:detail' object.id %}';">
 
-        {#        {% for object in object_list %}#}
-        {#              {{object.interested}}#}
-        {#        {% endfor %}#}
-        {#        {% if label in profile.interested %}#}
-        {#            {{ label }}#}
-        {#        {% endif %}#}
-        {#        {% for label in selected_interested_labels %}#}
-        {#            {{ label }}#}
-        {#        {% endfor %}#}
-        {#            <h2>관심 카테고리: {{ profile.interested.choices.value }}</h2>#}
-        {#        {% endif %}#}
+                    <div id="imgsmall">
+                        {% if object.image %}
+                            <img src="{{ object.image.url }}" height="50px;">
+                        {% endif %}
+                        <p id="text"> {{ object.created }} </p>
+                    </div>
+                </div>
+            {% endfor %}
 
+        </div>
 
-        {#    {% for label in form.selected_genders_labels %}#}
-        {#    {{ label }}#}
-        {#{% endfor %}#}
+    <div>
 
-        {#{% for key in form.genders.value %}#}
-        {#    {{ form.genders.choices.key }}#}
-        {#{% endfor %}#}
+<div class="cube">
 
-        {% if profile.job %}
-            <h2>직업: {{ profile.job }}</h2>
-        {% endif %}
-        {% if profile.description %}
-            <h2>소개: {{ profile.description }}</h2>
-        {% endif %}
-        <h2>목표개수: {{ profile.goal_count }}</h2>
-        <button type="button" id="save"><a href="{% url 'create_profile:profile_edit' profile.pk %}">프로필 수정하기</a>
+  <img class="cubeFace" src="{% static 'smillle.png' %}">
+  <img class="cubeFace face2" src="{% static 'smillle.png' %}">
+    <img class="cubeFace2" src="{% static 'smillle.png' %}">
+  <img class="cubeFace face4" src="{% static 'smillle.png' %}">
+       <img class="cubeFace3" src="{% static 'smillle.png' %}">
+  <img class="cubeFace face5" src="{% static 'smillle.png' %}">
+</div>
     </div>
-
-    {#    <div style="height: 200px;"></div>#}
-    {#    <h1>내 프로필</h1><br/>#}
-    {#    <h2>{{ profile.nickname }}'s Profile</h2>#}
-    {##}
-    {#    {% if profile.photo %}#}
-    {#        <img src='{{ profile.photo.url }}' style="height: 200px; width: 200px;">#}
-    {#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
-    {#    {% else %}#}
-    {#        <img src="{% static 'quokka.jpg' %}" style="height: 200px; width: 200px;">#}
-    {#    {% endif %}#}
-    {##}
-    {#    {% if profile.age %}#}
-    {#        <h2>나이: {{ profile.age }}살</h2>#}
-    {#    {% endif %}#}
-    {#    {% if profile.birthday %}#}
-    {#        <h2>생일 {{ profile.birthday }}</h2>#}
-    {#    {% endif %}#}
-    {#    {% if profile.job %}#}
-    {#        <h2>직업: {{ profile.job }}</h2>#}
-    {#    {% endif %}#}
-    {#    {% if profile.description %}#}
-    {#        <h2>소개: {{ profile.description }}</h2>#}
-    {#    {% endif %}#}
-    {#    <h2>목표개수: {{ profile.goal_count }}</h2>#}
-    {#   <button type="button" id="save"><a href="{% url 'create_profile:profile_edit' profile.pk %}">프로필 수정하기</a>#}
+    </div>
 
 {% endblock %}
