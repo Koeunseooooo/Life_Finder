@@ -18,6 +18,8 @@ urlpatterns = [
     path('login_success/',views.login_success,name='login_success'),
     path('login_please/', views.need_login, name='need_login'),
     path('profile_please/', views.need_profile, name='need_profile'),
+    # path('<user_id:string>/',views.show_each_profile,name='show_each_profile'),
+    path('<int:user_id>/', views.show_each_profile, name='show_each_profile'),
 
 ]
 

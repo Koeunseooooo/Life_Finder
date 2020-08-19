@@ -8,7 +8,7 @@
 .navt li a{
     color: white;
 }
-nav {
+.real_nav {
     background-color: black;
     width: 100%;
     height: 4rem;
@@ -17,28 +17,28 @@ nav {
 }
 
 
-nav ul {
+.real_nav ul {
     width: 80%;
     height: 3rem;
     margin: 0 auto;
 }
 
-nav li {
+.real_nav li {
     font-family: "Syncopate", sans-serif;
     display: inline-block;
     padding-top: 1.5rem;
     margin-left: 2rem;
 }
 
-nav li:nth-child(2) {
+.real_nav li:nth-child(2) {
     margin-left: 3rem;
 }
 
-nav li:nth-child(3) {
+.real_nav li:nth-child(3) {
     margin-left: 3rem;
 }
 
-nav a{
+.real_nav a{
     color: red;
 
 }

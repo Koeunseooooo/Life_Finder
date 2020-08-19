@@ -1,24 +1,26 @@
-
 {% extends 'main/base.html' %}
 {% load static %}
 {% block style %}
+
     <link rel="stylesheet" type="text/css" href="{% static 'photo/photo_create.css' %}">
 {% endblock %}
 
 {% block content %}
-<div id="all">
-<div id="sub">
-    <h1>게시글을 작성해주세요</h1>
-{#        <div class="alert alert-primary" role="alert">#}
-{#            모든 부분을 다 채워넣어주세요!!#}
-{#        </div>#}
-        <form action="" method="post" enctype='multipart/form-data'>
+    <div id="all">
+    <div id="sub">
+        <h1>게시글을 작성해주세요</h1>
+        {#        <div class="alert alert-primary" role="alert">#}
+        {#            모든 부분을 다 채워넣어주세요!!#}
+        {#        </div>#}
+        <form action="" method="post" enctype='multipart/form-data' autocomplete="off">
             {% csrf_token %}
-            {{form.as_p}}
+            <table>
+                {{ form.as_p }}
+            </table>
             <input id="last" type="submit" value="Upload">
         </form>
+
     </div>
-</div>
 
 {% endblock %}
 

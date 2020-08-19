@@ -20,29 +20,89 @@
 
         <div class="community_content">
             {% for object in object_list %}
-
                 <div id="box"><a href="{% url 'photo:detail' object.id %}">
                     <div id="photo">
                         {% if object.image %}
                             <img src="{{ object.image.url }}" alt="...">
                         {% endif %}
+
+                        <li>{{ object.title }}</li>
                     </div>
 
-                    <ul>
+                    <ul class="like_button">
                         <li>
-                            <a href="{% url 'photo:like' object.id %}"
-                               class="{% if user in object.like.all %} active {% endif %}"><i class="fas fa-heart"></i></a>
+                            {% if user in object.like.all %}
+                                <a href="{% url 'photo:like' object.id %}">
+                                    {# 사용자가 like 버튼 누르면 보이게 할 색#}
+                                    <i style="color: orangered" class="fas fa-heart"></i>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'photo:like' object.id %}">
+                                    {# 사용자가 like 버튼 안 누르면 보이게 할 색#}
+                                    <i style="color: cornflowerblue" class="fas fa-heart"></i>
+                                </a>
+                            {% endif %}
                             {% if object.like.all.count %}
                                 <span>{{ object.like.all.count }}</span>
                             {% endif %}
+
                         </li>
-
+                    </ul>
+                </a>
                 </div>
-
             {% endfor %}
 
-            </a>
 
         </div>
-    </div>
+
+        {% if is_paginated %}
+            <nav id="pagination_nav">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li>
+                            <a href="?page={{ page_obj.previous_page_number }}">
+                                <span>Prev</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#">
+                                <span>Previous</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    {% for page in page_range %}
+                        <li {% if page == page_obj.number %}class="active"{% endif %}>
+                            <a href="?page={{ page }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li>
+                            <a href="?page={{ page_obj.next_page_number }}">
+                                <span>Next</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
+                            <a href="#">
+                                <span>Next</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+        </div>
+
+
+
+
+
+
 {% endblock %}
+
+
+
+

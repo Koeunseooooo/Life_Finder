@@ -1,122 +1,225 @@
+/*@font-face {*/
+/*    font-family: 'yg-jalnan';*/
+/*    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
 
-        @font-face {
+
+/*.r_contents {*/
+/*    height: 30%;*/
+/*}*/
+
+
+/*input[type=file] {*/
+/*    padding-top: 30px;*/
+/*    padding-left: 20px;*/
+/*}*/
+
+/*input[type=text], input[type=number] {*/
+/*    margin-bottom: 10px;*/
+/*    width: 250px;*/
+/*    height: 40px;*/
+/*    border-radius: 5px;*/
+/*    border: solid 1px #b0bec9;*/
+/*    margin-top: 10px;*/
+/*    padding-left: 10px;*/
+/*}*/
+
+/*#save {*/
+/*    margin-top: 3rem;*/
+/*    background-color: #717FFF;*/
+/*    border-radius: 5px;*/
+/*    border: none;*/
+/*    color: white;*/
+/*    width: 540px;*/
+/*    height: 60px;*/
+/*    text-align: center;*/
+/*    line-height: 30px;*/
+/*    padding: 3px 3px 6px 6px;*/
+/*    font-size: 1rem;*/
+/*    font-family: "Syncopate", sans-serif;*/
+/*    font-weight: 900;*/
+/*    margin-left: 4.5rem;*/
+/*}*/
+
+/*#save:hover {*/
+/*    background-color: orangered;*/
+/*}*/
+
+
+/*h2 {*/
+/*    padding-top: 6rem;*/
+/*    color: black;*/
+/*    margin: 0 auto;*/
+/*    text-align: center;*/
+/*    width: 80%;*/
+/*    font-family: 'yg-jalnan', "cursive";*/
+/*}*/
+
+/*form {*/
+/*    padding-top: 5rem;*/
+/*    width: 40rem;*/
+/*    margin: 0 auto;*/
+/*    font-family: "yg-jalnan", 'sans-serif';*/
+/*    color: #717FFF;*/
+
+/*}*/
+
+/*form label {*/
+/*    float: left;*/
+/*    display: inline;*/
+/*    font-size: 0.9rem;*/
+/*    color: #0B2752;*/
+/*}*/
+
+
+/*#vv {*/
+/*    margin: 0 auto;*/
+/*    text-align: center;*/
+/*}*/
+
+/*#box {*/
+/*    display: inline;*/
+/*}*/
+
+
+/*#id_nickname {*/
+/*    width: 540px;*/
+/*    height: 50px;*/
+/*    padding: 0;*/
+/*    background-color: #F5F5F5;*/
+/*}*/
+
+/*#id_interested {*/
+/*}*/
+
+/*#id_job {*/
+/*    width: 540px;*/
+/*    height: 50px;*/
+/*    padding: 0;*/
+/*    background-color: #F5F5F5;*/
+
+/*}*/
+
+/*#id_description {*/
+/*    width: 540px;*/
+/*    height: 80px;*/
+/*    background-color: #F5F5F5;*/
+
+/*}*/
+
+/*input[name=job] {*/
+/*    color: orchid;*/
+/*}*/
+
+/*textarea[name=description] {*/
+/*    color: red;*/
+/*}*/
+@font-face {
     font-family: 'yg-jalnan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
     font-weight: normal;
-    font-style: normal; }
+    font-style: normal;
+}
 
 
+.r_contents {
+    width: 80%;
+    background-color: red;
+    margin: 0 auto;
+    height: 1110px;
+}
+
+#profilecreate {
+    width: 540px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: greenyellow;
+}
 
 
+h1 {
+    padding-top: 11rem;
+    color: black;
+    margin: 0 auto;
+    text-align: center;
+    background-color: orange;
+    font-family: 'yg-jalnan', "cursive";
+    font-size: 37px;
+}
 
-        .r_contents{
-            height: 30%;
-        }
+#regtxt {
+    background-color: yellow;
 
+}
 
-        input[type=file] {
-            padding-top: 30px;
-            padding-left: 20px;
-        }
-
-        input[type=text], input[type=number] {
-            margin-bottom: 10px;
-            width: 250px;
-            height: 40px;
-            border-radius: 5px;
-            border: solid 1px #b0bec9;
-            margin-top: 10px;
-            padding-left: 10px;
-        }
-
-        #save {
-            margin-top: 3rem;
-            background-color: #717FFF;
-            border-radius: 5px;
-            border: none;
-            color: white;
-            width: 540px;
-            height: 60px;
-            text-align: center;
-            line-height: 30px;
-            padding: 3px 3px 6px 6px;
-            font-size: 1rem;
-            font-family: "Syncopate", sans-serif;
-            font-weight: 900;
-            margin-left: 4.5rem;
-        }
-
-        #save:hover{
-            background-color: orangered;
-        }
+#regtxt label {
+    background-color: orchid;
+    width: 540px;
+    display: inline-block;
+}
+#box{
+    display: inline-block;
+}
 
 
-        h2{
-            padding-top: 6rem;
-            color: black;
-            margin: 0 auto;
-            text-align: center;
-            width: 80%;
-            font-family: 'yg-jalnan', "cursive";
-        }
+input[type=text], input[type=number] {
 
-        form{
-            padding-top: 5rem;
-            width: 40rem;
-            margin: 0 auto;
-            font-family: "yg-jalnan", 'sans-serif';
-            color:  #717FFF;
+    width: 540px;
+    height: 60px;
+    border: solid 1px #b0bec9;
 
-        }
+}
 
-        form label{
-            float: left;
-            display: inline;
-            font-size: 0.9rem;
-            color: #0B2752;
-        }
+#save {
+    background-color: #0B2752;
+    border: none;
+    color: white;
+    width: 540px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+    font-family: "Syncopate", sans-serif;
+    font-weight: 900;
+}
 
-
-
-        #vv{
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        #box{
-            display: inline;
-        }
+#save:hover {
+    background-color: orangered;
+}
 
 
+form label {
 
+    font-size: 20px;
+    color: lightgray;
+    font-family: "yg-jalnan", 'sans-serif';
+}
 
-        #id_nickname{
-             width: 540px;
-            height: 50px;
-            padding: 0;
-            background-color: #F5F5F5;
-        }
+#id_nickname {
+    width: 540px;
+    height: 60px;
+    background-color: #F5F5F5;
+}
 
-        #id_interested{
-        }
-        #id_job{
-             width: 540px;
-            height: 50px;
-            padding: 0;
-                     background-color: #F5F5F5;
+#id_interested {
+}
 
-        }
-        #id_description{
-            width: 540px;
-            height: 80px;
-                     background-color: #F5F5F5;
+#id_job {
+    width: 540px;
+    height: 60px;
+    background-color: #F5F5F5;
 
-        }
+}
 
-        input[name=job]{
-            color: orchid;
-        }
+#id_description {
+    width: 540px;
+    height: 80px;
+    background-color: #F5F5F5;
 
-        textarea[name=description]{
-        color: red;
-        }
+}
+
+input[name=job] {
+    color: orchid;
+}

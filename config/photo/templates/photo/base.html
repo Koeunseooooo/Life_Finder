@@ -2,6 +2,7 @@
 {% load static %}
 {% block style %}
     <link rel="stylesheet" type="text/css" href="{% static 'photo/base.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'photo/photo_list.css' %}">
     {#fontawesome cdn#}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 {% endblock %}
@@ -11,8 +12,6 @@
 <!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
 
 {% block content %}
-
-
 <div class='community_content'>
     {% if messages %}
         <div>
@@ -21,7 +20,6 @@
             {% endfor %}
         </div>
     {% endif %}
-</div>
 </div>
 {% block photo%}
 {% endblock %}
