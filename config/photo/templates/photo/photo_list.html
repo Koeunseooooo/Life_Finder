@@ -13,8 +13,8 @@
     <div id="wrap05">
         <div class="topbtn">
             {% if user.is_authenticated %}
-                <button id="gg"><a href="{% url 'photo:create' %}">글 등록하기</a></button>
-                <button id="gd"><a class="nav-link" href="{% url 'photo:like_list' %}">좋아요한 사진보기</a></button>
+                <a href="{% url 'photo:create' %}"><button id="gg">글 등록하기</button></a>
+                <a href="{% url 'photo:like_list' %}"><button id="gd">좋아요한 사진보기</button></a>
             {% endif %}
         </div>
          <ul class="list-group list-group-flush">

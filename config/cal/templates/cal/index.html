@@ -9,19 +9,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
     <div class="line"> 등록한 라이프 뱃지에 따른 분석 결과를 한 곳에 모아봤어요! </div>
-    <br/>
-    <br/>
 
-    <div class="dash_detail">
-        <button><a href="{% url 'cal:dash_detail' %}" >한 눈에 보기</a></button>
-    </div>
-
-    <br/>
-    <br/>
+<div id="onelook">
+        <a href="{% url 'cal:dash_detail' %}" ><button class="dash_detail">한 눈에 보기</button></a>
+</div>
 
 
     <div id="grp01">
-    <h1>★이번달 라이프 현황★</h1>
+    <h1 id="01tit">★이번달 라이프 현황★</h1>
 
     {% for value in wanted_goal %}
         <p class="user_goal_des">라이프 목표 뱃지 개수 {{ value.goal_count }}개</p>
@@ -65,14 +60,23 @@
         </script>
 
 
+
         {% if half > ing  %}
-            <div>목표갯수에 도달할때까지 조금만 더 힘을 내요!</div>
+        <div id="fighting">
+            <h1>목표갯수에 도달할 수 있도록 해볼까요?</h1>
+        </div>
 
         {% elif half <= ing and ing <= value.goal_count %}
-            <div>목표갯수에 도달하기까지 얼마남지 않았어요! </div>
+           <div id="fighting">
+            <h1>얼마 안 남았어요 이제 곧 목표 갯수에 도달할 수 있어요!</h1>
+        </div>
+
 
         {% elif ing > value.goal_count %}
-            <div> 목표개수를 넘으셨군요! </div>
+             <div id="fighting">
+            <h1>목표 갯수를 넘었어요!  행복한 시간을 보내셨군요!</h1>
+        </div>
+
         {% endif %}
 
     {% endfor %}
@@ -138,14 +142,8 @@
 
     <div id="grp03">
         <h1>🥳     지난 7일간 최고의 순간!     🥳</h1>
-        <div id="grp03_1">{{mychart_month }}/{{ real_best1_start_time_day }}</div>
-        <div>{{ select_event_str }}</div>
-    <br/>
-    <br/>
-
-
-
-
+        <p id="grp03_1">{{mychart_month }}/{{ real_best1_start_time_day }}</p>
+     <p id="grp03_2">{{ select_event_str }}</p>
     </div>
 
 
@@ -451,19 +449,19 @@
 
 
     {%  if pre_month_end_total_count < 10 %}
-        <div> 저번달 데이터가 너무 부족해서 메세지(?) or 조언(?) 을 띄울 수 없습니다</div>
+        <div id="lastfighting"> <h1>저번달 데이터가 부족해서 메세지를 보여드릴 수 없습니다</h1></div>
     {%  else %}
         {% if present_month_meanvalue >= pre_month_end_meanvalue  %}
             {% if real_present_month_total >= real_pre_month_end_total %}
-                <div> 총개수랑 총평균 둘다 이번달이 좋을때</div>
+                <div id="lastfighting"><h1> 총개수랑 총평균 둘다 이번달이 좋을때</h1></div>
             {% elif real_present_month_total < real_pre_month_end_total %}
-                <div> 총개수는 안좋은데 총평균이 이번달이 좋을 때 </div>
+                <div id="lastfighting"> <h1>총개수는 안좋은데 총평균이 이번달이 좋을 때 </h1></div>
             {% endif %}
         {% elif present_month_meanvalue < pre_month_end_meanvalue %}
             {% if real_present_month_total < real_pre_month_end_total %}
-                <div> 총개수랑 총평균 둘다 이번달이 안좋을 때</div>
+                <div id="lastfighting"> <h1>총개수랑 총평균 둘다 이번달이 안좋을 때</h1></div>
             {% elif real_present_month_total >= real_pre_month_end_total %}
-                <div> 총평균은 안좋은데 총개수가 이번달이 좋을 때 </div>
+                <div id="lastfighting"> <h1>총평균은 안좋은데 총개수가 이번달이 좋을 때</h1> </div>
             {% endif %}
         {% endif %}
     {% endif %}

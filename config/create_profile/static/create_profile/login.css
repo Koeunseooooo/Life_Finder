@@ -47,6 +47,10 @@
         font-weight: 700;
     }
 
+    #save:hover{
+        background-color: orangered;
+    }
+
     #google_login img {
         width: 50px;
         height: 50px;
@@ -74,6 +78,7 @@
 
     #google_login span {
         padding-left: 60px;
+
     }
 
     #google_login:hover {
@@ -102,13 +107,10 @@
 
     li {
 
-    /*여기에 스타일 주면 nav바에도 같이 주게 되어서 지움*/
-    {
-        #line-height: 30px
-    ;
-        #
+        #line-height: 30px  ;
+
     }
-    }
+
 
     #id_username {
         width: 460px;
@@ -147,4 +149,12 @@
         font-weight: bolder;
         color: black;
         border: none;
+        background-color: #c4c4c4;
+    }
+#forget_password:hover{
+    background-color: orangered;
+}
+    #forget_password a{
+        color: white;
+        font-size: 20px;
     }

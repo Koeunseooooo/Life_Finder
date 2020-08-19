@@ -8,11 +8,13 @@
     <div id="all">
     <div id="sub">
         <h1>게시글을 수정해주세요</h1>
-        <form action="" method="POST">
+        <form action="" method="post" enctype='multipart/form-data' autocomplete="off">
             {% csrf_token %}
-            {{form.as_p}}
+            <table>
+                {{ form.as_p }}
+            </table>
             <input id="last" type="submit" value="UPDATE">
-            <button id="del" type="submit" value="DELETE"><a href="{% url 'photo:delete' object.id %}">삭제하기</a></button>
+            <a href="{% url 'photo:delete' object.id %}"><button id="del" type="submit" value="DELETE">DELETE</button></a>
         </form>
     </div>
     </div>

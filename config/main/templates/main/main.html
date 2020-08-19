@@ -25,31 +25,24 @@
 
 
         <div id="bottom">
-            {#            {% block afterlogin %}#}
-            {#            <form>#}
-            {#                <input id="log_btn" type="button" value="LOGIN">#}
-            {#                <input id="join_btn" type="button" value="JOIN US">#}
-            {#            </form>#}
+
             <div id="btn">
                 {% if not user.is_authenticated %}
-                <button id="first_btn">
-                    <a href="{% url 'create_profile:login' %}">LOGIN</a>
-                </button>
 
-                <button id="second_btn">
-                    <a href="{% url 'create_profile:signup' %}">JOIN US</a>
-                </button>
+                    <a href="{% url 'create_profile:login' %}"><button id="first_btn">LOGIN </button></a>
+                    <a href="{% url 'create_profile:signup' %}"><button id="second_btn">JOIN US </button></a>
+
                 {% else %}
-                <button id="third_btn">
-                    <a href="{% url 'cal:calendar' today_date %}">YAHO!</a>
-                </button>
+                    <a href="{% url 'cal:calendar' today_date %}"><button id="third_btn">YAHO! </button></a>
                 {% endif %}
             </div>
-            {#            {% endblock %}#}
         </div>
 
 
     </div>
+
+
+
     <div class="card_02">
 
         <h3>HOW WAS YOUR DAY?</h3>
@@ -59,14 +52,23 @@
             당신의 소중한 라이프 기록들을 보관하고 있어요<br />
             일상에서 느낀 만족스러운 모든 순간이 라이프 기록이 될 수 있답니다<br />
             각 기록들에 당신이 느낀 만족도에 따라 라이프 뱃지를 달아주세요!<br />
+            <a href="#"><button id="lf">CALENDAR-YA!</button></a>
         </p>
-        <div id="lf">
-            <a href="#">CALENDAR-YA!</a>
-        </div>
 
 
 
-    </div>
+        <div id="ant">
+            <div id="smile">
+                    <img src="{% static 'smillle.png' %}">
+                    <img src="{% static 'smillle.png' %}">
+                    <img src="{% static 'smillle.png' %}">
+                    <img src="{% static 'smillle.png' %}">
+                    <img src="{% static 'smillle.png' %}">
+                </div>
+            </div>
+</div>
+
+
 
     <div class="vid_01">
          <video width="100%" muted autoplay loop>
@@ -85,24 +87,32 @@
             캘린더에 기록한 라이프 뱃지들의 분석 결과를 보여주고 있어요<br />
             뱃지를 통해 얻은 데이터의 통계 결과값들을 이곳에 모았습니다<br/>
             당신의 라이프를 대시보드에서 한 눈에 살펴보세요!
-
         </p>
-
-
+         <a href="#"><button id="lg">CALENDAR-YA!</button></a>
         </div>
-
-
-
     </div>
 
     <div class="card_04">
+    <div id="boxwrap">
 
-        <h3>Who can use this service?</h3>
-        <h1>NUGU-YA!</h1>
-        <p>
-            <span>어떻게 </span><br/>
-            야호를 활용할 수 있을까요?<br/>
-            <br/>
+            <p>
+            어떻게 야호를 활용할 수 있을까요?<br/>
+            빠르게 흘러가는 시간을 사는 당신<br/>
+            일상 속에서 소소한 행복함을 느낀 당신<br/>
+            이전엔 몰랐던 즐거움을 찾은 당신<br/><br />
+            라이프 뱃지를 통해 삶의 만족도를 시각적으로 확인해보세요!
+        </p>
+
+            <p>
+            어떻게 야호를 활용할 수 있을까요?<br/>
+            빠르게 흘러가는 시간을 사는 당신<br/>
+            일상 속에서 소소한 행복함을 느낀 당신<br/>
+            이전엔 몰랐던 즐거움을 찾은 당신<br/><br />
+            라이프 뱃지를 통해 삶의 만족도를 시각적으로 확인해보세요!
+        </p>
+
+            <p>
+            어떻게 야호를 활용할 수 있을까요?<br/>
             빠르게 흘러가는 시간을 사는 당신<br/>
             일상 속에서 소소한 행복함을 느낀 당신<br/>
             이전엔 몰랐던 즐거움을 찾은 당신<br/><br />
@@ -111,13 +121,7 @@
 
 
 
-        <div id="smile">
-        <img src="{% static 'smile.png' %}">
-            <img src="{% static 'smile.png' %}">
-            <img src="{% static 'smile.png' %}">
-            <img src="{% static 'smile.png' %}">
-            <img src="{% static 'smile.png' %}">
-        </div>
+
     </div>
 
 
