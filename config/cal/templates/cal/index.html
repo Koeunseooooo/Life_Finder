@@ -3,8 +3,6 @@
     <div style="height: 100px"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
-{{ today }}
-    {{ year }}
     <div class="line"> '당신이 등록한 라이프 뱃지'를 활용하여 여러관점에서의 통계 데이터들을 한곳에 모았습니다. </div>
     <br/>
     <br/>
@@ -15,10 +13,6 @@
 
     <br/>
     <br/>
-{#    {{ today }}#}
-{#{{ one_days_ago }}#}
-
-
 
     <h2 class="first_string">★이번달 라이프 현황★ </h2>
     <br/>
@@ -74,10 +68,18 @@
         </script>
 
 
+        {% if half > ing  %}
+            <div>목표갯수에 도달할때까지 조금만 더 힘을 내요!</div>
 
+        {% elif half <= ing and ing <= value.goal_count %}
+            <div>목표갯수에 도달하기까지 얼마남지 않았어요! </div>
 
+        {% elif ing > value.goal_count %}
+            <div> 목표개수를 넘으셨군요! </div>
+        {% endif %}
 
     {% endfor %}
+
 
 
     <br/>
@@ -94,7 +96,7 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: [{{year}},'안되네요' , "ㅠㅠ", "왜", "안되냐고 ㅠ", "8/12", "8/13"],
+                labels: [{{ mychart_month }}+'/'+{{mychart_six_days_ago}},{{ mychart_month }}+'/'+{{ mychart_five_days_ago}} , {{mychart_month }}+'/'+{{mychart_four_days_ago}}, {{ mychart_month }}+'/'+{{mychart_three_days_ago}}, {{ mychart_month }}+'/'+{{mychart_two_days_ago}}, {{ mychart_month }}+'/'+{{mychart_one_days_ago}}, {{ mychart_month }}+'/'+{{mychart_day}}],
                 {# labels 날짜 좀 바뀌어라 제발 #}
                 datasets: [{
                     {#label: 1,#}
@@ -138,7 +140,7 @@
         });
     </script>
         <h4 style="text-align: center">지난 7일간 최고의 순간!</h4>
-        <div style="text-align: center">{{ best1_start_time }}</div>
+        <div style="text-align: center">{{mychart_month }}/{{ real_best1_start_time_day }}</div>
         <div style="text-align: center">{{ select_event_str }}</div>
     <br/>
     <br/>
@@ -164,7 +166,7 @@
                       data: [{
                         x: {{exercise_field_count}},
                         y: 1,
-                        r: 3*{{ value1 }} +3
+                        r: 4*{{ value1 }} +3
                       }]
                     }, {
                       label: ["여행"],
@@ -173,7 +175,7 @@
                       data: [{
                         x: {{travel_field_count}},
                         y: 1,
-                        r: 3*{{ value2 }}+3
+                        r: 4*{{ value2 }}+3
                       }]
                     }, {
                       label: ["기타"],
@@ -182,7 +184,7 @@
                       data: [{
                         x: {{etc_field_count}},
                         y: 1,
-                        r: 3*{{value3}} +3
+                        r: 4*{{value3}} +3
                       }]
                     }, {
                       label: ["친구"],
@@ -191,7 +193,7 @@
                       data: [{
                         x: {{friend_field_count}},
                         y: 1,
-                        r: 3*{{value4}}+3
+                        r: 4*{{value4}}+3
                       }]
                     } ,{
                       label: ["자기계발"],
@@ -200,7 +202,7 @@
                       data: [{
                         x: {{self_field_count}},
                         y: 1,
-                        r: 3*{{value5}}+3
+                        r: 4*{{value5}}+3
                       }]
                     }, {
                       label: ["취미생활"],
@@ -209,7 +211,7 @@
                       data: [{
                         x: {{hobby_field_count}},
                         y: 1,
-                        r: 3*{{value6}}+3
+                        r: 4*{{value6}}+3
                       }]
                     }, {
                       label: ["여가생활"],
@@ -218,7 +220,7 @@
                       data: [{
                         x: {{leisure_field_count}},
                         y: 1,
-                        r: 3*{{value7}}+3
+                        r: 4*{{value7}}+3
                       }]
                     }, {
                       label: ["일"],
@@ -227,7 +229,7 @@
                       data: [{
                         x: {{work_field_count}},
                         y: 1,
-                        r: 3*{{value8}}+3
+                        r: 4*{{value8}}+3
                       }]
                     }
                 ]
@@ -252,12 +254,12 @@
                      ticks: {
                             beginAtZero: true,
                             fontSize: 15,
-                            max:10,
+                            max:7,
                             stepSize:1
                         },
                     scaleLabel: {
                     display: true,
-                    labelString: "GDP (PPP)",
+                    labelString: "카테고리/여기 그래프 아예 갈아엎어야 함",
               }
             }]
           }
@@ -381,18 +383,18 @@
     <h2 class="second_string">★월별 라이프 비교★ </h2>
     <br/>
 
-    <div class="mychart5" style="width:600px; height:400px; margin:0 auto"><canvas id="myChart5"></canvas></div>
+    <div class="mychart5" style="width:1000px; height:400px; margin:0 auto"><canvas id="myChart5"></canvas></div>
 
     <script>
         var ctx = document.getElementById("myChart5").getContext('2d');
         var myChart3 = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12", "13", "14","15", "16", "17", "18", "19", "20", "21","22", "23", "24", "25", "26", "27", "28","29", "30"],
+                labels: ["1일", "2일", "3일", "4일", "5일", "6일", "7일","8일", "9일", "10일", "11일", "12일", "13일", "14일","15일", "16일", "17일", "18일", "19일", "20일", "21일","22일", "23일", "24일", "25일", "26일", "27일", "28일","29일", "30일"],
                 datasets: [{
                     label: "이전달",
                     {#라벨 안쓰고 싶은데... ?#}
-                    data: [3,1,3,5,8,9,0,7,7,9,6,4,4,5,3,3,6,7,8,8,9,3,2,7,8,9,4,4,2,10],
+                    data: [{{real_pre_thirty_days_ago_rating}},{{real_pre_twentynine_days_ago_rating}},{{real_pre_twentyeight_days_ago_rating}},{{real_pre_twentyseven_days_ago_rating}},{{real_pre_twentysix_days_ago_rating}},{{real_pre_twentyfive_days_ago_rating}},{{real_pre_twentyfour_days_ago_rating}},{{real_pre_twentythree_days_ago_rating}},{{real_pre_twentytwo_days_ago_rating}},{{real_pre_twentyone_days_ago_rating}},{{real_pre_twenty_days_ago_rating}},{{real_pre_nineteen_days_ago_rating}},{{real_pre_eighteen_days_ago_rating}},{{real_pre_seventeen_days_ago_rating}},{{real_pre_sixteen_days_ago_rating}},{{real_pre_fifteen_days_ago_rating}},{{real_pre_fourteen_days_ago_rating}},{{real_pre_thirteen_days_ago_rating}},{{real_pre_twelve_days_ago_rating}},{{real_pre_eleven_days_ago_rating}},{{real_pre_ten_days_ago_rating}},{{real_pre_nine_days_ago_rating}},{{real_pre_eight_days_ago_rating}},{{real_pre_seven_days_ago_rating}},{{real_pre_six_days_ago_rating}},{{real_pre_five_days_ago_rating}},{{real_pre_four_days_ago_rating}},{{real_pre_three_days_ago_rating}},{{real_pre_two_days_ago_rating}},{{real_pre_one_days_ago_rating}}],
                     borderColor: [
                         'rgba(255, 206, 86, 1)',
                     ],
@@ -400,7 +402,7 @@
                     fill:false
                 }, {
                     label: "이번달",
-                    data: [8,8,9,9,7,1,11,12,3,6,8,9,3,3,4,2,3,5,8,9,0,7,7,9,6,4,4,5,3,0],
+                    data: [{{real_thirty_days_ago_rating}},{{real_twentynine_days_ago_rating}},{{real_twentyeight_days_ago_rating}},{{real_twentyseven_days_ago_rating}},{{real_twentysix_days_ago_rating}},{{real_twentyfive_days_ago_rating}},{{real_twentyfour_days_ago_rating}},{{real_twentythree_days_ago_rating}},{{real_twentytwo_days_ago_rating}},{{real_twentyone_days_ago_rating}},{{real_twenty_days_ago_rating}},{{real_nineteen_days_ago_rating}},{{real_eighteen_days_ago_rating}},{{real_seventeen_days_ago_rating}},{{real_sixteen_days_ago_rating}},{{real_fifteen_days_ago_rating}},{{real_fourteen_days_ago_rating}},{{real_thirteen_days_ago_rating}},{{real_twelve_days_ago_rating}},{{real_eleven_days_ago_rating}},{{real_ten_days_ago_rating}},{{real_nine_days_ago_rating}},{{real_eight_days_ago_rating}},{{real_seven_days_ago_rating}},{{real_six_days_ago_rating}},{{real_five_days_ago_rating}},{{real_four_days_ago_rating}},{{real_three_days_ago_rating}},{{real_two_days_ago_rating}},{{real_one_days_ago_rating}}],
                     borderColor: [
                         'rgba(255, 06, 86, 1)',
                     ],
@@ -416,9 +418,8 @@
                 maintainAspectRatio: false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
                 scales: {
                     yAxes: [{
-
                         beginAtZero: true,
-                        display: false
+                        display: true,
 
                     }]
                 }
@@ -429,62 +430,28 @@
     <br/>
     <br/>
 
-    <h4 style="text-align: center"> 이전달 총 뱃지 개수 : {{ ing  }}     이전달 평균 뱃지 개수 : {{ing}} </h4>
-    <h4 style="text-align: center"> 이번달 총 뱃지 개수 : {{ ing  }}     이번달 평균 뱃지 개수 : {{ing}} </h4>
-
-{#추후 메세지도 넣어질 예정#}
+    <h4 style="text-align: center"> 이전달 총 뱃지 개수 : {{ real_pre_month_end_total }}     이전달 평균 뱃지 개수 : {{ pre_month_end_meanvalue }} </h4>
+    <h4 style="text-align: center"> 이번달 총 뱃지 개수 : {{ real_present_month_total }}     이번달 평균 뱃지 개수 : {{ present_month_meanvalue }} </h4>
+    {%  if pre_month_end_total_count < 10 %}
+        <div> 저번달 데이터가 너무 부족해서 메세지(?) or 조언(?) 을 띄울 수 없습니다</div>
+    {%  else %}
+        {% if present_month_meanvalue >= pre_month_end_meanvalue  %}
+            {% if real_present_month_total >= real_pre_month_end_total %}
+                <div> 총개수랑 총평균 둘다 이번달이 좋을때</div>
+            {% elif real_present_month_total < real_pre_month_end_total %}
+                <div> 총개수는 안좋은데 총평균이 이번달이 좋을 때 </div>
+            {% endif %}
+        {% elif present_month_meanvalue < pre_month_end_meanvalue %}
+            {% if real_present_month_total < real_pre_month_end_total %}
+                <div> 총개수랑 총평균 둘다 이번달이 안좋을 때</div>
+            {% elif real_present_month_total >= real_pre_month_end_total %}
+                <div> 총평균은 안좋은데 총개수가 이번달이 좋을 때 </div>
+            {% endif %}
+        {% endif %}
+    {% endif %}
 
 
 {% endblock %}
-
-
-
-{#    <h5>각 카테고리별 라이프 기록 개수 </h5>#}
-{#    {{ exercise_field_count }}#}
-{#    {{ travel_field_count }}#}
-{#    {{ etc_field_count }}#}
-{#    {{ friend_field_count }}#}
-{#    {{ self_field_count }}#}
-{#    {{ hobby_field_count }}#}
-{#    {{ leisure_field_count }}#}
-{#    {{ work_field_count }}#}
-{##}
-{#    <h5>각 카테고리별 라이프 기록 개수의 뱃지 개수</h5>#}
-{#    {{ value1 }}#}
-{#    {{ value2 }}#}
-{#    {{ value3 }}#}
-{#    {{ value4 }}#}
-{#    {{ value5 }}#}
-{#    {{ value6 }}#}
-{#    {{ value7 }}#}
-{#    {{ value8 }}#}
-{##}
-{#    <h5>지난 한달간 모은 총 뱃지수</h5>#}
-{#    {{ ing }}#}
-{##}
-{#    <h5>하루전 모든 rating</h5>#}
-{#    {{ one_days_ago }}#}
-{#    {{ one_days_ago_rating}}#}
-{#    {% for i in one_days_ago_rating %}#}
-{#    {{ i }}#}
-{#    {% endfor %}#}
-{##}
-{#    {% for j in three_days_ago_rating %}#}
-{#    {{ j }}#}
-{#    {% endfor %}#}
-{##}
-
-
-
-    {#    {{ mon }}#}
-    {#    {{ tue }}#}
-    {#    {{ wed }}#}
-    {#    {{ thur }}#}
-    {#    {{ fri }}#}
-    {#    {{ sat }}#}
-    {#    {{ sun }}#}
-    {#    {{ a }}#}
-
 
 
 
