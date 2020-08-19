@@ -669,10 +669,10 @@ def dash(request):
         value3=0
 
     # 친구/가족과의 시간 선택한 필드만 가져오는 쿼리문
-    friend_field =Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='친구/가족과의 시간').filter(start_time__gte=seven_days_ago)
+    friend_field = Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='친구/가족과의 시간').filter(start_time__gte=seven_days_ago)
     # 친구/가족과의 시간  선택한 필드의 개수만 가져오는 쿼리문
-    friend_field_count =Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='친구/가족과의 시간').filter(start_time__gte=seven_days_ago).count()
-    friend_field_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='침구/가족과의 시간').filter(start_time__gte=seven_days_ago).aggregate(Sum('rating')).values()
+    friend_field_count = Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='친구/가족과의 시간').filter(start_time__gte=seven_days_ago).count()
+    friend_field_rating = Event.objects.all().filter(profile=request.user.user_profile).filter(category__contains='친구/가족과의 시간').filter(start_time__gte=seven_days_ago).aggregate(Sum('rating')).values()
     for value4 in friend_field_rating:
         value4
     if value4==None:

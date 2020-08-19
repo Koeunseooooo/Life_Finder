@@ -138,10 +138,12 @@
 
     <div id="grp03">
         <h1>🥳     지난 7일간 최고의 순간!     🥳</h1>
-        <div id="grp03_1">{{mychart_month }}/{{ real_best1_start_time_day }}</div>
-        <div>{{ select_event_str }}</div>
-    <br/>
-    <br/>
+        <p id="grp03_1">{{mychart_month }}/{{ real_best1_start_time_day }}</p>
+
+        <p id="grp03_2">
+            {{ select_event_str }}
+        </p>
+
 
 
 
@@ -152,7 +154,7 @@
     <div id="grp04">
 
     <h1>자네 살림살이는 좀 나아졌는가?</h1>
-        <p>지난 7일간의 활동을 카테고리 별로 정리했어요</p>
+    <p>지난 7일간의 활동을 카테고리 별로 정리했어요</p>
     <div class="mychart9">
         <canvas id="myChart9"></canvas>
     </div>
@@ -160,115 +162,32 @@
     <script>
         var ctx = document.getElementById("myChart9").getContext('2d');
         var myChart9 = new Chart(ctx, {
-            type: 'bubble',
+            type: 'horizontalBar',
             data: {
-                labels: "?",
+                labels: ["운동","여행","기타","친구/가족과의 시간","자기계발","취미생활","여가생활","일"],
                 datasets: [
                     {
-                      label: ["운동"],
-                      backgroundColor: "rgba(255,221,50,0.2)",
-                      borderColor: "rgba(255,221,50,1)",
-                      data: [{
-                        x: {{exercise_field_count}},
-                        y: 1,
-                        r: 4*{{ value1 }} +3
-                      }]
-                    }, {
-                      label: ["여행"],
-                      backgroundColor: "rgba(60,186,159,0.2)",
-                      borderColor: "rgba(60,186,159,1)",
-                      data: [{
-                        x: {{travel_field_count}},
-                        y: 1,
-                        r: 4*{{ value2 }}+3
-                      }]
-                    }, {
-                      label: ["기타"],
-                      backgroundColor: "rgba(644,90,159,0.2)",
-                      borderColor: "rgba(644,90,159,1)",
-                      data: [{
-                        x: {{etc_field_count}},
-                        y: 1,
-                        r: 4*{{value3}} +3
-                      }]
-                    }, {
-                      label: ["친구"],
-                      backgroundColor: "rgba(32,322,159,0.2)",
-                      borderColor: "rgba(32,322,159,1)",
-                      data: [{
-                        x: {{friend_field_count}},
-                        y: 1,
-                        r: 4*{{value4}}+3
-                      }]
-                    } ,{
-                      label: ["자기계발"],
-                      backgroundColor: "rgba(12,99,159,0.2)",
-                      borderColor: "rgba(12,99,159,1)",
-                      data: [{
-                        x: {{self_field_count}},
-                        y: 1,
-                        r: 4*{{value5}}+3
-                      }]
-                    }, {
-                      label: ["취미생활"],
-                      backgroundColor: "rgba(644,90,159,0.2)",
-                      borderColor: "rgba(644,90,159,1)",
-                      data: [{
-                        x: {{hobby_field_count}},
-                        y: 1,
-                        r: 4*{{value6}}+3
-                      }]
-                    }, {
-                      label: ["여가생활"],
-                      backgroundColor: "rgba(255,221,50,0.2)",
-                      borderColor: "rgba(255,221,50,1)",
-                      data: [{
-                        x: {{leisure_field_count}},
-                        y: 1,
-                        r: 4*{{value7}}+3
-                      }]
-                    }, {
-                      label: ["일"],
-                      backgroundColor: "rgba(12,99,159,0.2)",
-                      borderColor: "rgba(12,99,159,1)",
-                      data: [{
-                        x: {{work_field_count}},
-                        y: 1,
-                        r: 4*{{value8}}+3
-                      }]
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850","#3e95cd", "#8e5ea2", "#3cba9f"],
+                        data: [{{ value1}},{{ value2 }},{{ value3}},{{ value4 }},{{ value5 }},{{ value6 }},{{ value7 }},{{ value8 }}]
                     }
                 ]
             },
             options: {
+                legend: {display: false},
                 title: {
-                display: false,
-            }, scales: {
-                yAxes: [{
-                    ticks: {
-                            beginAtZero: true,
-                            stepSize: 3,
-                            max: 2,
-                            display:false
-                        },
-                    scaleLabel: {
                     display: false,
-              }
-            }]
-        ,
-                xAxes: [{
-                     ticks: {
-                            beginAtZero: true,
-                            fontSize: 15,
-                            max:7,
-                            stepSize:1
-                        },
-                    scaleLabel: {
-                    display: true,
-                    labelString: "카테고리/여기 그래프 아예 갈아엎어야 함",
-              }
-            }]
-          }
-        }
+                },
+                scales: {
+                    xAxes: [{
+                        beginAtZero: true,
+
+                    }]
+
+                }
+            }
+
+
+
     });
     </script>
         </div>
@@ -314,12 +233,14 @@
                 },
                 maintainAspectRatio: false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
                 scales: {
-                    yAxes: [{
+                    xAxes: [{
                         beginAtZero: true,
-                        display: false
+                        display: false,
+                        max:30,
+
                     }]
 
-                }
+                },
             }
         });
     </script>

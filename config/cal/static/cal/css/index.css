@@ -121,8 +121,9 @@
 }
 
 #grp03 h1{
-    margin-top: 3rem;
+    margin-top: 17rem;
     color: #0B2752;
+    text-align: center;
     font-family: "yg-jalnan",'sans-serif';
 }
 
@@ -169,7 +170,7 @@
 }
 
 #grp05 h1{
-    margin-top: 10rem;
+    margin-top: 17rem;
     color: #0B2852;
     text-align: center;
     font-family: "yg-jalnan", 'sans-serif';
@@ -183,6 +184,20 @@
     font-family: "yg-jalnan", 'sans-serif';
     font-size: 1.2rem;
 }
+
+#grp03_1{
+    margin-top: 20px;
+    font-size: 100px;
+    font-family: "yg-jalnan", sans-serif;
+    color: #0B2752;
+}
+
+#grp03_2{
+    font-size: 20px;
+     font-family: "yg-jalnan", sans-serif;
+    color: lightgray;
+}
+
 
 .mychart4{
     width: 100%;
