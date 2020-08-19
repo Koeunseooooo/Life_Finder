@@ -78,7 +78,8 @@
 
     #google_login span {
         padding-left: 60px;
-
+        display: inline-block;
+        line-height: 60px;
     }
 
     #google_login:hover {
