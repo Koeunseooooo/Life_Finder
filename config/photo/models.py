@@ -28,3 +28,16 @@ class Photo(models.Model):
         return reverse('photo:detail', args=[self.id])
 
 
+# class Comment(models.Model):
+#     name = models.CharField(max_length=30, blank=True)
+#     address = models.CharField(max_length=100, blank=True)
+#     age = models.IntegerField(blank=True, null=True)
+
+
+class Comment(models.Model):
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name='photo_comment')
+    comment_author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='comment_author_profile')
+    text = models.TextField()
+
+    def __str__(self):
+        return self.text
