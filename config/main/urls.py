@@ -8,4 +8,3 @@ urlpatterns = [
  # path('',views.base, name='base'),
  path('',views.first, name='first'),
 ]
-

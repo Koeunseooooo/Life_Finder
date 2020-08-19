@@ -5,8 +5,134 @@
     font-style: normal;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+
+}
+
+body{
+    background-color: #EDF5FF;
+     perspective-origin:50% -100%;
+    perspective: 1500px;
+}
+
+#profile{
+    width: 100%;
+}
 #save {
-    width: 460px;
+    width: 100px;
+    height: 40px;
+    border-radius: 3rem;
+    padding: 10px;
+    border: none;
+    background-color: white;
+    margin-top: 2rem;
+}
+#save:hover{
+    background-color: orangered;
+}
+#save a {
+    padding: 10px;
+    color: #717FFF;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+#intlife{
+    margin-top: 5rem;
+}
+
+#le h2 {
+    margin: 0 auto;
+    color: black;
+    padding-top: 2rem;
+    font-family: "yg-jalnan", 'sans-serif';
+}
+
+#proname{
+    font-family: "yg-jalnan", sans-serif;
+
+}
+
+
+#smile01 {
+    margin-top: 3rem;
+    border: 3px solid white;
+    width: 150px;
+    height: 150px;
+    border-radius: 10rem;
+
+}
+
+
+
+
+#intlife{
+    margin-top: 14rem;
+    width: 5rem;
+    margin-left: 1rem;
+    font-family: "yg-jalnan", 'sans-serif';
+    text-align: left;
+
+}
+#job{
+    width: 5rem;
+    margin-left: 1rem;
+    font-family: "yg-jalnan", 'sans-serif';
+    text-align: left;
+}
+#intro{
+        width: 5rem;
+    margin-left: 1rem;
+    font-family: "yg-jalnan", 'sans-serif';
+    text-align: left;
+
+}
+
+
+#goalbadge{
+    width: 10rem;
+    margin-left: 1rem;
+    font-family: "yg-jalnan", 'sans-serif';
+    text-align: left;
+
+}
+
+#intro, #intlife, #goalbadge, #job{
+    color: #c4c4c4;
+}
+
+
+#tt{
+    color: #c4c4c4;
+    padding-left: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    font-family: "yg-jalnan", 'sans-serif';
+    font-size: 13px;
+}
+
+
+
+
+#profile {
+    padding-top: 6.5rem;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 3rem;
+}
+
+
+
+
+/*비밀번호 변경*/
+.change_pw{
+        width: 460px;
     height: 56px;
     border-radius: 5px;
     padding: 10px;
@@ -14,32 +140,198 @@
     margin-top: 5rem;
     background-color: #717FFF;
 }
-
-#save a {
-    padding: 20px;
+.change_pw a{
+     padding: 20px;
     color: white;
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 800;
     font-size: 1rem;
 }
 
-h2 {
-    margin: 0 auto;
-    color: black;
+#le{
+    width: 20%;
+    float: left;
+    height: 980px;
+    border-radius: 1rem;
+    -webkit-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36)
 }
 
-h2:nth-child(1) {
-    margin-bottom: 2rem;
-    font-family: 'yg-jalnan', "cursive";
+#ri{
+    width: 80%;
+    float: left;
+    background-color: white;
+    height: 980px;
+    -webkit-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    overflow: scroll;
 }
 
-img {
-    border-radius: 10rem;
-    margin-bottom: 4rem;
+
+#hello{
+    margin-top: 7rem;
+    margin-left: 7rem;
+    width: 25rem;
+    height: 10rem;
+}
+#hello h1{
+    display: block;
+    font-family: "yg-jalnan", 'sans-serif';    text-align: left;
+    font-size: 4rem;
+    color: #c4c4c4;
 }
 
-#profile {
-    margin: 0 auto 0;
-    /*margin-top: 7rem;*/
+#imgsmall{
+    float: left;
+   width: 300px;
+    height: 260px;
+    margin-top: 10rem;
+    margin-left: 7rem;
+    margin-bottom: 1rem;
+    background-color: lightgray;
+    border-radius: 0.5rem;
+    padding-top: 40px;
+
+
+
+}
+
+#imgsmall img{
+
+    line-height: 50px;
+    width: 200px;
+    height: 200px;
+    -webkit-box-shadow: -7px 7px 42px 0px rgba(0,0,0,0.27);
+-moz-box-shadow: -7px 7px 42px 0px rgba(0,0,0,0.27);
+box-shadow: -7px 7px 42px 0px rgba(0,0,0,0.27);
+
+}
+
+#text{
     text-align: center;
+    width: 50%;
+    height: 20px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.cube {
+    margin-top: 30rem;
+  position:relative;
+  padding-bottom:20%;
+  transform-style: preserve-3d;
+  transform-origin: 50% 100%;
+  transform:rotateY(45deg) rotateX(0);
+  transition:transform 10s;
+}
+.cubeFace {
+  position: absolute;
+  left:20%;top: 10%;
+  width: 70px;
+    height:70px;
+  margin: 0 auto;
+  transform-style: inherit;
+  transform-origin:50% 50%;
+  transform: rotateX(90deg);
+  backface-visibility:hidden;
+}
+.face2{
+    border-radius: 10rem;
+  transform-origin:50% 50%;
+  transform: rotatez(90deg) translateX(100%) rotateY(90deg);
+}
+.cubeFace:before, .cubeFace:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin:0 0;
+  background: inherit;
+  box-shadow:inherit;
+  backface-visibility:inherit;
+}
+.cubeFace:before {
+  top: 20%; left: 0;
+  transform: rotateX(-90deg);
+}
+.cubeFace:after {
+  top: 0; left: 100%;
+  transform: rotateY(90deg);
+}
+
+body:hover .cube{
+  transform:rotateY(405deg) rotateX(360deg);
+}
+
+        .cubeFace2 {
+  position: absolute;
+  left:60%;top: 30%;
+  width: 50px;
+    height:50px;
+  margin: 0 auto;
+  transform-style: inherit;
+  transform-origin:50% 50%;
+  transform: rotateX(70deg);
+  backface-visibility:hidden;
+}
+.face4{
+    border-radius: 10rem;
+    transform-origin:50% 50%;
+    transform: rotatez(90deg) translateX(100%) rotateY(90deg);
+}
+.cubeFace2:before, .cubeFace2:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin:0 0;
+  background: inherit;
+  box-shadow:inherit;
+  backface-visibility:inherit;
+}
+.cubeFace2:before {
+  top: 100%;
+    left: 0;
+  transform: rotateX(-200deg);
+}
+.cubeFace2:after {
+  top: 0; left: 100%;
+  transform: rotateY(90deg);
+}
+
+                .cubeFace3 {
+  position: absolute;
+  left:70%;top: 50%;
+  width: 30px;
+    height:30px;
+  margin: 0 auto;
+  transform-style: inherit;
+  transform-origin:50% 50%;
+  transform: rotateY(30deg);
+  backface-visibility:hidden;
+}
+.face5{
+    border-radius: 10rem;
+  transform-origin:50% 50%;
+  transform: rotatez(30deg) translateX(100%) rotateY(80deg);
+}
+.cubeFace3:before, .cubeFace3:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin:0 0;
+  background: inherit;
+  box-shadow:inherit;
+  backface-visibility:inherit;
+}
+.cubeFace3:before {
+  top: 100%; left: 0;
+  transform: rotateX(-100deg);
+}
+.cubeFace3:after {
+  top: 0; left: 100%;
+  transform: rotateY(30deg);
 }

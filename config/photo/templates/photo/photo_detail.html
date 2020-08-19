@@ -1,28 +1,47 @@
-{% extends 'photo/base.html' %}
+{% extends 'main/base.html' %}
+{% load static %}
+{% block style %}
+        <link rel="stylesheet" type="text/css" href="{% static 'photo/photo_detail.css' %}">
 
-{% block photo %}
-    <div style="width: 1000px">
-        <div style="height:200px;">
-            {% if object.image %}
-            <img src=" {{ object.image.url }}" alt="...">
-            {% endif %}
-                <h5>{{ object.author }}</h5>
-                <p> {{ object.text }} </p>
+{% endblock %}
+{% block content %}
+<div id="all">
+            <div id="editbtn">
+            {%if object.author == request.user.user_profile %}
+            <button class="button_7"><a href="{% url 'photo:update' object.id %}">EDIT</a></button>
+            {%endif%}
+            </div>
+            <div id="imgwrap">
+                {% if object.image %}
+                <img src=" {{ object.image.url }}" alt="...">
+                {% endif %}
+            </div>
+
+    <div id="wrap4">
+
 
             <ul>
                 <li>
-                        <a href="{% url 'photo:like' object.id %}" class="{%if user in object.like.all %} active {%endif%}">좋아요!</a>
-                        {% if object.like.all.count %}
+                    {% if object.like.all.count %}
                         <span>{{object.like.all.count}}</span>
                         {% endif %}
+                        <a href="{% url 'photo:like' object.id %}" class="{%if user in object.like.all %} active {%endif%}">좋아요!</a>
+
                     </li>
-                <li>생성일 : {{ object.created }}</li>
+
+            <p> {{ object.text }} </p>
+                <li>{{ object.created }}</li>
 
             </ul>
-            <div>
-                <a href="{% url 'photo:update' object.id %}">수정하기</a>
-                <a href="{% url 'photo:delete' object.id %}">삭제하기</a>
-            </div>
-        </div>
+
+
+
     </div>
+
+<div id="comment">
+    댓글 쓰는 칸입니다요!
+
+</div>
+
+</div>
 {% endblock %}

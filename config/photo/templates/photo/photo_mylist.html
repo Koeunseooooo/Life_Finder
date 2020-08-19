@@ -1,11 +1,11 @@
-{% extends 'photo/base.html' %}
+{% extends 'main/base.html' %}
+{% load static %}
+{% block style %}
 
-{% block photo %}
+{% endblock %}
+{% block content %}
 
-<div class="row">
-   <div class="col-md-12">
-       <div id="mdb-lightbox-ui"></div>
-       <div class="mdb-lightbox no-margin">
+
            <div class="row">
                {% for object in object_list %}
                {% if object.author == request.user %}
@@ -17,10 +17,9 @@
                {% endif %}
                {% endfor %}
            </div>
-       </div>
-       <div class="col"></div>
-   </div>
-</div>
+
+
+
 
 {% endblock %}
 

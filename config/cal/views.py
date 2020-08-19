@@ -24,95 +24,87 @@ from django.contrib import messages
 from django.views.generic.dates import DayArchiveView
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from django.http import HttpResponse
 
+#setings.py에 보내서 다른 앱의 view에도 today_date라는 변수 넘기기
+def give_today_date(request):
+    import datetime
+    today_date = datetime.date.today().isoformat()
+    return {'today_date':today_date}
+
+def send_to_calendar(request):
+    import datetime
+    today_date = datetime.date.today().isoformat()
+    return redirect('cal:calendar',today_date)
 
 class CalendarView(generic.ListView):
     model = Event
     template_name = 'cal/calendar.html'
     context_object_name = 'today_list'  # today_list에는 오늘 등록한 객체들이 포함됨
 
-    # def get(self, request, *args, **kwargs):
-    #     profile = self.request.user.user_profile
-    #     if not profile:
-    #             raise Http404(_("Empty list and '%(class_name)s.allow_empty' is False.") % {
-    #                 'class_name': self.__class__.__name__,
-    #             })
-    #     context = self.get_context_data()
-    #     # return self.render_to_response(context)
+    @property
+    def date(self):
+       return self.kwargs['date']
 
-
-    # def get(self, request):
-    #     date = datetime.strptime(date, '%Y-%M-%d').date()
-    #     selected_queryset = Event.objects.filter(start_time__day=date)
-    #     return selected_queryset
+    def get_queryset(self, **kwargs):
+        # date = self.kwargs['date'] or None
+        queryset = {
+            'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=self.kwargs['date']),
+            'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=self.kwargs['date']).aggregate(Sum('rating')).values(),
+            # 'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()),
+            # 'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()).aggregate(Sum('rating')).values(),
+        }
+        return queryset
 
     def get_context_data(self, **kwargs):
-        if self.request.user.user_profile is None:
-            return render(self.request, 'cal/calendar.html', {'error': '프로필을 작성해주세요'})
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))
-        # day = get_specifiec_date(self.request.GET.get('day', None))
-        # cal = Calendar(d.year, d.month, day.day)
+
         cal = Calendar(d.year, d.month)
         # issue self.request.user 추가해서 달력에서 다른 사람이 등록한 이벤트 안 보이게 문제 해결
         html_cal = cal.formatmonth(self.request.user, withyear=True)
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
+        context['today_date'] = self.date
+        context['date'] = self.date
 
+        #2020-08-16대신 08월 16일이라고 전달하는 text
+        context['date_text'] = self.date[5:7] +'월 ' + self.date[8:] +'일'
+        # context['day'] =self.day
 
-        # context['my_date_view'] = my_date_view(date)
-        # context['prev_day'] = prev_day(day)
-        # context['date_queryset'] = my_date_view(yyyy)
-        # context['date_url'] = date_url(date)
-
-        # context['prev_day'] = prev_day(day)
-        # context['selected_date'] = prev_day_query(self,day)
-
-
-
-        # context['next_day'] = next_day(d)
-        # day = get_specifiec_date(self.request.GET.get('day',None))
-        # context['prev_day'] =prev_day(day)
+        day = self.date
+        # day = get_specifiec_date(self.request.GET.get('day', None))
+        context['prev_day'] = prev_day(day)
+        context['real_today'] = real_today(day)
+        context['next_day'] = next_day(day)
         return context
 
+#Prev day버튼 누르면 전날로 이동
+def prev_day(day):
+    import datetime
+    date_time_str = day
+    #현재 date_time_str은 str타입이라서 이를 날짜로 바꿔주기
+    day_object = datetime.datetime.strptime(date_time_str, '%Y-%m-%d')
+    prev_day = day_object - datetime.timedelta(days=1)
+    day = prev_day.isoformat()[:10]
+    return day
 
-    def get_queryset(self, **kwargs):
-        # if self.request.user.user_profile is None:
-            # return render('create_profile/register.html', {'error': '아이디 또는 비밀번호가 올바르지 않습니다'})
-            # messages.info(self, '프로필을 먼저 등록해주세요.')
-        # date_after_day = datetime.today() + relativedelta(days=1)
-        # today = datetime.today().strftime('%d/%m/%Y')
-        # after_day = date_after_day.strftime('%d/%m/%Y')
+#TODAY라는 글씨에 오늘 날짜를 전달해주기
+def real_today(day):
+    import datetime
+    today_date = datetime.date.today()
+    day = today_date.isoformat()
+    return day
 
-        # profile_value = Profile.objects.all()
-        # today = datetime.today() #August 14, 2020 - 17:57:14
-        # selected_date = prev_day(day)
-        # print(selected_date)
-        # start_date = self.kwargs.get('start_date')
-        queryset = {
-            'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()),
-            'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()).aggregate(Sum('rating')).values(),
-
-            'wanted_goal': Profile.objects.all().values().filter(user=self.request.user),
-            'every_events': Event.objects.all().filter(profile=self.request.user.user_profile),
-        }
-        return queryset
-        # try:
-        #     queryset = {
-        #         'today_list_items': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()),
-        #         'today_list_rating_sum': Event.objects.all().filter(profile=self.request.user.user_profile).filter(start_time__date=date.today()).aggregate(Sum('rating')).values(),
-        #
-        #         'wanted_goal': Profile.objects.all().values().filter(user=self.request.user),
-        #         'every_events': Event.objects.all().filter(profile=self.request.user.user_profile),
-        #
-        #     }
-        #     return queryset
-        # except Exception:
-        #     # queryset = {}
-        #     return redirect('create_profile/http404.html')
-
-        # CartItem.objects.select_related('product').filter(cart=cart)
+#next day버튼 누르면 다음 날로 이동
+def next_day(day):
+    import datetime
+    date_time_str = day
+    day_object = datetime.datetime.strptime(date_time_str, '%Y-%m-%d')
+    next_day = day_object + datetime.timedelta(days=1)
+    day = next_day.isoformat()[:10]
+    return day
 
 
 
@@ -122,7 +114,6 @@ def get_date(req_month):
         year, month = (int(x) for x in req_month.split('-'))
         return date(year, month, day=1)
     return datetime.today()
-
 
 def prev_month(d):
     first = d.replace(day=1)
@@ -139,28 +130,32 @@ def next_month(d):
     return month
 
 def event_edit(request, event_id):
+    import datetime
+    today_date = datetime.date.today().isoformat()
     instance = get_object_or_404(Event, pk=event_id)
     form = EventForm(request.POST or None, instance=instance)
     if "action_add" in request.POST and form.is_valid():
         instance = form.save(commit=False)
         instance.profile = request.user.user_profile
         instance.save()
-        return redirect('cal:calendar')
+        return redirect('cal:calendar', today_date)
     elif "action_remove" in request.POST:  # 삭제하기 버튼
         instance.delete()
-        return redirect('cal:calendar')
-    return render(request, 'cal/event_edit.html', {'form': form})
+        return redirect('cal:calendar',today_date)
+    return render(request, 'cal/event_edit.html', {'form': form, 'today_date': today_date})
 
 
 def event(request, event_id=None):
+    import datetime
+    today_date = datetime.date.today().isoformat()
     instance = Event()
     form = EventForm(request.POST or None, instance=instance)
     if "action_add" in request.POST and form.is_valid():
         instance = form.save(commit=False)
         instance.profile = request.user.user_profile
         instance.save()
-        return redirect('cal:calendar')
-    return render(request, 'cal/event.html', {'form': form})
+        return redirect('cal:calendar',today_date)
+    return render(request, 'cal/event.html', {'form': form, 'today_date': today_date})
 
 
 
@@ -970,7 +965,7 @@ def dash(request):
         'five_count':five_count,
 
         'a':a,
-        #a는 뭐야?
+        #a는 뭐야? # 나도 몰라 은서가 넣은 거 아니였어?
         'wanted_goal': wanted_goal,
         'real_goal_count':real_goal_count,
         'half':half,

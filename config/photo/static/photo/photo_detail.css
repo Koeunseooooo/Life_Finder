@@ -1,0 +1,94 @@
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#all{
+    margin: 0 auto;
+    width: 80%;
+    padding-bottom: 13rem;
+}
+#editbtn{
+    padding-top: 10rem;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button_7{
+    background-color: #c4c4c4;
+    width: 100px;
+    height: 50px;
+    border-radius: 2rem;
+    text-decoration: none;
+    border: none;
+
+
+}
+
+.button_7 a{
+    color: white;
+    font-family: "yg-jalnan", 'sans-serif';
+}
+
+.button_7:hover{
+    background-color: orangered;
+}
+
+
+#imgwrap {
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+}
+
+img{
+    background-color: red;
+    width: 100%;
+
+    margin: 0 auto;
+}
+
+#wrap4{
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+    padding-bottom: 3rem;
+}
+
+#wrap4 a{
+    color: cornflowerblue;
+    font-family: "yg-jalnan", 'sans-serif';
+    background-color: white;
+}
+
+#wrap4 p{
+    color: #4f4f4f;
+    margin-top: 0.8rem;
+    font-family: "Noto Sans KR", 'sans-serif';
+    border-top: 1px solid #c4c4c4;
+    padding-top: 10px;
+    background-color: white;
+}
+
+#wrap4 li{
+    margin-top: 0.5rem;
+    color: #c4c4c4;
+    font-family: "Noto Sans KR", 'sans-serif';
+    background-color: white;
+}
+
+#comment{
+    width: 60%;
+    margin: 0 auto;
+    height: 20rem;
+    background-color: blueviolet;
+    padding-bottom: 3rem;
+}

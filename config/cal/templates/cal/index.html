@@ -1,31 +1,30 @@
 {% extends 'cal/base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cal/css/index.css' %}">
+{% endblock %}
+
 {% block content %}
-    <div style="height: 100px"></div>
+    <div id="graph">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
-    <div class="line"> '당신이 등록한 라이프 뱃지'를 활용하여 여러관점에서의 통계 데이터들을 한곳에 모았습니다. </div>
+    <div class="line"> 등록한 라이프 뱃지에 따른 분석 결과를 한 곳에 모아봤어요! </div>
     <br/>
     <br/>
 
-    <div class="dash_detail" style="text-align: center">
-        <button><a href="{% url 'cal:dash_detail' %}"> 한 눈에 보러가기 </a></button>
+    <div class="dash_detail">
+        <button><a href="{% url 'cal:dash_detail' %}" >한 눈에 보기</a></button>
     </div>
 
     <br/>
     <br/>
 
-    <h2 class="first_string">★이번달 라이프 현황★ </h2>
-    <br/>
+
+    <div id="grp01">
+    <h1>★이번달 라이프 현황★</h1>
 
     {% for value in wanted_goal %}
-        <h4 class="user_goal_des">라이프 목표 뱃지 개수 |
-            <div class="user_goal_number"></div>
-            <div class="goal">
-                {{ value.goal_count }}개
-{#                <button><a href="{% url 'create_profile:goal_get' %}">수정하기</a></button>#}
-            </div>
-
-        </h4>
+        <p class="user_goal_des">라이프 목표 뱃지 개수 {{ value.goal_count }}개</p>
 
         <div class="mychart0" style="width:700px; height: 200px ">
             <canvas id="myChart0"></canvas>
@@ -43,12 +42,12 @@
                         {#라벨 안쓰고 싶은데... ?#}
                         data: [{{ value.goal_count }}, {{ing}}],
                         backgroundColor: [
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(54, 162, 78, 0.2)',
+                            'rgba(113, 127, 255, 0.6)',
+                            'rgba(113, 127, 255, 0.2)',
                         ],
                         borderColor: [
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(10, 162, 78, 1)',
+                            'rgba(113, 127, 255, 1)',
+                            'rgba(113, 127, 255, 1)',
                         ],
                         borderWidth: 1
                     }]
@@ -79,16 +78,15 @@
         {% endif %}
 
     {% endfor %}
+     </div>
 
 
 
+    <div id="grp02">
+    <h1>뱃지 어디까지 모아봤니?</h1>
     <br/>
-    <br/>
 
-    <h2 class="second_string">★최근 7일간 라이프 현황★ </h2>
-    <br/>
-
-    <h4 style="text-align: center">지난 7일간 모은 라이프 뱃지들을 살펴볼까요?</h4>
+    <p style="text-align: center">지난 7일간 모은 라이프 뱃지들을 살펴볼까요?</p>
     <div class="mychart" style="width:600px; height:400px"><canvas id="myChart"></canvas></div>
 
     <script>
@@ -103,22 +101,22 @@
                     {#라벨 안쓰고 싶은데... ?#}
                     data: [{{one_total}}, {{two_total}}, {{three_total}}, {{ four_total }}, {{five_total}}, {{six_total}}, {{seven_total}}],
                     backgroundColor: [
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
                     ],
                     borderColor: [
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
                     ],
                     borderWidth: 1
                 }]
@@ -139,18 +137,28 @@
             }
         });
     </script>
-        <h4 style="text-align: center">지난 7일간 최고의 순간!</h4>
-        <div style="text-align: center">{{mychart_month }}/{{ real_best1_start_time_day }}</div>
-        <div style="text-align: center">{{ select_event_str }}</div>
+   </div>
+   
+    <div id="grp03">
+        <h1>🥳     지난 7일간 최고의 순간!     🥳</h1>
+        <div>{{mychart_month }}/{{ real_best1_start_time_day }}</div>
+        <div>{{ select_event_str }}</div>
     <br/>
     <br/>
-    <br/>
+     
 
 
 
-    <h4 style="text-align: center">지난 7일간 어떤 카테고리의 라이프를 가장 많이 즐겼나요?</h4>
-    <br/>
-    <div class="mychart9" style="width:800px; height:500px; margin: 0 auto; "><canvas id="myChart9"></canvas></div>
+    </div>
+
+
+    <div id="grp04">
+
+    <h1>자네 살림살이는 좀 나아졌는가?</h1>
+        <p>지난 7일간의 활동을 카테고리 별로 정리했어요</p>
+    <div class="mychart9">
+        <canvas id="myChart9"></canvas>
+    </div>
 
     <script>
         var ctx = document.getElementById("myChart9").getContext('2d');
@@ -266,10 +274,14 @@
         }
     });
     </script>
+        </div>
 
-
-    <h4 style="text-align: center">뱃지개수 당 몇개의 라이프 기록을 줬더라?</h4>
-    <div calss="mychart4" style="width:1000px; margin: 0 auto;"><canvas id="myChart4"></canvas></div>
+    <div id="grp05">
+    <h1>🧐     아 궁금해 궁금해!!     🧐</h1>
+        <p>뱃지 갯수 당 몇개의 라이프 기록을 줬더라?</p>
+    <div calss="mychart4">
+        <canvas id="myChart4"></canvas>
+    </div>
 
     <script>
         var ctx = document.getElementById("myChart4").getContext('2d');
@@ -314,13 +326,15 @@
             }
         });
     </script>
+        </div>
 
-    <br/>
-    <br/>
 
-    <h2 class="second_string">★OH! HAPPY DAY!!★ </h2>
 
-    <br/>
+    <div id="grp06">
+    <h1>★OH! HAPPY DAY!!★ </h1>
+        <p>월화수목금토일 어떤 요일이 가장 좋아요?</p>
+
+
 
     <div class="mychart3" style="width:600px"><canvas id="myChart3"></canvas></div>
     <script>
@@ -372,18 +386,18 @@
             }
         });
     </script>
+        </div>
 
-    <br/>
-    <h5 style="text-align: center"> 당신은 {{ ing }}에 가장 오롯히 라이프를 즐기고 계시군요! </h5>
+    <div id="grp07">
+{#    <h5 style="text-align: center"> 당신은 {{ ing }}에 가장 오롯히 라이프를 즐기고 계시군요! </h5>#}
 {#   {{ ing }} 대신 view에 넣을 변수 context에 넣어서 나중에 확인하기  #}
 
-    <br/>
-    <br/>
-
-    <h2 class="second_string">★월별 라이프 비교★ </h2>
+    <h1>★월별 라이프 비교★ </h1>
     <br/>
 
-    <div class="mychart5" style="width:1000px; height:400px; margin:0 auto"><canvas id="myChart5"></canvas></div>
+    <div class="mychart5">
+        <canvas id="myChart5"></canvas>
+    </div>
 
     <script>
         var ctx = document.getElementById("myChart5").getContext('2d');
@@ -427,11 +441,22 @@
         });
     </script>
 
-    <br/>
-    <br/>
+        <div id="wrap">
+            <div id="l">
+                <p id="l1"> 이전달 총 뱃지 개수  {{ real_pre_month_end_total }} </p>
+                <p id="l2"> 이전달 평균 뱃지 개수 {{ pre_month_end_meanvalue }} </p>
+            </div>
 
-    <h4 style="text-align: center"> 이전달 총 뱃지 개수 : {{ real_pre_month_end_total }}     이전달 평균 뱃지 개수 : {{ pre_month_end_meanvalue }} </h4>
-    <h4 style="text-align: center"> 이번달 총 뱃지 개수 : {{ real_present_month_total }}     이번달 평균 뱃지 개수 : {{ present_month_meanvalue }} </h4>
+            <div id="r">
+                <p id="l3"> 이번달 총 뱃지 개수  {{ real_present_month_total }} </p>
+                <p id="l4"> 이번달 평균 뱃지 개수   {{ present_month_meanvalue }}  </p>
+            </div>
+
+        </div>
+
+{#추후 메세지도 넣어질 예정#}
+
+
     {%  if pre_month_end_total_count < 10 %}
         <div> 저번달 데이터가 너무 부족해서 메세지(?) or 조언(?) 을 띄울 수 없습니다</div>
     {%  else %}
@@ -449,8 +474,10 @@
             {% endif %}
         {% endif %}
     {% endif %}
+  
 
-
+    </div>
+    </div>
 {% endblock %}
 
 
