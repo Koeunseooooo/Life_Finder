@@ -3,11 +3,6 @@
 {% load staticfiles %}
 {% block style %}
     <style>
-        .need_login {
-            width: 60rem;
-            margin: 0 auto;
-            padding-top: 10rem;
-        }
 
         @font-face {
             font-family: 'yg-jalnan';
@@ -16,48 +11,65 @@
             font-style: normal;
         }
 
-        .button_5 {
-            margin: 0 auto;
-            width: 12rem;
-            background-color: #0B2752;
-            height: 3rem;
-            border-radius: 3rem;
+        .need_login {
+            width: 80%;
             text-align: center;
-            line-height: 3rem;
-            font-family: 'yg-jalnan', "cursive";
+            margin: 0 auto;
+
         }
 
-        .need_login_button {
-            text-decoration: none;
-            color: white;
-            padding: 20px;
+        .login_need_desc {
+            padding-top: 25rem;
+            padding-bottom: 3rem;
+            width: 540px;
+            margin: 0 auto;
+            text-align: center;
+            font-family: 'yg-jalnan', "cursive";
+            font-size: 37px;
+            color: black;
+        }
 
+        .button_5 {
+            text-align: center;
+            width: 540px;
+            background-color: #0B2752;
+            height: 60px;
+            line-height: 60px;
+            font-family: "Syncopate", sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            border: none;
+
+        }
+
+        .button_5:nth-child(1){
+            margin-bottom: 30px;
+        }
+
+
+        .button_5 a{
+            color: white;
         }
 
         .button_5:hover {
             background-color: orangered;
         }
 
-        .login_need_desc {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 50px;
-            font-family: 'yg-jalnan', "cursive";
-        }
+
         .buttons{
-            display: flex;
+            width: 540px;
             margin: 0 auto;
-            width: 450px;
         }
+
     </style>
 
 {% endblock %}
 {% block content %}
     <div class="need_login">
-        <p class="login_need_desc">로그인 후 이용 가능합니다.</p>
+        <p class="login_need_desc">로그인 후 이용 가능합니다</p>
         <div class="buttons">
-            <button class="button_5"><a class="need_login_button" href="{% url 'create_profile:login' %}">로그인하러 가기</a></button>
-            <button class="button_5"><a class="need_login_button" href="{% url 'create_profile:signup' %}">회원가입하러 가기</a></button>
+            <button class="button_5"><a href="{% url 'create_profile:signup' %}">JOIN US</a></button>
+            <button class="button_5"><a href="{% url 'create_profile:login' %}">LOG IN</a></button>
         </div>
     </div>
 {% endblock %}

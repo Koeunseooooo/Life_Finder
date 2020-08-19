@@ -22,7 +22,8 @@
 
 #top {
     padding-top: 5rem;
-    margin-left: 32rem;
+    margin: 0 auto;
+    width: 900px;
 }
 
 .card_01 h1 {

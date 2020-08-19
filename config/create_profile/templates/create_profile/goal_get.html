@@ -11,27 +11,36 @@
 
 {% endblock %}
 {% block content %}
-    <div>
-    <h4>한달 목표 라이프 뱃지 개수를 설정해주세요</h4>
+    <div id="goalall">
+        <h1 id="plz">목표 라이프 뱃지를 설정해주세요</h1>
 
-    <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data">
 
-        {% csrf_token %}
-        <input type="range" min="0" step="1" max="100" value="50" name="goal_count" id="myRange">
-        <p id="lifegoal">목표 라이프 뱃지 갯수: <span id="demo"></span></p>
-        <input type="submit" id="save" value="SAVE"/>
-    </form>
+            {% csrf_token %}
+            <input id="myRange" type="range" min="0" step="1" max="100" value="50" name="goal_count">
+                <p id="lifegoal"> {{ profile.nickname }} 님의 목표 갯수는   <span id="demo"></span> 입니다 </p>
+             </div>
+            <div id="goalbtn">
+            <button type="submit" id="goalsave">SAVE</button>
+            </div>
+        </form>
 
-    <script>
-        let slider = document.getElementById("myRange");
-        let output = document.getElementById("demo");
-        output.innerHTML = slider.value;
+    <h1 id="des">라이프 뱃지가 뭐예요?</h1>
+    <p>
+        야호는 라이프 벳지 만족도를 표시하는 기준으로 삼고 있습니다
+        라이프 뱃지 갯수를
+    </p>
 
-        slider.oninput = function () {
-            output.innerHTML = this.value;
-        }
+        <script>
+            let slider = document.getElementById("myRange");
+            let output = document.getElementById("demo");
+            output.innerHTML = slider.value;
 
-    </script>
-    </div>
+            slider.oninput = function () {
+                output.innerHTML = this.value;
+            }
+
+        </script>
+
 {% endblock %}
 

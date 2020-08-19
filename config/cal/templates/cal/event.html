@@ -29,14 +29,14 @@
             <form method="post" action="">
                 {% csrf_token %}
                 {# 이건 이전 코드#}
-                <table class="form form-table">
+                <div>
                     {{ form }}
                     <tr>
                         <td colspan="2">
                             <button id="lb" type="submit" class="btn btn-info right" name="action_add"> submit</button>
                         </td>
                     </tr>
-                </table>
+                </div>
                 {#                <div>#}
                 {#                    {{ form }}#}
                 {#                    <tr>#}

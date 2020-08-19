@@ -13,34 +13,10 @@
 </head>
 <body>
 
-{#<nav>#}
-{#    <ul class="navt">#}
-{#        <li><a href="/">YAHO!</a></li>#}
-{#        <li><a href="{% url 'cal:calendar' %}">LIFE FINDER</a></li>#}
-{#        <li><a href="{% url 'cal:dash' %}">DASH BOARD</a></li>#}
-{#        {% if user.is_authenticated %}#}
-{#            <li><a href="{% url 'create_profile:profile_look' request.user.pk %}">MY PAGE</a></li>#}
-{#            <li><a href="{% url 'create_profile:logout' %}">LOGOUT</a></li>#}
-{#        {% else %}#}
-{#            <li><a href="{% url 'create_profile:signup' %}">JOIN US</a></li>#}
-{#            <li><a href="{% url 'create_profile:login' %}">LOG IN</a></li> {#보던 페이지로 이동#}
-{#        {% endif %}#}
-{#    </ul>#}
-{#</nav>#}
-{##}
-{##바디#}
-{#<div class="r_contents">#}
-{#    {% block content %}#}
-{#    {% endblock %}#}
-{#</div>#}
-{##}
-{##}
-{#{% block footer %}#}
-{#{% endblock %}#}
 
 <nav>
     <ul class="navt">
-        <li><a href="/">YAHO!</a></li>
+        <li><a href="/"><img id="navlogo" src="{% static 'logo.png' %}"></a></li>
             {% if user.is_authenticated %}
                     {% if not user.user_profile %}
                         <li><a href="{% url 'create_profile:need_profile' %}">CALENDAR</a></li>

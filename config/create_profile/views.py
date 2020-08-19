@@ -73,7 +73,7 @@ def goal_get(request):
             return redirect('main:first')
     else:
         goal_form = ObjectGoalNumberForm()
-    return render(request, 'create_profile/goal_get.html', {'goal_form': goal_form})
+    return render(request, 'create_profile/goal_get.html', {'goal_form': goal_form,'profile':profile})
 
 
 def logout(request):

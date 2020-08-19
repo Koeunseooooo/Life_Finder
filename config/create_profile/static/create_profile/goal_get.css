@@ -1,68 +1,87 @@
 
 
-        @font-face {
+@font-face {
     font-family: 'yg-jalnan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
     font-weight: normal;
     font-style: normal; }
 
-
-
-
-
-
-
 .r_contents{
-    height: 40rem;
+    height: 1100px;
     width: 80%;
-}
-
-
-
-
-
-h4{
-    width: 460px;
-    text-align: center;
-    font-family: "yg-jalnan", 'sans-serif';
-    font-size: 1.2rem;
     margin: 0 auto;
-
 }
 
-div {
-    padding-top: 9rem;
-    width: 460px;
+#goalall{
+    width: 600px;
+    margin: 0 auto;
+}
+
+#plz {
+    padding-top: 15rem;
+    color: black;
     margin: 0 auto;
     text-align: center;
+    font-family: 'yg-jalnan', "cursive";
+    font-size: 37px;
+    padding-bottom: 8rem;
 }
 
-input{
-    width: 460px;
-    height: 50px;
-    border: none;
-    font-family: "Syncopate", sans-serif;
-    font-weight: 900;
-    font-size: 1rem;
-    background-color: #1E88E5;
-    border-radius: 4rem;
-    color: white;
-    margin-top: 2rem;
+#myRange{
+    background-color: lightcoral;
+    width: 540px;
+    height: 30px;
+    margin: 0 auto;
 }
 
+p{
+    margin-top: 1rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+
+form{
+    width: 540px;
+    margin: 0 auto;
+}
 #lifegoal{
     color: #0B2752;
     font-weight: 700;
+    font-size: 25px;
     font-family: "yg-jalnan", 'sans-serif';
 
 }
 
-
-#save{
-    margin-top: 8rem;
-    height: 4rem;
+#lifegoal span{
+    color: #717FFF;
 }
 
-#save:hover{
+
+#goalbtn{
+    width: 540px;
+    margin: 0 auto;
+}
+
+#goalsave{
+        background-color: #0B2752;
+        border: none;
+        color: white;
+        width: 540px;
+        height: 60px;
+        text-align: center;
+        font-family: "Syncopate", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+}
+
+#goalsave:hover{
     background-color: orangered;
+}
+
+#des{
+    background-color: red;
+    text-align: center;
+    font-size: 30px;
+
 }

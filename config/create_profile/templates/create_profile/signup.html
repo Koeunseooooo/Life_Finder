@@ -10,7 +10,7 @@
 
 {% block content %}
     {% if user_form.errors %}
-        <p style="color:red;">양식에 맞게 작성해주세요.</p>
+        <p style="color:red;">양식에 맞게 작성해주세요!</p>
     {% endif %}
 
     {% load staticfiles %}
@@ -23,12 +23,14 @@
         <form action="{% url 'create_profile:signup' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <table>
-                <div id="box">{{ user_form.as_table }}</div>
+                <div id="box">
+                    {{ user_form.as_table }}
+                </div>
             </table>
-            <button type="submit" id="save" value="음"/>
-            가입하기
-    </div>
-    </form>
+
+            <button type="submit" id="save">가입하기</button>
+
+        </form>
     </div>
 
 {% endblock %}

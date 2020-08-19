@@ -1,57 +1,64 @@
 
-    form {
-        padding-top: 1rem;
-        width: 600px;
-        margin: 0 auto;
-    }
 
     #logoimg{
-        padding-top: 10rem;
-        /*margin-left: 34rem;*/
-        text-align: center;
+        padding-top: 11rem;
+        width: 270px;
+        margin: 0 auto;
     }
 
-    table {
-        line-height: 40px;
-        font-size: 15px;
+    img{
         margin: 0 auto;
+    }
+
+    .formbox{
+        width: 460px;
+        margin: 0 auto;
+    }
+
+
+    table{
+        margin: 0;
+        padding: 0;
+        border: none;
     }
     th{
         vertical-align: text-top;
-        line-height: 60px;
+        line-height: 50px;
         text-align: left;
     }
 
-    input, button {
-        width: 460px;
-        border: solid 1px #b0bec9;
+    input {
+        width: 440px;
+        padding-left: 20px;
+        border: 1px solid lightgray;
         margin-top: 2rem;
         height: 50px;
+        font-size: 15px;
+        font-family: "Noto Sans KR", sans-serif;
     }
 
+
+
     #save {
-        margin-top: 4rem;
         background-color: #717FFF;
+        border: none;
         color: white;
         width: 460px;
-        height: 56px;
+        height: 60px;
         text-align: center;
         font-family: "Noto Sans KR", sans-serif;
         font-size: 20px;
+        margin-left: 5px;
         font-weight: 700;
-        margin-left: 4.5rem;
+
     }
 
-    input[type=password] {
-        font-family: "Noto Sans KR", sans-serif;
+    #save:hover{
+        background-color: orangered;
     }
-    footer{
-        display: none;
+
+    #id_email{
+        margin-bottom: 4rem;
     }
-    ul{
-        list-style: none;
-    }
-    li{
-        /*여기에 스타일 주면 nav바에도 같이 주게 되어서 지움*/
-        /*line-height: 30px;*/
-    }
+
+
