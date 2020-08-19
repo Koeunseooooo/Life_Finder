@@ -1,4 +1,13 @@
-
+/*#summernote{*/
+/*   margin-right: 2rem;*/
+/*}*/
+input[name='title']{
+    margin-top: 2rem;
+    width: 480px;
+    height: 40px;
+    margin-bottom: 30px;
+    border: solid 1px #b0bec9;
+}
 #all{
     padding-top: 10rem;
     height: 100%;
@@ -10,6 +19,8 @@
     width: 50rem;
     margin: 0 auto;
 }
+
+
 
 @font-face {
     font-family: 'yg-jalnan';

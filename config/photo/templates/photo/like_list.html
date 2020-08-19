@@ -1,0 +1,140 @@
+{% extends 'photo/base.html' %}
+{% load static %}
+
+{% block anotherstyle %}
+    <style>
+        @font-face {
+            font-family: 'yg-jalnan';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        h1 {
+            padding-top: 10rem;
+            text-align: center;
+            font-family: "yg-jalnan", 'sans-serif';
+            color: #0B2752;
+        }
+
+        #wrap05 {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 3rem;
+        }
+
+        .topbtn {
+            display: flex;
+            justify-content: flex-end;
+
+        }
+
+        #gg, #gd {
+            margin-top: 5rem;
+            width: 10rem;
+            height: 4rem;
+            color: white;
+            background-color: #c4c4c4;
+            border: none;
+            font-family: "yg-jalnan", 'sans-serif';
+            margin-right: 2rem;
+            border-radius: 3rem;
+        }
+
+        #gg:hover, #gd:hover {
+            background-color: orangered;
+        }
+
+        #gg a, #gd a {
+            color: white;
+        }
+
+
+        #box {
+            margin-top: 3rem;
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 470px;
+            margin-bottom: 3rem;
+            border: 1px solid #0B2752;
+            float: left;
+            margin-right: 40px;
+            background-color: orangered;
+            height: 400px;
+            /*overflow: hidden;*/
+        }
+
+        #photo {
+            overflow: hidden;
+            background-color: white;
+            height: 400px;
+        }
+
+
+        #box img {
+            width: 100%;
+        }
+
+
+        #box li {
+            color: green;
+            font-family: "Noto Sans KR", 'sans-serif';
+            font-size: 1.4rem;
+        }
+
+        .like_button {
+            height: 50px;
+        }
+
+
+        #box li a {
+            color: blueviolet;
+            font-family: "Noto Sans KR", 'sans-serif';
+            font-size: 1.4rem;
+
+        }
+    </style>
+
+{% endblock %}
+{% block photo %}
+    <div id="wrap05">
+        <div class="topbtn">
+            {% if user.is_authenticated %}
+                <button id="gd"><a class="nav-link" href="{% url 'photo:index' %}">홈으로 가기</a></button>
+            {% endif %}
+        </div>
+
+        <div class="community_content">
+            {% for object in object_list %}
+
+                <div id="box"><a href="{% url 'photo:detail' object.id %}">
+                    <div id="photo">
+                        {% if object.image %}
+                            <img src="{{ object.image.url }}" alt="...">
+                        {% endif %}
+                    </div>
+
+                    <ul class="like_button">
+                        <li>
+                            {% if user in object.like.all %}
+                                <a href="{% url 'photo:like' object.id %}">
+                                    <i style="color: orangered" class="fas fa-heart"></i>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'photo:like' object.id %}">
+                                    <i style="color: cornflowerblue" class="fas fa-heart"></i>
+                                </a>
+                            {% endif %}
+                            {% if object.like.all.count %}
+                                <span>{{ object.like.all.count }}</span>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </a>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

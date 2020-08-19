@@ -1,4 +1,9 @@
-@font-face {
+{% extends 'main/base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% block style %}
+    <style>
+    @font-face {
     font-family: 'yg-jalnan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
     font-weight: normal;
@@ -335,3 +340,70 @@ body:hover .cube{
   top: 0; left: 100%;
   transform: rotateY(30deg);
 }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div id="profile">
+        <div id="le">
+
+            {% if profile.photo %}
+                <img id="user_photo" src='{{ profile.photo.url }}'>
+                {#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
+            {% else %}
+                <img id="smile01" src="{% static 'face.png' %}">
+
+            {% endif %}
+
+            <div id="proname">{{ profile.nickname }}</div>
+
+
+            <p id="intlife">관심라이프</p>
+            {% if profile.interested %}
+                <p id="tt">{{ profile.interested }}</p>
+            {% endif %}
+
+            <p id="job">직업</p>
+            {% if profile.job %}
+                <p id="tt">{{ profile.job }}</p>
+            {% endif %}
+            <p id="intro">자기소개</p>
+            {% if profile.description %}
+                <p id="tt">{{ profile.description }}</p>
+            {% endif %}
+            <p id="goalbadge">목표 라이프 뱃지</p>
+            <p id="tt">{{ profile.goal_count }}</p>
+
+        </div>
+
+
+        <div id="ri">
+
+            {% for object in user_registered_photos %}
+                <div onclick="location.href='{% url 'photo:detail' object.id %}';">
+
+                    <div id="imgsmall">
+                        {% if object.image %}
+                            <img src="{{ object.image.url }}" height="50px;">
+                        {% endif %}
+                        <p id="text"> {{ object.created }} </p>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    <div>
+
+{#<div class="cube">#}
+{##}
+{#  <img class="cubeFace" src="{% static 'smillle.png' %}">#}
+{#  <img class="cubeFace face2" src="{% static 'smillle.png' %}">#}
+{#    <img class="cubeFace2" src="{% static 'smillle.png' %}">#}
+{#  <img class="cubeFace face4" src="{% static 'smillle.png' %}">#}
+{#       <img class="cubeFace3" src="{% static 'smillle.png' %}">#}
+{#  <img class="cubeFace face5" src="{% static 'smillle.png' %}">#}
+{#</div>#}
+    </div>
+    </div>
+{% endblock %}

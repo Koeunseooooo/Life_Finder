@@ -12,7 +12,7 @@
 .navt li a{
     color: white;
 }
-nav {
+.real_nav {
     background-color: rgba(0,0,0,0.93);
     width: 100%;
     height: 100px;
@@ -21,7 +21,7 @@ nav {
 }
 
 
-nav ul {
+.real_nav ul {
     width: 80%;
     display: inline-flex;
     align-items: center;
@@ -29,33 +29,25 @@ nav ul {
     justify-content: center;
 }
 
-nav li {
-
+.real_nav li {
     font-family: "Syncopate", sans-serif;
     font-size: 20px;
     display: inline-flex;
     margin-left: 2rem;
 }
 
-nav li:nth-child(1){
-    margin-top: 12px;
-    display: inline-flex;
-}
-
-nav li:nth-child(2) {
+.real_nav li:nth-child(2) {
     margin-left: 3rem;
     background-color: tan;
 }
 
-nav li:nth-child(3) {
+.real_nav li:nth-child(3) {
     margin-left: 3rem;
     background-color: orange;
 }
 
-nav li:nth-child(4) {
-    margin-left: 3rem;
-    background-color: darkslategrey;
-}
+.real_nav a{
+    color: red;
 
 nav li:nth-child(5) {
     margin-left: 3rem;
