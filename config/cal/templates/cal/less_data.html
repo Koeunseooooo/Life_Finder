@@ -6,16 +6,18 @@
 {% endblock %}
 {% block content %}
     <div id="lesscontent">
-        <p>
+        <h1>
         데이터가 부족해요<br />
 
             라이프 기록을 좀 더 쌓아야
             대시보드를 열람할 수 있답니다
-        </p>
+        </h1>
 
-        <p>데이터는 2주일치 기록이 쌓이면 열람할 수 있어요!</p>
-        <div id="lessbtn">
-            <h3><a href="{% url 'cal:calendar' today_date %}" class="return">돌아가기</a></h3>
+        <p id="noti">데이터는 1주일치 기록이 쌓이면 열람할 수 있어요!</p>
+        <div id="back">
+
+        <a href="{% url 'cal:calendar' today_date %}" class="return"><button id="lessbtn">캘린더로 돌아가기</button></a>
+
         </div>
     </div>
 {% endblock %}

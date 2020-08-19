@@ -13,9 +13,9 @@
 
     <div id="cal">
         <div class="clearfix">
-            <button class="button_4"><a class="button_first" href="{% url 'cal:calendar' today_date %}?{{ prev_month }}"><i class="fas fa-arrow-left"></i></a></button>
-            <button class="button_2"><a class="button_middle" href="{% url 'cal:event_new' %}"> New Event </a></button>
-            <button class="button_6"><a class="button_last" href="{% url 'cal:calendar' today_date %}?{{ next_month }}"><i class="fas fa-arrow-right"></i></a></button>
+            <a class="button_first" href="{% url 'cal:calendar' today_date %}?{{ prev_month }}"><button class="button_4"><i class="fas fa-arrow-left"></i></button></a>
+            <a class="button_middle" href="{% url 'cal:event_new' %}"> <button class="button_2">New Event </button></a>
+            <a class="button_last" href="{% url 'cal:calendar' today_date %}?{{ next_month }}"><button class="button_6"><i class="fas fa-arrow-right"></i></button></a>
         </div>
 
         {{ calendar }}
@@ -33,12 +33,12 @@
 
     <div class="contain">
         <div class="today_list_total">
-            <button class="button_7"><a class="button_date" href="{% url 'cal:calendar' prev_day %}">Prev day</a></button>
-            <button class="button_7"><a class="button_date" href="{% url 'cal:calendar' real_today %}">Today</a></button>
-            <button class="button_7"><a class="button_date" href="{% url 'cal:calendar' next_day %}">Next day</a></button>
+            <a class="button_date" href="{% url 'cal:calendar' prev_day %}"><button class="button_7">Prev day</button></a>
+            <a class="button_date" href="{% url 'cal:calendar' real_today %}"><button class="button_7">Today</button></a>
+            <a class="button_date" href="{% url 'cal:calendar' next_day %}"><button class="button_7">Next day</button></a>
             <p class="today">{{ date_text }}</p>
 
-
+            <div id="ttt">
             {% if today_list.today_list_items|length %}
                 {% for list in today_list.today_list_items %}
                     <div class="today_list_item">
@@ -52,8 +52,9 @@
                 <div class="today_rating">
                     <h1>TOTAL</h1>
                     {% for value in today_list.today_list_rating_sum %}
-                        {{ value }}
+                        <span>{{ value }}</span>
                     {% endfor %}
+                </div>
                 </div>
 
             {% else %}
@@ -62,7 +63,7 @@
         {#                    {{ object_list.today_list_items }}#}
         <div class="go_dashboard">
             {#  추후 url추가해서 만약 user가 7일 이상 활동했으면 dashboard보여주고 아니면 7일 후 볼 수 있다는 안내 페이지로 이동#}
-            <button><a href="{% url 'cal:dash' %}">GO DASHBOARD !</a></button>
+            <a href="{% url 'cal:dash' %}"><button>GO DASHBOARD !</button></a>
         </div>
 
     </div>

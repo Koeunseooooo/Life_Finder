@@ -1086,4 +1086,3 @@ def dash(request):
 
 def dash_detail(request):
     return render(request, 'cal/dash_detail.html')
-

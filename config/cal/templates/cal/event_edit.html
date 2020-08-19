@@ -8,11 +8,9 @@
 {% endblock %}
 
 {% block content %}
-    <div id="top_f"><h1>라이프 기록을 수정해주세요</h1></div>
+    <div id="top_b"><h1>라이프 기록을 수정해주세요</h1></div>
     <div id="bow">
-
         {% block content_cal %}
-
             {% if form.errors %}
                 {% for field in form %}
                     {% for error in field.errors %}
@@ -25,43 +23,25 @@
                     <div class="alert alert-danger">
                         {{ field.label }} <strong>{{ error|escape }}</strong>
                     </div>
-
                 {% endfor %}
             {% endif %}
 
             <form method="post" action="">
                 {% csrf_token %}
-                <table class="form form-table">
+                {# 이건 이전 코드#}
+                <div>
                     {{ form }}
                     <tr>
-                        <div id="bobtn">
                         <td colspan="2">
-                            <button id="lc1" type="submit" class="btn btn-info right" name="action_add"> EDIT</button>
-                            <button id="lc2" type="submit" class="btn btn-info right" name="action_remove"> DELETE</button>
+
+                    <button id="lc1" type="submit" name="action_add"> EDIT</button>
+                    <button id="lc2" type="submit" name="action_remove"> DELETE</button>
                         </td>
-                            </div>
-
-                            {##}
-                            {#                    <td colspan="2">#}
-                            {#                            <button id="lc2" type="submit" class="btn btn-info right" name="action_remove"> DELETE</button>#}
-                            {##}
-                            {#                    </td>#}
-
-                            {#                    <td colspan="2">#}
-                            {#                        <button type="submit" class="btn btn-info right" name="action_remove"> 삭제하기</button>#}
-                            {#                    </td>#}
                     </tr>
 
-                </table>
-                {#    <a href="{% url 'cal:delete' event.pk %}"> delete </a>#}
+                </div>
+
             </form>
-            </div>
         {% endblock %}
-
+    </div>
 {% endblock %}
-
-
-
-
-
-

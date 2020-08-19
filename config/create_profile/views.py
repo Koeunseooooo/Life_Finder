@@ -108,6 +108,16 @@ def profile_look(request, pk):
     return render(request, 'create_profile/profile.html', ctx)
 
 
+def show_each_profile(request,user_id):
+    user = User.objects.get(id=user_id)
+    profile = user.user_profile
+    user_registered_photos = Photo.objects.filter(author=profile)
+    ctx = {
+        'profile': profile,
+        'user_registered_photos': user_registered_photos,
+    }
+    return render(request,'create_profile/show_each_profile.html',ctx)
+
 @login_required
 def register(request):
     user = request.user

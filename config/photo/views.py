@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,reverse
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic.detail import DetailView
 from .models import Photo
+from django.views.generic.edit import FormMixin
+from django.shortcuts import get_object_or_404
+# from .forms import PhotoForm
 from create_profile.models import Profile
 from django.contrib.auth.models import User
 
@@ -11,26 +14,43 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 
 import datetime
-
+from photo.forms import PhotoForm
 
 
 class PhotoList(ListView):
     model = Photo
     template_name_suffix = '_list'
 
-    #
-    # def get_queryset(self):
-    #     queryset = {
-    #         'get_profile' = Photo.objects.all().
-    #         # 'get_profile': Profile.objects.all().filter(user=self.request.user.user_profile)
-    #     }
-    #     return queryset
+    # pagination
+    paginate_by = 10  # Display 10 objects per page
 
+    def get_context_data(self, **kwargs):
+        context = super(PhotoList, self).get_context_data(**kwargs)
+        paginator = context['paginator']
+        page_numbers_range = 5  # Display only 5 page numbers
+        max_index = len(paginator.page_range)
+
+        page = self.request.GET.get('page')
+        current_page = int(page) if page else 1
+
+        start_index = int((current_page - 1) / page_numbers_range) * page_numbers_range
+        end_index = start_index + page_numbers_range
+        if end_index >= max_index:
+            end_index = max_index
+
+        page_range = paginator.page_range[start_index:end_index]
+        context['page_range'] = page_range
+        return context
+
+
+
+from django_summernote.widgets import SummernoteWidget
 class PhotoCreate(CreateView):
     model = Photo
-    # fields = ['author','text', 'image']
-    fields = ['text', 'image']
+    form_class = PhotoForm
 
+    # fields = ['author','text', 'image']
+    # fields = ['text', 'image']
     template_name_suffix = '_create'
     # success_url = '/'
 
@@ -48,10 +68,12 @@ class PhotoCreate(CreateView):
 
 
 
-
 class PhotoUpdate(UpdateView):
     model = Photo
-    fields = ['text', 'image']
+
+    form_class = PhotoForm
+
+    # fields = ['text', 'image']
     template_name_suffix = '_update'
     # success_url = '/'
 
@@ -76,10 +98,35 @@ class PhotoDelete(DeleteView):
         else:
             return super(PhotoDelete, self).dispatch(request, *args, **kwargs)
 
-
-class PhotoDetail(DetailView):
+from .forms import CommentForm
+class PhotoDetail(DetailView, FormMixin):
     model = Photo
     template_name_suffix = '_detail'
+    form_class =CommentForm
+    def get_success_url(self,**kwargs):
+        return reverse('photo:detail',kwargs={'pk':self.object.pk})
+    def get_context_data(self, **kwargs):
+        context = super(PhotoDetail, self).get_context_data(**kwargs)
+        context['form'] = CommentForm(initial={
+            'text': '댓글을 입력해주세요.',
+        })
+        context['user'] = self.request.user
+        context['comments'] = self.object.photo_comment
+        return context
+    def post(self,request,*args,**kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+    def form_valid(self, form):
+        comment = form.save(commit = False)
+        comment.photo = get_object_or_404(Photo,pk=self.object.pk)
+        comment.comment_author = self.request.user.user_profile
+        comment.save()
+        return super(PhotoDetail,self).form_valid(form)
+
 
 
 from django.views.generic.base import View
@@ -104,10 +151,9 @@ class PhotoLike(View):
             path = urlparse(referer_url).path
             return HttpResponseRedirect(path)
 
-
 class PhotoLikeList(ListView):
     model = Photo
-    template_name = 'photo/photo_list.html'
+    template_name = 'photo/like_list.html'
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:  # 로그인확인
@@ -122,16 +168,13 @@ class PhotoLikeList(ListView):
         return queryset
 
 
-
 class PhotoMyList(ListView):
     model = Photo
     template_name = 'photo/photo_mylist.html'
 
     def dispatch(self, request, *args, **kwargs):
-
         if not request.user.is_authenticated:  # 로그인확인
             messages.warning(request, '로그인을 먼저하세요')
             return HttpResponseRedirect('/')
         return super(PhotoMyList, self).dispatch(request, *args, **kwargs)
-
 

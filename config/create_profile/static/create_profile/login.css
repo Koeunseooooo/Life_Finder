@@ -1,0 +1,150 @@
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    form {
+        padding-top: 1rem;
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    #logoimg {
+        padding-top: 11rem;
+        text-align: center;
+
+    }
+
+    .formbox {
+        margin: 0 auto;
+    }
+
+
+    input {
+        width: 460px;
+        height: 50px;
+        border: solid 1px #b0bec9;
+
+    }
+
+    button {
+        margin-top: 2rem;
+        width: 460px;
+        height: 60px;
+    }
+
+
+    #save {
+        margin-top: 4rem;
+        background-color: #717FFF;
+        color: white;
+        width: 460px;
+        height: 56px;
+        line-height: 56px;
+        text-align: center;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    #google_login img {
+        width: 50px;
+        height: 50px;
+        line-height: 60px;
+        padding-top: 5px;
+        padding-left: 40px;
+    }
+
+    #google_login {
+        margin-top: 1rem;
+        background-color: #e0e0e0;
+        border: none;
+        color: white;
+        width: 460px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        display: inline-flex;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 20px;
+
+        font-weight: 700;
+
+    }
+
+    #google_login span {
+        padding-left: 60px;
+    }
+
+    #google_login:hover {
+        background-color: orange;
+    }
+
+    #google_login a {
+        color: white;
+    }
+
+    #logbtn {
+        margin-left: 4.5rem;
+    }
+
+    input[type=password] {
+        font-family: "Noto Sans KR", sans-serif;
+    }
+
+    footer {
+        display: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    li {
+
+    /*여기에 스타일 주면 nav바에도 같이 주게 되어서 지움*/
+    {
+        #line-height: 30px
+    ;
+        #
+    }
+    }
+
+    #id_username {
+        width: 460px;
+
+    }
+
+    #id_password {
+        width: 460px;
+
+    }
+
+    #box {
+        margin: 0 auto;
+
+        width: 460px;
+    }
+
+    #box input {
+
+        width: 460px;
+        margin-top: 2rem;
+    }
+
+    #error {
+        font-size: 13px;
+        color: #c2185b;
+        font-weight: bolder;
+        margin-left: 4.5rem;
+        padding: 0;
+        font-family: "Noto Sans KR", sans-serif;
+    }
+
+    #forget_password {
+        font-family: "Noto Sans KR", sans-serif;
+        margin-top: 1rem;
+        font-weight: bolder;
+        color: black;
+        border: none;
+    }
