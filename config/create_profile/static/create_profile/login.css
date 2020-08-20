@@ -77,9 +77,9 @@
     }
 
     #google_login span {
-        padding-left: 60px;
+
         display: inline-block;
-        line-height: 60px;
+
     }
 
     #google_login:hover {
@@ -88,6 +88,8 @@
 
     #google_login a {
         color: white;
+        line-height: 60px;
+        padding-left: 60px;
     }
 
     #logbtn {
@@ -150,7 +152,7 @@
         font-weight: bolder;
         color: black;
         border: none;
-        background-color: #c4c4c4;
+background-color: #e0e0e0;
     }
 #forget_password:hover{
     background-color: orangered;

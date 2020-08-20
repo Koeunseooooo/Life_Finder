@@ -27,7 +27,7 @@
                             <img src="{{ object.image.url }}" alt="...">
                         {% endif %}
 
-                        <li>{{ object.title }}</li>
+{#                        <li>{{ object.title }}</li>#}
                     </div>
 
                     <ul class="like_button">
@@ -35,16 +35,16 @@
                             {% if user in object.like.all %}
                                 <a href="{% url 'photo:like' object.id %}">
                                     {# 사용자가 like 버튼 누르면 보이게 할 색#}
-                                    <i style="color: orangered" class="fas fa-heart"></i>
+                                    <i style="color: red" class="fas fa-heart"></i>
                                 </a>
                             {% else %}
                                 <a href="{% url 'photo:like' object.id %}">
                                     {# 사용자가 like 버튼 안 누르면 보이게 할 색#}
-                                    <i style="color: cornflowerblue" class="fas fa-heart"></i>
+                                    <i style="color: #0B2752" class="fas fa-heart"></i>
                                 </a>
                             {% endif %}
                             {% if object.like.all.count %}
-                                <span>{{ object.like.all.count }}</span>
+                                <span>{{ object.like.all.count }}liked</span>
                             {% endif %}
 
                         </li>
@@ -68,7 +68,7 @@
                     {% else %}
                         <li class="disabled">
                             <a href="#">
-                                <span>Previous</span>
+                                <span>Prev</span>
                             </a>
                         </li>
                     {% endif %}

@@ -57,7 +57,7 @@
                         {% if object.image %}
                             <img src="{{ object.image.url }}" height="50px;">
                         {% endif %}
-                        <p id="text"> {{ object.created }} </p>
+                        <p id="text"> {{ object.created|date:'Y-m-d' }} </p>
                     </div>
                 </div>
             {% endfor %}

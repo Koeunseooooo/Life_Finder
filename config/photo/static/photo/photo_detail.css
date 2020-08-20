@@ -1,39 +1,3 @@
-input[name='text']{
-    width: 300px;
-    height: 40px;
-    margin-left: 10px;
-}
-label{
-    display: none;
-}
-.comment_write{
-        width: 50px;
-    height: 40px;
-}
-.comment_register{
-    display: inline;
-}
-.each_comment{
-    display: flex;
-}
-.each_comment{
-    height: 70px;
-    padding-bottom: 2px;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-
-}
-.delete_comment{
-    margin-left: 20px;
-    width: 80px;
-    height: 30px;
-}
-#user_photo, #smile01{
-    border: 2px solid white;
-    width: 50px;
-    height: 50px;
-    border-radius: 10rem;
-}
 @font-face {
     font-family: 'yg-jalnan';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
@@ -41,33 +5,137 @@ label{
     font-style: normal;
 }
 
+
+input[name='text']{
+    height: 120px;
+    padding-left: 2%;
+    background-color: #F1F1F1;
+    border: none;
+    width: 98%;
+    font-family: "Noto Sans KR",'sans-serif';
+    font-size: 17px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+label{
+    display: none;
+}
+.comment_write{
+    margin-top: 10px;
+    width: 100%;
+    height: 60px;
+    background-color: #0B2752;
+    border: none;
+    color: #F1F1F1;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: "Syncopate",'sans-serif';
+    margin-bottom: 15rem;
+
+}
+
+
+.comment_write:hover{
+    background-color: orangered;
+}
+.comment_register{
+    margin-top: 2rem;
+}
+
+
+
+.each_comment{
+    display: flex;
+    height: 70px;
+    padding-bottom: 2px;
+    border-bottom: 0.2px solid #c4c4c4;
+    background-color: white;
+
+}
+
+.delete_comment{
+    margin-top: 26px;
+    text-decoration: none;
+    margin-left: 20px;
+    width: 70px;
+    height: 24px;
+    background-color: #F1F1F1;
+    border: none;
+    border-radius: 3rem;
+
+}
+
+.delete_comment a{
+    color: lightgray;
+    font-family: "Noto Sans KR", sans-serif;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+
+
+
+#user_photo, #smile01{
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    border-radius: 10rem;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.comment_author_info{
+    color: #F1F1F1;
+    line-height: 75px;
+    margin-left: 20px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+}
+
+.comment_author_info span{
+    color: #717FFF;
+    font-weight: 900;
+    margin-right: 20px;
+    font-size: 23px;
+}
+
+
+
+
+
 .comment_info{
     display: flex;
 }
+
+
+
 #all{
+    padding-top: 11rem;
     margin: 0 auto;
     width: 80%;
-    padding-bottom: 13rem;
+    padding-bottom: 10rem;
 }
 #editbtn{
-    padding-top: 10rem;
+    padding-top: 4rem;
     width: 60%;
     margin: 0 auto;
     display: flex;
     justify-content: flex-end;
+    padding-bottom: 2rem;
 }
 
 .button_7{
-    background-color: #c4c4c4;
-    width: 130px;
+    width: 120px;
     height: 50px;
-    border-radius: 2rem;
-
+    border-radius: 3rem;
+    background-color: #0B2752;
     text-decoration: none;
     border: none;
 }
 .button_7:first-child{
     margin-right: 1rem;
+    background-color: #0B2752;
 }
 
 .button_7 a{
@@ -82,17 +150,18 @@ label{
 
 
 #imgwrap {
+    border: 2px solid lightgray;
+    border-radius: 5px;
     width: 60%;
+    height: 500px;
     margin: 0 auto;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    overflow: scroll;
 
 }
 
 img{
-    background-color: red;
     width: 100%;
-
+    overflow: hidden;
     margin: 0 auto;
 }
 
@@ -104,34 +173,87 @@ img{
 }
 
 #wrap4 a{
-    color: cornflowerblue;
-    font-family: "yg-jalnan", 'sans-serif';
-    background-color: white;
+    color: white;
 }
 
+/*유저연결버튼 */
+#show{
+    background-color: #0B2752;
+    padding: 10px 20px;
+    border-radius: 3rem;
+    margin-bottom: 2rem;
+}
+
+#show:hover{
+    background-color: orangered;
+}
 #wrap4 p{
-    color: #4f4f4f;
-    margin-top: 0.8rem;
+    color: red;
     font-family: "Noto Sans KR", 'sans-serif';
-    /*border-top: 1px solid #c4c4c4;*/
-    padding-top: 10px;
+    padding-top: 20px;
     background-color: white;
 }
 
-.content_text{
-    border-bottom: 1px solid #c4c4c4;
-}
+
 #wrap4 li{
-    margin-top: 0.5rem;
-    color: #c4c4c4;
+    margin-top: 20px;
+    color: #e0e0e0;
     font-family: "Noto Sans KR", 'sans-serif';
-    background-color: white;
+    font-size: 25px;
+
+}
+
+#wrap4 li p a{
+    background-color: yellow;
+}
+
+/*글 제목 */
+#wrap4 li:nth-child(3){
+    margin-top: 4rem;
+
+    color: #4f4f4f;
+    font-weight: 800;
+    font-size: 23px;
+
+
+}
+
+#wrap4 li:nth-child(2){
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+#wrap4 li:nth-child(4){
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+
+/*글 작성 내용 */
+#wrap4 p{
+    font-size: 20px;
+    color: black;
+    font-weight: 600;
+
+}
+
+/*유저관심태그*/
+#wrap4 p:nth-child(2){
+    margin-top: 2rem;
+    color: #888888;
+    font-weight: 600;
+
 }
 
 #comment{
+
     width: 60%;
     margin: 0 auto;
-    height: 200rem;
-    border: 1px solid lightskyblue;
+    height: 800px;
     padding-bottom: 3rem;
 }
+

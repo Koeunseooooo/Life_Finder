@@ -1,6 +1,7 @@
 {% extends 'photo/base.html' %}
 {% load static %}
 
+
 {% block anotherstyle %}
     <style>
         @font-face {
@@ -10,6 +11,9 @@
             font-style: normal;
         }
 
+        *{
+            text-decoration: none;
+        }
 
         h1 {
             padding-top: 10rem;
@@ -93,6 +97,13 @@
             font-size: 1.4rem;
 
         }
+
+    #gd span{
+        color: red;
+    }
+
+
+
     </style>
 
 {% endblock %}
@@ -100,7 +111,7 @@
     <div id="wrap05">
         <div class="topbtn">
             {% if user.is_authenticated %}
-                <button id="gd"><a class="nav-link" href="{% url 'photo:index' %}">홈으로 가기</a></button>
+                <button id="gd"><a class="nav-link" href="{% url 'photo:index' %}"><span>홈으로 가기</span></a></button>
             {% endif %}
         </div>
 

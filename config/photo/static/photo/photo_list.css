@@ -12,7 +12,10 @@
     width: 100%;
     display: flex;
     font-weight: 900;
-    margin-bottom: 30px;
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+    color: #0B2752;
+    margin: 0 auto;
 
 }
 
@@ -27,14 +30,24 @@
     display: inline-block;
     padding-top: 1.5rem;
     margin-left: 2rem;
+    color: #0B2752;
 }
 
-#pagination_nav li:nth-child(2) {
-    margin-left: 3rem;
+#pagination_nav li span{
+    color: white;
+    font-size: 30px;
+    background-color: #0B2752;
+    padding: 10px;
 }
 
-#pagination_nav li:nth-child(3) {
-    margin-left: 3rem;
+#pagination_nav li span:hover{
+    background-color: orangered;
+}
+
+#pagination_nav li a{
+    color: #0B2752;
+    font-size: 30px;
+
 }
 
 h1 {
@@ -80,20 +93,19 @@ h1 {
 
 #box {
     margin-top: 3rem;
-    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    background-color: red;
     width: 470px;
     margin-bottom: 6rem;
     border: 1px solid #0B2752;
     float: left;
     margin-right: 40px;
     height: 400px;
-
-
 }
 
 
 #photo {
-
+border-radius: 5px;
     background-color: white;
     height: 400px;
     overflow: hidden;

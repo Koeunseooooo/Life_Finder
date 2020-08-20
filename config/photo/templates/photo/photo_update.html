@@ -14,7 +14,7 @@
                 {{ form.as_p }}
             </table>
             <input id="last" type="submit" value="UPDATE">
-            <a href="{% url 'photo:delete' object.id %}"><button id="del" type="submit" value="DELETE">DELETE</button></a>
+            <button id="del" type="submit" value="DELETE"><a href="{% url 'photo:delete' object.id %}">DELETE</a></button>
         </form>
     </div>
     </div>
