@@ -5,6 +5,15 @@
     font-weight: normal;
     font-style: normal; }
 
+        @font-face {
+    font-family: 'Bazzi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/Bazzi.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 *{
     margin: 0;
     padding: 0;
@@ -29,8 +38,7 @@
 }
 
 #onelook{
-    padding-top: 6rem;
-
+    padding-top: 3rem;
     width: 200px;
     margin: 0 auto;
 }
@@ -44,7 +52,7 @@
     color: white;
     font-weight: 900;
     font-family: "yg-jalnan", sans-serif;
-    margin-bottom: 10rem;
+    margin-bottom: 1rem;
     border-radius: 3rem;
 
 }
@@ -69,7 +77,7 @@
 }
 
 #grp01 h1{
-    margin-top: 7rem;
+    margin-top: 5rem;
     color: #0B2752;
     text-align: center;
     font-family: "yg-jalnan", 'sans-serif';
@@ -136,12 +144,12 @@
 }
 
 #grp03 h1{
-    margin-top: 17rem;
+    margin-top: 11rem;
     color: #0B2752;
     text-align: center;
-    font-family: "yg-jalnan", 'sans-serif';
-
+    font-family: "yg-jalnan",'sans-serif';
 }
+
 
 
 
@@ -154,7 +162,7 @@
 }
 
 #grp04 h1{
-    margin-top: 17rem;
+    margin-top: 12rem;
     color: #0B2752;
     text-align: center;
     font-family: "yg-jalnan", 'sans-serif';
@@ -182,7 +190,7 @@
 }
 
 #grp05 h1{
-    margin-top: 60rem;
+    margin-top: 40rem;
     color: #0B2852;
     text-align: center;
     font-family: "yg-jalnan", 'sans-serif';
@@ -196,6 +204,20 @@
     font-family: "yg-jalnan", 'sans-serif';
     font-size: 1.2rem;
 }
+
+#grp03_1{
+    margin-top: 20px;
+    font-size: 100px;
+    font-family: "yg-jalnan", sans-serif;
+    color: #0B2752;
+}
+
+#grp03_2{
+    font-size: 20px;
+     font-family: "yg-jalnan", sans-serif;
+    color: lightgray;
+}
+
 
 .mychart4{
     width: 100%;
@@ -212,6 +234,8 @@
     width: 70%;
     margin: 0 auto;
 }
+
+
 #grp06 h1{
     margin-top: 24rem;
     color: #0B2852;
@@ -219,6 +243,17 @@
     font-family: "yg-jalnan", 'sans-serif';
 
 }
+
+
+#grp06 .nanna{
+    margin-top: 5rem;
+    font-family: 'Bazzi';
+    font-size: 25px;
+    text-align: center;
+    color:#717FFF;
+
+}
+
 
 .mychart3{
 margin: 0 auto;}
@@ -236,8 +271,15 @@ margin: 0 auto;}
 #grp07{
 }
 
-#grp07 h1{
-    margin-top: 24rem;
+#grp07 .wow{
+    margin-top: 17rem;
+    color: #0B2852;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+}
+
+#grp07 .wowow{
+    margin-top: 2rem;
     color: #0B2852;
     text-align: center;
     font-family: "yg-jalnan", 'sans-serif';
@@ -295,9 +337,9 @@ margin: 0 auto;}
 
 #fighting h1{
     color: #717FFF;
-    font-family: "Noto sans KR",'sans-serif';
+    font-family: 'Bazzi';
     font-size: 25px;
-
+    text-align: center;
 
 }
 
@@ -317,11 +359,25 @@ margin: 0 auto;}
 
 #lastfighting h1{
     color: #717FFF;
-    font-family: "Noto sans KR",'sans-serif';
+    font-family: 'Bazzi';
     font-size: 25px;
 
-
 }
+
+.nunnu{
+    text-align: center;
+    background-color: white;
+    -webkit-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    line-height: 80px;
+    border-radius: 2rem;
+    width: 800px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+
 
 
 
@@ -331,6 +387,7 @@ margin: 0 auto;}
     font-family: "yg-jalnan", sans-serif;
     color: #0B2752;
 }
+
 
 #grp03_2{
     font-size: 20px;

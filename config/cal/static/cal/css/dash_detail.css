@@ -1,5 +1,10 @@
 
 
+
+.r_contents{
+    width:100%
+}
+
 .go_community{
     padding-top: 5rem;
     margin: 0 auto;
@@ -14,8 +19,8 @@ button{
     width: 460px;
     height: 60px;
     border: none;
-    margin-left: 34%;
-    margin-top: 57rem;
+    margin-left: 37%;
+    margin-top: 2rem;
     border-radius: 3rem;
 }
 
@@ -29,4 +34,415 @@ button:hover{
     text-align: center;
     font-size: 1.3rem;
     font-weight: 900;
+}
+
+ @font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal; }
+
+        @font-face {
+    font-family: 'Bazzi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/Bazzi.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#graph{
+
+    padding-bottom: 20rem;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+
+}
+
+
+.line{
+    padding-top: 11rem;
+    color: black;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+    font-size: 2rem;
+}
+
+#onelook{
+    padding-top: 3rem;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.dash_detail{
+    width: 200px;
+    height: 60px;
+    background-color: #0B2752;
+    border: none;
+    font-size: 20px;
+    color: white;
+    font-weight: 900;
+    font-family: "yg-jalnan", sans-serif;
+    margin-bottom: 1rem;
+    border-radius: 3rem;
+
+}
+
+
+.dash_detail:hover{
+    background-color: orangered;
+}
+
+.dash_detail a{
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+#grp01{
+    width: 33%;
+    height: 100%;
+    float:left;
+}
+
+#grp01 h2{
+    margin-top: 10rem;
+    color: #0B2752;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+}
+
+#01tit{
+    margin-top: 2rem;
+}
+
+#grp01 p{
+    color: #c4c4c4;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+    font-size: 1.2rem;
+
+}
+
+
+#myChart0{
+    margin-top: 2rem;
+    margin: 0 auto;
+    margin-left:50px;
+
+
+}
+
+
+
+#grp01 script{
+    margin: 0 auto;
+}
+
+
+
+#grp02{
+    width: 33%;
+    height:100%;
+    float:left;
+    /*margin: 0 auto;*/
+}
+
+#grp02 h2{
+    margin-top: 10rem;
+    color: #0B2752;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+}
+
+#grp02 p{
+    color: #c4c4c4;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+    font-size: 1.2rem;
+
+}
+
+.mychart{
+    margin-bottom: 0rem;
+    margin-top: 3rem;
+    margin-left: 25%;
+}
+
+#grp03{
+    text-align: center;
+    width: 30%;
+    height: 20rem;
+    margin: 0 auto;
+    float:left;
+}
+
+#grp03 h2{
+    margin-top: 10rem;
+    color: #0B2752;
+    text-align: center;
+    font-family: "yg-jalnan",'sans-serif';
+}
+
+
+
+
+#grp04 {
+    text-align: center;
+    width: 29%;
+    height: 20rem;
+    /*display:flex;*/
+    /*flex-direction: column;*/
+    float:left;
+    margin-left:5rem;
+}
+
+#grp04 h2{
+    margin-top: 10rem;
+    color: #0B2752;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+
+}
+
+
+#grp04 p{
+    margin-top: 1rem;
+    /*text-align: center;*/
+    color: #c4c4c4;
+    font-family: "yg-jalnan", 'sans-serif';
+    font-size: 1.2rem;
+}
+
+.mychart9{
+    width: 450px;
+    height: 350px;
+    margin-right:20px;
+}
+
+#grp05 {
+    float:left;
+    /*display:flex;*/
+    /*flex-direction: column;*/
+    width:35%;
+}
+
+#grp05 h2{
+    margin-top: 2rem;
+    color: #0B2852;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+}
+
+#grp05 p  {
+    margin-top: 0.6rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #c4c4c4;
+    font-family: "yg-jalnan", 'sans-serif';
+    font-size: 1.2rem;
+}
+
+#grp03_1{
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: "yg-jalnan", sans-serif;
+    color: #0B2752;
+}
+
+#grp03_2{
+    font-size: 20px;
+     font-family: "yg-jalnan", sans-serif;
+    color: lightgray;
+}
+
+
+.mychart4{
+    width: 100px;
+    height: 100px;
+
+}
+
+
+
+#grp06{
+    width: 30%;
+    float:left
+}
+
+
+#grp06 h2{
+    margin-top: 1.5rem;
+    color: #0B2852;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+
+}
+
+
+#grp06 .nanna{
+    margin-top: 0rem;
+    font-family: 'Bazzi';
+    font-size: 25px;
+    text-align: center;
+    color:#717FFF;
+
+}
+
+
+.mychart3{
+margin: 0 auto;}
+
+
+#grp06 p  {
+    margin-top: 0.6rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #c4c4c4;
+    font-family: "yg-jalnan", 'sans-serif';
+    font-size: 1.2rem;
+}
+
+#grp07{
+    width: 33%;
+    height: 100%;
+    float:left;
+
+}
+
+
+
+#grp07 .wow{
+    margin-top: 2rem;
+    color: #0B2852;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+}
+
+#grp07 .wowow{
+    margin-top: 2rem;
+    color: #0B2852;
+    text-align: center;
+    font-family: "yg-jalnan", 'sans-serif';
+}
+
+.mychart5{
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+#grp07 p{
+    margin: 0 auto;
+    font-family: "yg-jalnan",'sans-serif';
+}
+
+#wrap{
+    padding-top: 1rem;
+    width: 500px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+#l{
+    width: 49%;
+    float: left;
+    color: white;
+    line-height: 2rem;
+    font-size:15px;
+    text-align: center;
+    background-color: #c4c4c4;
+    border-radius: 1rem;
+}
+#r {
+    width: 49%;
+    float: right;
+    line-height: 2rem;
+    color: white;
+    font-size:15px;
+    text-align: center;
+    background-color: #717FFF;
+    border-radius: 1rem;
+}
+
+#fighting{
+    text-align: center;
+    background-color: white;
+    -webkit-box-shadow: 14px 15px 21px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: 14px 15px 21px 0px rgba(0,0,0,0.36);
+    box-shadow: 14px 15px 21px 0px rgba(0,0,0,0.36);
+    line-height: 60px;
+    border-radius: 2rem;
+    width: 400px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+#fighting h1{
+    color: #717FFF;
+    font-family: 'Bazzi';
+    font-size: 20px;
+    text-align: center;
+    margin-top:10px;
+
+}
+
+#lastfighting{
+
+    text-align: center;
+    background-color: white;
+    -webkit-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    line-height: 80px;
+    border-radius: 2rem;
+    width: 800px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+#lastfighting h1{
+    color: #717FFF;
+    font-family: 'Bazzi';
+    font-size: 25px;
+
+}
+
+.nunnu{
+    text-align: center;
+    background-color: white;
+    -webkit-box-shadow: 14px 15px 21px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: 14px 15px 21px 0px rgba(0,0,0,0.36);
+    box-shadow: 14px 15px 21px 0px rgba(0,0,0,0.36);
+    line-height: 60px;
+    border-radius: 2rem;
+    width: 400px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+
+
+
+
+#grp03_1{
+    margin-top: 20px;
+    font-size: 100px;
+    font-family: "yg-jalnan", sans-serif;
+    color: #0B2752;
+}
+
+
+#grp03_2{
+    font-size: 20px;
+     font-family: "yg-jalnan", sans-serif;
+    color: lightgray;
 }
