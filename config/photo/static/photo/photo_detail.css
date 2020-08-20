@@ -197,7 +197,7 @@ img{
 
 #wrap4 li{
     margin-top: 20px;
-    color: #e0e0e0;
+    color: #464646;
     font-family: "Noto Sans KR", 'sans-serif';
     font-size: 25px;
 
@@ -210,8 +210,7 @@ img{
 /*글 제목 */
 #wrap4 li:nth-child(3){
     margin-top: 4rem;
-
-    color: #4f4f4f;
+    color: #333333;
     font-weight: 800;
     font-size: 23px;
 

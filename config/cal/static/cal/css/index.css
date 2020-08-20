@@ -5,9 +5,11 @@
     font-weight: normal;
     font-style: normal; }
 
+
+
         @font-face {
-    font-family: 'Bazzi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/Bazzi.woff') format('woff');
+    font-family: 'MapoHongdaeFreedom';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoHongdaeFreedomA.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -247,7 +249,7 @@
 
 #grp06 .nanna{
     margin-top: 5rem;
-    font-family: 'Bazzi';
+    font-family: "MapoHongdaeFreedom",'serif';
     font-size: 25px;
     text-align: center;
     color:#717FFF;
@@ -280,9 +282,9 @@ margin: 0 auto;}
 
 #grp07 .wowow{
     margin-top: 2rem;
-    color: #0B2852;
+    color: #717FFF;
     text-align: center;
-    font-family: "yg-jalnan", 'sans-serif';
+    font-family: "MapoHongdaeFreedom", 'sans-serif';
 }
 
 .mychart5{
@@ -337,7 +339,7 @@ margin: 0 auto;}
 
 #fighting h1{
     color: #717FFF;
-    font-family: 'Bazzi';
+    font-family: "MapoHongdaeFreedom",'sans-serif';
     font-size: 25px;
     text-align: center;
 
@@ -359,7 +361,7 @@ margin: 0 auto;}
 
 #lastfighting h1{
     color: #717FFF;
-    font-family: 'Bazzi';
+    font-family: "MapoHongdaeFreedom",'sans-serif';
     font-size: 25px;
 
 }
