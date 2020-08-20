@@ -11,7 +11,7 @@
 
         <div id="editbtn">
             {% if object.author == request.user.user_profile %}
-                <button class="button_7"><a href="{% url 'photo:update' object.id %}">EDIT</a></button>
+                    <button class="button_7"><a href="{% url 'photo:update' object.id %}">EDIT</a></button>
             {% endif %}
             <button class="button_7"><a href="{% url 'photo:index' %}">홈으로 가기</a></button>
         </div>

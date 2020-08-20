@@ -5,7 +5,16 @@
     text-decoration: none;
 }
 
+#smile02, #user_photo2 {
+    margin-top:5px;
+    z-index: 100;
+    width: 30px;
+    height: 30px;
+    border-radius: 3rem;
+}
+
 #navlogo{
+    margin-left: 120px;
     padding-top: 15px;
     width: 70px;
     height: 70px;
@@ -26,8 +35,8 @@
     width: 95%;
     display: inline-flex;
     align-items: center;
-    margin: 0 auto;
-    justify-content: center;
+    /*margin: 0 auto;*/
+    /*justify-content: center;*/
 }
 
 .real_nav li {
@@ -42,36 +51,57 @@
 
 }
 
-
 .real_nav li:nth-child(1){
-margin-right: 10rem;
+margin-right: 5.5rem;
 }
-
 .real_nav li:nth-child(2) {
-    margin-right: 6rem;
+    margin-right: 5.5rem;
 }
-
 .real_nav li:nth-child(3) {
-    margin-right: 6rem;
+    margin-right: 5.5rem;
 
 }
-
 .real_nav li:nth-child(4) {
-    margin-right: 6rem;
+    margin-right: 30rem;
 
 }
-
-
-
 nav li:nth-child(5) {
-    margin-right: 10rem;
+    margin-right: 1rem;
 
 }
-
 nav li:nth-child(6) {
-
-
+    margin-right: 4rem;
 }
+
+/*.real_nav li:nth-child(1){*/
+/*margin-right: 10rem;*/
+/*}*/
+
+/*.real_nav li:nth-child(2) {*/
+/*    margin-right: 6rem;*/
+/*}*/
+
+/*.real_nav li:nth-child(3) {*/
+/*    margin-right: 6rem;*/
+
+/*}*/
+
+/*.real_nav li:nth-child(4) {*/
+/*    margin-right: 6rem;*/
+
+/*}*/
+
+
+
+/*nav li:nth-child(5) {*/
+/*    margin-right: 10rem;*/
+
+/*}*/
+
+/*nav li:nth-child(6) {*/
+
+
+/*}*/
 
 .real_nav a{
     }
