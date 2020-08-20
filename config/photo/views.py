@@ -65,7 +65,6 @@ class PhotoCreate(CreateView):
             # form : 모델폼
             form.instance.save()
             return redirect('photo:index')
-
         else:
             # 올바르지 않다면
             return self.render_to_response({'form': form,})
@@ -74,18 +73,19 @@ class PhotoCreate(CreateView):
 
 class PhotoUpdate(UpdateView):
     model = Photo
-
     form_class = PhotoForm
 
     # fields = ['text', 'image']
     template_name_suffix = '_update'
-    # success_url = '/'
+    # success_url = '/photo/'
 
+    def get_success_url(self):
+        return reverse('photo:detail',kwargs={'pk':self.object.pk})
     def dispatch(self, request, *args, **kwargs):
         object = self.get_object()
         if object.author != request.user.user_profile:
             messages.warning(request, '수정할 권한이 없습니다.')
-            return redirect('photo:detail')
+            return redirect('photo:index')
         else:
             return super(PhotoUpdate, self).dispatch(request, *args, **kwargs)
 
@@ -98,7 +98,8 @@ class PhotoDelete(DeleteView):
         object = self.get_object()
         if object.author != request.user.user_profile:
             messages.warning(request, '삭제할 권한이 없습니다.')
-            return redirect('photo:detail')
+            return redirect('photo:index')
+            # return reverse('photo:detail',kwargs={'pk':self.object.pk})
         else:
             return super(PhotoDelete, self).dispatch(request, *args, **kwargs)
 
