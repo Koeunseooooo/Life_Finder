@@ -8,9 +8,374 @@
 
 
 
-<div class="go_community">
-        {#  추후 url추가해서 만약 user가 7일 이상 활동했으면 dashboard보여주고 아니면 7일 후 볼 수 있다는 안내 페이지로 이동#}
-        <button><a href="{% url 'photo:index' %}"> 게시글 쓰러가기 </a></button>
+
+
+
+
+    <div id="graph">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<div id="grp01">
+    <h2 id="01tit">★이번달 라이프 현황★</h2>
+
+    {% for value in wanted_goal %}
+        <p class="user_goal_des">라이프 목표 뱃지 개수 {{ value.goal_count }}개</p>
+
+        <div class="mychart0" style="width:400px; height: 180px;" >
+            <canvas id="myChart0"></canvas>
+        </div>
+
+
+        <script>
+            var ctxx = document.getElementById("myChart0").getContext('2d');
+            var myChart0 = new Chart(ctxx, {
+                type: 'horizontalBar',
+                data: {
+                    labels: ["목표뱃지", "현재뱃지"],
+                    datasets: [{
+                        data: [{{ value.goal_count }}, {{ing}}],
+                        backgroundColor: [
+                            'rgba(113, 127, 255, 0.6)',
+                            'rgba(113, 127, 255, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(113, 127, 255, 1)',
+                            'rgba(113, 127, 255, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+
+
+
+        {% if half > ing  %}
+        <div id="fighting">
+            <h1>목표갯수에 도달할 수 있도록 해볼까요? 🏃🏻 </h1>
+        </div>
+
+        {% elif half <= ing and ing <= value.goal_count %}
+           <div id="fighting">
+            <h1>얼마 안 남았어요 이제 곧 목표 갯수에 도달할 수 있어요! 🏃🏻🏃🏻🏃🏻</h1>
+        </div>
+
+
+        {% elif ing > value.goal_count %}
+             <div id="fighting">
+            <h1>목표 갯수를 넘었어요!  행복한 시간을 보내셨군요! ❤️</h1>
+        </div>
+
+        {% endif %}
+
+    {% endfor %}
+     </div>
+
+
+
+    <div id="grp02">
+    <h2>뱃지 어디까지 모아봤니? 🤔 </h2>
+    <br/>
+
+    <p style="text-align: center">지난 7일간 모은 라이프 뱃지들을 살펴볼까요?</p>
+    <div class="mychart" style="width:450px; height:225px; margin: 0 auto;"><canvas id="myChart"></canvas></div>
+
+    <script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{{ mychart_month }}+'/'+{{mychart_six_days_ago}},{{ mychart_month }}+'/'+{{ mychart_five_days_ago}} , {{mychart_month }}+'/'+{{mychart_four_days_ago}}, {{ mychart_month }}+'/'+{{mychart_three_days_ago}}, {{ mychart_month }}+'/'+{{mychart_two_days_ago}}, {{ mychart_month }}+'/'+{{mychart_one_days_ago}}, {{ mychart_month }}+'/'+{{mychart_day}}],
+
+                datasets: [{
+
+                    data: [{{one_total}}, {{two_total}}, {{three_total}}, {{ four_total }}, {{five_total}}, {{six_total}}, {{seven_total}}],
+                    backgroundColor: [
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                        'rgba(113, 127, 255, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                        'rgba(113, 127, 255, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: false,
+                },
+                maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            fontSize: 15
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+   </div>
+
+{#    <div id="grp03">#}
+{#        <h2>🥇     지난 7일간 최고의 순간!     🥇</h2>#}
+{#        <p id="grp03_1">{{mychart_month }}/{{ real_best1_start_time_day }}</p>#}
+{##}
+{#        <p id="grp03_2">#}
+{#            {{ select_event_str }}#}
+{#        </p>#}
+{##}
+{#    </div>#}
+
+     <div id="grp04">
+
+    <h2>내가 주로 즐기는 라이프는 뭐지 ? 💁🏻‍♀️</h2>
+    <p>지난 7일간의 활동을 카테고리 별로 정리했어요</p>
+    <div class="mychart9" >
+        <canvas id="myChart9" style="margin: 0 auto;"></canvas>
     </div>
 
+    <script>
+        var ctx = document.getElementById("myChart9").getContext('2d');
+        var myChart9 = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["운동","여행","기타","친구/가족과의 시간","자기계발","취미생활","여가생활","일"],
+                datasets: [
+                    {
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850","#3e95cd", "#8e5ea2", "#3cba9f"],
+                        data: [{{ value1}},{{ value2 }},{{ value3}},{{ value4 }},{{ value5 }},{{ value6 }},{{ value7 }},{{ value8 }}]
+                    }
+                ]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                    display: false,
+                },
+                scales: {
+                    xAxes: [{
+                        beginAtZero: true,
+
+                    }]
+
+                }
+            }
+
+
+
+    });
+    </script>
+        </div>
+
+    <div id="grp05">
+    <h2>🧐     아 궁금해 궁금해!!     🧐</h2>
+        <p>뱃지 갯수 당 몇개의 라이프 기록을 줬더라?</p>
+    <div calss="mychart4" style="width:300px; height:300px; margin: 0 auto;" >
+        <canvas id="myChart4"></canvas>
+    </div>
+
+    <script>
+        var ctx = document.getElementById("myChart4").getContext('2d');
+        var myChart4 = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["뱃지 1개 기록들", "뱃지 2개 기록들", "뱃지 3개 기록들", "뱃지 4개 기록들", "뱃지 5개 기록들"],
+                datasets: [{
+                    label: "안녕",
+
+                    data: [{{one_count}}, {{two_count}}, {{three_count}}, {{ four_count }}, {{five_count}}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: false,
+                    text: '뱃지개수 당 몇개의 라이프 기록을 줬더라?'
+                },
+                maintainAspectRatio: false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+                scales: {
+                    xAxes: [{
+                        beginAtZero: true,
+                        display: false,
+                        max:30,
+
+                    }]
+
+                },
+            }
+        });
+    </script>
+        </div>
+   <div id="grp07">
+
+
+    <h2 class="wow">★월별 라이프 비교★ </h2>
+    <br/>
+
+    <div class="mychart5" style="width:550px; height:250px;">
+        <canvas id="myChart5"></canvas>
+    </div>
+
+    <script>
+        var ctx = document.getElementById("myChart5").getContext('2d');
+        var myChart3 = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["1일", "2일", "3일", "4일", "5일", "6일", "7일","8일", "9일", "10일", "11일", "12일", "13일", "14일","15일", "16일", "17일", "18일", "19일", "20일", "21일","22일", "23일", "24일", "25일", "26일", "27일", "28일","29일", "30일"],
+                datasets: [{
+                    label: "이전달",
+                    data: [{{real_pre_thirty_days_ago_rating}},{{real_pre_twentynine_days_ago_rating}},{{real_pre_twentyeight_days_ago_rating}},{{real_pre_twentyseven_days_ago_rating}},{{real_pre_twentysix_days_ago_rating}},{{real_pre_twentyfive_days_ago_rating}},{{real_pre_twentyfour_days_ago_rating}},{{real_pre_twentythree_days_ago_rating}},{{real_pre_twentytwo_days_ago_rating}},{{real_pre_twentyone_days_ago_rating}},{{real_pre_twenty_days_ago_rating}},{{real_pre_nineteen_days_ago_rating}},{{real_pre_eighteen_days_ago_rating}},{{real_pre_seventeen_days_ago_rating}},{{real_pre_sixteen_days_ago_rating}},{{real_pre_fifteen_days_ago_rating}},{{real_pre_fourteen_days_ago_rating}},{{real_pre_thirteen_days_ago_rating}},{{real_pre_twelve_days_ago_rating}},{{real_pre_eleven_days_ago_rating}},{{real_pre_ten_days_ago_rating}},{{real_pre_nine_days_ago_rating}},{{real_pre_eight_days_ago_rating}},{{real_pre_seven_days_ago_rating}},{{real_pre_six_days_ago_rating}},{{real_pre_five_days_ago_rating}},{{real_pre_four_days_ago_rating}},{{real_pre_three_days_ago_rating}},{{real_pre_two_days_ago_rating}},{{real_pre_one_days_ago_rating}}],
+                    borderColor: [
+                        'rgba(255, 206, 86, 1)',
+                    ],
+                    borderWidth: 1,
+                    fill:false
+                }, {
+                    label: "이번달",
+                    data: [{{real_thirty_days_ago_rating}},{{real_twentynine_days_ago_rating}},{{real_twentyeight_days_ago_rating}},{{real_twentyseven_days_ago_rating}},{{real_twentysix_days_ago_rating}},{{real_twentyfive_days_ago_rating}},{{real_twentyfour_days_ago_rating}},{{real_twentythree_days_ago_rating}},{{real_twentytwo_days_ago_rating}},{{real_twentyone_days_ago_rating}},{{real_twenty_days_ago_rating}},{{real_nineteen_days_ago_rating}},{{real_eighteen_days_ago_rating}},{{real_seventeen_days_ago_rating}},{{real_sixteen_days_ago_rating}},{{real_fifteen_days_ago_rating}},{{real_fourteen_days_ago_rating}},{{real_thirteen_days_ago_rating}},{{real_twelve_days_ago_rating}},{{real_eleven_days_ago_rating}},{{real_ten_days_ago_rating}},{{real_nine_days_ago_rating}},{{real_eight_days_ago_rating}},{{real_seven_days_ago_rating}},{{real_six_days_ago_rating}},{{real_five_days_ago_rating}},{{real_four_days_ago_rating}},{{real_three_days_ago_rating}},{{real_two_days_ago_rating}},{{real_one_days_ago_rating}}],
+                    borderColor: [
+                        'rgba(255, 06, 86, 1)',
+                    ],
+                    borderWidth: 1,
+                    fill:false
+                }
+                ]
+            },
+            options: {
+                title: {
+                    display: false
+                },
+                maintainAspectRatio: false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+                scales: {
+                    yAxes: [{
+                        beginAtZero: true,
+                        display: true,
+
+                    }]
+                }
+            }
+        });
+    </script>
+
+        <div id="wrap">
+            <div id="l">
+                <p id="l1"> 이전달 총 뱃지 개수  {{ real_pre_month_end_total }} </p>
+                <p id="l2"> 이전달 평균 뱃지 개수 {{ pre_month_end_meanvalue }} </p>
+            </div>
+
+            <div id="r">
+                <p id="l3"> 이번달 총 뱃지 개수  {{ real_present_month_total }} </p>
+                <p id="l4"> 이번달 평균 뱃지 개수   {{ present_month_meanvalue }}  </p>
+            </div>
+
+        </div>
+
+
+        </div>
+
+
+    <div id="grp06">
+    <h2>★OH! HAPPY DAY!!★ </h2>
+        <p>월화수목금토일 어떤 요일이 가장 좋아요?</p>
+
+
+
+    <div class="mychart3" style="width:500px; height:250px; "><canvas id="myChart3"></canvas></div>
+    <script>
+        var ctx = document.getElementById("myChart3").getContext('2d');
+        var myChart3 = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
+                datasets: [{
+                    label: "안녕",
+
+                    data: [{{mon}}, {{tue}}, {{wed}}, {{ thur }}, {{fri}}, {{sat}}, {{sun}}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 100, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 100, 64, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: false,
+                },
+                maintainAspectRatio: false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+                scales: {
+                    yAxes: [{
+
+                        beginAtZero: true,
+                        display: false
+
+                    }]
+
+
+                }
+            }
+        });
+    </script>
+<div class="nunnu">
+    <h1 class="nanna">{{ mon_str }}{{ tue_str }}{{ wed_str }}{{ thur_str }}{{ fri_srt }}{{ sat_str }}{{ sun_str }}</h1>
+</div>
+        </div>
+
+
+</div>
+
+    <div class="go_community">
+        <button><a href="{% url 'cal:dash' %}"> 일반 대시보드로 돌아가기 </a></button>
+    </div>
 {% endblock %}

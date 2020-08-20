@@ -21,7 +21,7 @@
     {% for value in wanted_goal %}
         <p class="user_goal_des">라이프 목표 뱃지 개수 {{ value.goal_count }}개</p>
 
-        <div class="mychart0" style="width:700px; height: 200px ">
+        <div class="mychart0" style="width:700px; height: 200px; ">
             <canvas id="myChart0"></canvas>
         </div>
 
@@ -63,18 +63,18 @@
 
         {% if half > ing  %}
         <div id="fighting">
-            <h1>목표갯수에 도달할 수 있도록 해볼까요?</h1>
+            <h1>목표갯수에 도달할 수 있도록 해볼까요? 🏃🏻 </h1>
         </div>
 
         {% elif half <= ing and ing <= value.goal_count %}
            <div id="fighting">
-            <h1>얼마 안 남았어요 이제 곧 목표 갯수에 도달할 수 있어요!</h1>
+            <h1>얼마 안 남았어요 이제 곧 목표 갯수에 도달할 수 있어요! 🏃🏻🏃🏻🏃🏻</h1>
         </div>
 
 
         {% elif ing > value.goal_count %}
              <div id="fighting">
-            <h1>목표 갯수를 넘었어요!  행복한 시간을 보내셨군요!</h1>
+            <h1>목표 갯수를 넘었어요!  행복한 시간을 보내셨군요! ❤️</h1>
         </div>
 
         {% endif %}
@@ -85,11 +85,11 @@
 
 
     <div id="grp02">
-    <h1>뱃지 어디까지 모아봤니?</h1>
+    <h1>뱃지 어디까지 모아봤니? 🤔 </h1>
     <br/>
 
     <p style="text-align: center">지난 7일간 모은 라이프 뱃지들을 살펴볼까요?</p>
-    <div class="mychart" style="width:600px; height:400px"><canvas id="myChart"></canvas></div>
+    <div class="mychart" style="width:800px; height:500px; margin: 0 auto;"><canvas id="myChart"></canvas></div>
 
     <script>
         var ctx = document.getElementById("myChart").getContext('2d');
@@ -141,23 +141,19 @@
    </div>
 
     <div id="grp03">
-        <h1>🥳     지난 7일간 최고의 순간!     🥳</h1>
+        <h1>🥇     지난 7일간 최고의 순간!     🥇</h1>
         <p id="grp03_1">{{mychart_month }}/{{ real_best1_start_time_day }}</p>
 
         <p id="grp03_2">
             {{ select_event_str }}
         </p>
 
-
-
-
-
     </div>
 
 
     <div id="grp04">
 
-    <h1>자네 살림살이는 좀 나아졌는가?</h1>
+    <h1>내가 주로 즐기는 라이프는 뭐지 ? 💁🏻‍♀️</h1>
     <p>지난 7일간의 활동을 카테고리 별로 정리했어요</p>
     <div class="mychart9">
         <canvas id="myChart9"></canvas>
@@ -268,7 +264,7 @@
                 datasets: [{
                     label: "안녕",
 
-                    data: [{{mon}}, {{tue}}, {{wed}}, 10, {{fri}}, {{sat}}, {{sun}}],
+                    data: [{{mon}}, {{tue}}, {{wed}}, {{ thur }}, {{fri}}, {{sat}}, {{sun}}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -308,12 +304,15 @@
             }
         });
     </script>
+<div class="nunnu">
+    <h1 class="nanna">{{ mon_str }}{{ tue_str }}{{ wed_str }}{{ thur_str }}{{ fri_srt }}{{ sat_str }}{{ sun_str }}</h1>
+</div>
         </div>
 
     <div id="grp07">
 
 
-    <h1>★월별 라이프 비교★ </h1>
+    <h1 class="wow">★월별 라이프 비교★ </h1>
     <br/>
 
     <div class="mychart5" style="width:1000px">
@@ -376,19 +375,19 @@
 
 
     {%  if pre_month_end_total_count < 10 %}
-        <div id="lastfighting"> <h1>저번달 데이터가 부족해서 메세지를 보여드릴 수 없습니다</h1></div>
+        <div id="lastfighting"> <h1 class="wowow"> 😭 저번달 데이터가 부족해서 메세지를 보여드릴 수 없습니다 😭 </h1></div>
     {%  else %}
         {% if present_month_meanvalue >= pre_month_end_meanvalue  %}
             {% if real_present_month_total >= real_pre_month_end_total %}
-                <div id="lastfighting"><h1> 총개수랑 총평균 둘다 이번달이 좋을때</h1></div>
+                <div id="lastfighting"><h1> 😆 이번달은 라이프뱃지 최고 수확의 달이에요 YAHO! 😆 </h1></div>
             {% elif real_present_month_total < real_pre_month_end_total %}
-                <div id="lastfighting"> <h1>총개수는 안좋은데 총평균이 이번달이 좋을 때 </h1></div>
+                <div id="lastfighting"> <h1> 😁 이번달은 특히나 좋은 추억이 많았군요! 다음달엔 더 많은 라이프를 기록해보세요 😁  </h1></div>
             {% endif %}
         {% elif present_month_meanvalue < pre_month_end_meanvalue %}
             {% if real_present_month_total < real_pre_month_end_total %}
-                <div id="lastfighting"> <h1>총개수랑 총평균 둘다 이번달이 안좋을 때</h1></div>
+                <div id="lastfighting"> <h1> 😂 이번달은 다소 바쁘게 살아간 당신. 다음달은 더 많은 라이프를 즐길 수 있겠죠?😂 </h1></div>
             {% elif real_present_month_total >= real_pre_month_end_total %}
-                <div id="lastfighting"> <h1>총평균은 안좋은데 총개수가 이번달이 좋을 때</h1> </div>
+                <div id="lastfighting"> <h1> 이번달 열심히 기록한 당신, 다음달엔 즐거웠던 라이프를 더 자주 즐겨보세요</h1> </div>
             {% endif %}
         {% endif %}
     {% endif %}
