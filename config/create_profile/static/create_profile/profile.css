@@ -121,12 +121,12 @@ body{
 }
 
 #intro, #intlife, #goalbadge, #job{
-    color: #c4c4c4;
+    color: white;
 }
 
 
 #tt{
-    color: #c4c4c4;
+    color: white;
     padding-left: 20px;
     text-align: left;
     margin-bottom: 20px;
@@ -220,6 +220,8 @@ box-shadow: -7px 7px 42px 0px rgba(0,0,0,0.27);
     height: 20px;
     margin: 0 auto;
     overflow: hidden;
+    color: white;
+    font-family: "yg-jalnan",'sans-serif';
 }
 
 .cube {

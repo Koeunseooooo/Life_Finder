@@ -1,12 +1,110 @@
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
+{% block style %}
+    <style>
+
+
+        @font-face {
+            font-family: 'yg-jalnan';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        h1 {
+            color: white;
+        }
+
+
+        span {
+            font-size: 35px;
+            color: #0B2852;
+
+            display: inline-flex;
+            font-family: "yg-jalnan", 'sans-serif';
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        p {
+            color: #0B2852;
+
+            display: inline-flex;
+
+            font-family: "yg-jalnan", 'sans-serif';
+            margin: 0 auto;
+            text-align: center;
+            font-size: 35px;
+
+        }
+
+        p:nth-child(1) {
+            color: #0B2852;
+        }
+
+        label {
+            display: none;
+        }
+
+
+        #delm {
+
+            background-color: #f6f6f6;
+            width: 63rem;
+            margin: 0 auto;
+            border-radius: 3rem;
+        }
+
+        #alert alert-primary {
+
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        form {
+            margin: 0 auto;
+            width: 540px;
+            height: 60px;
+
+        }
+
+        #ok {
+            width: 540px;
+            height: 60px;
+            background-color: #0B2852;
+            color: white;
+            margin-top: 5rem;
+            font-family: "Syncopate", 'sans-serif';
+            font-size: 20px;
+            line-height: 60px;
+            font-weight: 900;
+            border: none;
+        }
+
+    #ok:hover{
+        background-color: orangered;
+    }
+
+
+    </style>
+{% endblock %}
 {% block content %}
-<!--진짜 지울건지 확인을 받아야 한다. form을 또 보여줄 필요가 없다.-->
-    <div style="padding-top: 50rem"></div>
-<div class="alert alert-primary" role="alert">
-  진짜로 {{object|safe}}를 지우실 건가요?
-</div>
-<form action="" method ="post">
-    {% csrf_token%}
-    <input type="submit" value="Delete OK">
-</form>
+<div style="height: 25rem"></div>
+    <div id="delm">
+
+
+        <div id="alert alert-primary" role="alert">
+
+            <p>{{ object.title|safe }}<span>을(를) 정말 지우시겠어요?</span></p>
+        </div>
+
+
+    </div>
+
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input id="ok" type="submit" value="DELETE">
+    </form>
+
 {% endblock %}

@@ -23,7 +23,7 @@
 
 
 .real_nav ul {
-    width: 80%;
+    width: 95%;
     display: inline-flex;
     align-items: center;
     margin: 0 auto;
@@ -32,33 +32,47 @@
 
 .real_nav li {
     font-family: "Syncopate", sans-serif;
-    font-size: 20px;
+    font-size: 21px;
     display: inline-flex;
-    margin-left: 2rem;
+
+}
+
+.real_nav li a:hover{
+ color: #717FFF;
+
+}
+
+
+.real_nav li:nth-child(1){
+margin-right: 10rem;
 }
 
 .real_nav li:nth-child(2) {
-    margin-left: 3rem;
-    background-color: tan;
+    margin-right: 6rem;
 }
 
 .real_nav li:nth-child(3) {
-    margin-left: 3rem;
-    background-color: orange;
+    margin-right: 6rem;
+
 }
 
-.real_nav a{
-    color: red;
+.real_nav li:nth-child(4) {
+    margin-right: 6rem;
+
+}
+
+
 
 nav li:nth-child(5) {
-    margin-left: 3rem;
-    background-color: cornflowerblue;
+    margin-right: 10rem;
+
 }
 
 nav li:nth-child(6) {
-    margin-left: 3rem;
-    background-color: darkgoldenrod;
+
+
 }
 
-
+.real_nav a{
+    }
 
