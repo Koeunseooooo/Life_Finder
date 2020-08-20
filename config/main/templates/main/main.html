@@ -79,9 +79,12 @@
     <div class="card_03">
         <div id="03l">
         <h3>Check your lifestyle</h3>
+
         <h1>DASH
             <br/>
             BOARD-Ya!</h1>
+            <div class="graph_ya">
+
         <p>
             <span>DASHBOARD</span>는<br/>
             캘린더에 기록한 라이프 뱃지들의 분석 결과를 보여주고 있어요<br />
@@ -90,6 +93,55 @@
         </p>
          <a href="#"><button id="lg">CALENDAR-YA!</button></a>
         </div>
+
+        </div>
+        <div class="hi">
+        <div class="mychart" style="width:450px; height:225px; margin: 0 auto;">
+            <canvas id="myChart" style=""></canvas>
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+
+        <script>
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ["Yaho1", "Yaho2", "Yaho3", "Yaho4", "Yaho5"],
+                    datasets: [
+                        {
+                            label: "pre_month",
+                            fill: true,
+                            backgroundColor: "rgba(179,181,198,0.2)",
+                            borderColor: "rgba(179,181,198,1)",
+                            pointBorderColor: "#fff",
+                            pointBackgroundColor: "rgba(179,181,198,1)",
+                            data: [20.7, 55.61, 21.69, 40, 70.2]
+                        }, {
+                            label: "present_month",
+                            fill: true,
+                            backgroundColor: "rgba(255,99,132,0.2)",
+                            borderColor: "rgba(255,99,132,1)",
+                            pointBorderColor: "#fff",
+                            pointBackgroundColor: "rgba(255,99,132,1)",
+                            pointBorderColor: "#fff",
+                            data: [76.48, 34.16, 7.61, 58.06, 43.4]
+                        }
+                    ]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Only YAHO's Graph"
+                    }
+                }
+            });
+        </script>
+        </div>
+
+
     </div>
 
     <div class="card_04">
@@ -136,5 +188,6 @@
             All rigths reserverd by &copy; YAHO!
         </p>
     </footer>
+    </div>
     </div>
 {% endblock %}
