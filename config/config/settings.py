@@ -24,7 +24,7 @@ SECRET_KEY = '$%o)p2&#2*v=^qp$tk^z+rpte5($uzs$m$!o3zzu%#6u(!tl=e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -149,7 +149,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR,'static'),
 # ]
@@ -178,6 +178,9 @@ LOGIN_REDIRECT_URL = '/create/login_success'
 
 # 이렇게하면 모든 뷰에 하나하나 today_date라는 변수를 안 넘겨줘도 된다
 TEMPLATES[0]['OPTIONS']['context_processors'].append("cal.views.give_today_date")
+TEMPLATES[0]['OPTIONS']['context_processors'].append("main.views.base")
+
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
