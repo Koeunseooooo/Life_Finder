@@ -15,6 +15,8 @@
 </div>
 
 
+
+
     <div id="grp01">
     <h1 id="01tit">★이번달 라이프 현황★</h1>
 
@@ -131,12 +133,20 @@
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
-                            fontSize: 15
+                            fontSize: 20
                         }
                     }]
-                }
+                    ,xAxes:[{
+                        ticks:{
+                            fontSize:20,
+                            fontStyle:'bold',
+                        }
+                    }]
+                },
             }
         });
+
+
     </script>
    </div>
 
@@ -181,14 +191,12 @@
                     xAxes: [{
                         beginAtZero: true,
 
-                    }]
+                    }],
 
                 }
             }
-
-
-
     });
+
     </script>
         </div>
 
@@ -305,7 +313,7 @@
         });
     </script>
 <div class="nunnu">
-    <h1 class="nanna">{{ mon_str }}{{ tue_str }}{{ wed_str }}{{ thur_str }}{{ fri_srt }}{{ sat_str }}{{ sun_str }}</h1>
+    <p class="nanna"> {{ mon_str }}{{ tue_str }}{{ wed_str }}{{ thur_str }}{{ fri_str }}{{ sat_str }}{{ sun_str }}</p>
 </div>
         </div>
 

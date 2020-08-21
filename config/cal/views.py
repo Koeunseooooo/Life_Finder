@@ -1249,8 +1249,12 @@ def dash_detail(request):
         start_time__gte=pre_month_end)
     pre_month_end_total_2 = pre_month_end_total.filter(start_time__lte=present_month).aggregate(Sum('rating')).values()
 
+
     for real_pre_month_end_total in pre_month_end_total_2:
         real_pre_month_end_total
+    if real_pre_month_end_total == None:
+        real_pre_month_end_total = 0
+
     pre_month_end_total_count = Event.objects.all().filter(profile=request.user.user_profile).filter(
         start_time__gte=pre_month_end).filter(start_time__lte=present_month).count()
     pre_month_end_meanvalue = real_pre_month_end_total / (pre_month_end_total_count + 1e-7)
@@ -2028,11 +2032,17 @@ def dash_detail(request):
 
     real_best1_start_time = []
 
+
+
+
     if best1 == one_total:
         for one_select_event in one_select_events:
             select_event_str_list.append(one_select_event.title)
             best1_start_time_one.append(one_select_event.start_time.strftime("%d"))
-        real_best1_start_time.append(best1_start_time_one[0])
+            if(best_start_time_one==None):
+                real_best1_start_time=['no']
+            else :
+                real_best1_start_time.append(best1_start_time_one[0])
 
     if best1 == two_total:
         for two_select_event in two_select_events:
