@@ -22,17 +22,20 @@
                     <a href="{% url 'create_profile:profile_edit' profile.pk %}"><button type="button" id="save">EDIT</button></a>
                     <a href="{% url "password_change" %}"><button id="change_pw">CHANGE PASSWORD</button></a>
 
-            <p id="intlife">관심라이프</p>
+
             {% if profile.interested %}
+                <p id="intlife">관심라이프</p>
                 <p id="tt">{{ profile.interested }}</p>
             {% endif %}
 
-            <p id="job">직업</p>
+
             {% if profile.job %}
+                <p id="job">직업</p>
                 <p id="tt">{{ profile.job }}</p>
             {% endif %}
-            <p id="intro">자기소개</p>
+
             {% if profile.description %}
+                <p id="intro">자기소개</p>
                 <p id="tt">{{ profile.description }}</p>
             {% endif %}
             <p id="goalbadge">목표 라이프 뱃지</p>
