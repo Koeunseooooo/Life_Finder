@@ -5,6 +5,156 @@
     font-style: normal;
 }
 
+#all{
+    padding-top: 11rem;
+    margin: 0 auto;
+    width: 80%;
+    padding-bottom: 10rem;
+}
+/*#editbtn{*/
+/*    padding-top: 4rem;*/
+/*    width: 60%;*/
+/*    margin: 0 auto;*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*    padding-bottom: 2rem;*/
+/*}*/
+
+/*.button_7{*/
+/*    width: 300px;*/
+/*    height: 60px;*/
+/*    border-radius: 3rem;*/
+/*    background-color: #cccccc;*/
+/*    text-decoration: none;*/
+/*    border: none;*/
+/*}*/
+
+/*.button_7 a{*/
+/*    color: white;*/
+/*    padding: 20px;*/
+/*    font-family: "yg-jalnan", 'sans-serif';*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*.button_7:hover{*/
+/*    background-color: orangered;*/
+/*}*/
+
+
+#imgwrap {
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    width: 60%;
+    height: 500px;
+    margin: 0 auto;
+    overflow: scroll;
+
+}
+
+img{
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+#wrap4{
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+    padding-bottom: 3rem;
+}
+
+
+#wrap4 ul{
+    margin-top: 10px;
+}
+#wrap4 ul span{
+    font-family: "helvetica", sans-serif;
+    font-weight: 900;
+    font-size: 25px;
+    color: lightgray;
+}
+
+#wrap4 ul li:nth-child(1){
+    font-size: 27px;
+}
+
+
+
+
+
+
+/*다른 유저 게시글 이름 연결 */
+#wrap4 a{
+    color: white;
+}
+
+
+/*유저연결버튼 */
+#show{
+
+    background-color: #0B2752;
+    padding: 10px 20px;
+    border-radius: 3rem;
+}
+
+#show:hover{
+    background-color: orangered;
+}
+
+
+#posttitle{
+    margin-top: 3rem;
+    font-weight: 700;
+     font-family: "Noto Sans KR", sans-serif;
+    font-size: 23px;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #4f4f4f;
+    color: #333333;
+}
+
+
+
+
+/*게시글 작성 날짜 이건 문제 없음 */
+#wrap4 ul li:last-child {
+    color: lightgray;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+
+
+#wrap4 li:nth-child(4){
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+
+/*글 작성 내용 */
+#wrap4 p{
+    font-size: 20px;
+    color: #333333;
+
+}
+
+/*유저관심태그*/
+#wrap4 p:nth-child(2){
+    margin-top: 5rem;
+    color: #B8BFFF;
+    font-family: "yg-jalnan",'sans-serif';
+    font-size: 20px;
+    line-height: 20px;
+}
+
+#comment{
+
+    width: 60%;
+    margin: 0 auto;
+    height: 800px;
+    padding-bottom: 3rem;
+}
 
 input[name='text']{
     height: 120px;
@@ -20,17 +170,24 @@ input[name='text']{
 label{
     display: none;
 }
+
+#margin{
+    width: 200px;
+    margin: 0 auto;
+}
 .comment_write{
+
     margin-top: 10px;
-    width: 100%;
+    border-radius: 3rem;
+    width: 200px;
     height: 60px;
     background-color: #0B2752;
     border: none;
-    color: #F1F1F1;
+    color: white;
     font-size: 20px;
-    font-weight: 900;
-    font-family: "Syncopate",'sans-serif';
-    margin-bottom: 15rem;
+    font-family: "yg-jalnan",'sans-serif';
+    margin-bottom: 8rem;
+
 
 }
 
@@ -65,8 +222,9 @@ label{
 
 }
 
+/*댓글 삭제 글자*/
 .delete_comment a{
-    color: lightgray;
+    color: #888888;
     font-family: "Noto Sans KR", sans-serif;
     text-align: center;
     font-weight: 600;
@@ -85,14 +243,16 @@ label{
     margin-top: 10px;
 }
 
+/*댓글  */
 .comment_author_info{
-    color: #F1F1F1;
+    color: #333333;
     line-height: 75px;
     margin-left: 20px;
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 700;
 }
 
+
+/*댓글 작성자 닉네임 */
 .comment_author_info span{
     color: #717FFF;
     font-weight: 900;
@@ -106,153 +266,5 @@ label{
 
 .comment_info{
     display: flex;
-}
-
-
-
-#all{
-    padding-top: 11rem;
-    margin: 0 auto;
-    width: 80%;
-    padding-bottom: 10rem;
-}
-#editbtn{
-    padding-top: 4rem;
-    width: 60%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: flex-end;
-    padding-bottom: 2rem;
-}
-
-.button_7{
-    width: 120px;
-    height: 50px;
-    border-radius: 3rem;
-    background-color: #0B2752;
-    text-decoration: none;
-    border: none;
-}
-.button_7:first-child{
-    margin-right: 1rem;
-    background-color: #0B2752;
-}
-
-.button_7 a{
-    color: white;
-    padding: 20px;
-    font-family: "yg-jalnan", 'sans-serif';
-}
-
-.button_7:hover{
-    background-color: orangered;
-}
-
-
-#imgwrap {
-    border: 2px solid lightgray;
-    border-radius: 5px;
-    width: 60%;
-    height: 500px;
-    margin: 0 auto;
-    overflow: scroll;
-
-}
-
-img{
-    width: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
-#wrap4{
-    width: 60%;
-    margin: 0 auto;
-    text-align: left;
-    padding-bottom: 3rem;
-}
-
-#wrap4 a{
-    color: white;
-}
-
-/*유저연결버튼 */
-#show{
-    background-color: #0B2752;
-    padding: 10px 20px;
-    border-radius: 3rem;
-    margin-bottom: 2rem;
-}
-
-#show:hover{
-    background-color: orangered;
-}
-#wrap4 p{
-    color: red;
-    font-family: "Noto Sans KR", 'sans-serif';
-    padding-top: 20px;
-    background-color: white;
-}
-
-
-#wrap4 li{
-    margin-top: 20px;
-    color: #464646;
-    font-family: "Noto Sans KR", 'sans-serif';
-    font-size: 25px;
-
-}
-
-#wrap4 li p a{
-    background-color: yellow;
-}
-
-/*글 제목 */
-#wrap4 li:nth-child(3){
-    margin-top: 4rem;
-    color: #333333;
-    font-weight: 800;
-    font-size: 23px;
-
-
-}
-
-#wrap4 li:nth-child(2){
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
-    font-size: 25px;
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid #e0e0e0;
-}
-
-#wrap4 li:nth-child(4){
-    margin-top: 20px;
-    font-size: 20px;
-}
-
-
-/*글 작성 내용 */
-#wrap4 p{
-    font-size: 20px;
-    color: black;
-    font-weight: 600;
-
-}
-
-/*유저관심태그*/
-#wrap4 p:nth-child(2){
-    margin-top: 2rem;
-    color: #888888;
-    font-weight: 600;
-
-}
-
-#comment{
-
-    width: 60%;
-    margin: 0 auto;
-    height: 800px;
-    padding-bottom: 3rem;
 }
 

@@ -1,6 +1,5 @@
 
-
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -17,9 +16,6 @@
     overflow: hidden;
     background-color: #0B2752;
 }
-
-
-
 
 
 #top {
@@ -84,21 +80,21 @@
 }
 
 #btn #third_btn {
-    margin-top: 1rem;
-    width: 13rem;
+
+    width: 200px;
     background-color: white;
-    height: 3.5rem;
-    color: #717FFF;
+    height: 60px;
+    line-height: 60px;
+    color: #0B2752;
     font-family: "yg-jalnan", 'sans-serif';
     font-weight: 900;
-    font-size: 1rem;
-    border-radius: 2rem;
+    font-size: 20px;
+    border-radius: 3rem;
     border: none;
     text-align: center;
-    line-height: 3.5rem;
 }
 
-#btn #third_btn a{
+#btn #third_btn a {
     color: #0B2752;
 }
 
@@ -115,13 +111,13 @@
 }
 
 
-
-.card_02 img{
+.card_02 img {
     width: 130px;
     height: 130px;
     float: right;
 }
-.card_02 p{
+
+.card_02 p {
     width: 30%;
     float: left;
 
@@ -129,20 +125,29 @@
 }
 
 
-#ant{
+#ant {
     margin-top: 40px;
     width: 700px;
     height: 200px;
     float: right;
+    margin-right: 350px;
 
 }
 
-.hi{
-    margin-top : -500px;
+.hi {
+    margin-top: -600px;
     width: 700px;
     height: 200px;
     float: right;
-    margin-right:150px;
+    margin-right: 17rem;
+
+}
+
+
+.mychart {
+    width: 600px;
+    height: 225px;
+    margin: 0 auto;
 
 }
 
@@ -170,7 +175,6 @@
 }
 
 
-
 .card_02 p, .card_03 p, .card_05 p {
     margin-left: 10rem;
     margin-top: 1rem;
@@ -180,7 +184,7 @@
     font-family: "Noto Sans KR", sans-serif;
 }
 
- #lf {
+#lf {
     background-color: #0B2752;
     width: 16rem;
     height: 4rem;
@@ -189,51 +193,52 @@
     border-radius: 3rem;
     text-align: center;
     line-height: 4rem;
-     border: none;
-     color: white;
+    border: none;
+    color: white;
     font-family: "Syncopate", sans-serif;
     font-weight: 900;
     font-size: 1rem;
 
 }
 
- #lg{
-     background-color: #0B2752;
+#lg {
+    background-color: #0B2752;
     width: 16rem;
     height: 4rem;
     margin-left: 10rem;
-     margin-bottom: 3rem;
+    margin-bottom: 3rem;
     margin-top: 2rem;
     border-radius: 3rem;
     text-align: center;
     line-height: 4rem;
-     border: none;
-     color: white;
+    border: none;
+    color: white;
     font-family: "Syncopate", sans-serif;
     font-weight: 900;
     font-size: 1rem;
- }
+}
 
-#lf:hover {
+#lf:hover, #lg:hover {
     background-color: #717FFF;
 }
 
 
-.card_03 #03l{
+.card_03 #03l {
     width: 40%;
     height: 30rem;
     float: left;
 
 }
 
-#03l{
+#03l {
     padding-bottom: 5rem;
 }
+
 #03l p {
 
 }
 
-#dialog{
+#dialog {
     float: right;
     width: 60%;
 }
@@ -251,7 +256,7 @@
 }
 
 
-.card_02 p span, .card_03 p span{
+.card_02 p span, .card_03 p span {
     font-weight: 700;
 }
 
@@ -264,12 +269,6 @@
 }
 
 
-
-
-
-
-
-
 .card_04 {
     width: 100%;
     height: 40rem;
@@ -279,57 +278,76 @@
 
 }
 
-#boxwrap{
+#boxwrap {
     padding-top: 4rem;
     width: 80%;
-    background-color : #0B2752;
+    background-color: #0B2752;
     height: 500px;
     margin: 0 auto;
     display: flex;
 }
 
 
-
-
-#tbox{
+#tbox {
     width: 300px;
     height: 400px;
     background-color: white;
     border-radius: 10px;
     margin: 0 auto;
     padding: 10px 20px;
-       -webkit-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
-    -moz-box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
-    box-shadow: 14px 15px 41px 0px rgba(0,0,0,0.36);
+    -webkit-box-shadow: 14px 15px 41px 0px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 14px 15px 41px 0px rgba(0, 0, 0, 0.36);
+    box-shadow: 14px 15px 41px 0px rgba(0, 0, 0, 0.36);
 }
 
 
-#tbox h1{
+#tbox h1 {
     padding-top: 2rem;
     text-align: center;
-    font-family: "yg-jalnan",'sans-serif';
+    font-family: "yg-jalnan", 'sans-serif';
     margin-bottom: 40px;
+    color: #0B2752;
+    border-bottom: 5px solid #0B2752;
 }
 
-#tbox p{
+#t01 {
     font-family: "Noto Sans KR", sans-serif;
-    color: #c4c4c4;
-    font-weight: 900;
+    color: #0B2752;
     text-align: left;
-    line-height: 30px;
+    line-height: 35px;
+    font-weight: 500;
+}
+
+#t02 {
+    font-family: "Noto Sans KR", sans-serif;
+    color: #0B2752;
+    text-align: left;
+    line-height: 35px;
+    font-weight: 500;
+}
+
+#t03 {
+    font-family: "Noto Sans KR", sans-serif;
+    color: #0B2752;
+    text-align: left;
+    line-height: 35px;
+    font-weight: 500;
 }
 
 footer {
     width: 100%;
     height: 10rem;
-    background-color: lightgray;
+    background-color: #F1F1F1;
     color: white;
     text-align: center;
 }
 
 footer p {
-    color: #e0e0e0;
+    border-top: 1.5px solid #0B2752;
+    color: #0B2752;
     display: block;
-    padding-top: 5rem;
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 20px;
 
 }

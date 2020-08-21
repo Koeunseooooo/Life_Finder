@@ -55,7 +55,9 @@
 
                     <div id="imgsmall">
                         {% if object.image %}
-                            <img src="{{ object.image.url }}" height="50px;">
+                            <div id="imgbox">
+                            <img src="{{ object.image.url }}">
+                            </div>
                         {% endif %}
                         <p id="text"> {{ object.created|date:'Y-m-d' }} </p>
                     </div>

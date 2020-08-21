@@ -16,7 +16,7 @@
         }
 
         h1 {
-            padding-top: 10rem;
+            padding-top: 11rem;
             text-align: center;
             font-family: "yg-jalnan", 'sans-serif';
             color: #0B2752;
@@ -34,10 +34,10 @@
 
         }
 
-        #gg, #gd {
+       #gd {
             margin-top: 5rem;
-            width: 10rem;
-            height: 4rem;
+            width: 200px;
+            height: 60px;
             color: white;
             background-color: #c4c4c4;
             border: none;
@@ -46,12 +46,13 @@
             border-radius: 3rem;
         }
 
-        #gg:hover, #gd:hover {
+        #gd:hover {
             background-color: orangered;
         }
 
-        #gg a, #gd a {
+        #gd a {
             color: white;
+            line-height: 60px;
         }
 
 
@@ -108,10 +109,11 @@
 
 {% endblock %}
 {% block photo %}
+    <h1>LIKE LIST</h1>
     <div id="wrap05">
         <div class="topbtn">
             {% if user.is_authenticated %}
-                <button id="gd"><a class="nav-link" style="color: white" href="{% url 'photo:index' %}"><span>홈으로 가기</span></a></button>
+                <button id="gd"><a class="nav-link" style="color: white" href="{% url 'photo:index' %}"><span>커뮤니티 홈으로 가기</span></a></button>
             {% endif %}
         </div>
 

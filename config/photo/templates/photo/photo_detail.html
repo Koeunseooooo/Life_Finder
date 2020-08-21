@@ -13,7 +13,7 @@
             {% if object.author == request.user.user_profile %}
                     <button class="button_7"><a href="{% url 'photo:update' object.id %}">EDIT</a></button>
             {% endif %}
-            <button class="button_7"><a href="{% url 'photo:index' %}">홈으로 가기</a></button>
+{#            <button class="button_7"><a href="{% url 'photo:index' %}">커뮤니티 홈으로 돌아가기</a></button>#}
         </div>
         <div id="imgwrap">
 
@@ -46,7 +46,7 @@
                         {{ object.author.interested }}</p>
                 {% else %}
                 {% endif %}
-                <li>{{ object.title }}</li>
+                <li id="posttitle">{{ object.title }}</li>
                 <div class="content_text"> {{ object.text|safe }} </div>
                 {# 이 밑에 지우지 말아요#}
                 <li>{{ object.created|date:'Y-m-d' }}</li>
@@ -105,7 +105,9 @@
                 <form class="comment_register" action="{% url 'photo:detail' object.pk %}" method="POST">
                     {% csrf_token %}
                     {{ form }}
-                    <span><button class="comment_write" type="submit">SAVE</button></span>
+                    <div id="margin">
+                    <span><button class="comment_write" type="submit">댓글달기</button></span>
+                        </div>
                 </form>
             {% endif %}
 
