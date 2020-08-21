@@ -23,7 +23,7 @@ class Profile(models.Model):
 
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile')
-    nickname = models.CharField(max_length=7, verbose_name='닉네임을 설정해주세요.')
+    nickname = models.CharField(max_length=7, verbose_name='닉네임을 설정해주세요.',unique=True)
     photo = models.ImageField(null=True, blank=True, upload_to="create_profile/%Y/%m/%d", verbose_name='프로필 사진을 설정해주세요.')
     # age = models.PositiveIntegerField(blank=True, null=True, verbose_name='나이')
     # birthday = models.DateField(blank=True)

@@ -52,7 +52,6 @@
 
             {% for object in user_registered_photos %}
                 <div onclick="location.href='{% url 'photo:detail' object.id %}';">
-
                     <div id="imgsmall">
                         {% if object.image %}
                             <div id="imgbox">

@@ -146,16 +146,34 @@ def register(request):
 
 
 
+# def profile_edit(request, pk):
+#     profile = Profile.objects.get(pk=pk)
+#     if request.method == "POST":
+#         profile_form = RegisterProfileForm(request.POST, request.FILES, instance=profile)
+#         goal_form = ObjectGoalNumberForm(request.POST, instance=profile)
+#         if profile_form.is_valid():
+#             # profile = profile_form.save()
+#             profile_form.save()
+#             goal_form.save()
+#         return redirect('create_profile:profile_look', request.user.pk)
+#     else:
+#         profile_form = RegisterProfileForm(instance=profile)
+#         goal_form = ObjectGoalNumberForm(instance=profile)
+#         ctx = {
+#             'profile_form': profile_form,
+#             'goal_form': goal_form,
+#             'profile': profile,
+#         }
+#     return render(request, 'create_profile/profile_update.html', ctx)
+
 def profile_edit(request, pk):
-    import datetime
-    profile = Profile.objects.get(pk=pk)
+    profile = Profile.objects.get(id=pk)
     if request.method == "POST":
         profile_form = RegisterProfileForm(request.POST, request.FILES, instance=profile)
         goal_form = ObjectGoalNumberForm(request.POST, instance=profile)
-        if profile_form.is_valid():
-            # profile = profile_form.save()
-            profile_form.save()
-            goal_form.save()
+        # profile = profile_form.save()
+        profile_form.save()
+        goal_form.save()
         return redirect('create_profile:profile_look', request.user.pk)
     else:
         profile_form = RegisterProfileForm(instance=profile)
@@ -165,7 +183,7 @@ def profile_edit(request, pk):
             'goal_form': goal_form,
             'profile': profile,
         }
-        return render(request, 'create_profile/profile_update.html', ctx)
+    return render(request, 'create_profile/profile_update.html', ctx)
 
 # def profile_edit(request,pk):
 #     profile = Profile.objects.get(pk=pk)

@@ -3,20 +3,16 @@
 {% block style %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'photo/photo_detail.css' %}">
-
-
 {% endblock %}
 {% block content %}
     <div id="all">
-
         <div id="editbtn">
             {% if object.author == request.user.user_profile %}
-                    <button class="button_7"><a href="{% url 'photo:update' object.id %}">EDIT</a></button>
+                <button class="button_7"><a href="{% url 'photo:update' object.id %}">EDIT</a></button>
             {% endif %}
 {#            <button class="button_7"><a href="{% url 'photo:index' %}">커뮤니티 홈으로 돌아가기</a></button>#}
         </div>
         <div id="imgwrap">
-
             {% if object.image %}
                 <img src=" {{ object.image.url }}" alt="...">
             {% endif %}
@@ -42,7 +38,8 @@
                 </li>
                 {% if not object.author == request.user.user_profile %}
                     <p>
-                        <a  id="show" href="{% url 'create_profile:show_each_profile' object.author.user.pk %}"> {{ object.author.nickname }}</a>
+                        <a id="show"
+                           href="{% url 'create_profile:show_each_profile' object.author.user.pk %}"> {{ object.author.nickname }}</a>
                         {{ object.author.interested }}</p>
                 {% else %}
                 {% endif %}
@@ -55,52 +52,42 @@
 
 
 
-
-
         <div id="comment">
             {% for comment in comments %}
-                <div class="each_comment">
+                <div class="each_comment" id="comment_list">
                     <div class="comment_info">
                         <div class="comment_author_image">
+                            <tbody>
                             {% if comment.comment_author.photo %}
                                 {% if not  comment.comment_author == request.user.user_profile %}
                                     <a href="{% url 'create_profile:show_each_profile' comment.comment_author.user.pk %}">
-                                    <img id="user_photo" src='{{ comment.comment_author.photo.url }}'></a>
+                                        <img id="user_photo" src='{{ comment.comment_author.photo.url }}'></a>
                                 {% else %}
                                     <img id="user_photo" src='{{ comment.comment_author.photo.url }}'>
                                 {% endif %}
-
-                                {#        <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">#}
+                                <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">
                             {% else %}
                                 {% if not  comment.comment_author == request.user.user_profile %}
                                     <a href="{% url 'create_profile:show_each_profile' comment.comment_author.user.pk %}">
-                                     <img id="smile01" src="{% static 'face.png' %}"></a>
+                                        <img id="smile01" src="{% static 'face.png' %}"></a>
                                 {% else %}
                                     <img id="smile01" src="{% static 'face.png' %}">
                                 {% endif %}
 
                             {% endif %}
+                            </tbody>
                         </div>
                         <div class="comment_author_info">
-                                   <span>{{ comment.comment_author.nickname }}</span>  {{ comment.text }}
+                            <span>{{ comment.comment_author.nickname }}</span> {{ comment.text }}
                         </div>
-
-
-
                     </div>
                     {% if request.user.user_profile == comment.comment_author %}
-
-
                         <button class="delete_comment"><a href="{% url 'photo:comment_remove' comment.pk %}">댓글 삭제</a>
                         </button>
-
-
                     {% endif %}
                 </div>
             {% empty %}
-
             {% endfor %}
-
             {% if user.is_authenticated %}
                 <form class="comment_register" action="{% url 'photo:detail' object.pk %}" method="POST">
                     {% csrf_token %}
@@ -110,6 +97,6 @@
                         </div>
                 </form>
             {% endif %}
-
         </div>
+    </div>
 {% endblock %}
