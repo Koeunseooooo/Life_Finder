@@ -57,7 +57,6 @@
                 <div class="each_comment" id="comment_list">
                     <div class="comment_info">
                         <div class="comment_author_image">
-                            <tbody>
                             {% if comment.comment_author.photo %}
                                 {% if not  comment.comment_author == request.user.user_profile %}
                                     <a href="{% url 'create_profile:show_each_profile' comment.comment_author.user.pk %}">
@@ -72,9 +71,7 @@
                                 {% else %}
                                     <img id="smile01" src="{% static 'face.png' %}">
                                 {% endif %}
-
                             {% endif %}
-                            </tbody>
                         </div>
                         <div class="comment_author_info">
                             <span>{{ comment.comment_author.nickname }}</span> {{ comment.text }}
