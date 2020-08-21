@@ -7,7 +7,7 @@
 
 
 .r_contents {
-    width: 88%;
+    width: 90%;
     /*background-color: yellowgreen;*/
     margin: 0 auto;
 }
@@ -276,14 +276,7 @@
     border-radius: 1rem;
 }
 
-/*#grp06 .nanna {*/
-/*    margin-top: 0rem;*/
-/*    font-family: 'Bazzi';*/
-/*    font-size: 25px;*/
-/*    text-align: center;*/
-/*    color: #717FFF;*/
 
-/*}*/
 
 
 #grp06 p {
@@ -338,6 +331,22 @@
 /*    font-family: "yg-jalnan", 'sans-serif';*/
 /*}*/
 
+/*#grp07 .nanna {*/
+/*    margin-top: 5rem;*/
+/*    font-family: "MapoHongdaeFreedom",'serif';*/
+/*    font-size: 20px;*/
+/*    text-align: center;*/
+/*    color:#717FFF;*/
+/*}*/
+#grp07 .nanna {
+   color: #717FFF;
+    font-family: "MapoHongdaeFreedom", 'sans-serif';
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+
+}
+
 .mychart5 {
     width: 500px;
     height: 300px;
@@ -390,14 +399,6 @@
     margin: 0 auto;
 }
 
-.nanna {
-   color: #717FFF;
-    font-family: "MapoHongdaeFreedom", 'sans-serif';
-    font-size: 20px;
-    text-align: center;
-    margin-top: 10px;
-
-}
 
 
 
