@@ -6,7 +6,6 @@
 {% block style %}
     <link rel="stylesheet" type="text/css" href="{% static 'create_profile/profile_update.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet">
-
 {% endblock %}
 {% block content %}
     <div id="profilecreate">
@@ -15,18 +14,12 @@
                 <div id="regtxt">
                     {% csrf_token %}
                     <div id="box">{{ profile_form.as_table }}</div>
-
+                    <div style="height: 5rem;"></div>
                     <div id="why">
-
-
-
-                    <input id="myRange" type="range" min="0" step="1" max="100" value="{{ profile.goal_count }}" name="goal_count">
+                    {{ goal_form }}
+{#                    <input id="myRange" type="range" min="0" step="1" max="100" value="{{ profile.goal_count }}" name="goal_count">#}
                     <p id="lifegoal"> {{ profile.nickname }} 님의 목표 뱃지 갯수는 <span id="demo"></span>개 입니다 </p>
-
-
                     </div>
-
-
                       <input type="submit" id="save" value="SAVE"/>
                 </div>
             </form>
@@ -36,7 +29,7 @@
 
 
        <script>
-            let slider = document.getElementById("myRange");
+            let slider = document.getElementById("id_goal_count");
             let output = document.getElementById("demo");
             output.innerHTML = slider.value;
 

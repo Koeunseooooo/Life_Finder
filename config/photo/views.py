@@ -19,8 +19,6 @@ from django.contrib.auth.decorators import login_required
 
 from django.http import JsonResponse
 
-
-
 class PhotoList(ListView):
     model = Photo
     template_name_suffix = '_list'
@@ -139,18 +137,9 @@ class PhotoDetail(DetailView, FormMixin):
 
 
 
-
-    def updateField(request):
-        print(request.body.get('order_id'))
-        # you should update you model field here
-        return JsonResponse({'ok': True}, status=200)
-
-
-
 from django.views.generic.base import View
 from django.http import HttpResponseForbidden
 from urllib.parse import urlparse
-
 from .models import Comment
 
 @login_required
@@ -162,8 +151,9 @@ def comment_remove(request,pk):
 
 class PhotoLike(View):
     def get(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:    #로그인확인
-            return HttpResponseForbidden()
+        if not request.user.is_authenticated:   #로그인확인
+            # return HttpResponseForbidden()
+            return redirect('create_profile:need_login')
         else:
             if 'photo_id' in kwargs:
                 photo_id = kwargs['photo_id']
@@ -183,8 +173,9 @@ class PhotoLikeList(ListView):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:  # 로그인확인
-            messages.warning(request, '로그인을 먼저하세요')
-            return HttpResponseRedirect('/')
+            #messages.warning(request, '로그인을 먼저하세요')
+            #return HttpResponseRedirect('/')
+            return redirect('create_profile:need_login')
         return super(PhotoLikeList, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
@@ -200,7 +191,9 @@ class PhotoMyList(ListView):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:  # 로그인확인
-            messages.warning(request, '로그인을 먼저하세요')
-            return HttpResponseRedirect('/')
+            # messages.warning(request, '로그인을 먼저하세요')
+            # return HttpResponseRedirect('/')
+            return redirect('create_profile:need_login')
         return super(PhotoMyList, self).dispatch(request, *args, **kwargs)
+
 

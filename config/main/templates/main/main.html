@@ -57,9 +57,11 @@
             당신의 소중한 라이프 기록들을 보관하고 있어요<br/>
             일상에서 느낀 만족스러운 모든 순간이 라이프 기록이 될 수 있답니다<br/>
             각 기록들에 당신이 느낀 만족도에 따라 라이프 뱃지를 달아주세요!<br/>
-            <a href="#">
-                <button id="lf">CALENDAR-YA!</button>
-            </a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'cal:calendar' today_date %}"><button id="lf">CALENDAR-YA!</button></a>
+            {% else %}
+                <a href="{% url 'create_profile:need_login' %}"><button id="lf">CALENDAR-YA!</button></a>
+            {% endif %}
         </p>
 
 
@@ -97,7 +99,11 @@
             뱃지를 통해 얻은 데이터의 통계 결과값들을 이곳에 모았습니다<br/>
             당신의 라이프를 대시보드에서 한 눈에 살펴보세요!
         </p>
-         <a href="#"><button id="lg">CALENDAR-YA!</button></a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'cal:dash' %}"><button id="lg">DASH-YA!</button></a>
+        {% else %}
+            <a href="{% url 'create_profile:need_login' %}"><button id="lg">DASH-YA!</button></a>
+        {% endif %}
         </div>
 
         </div>

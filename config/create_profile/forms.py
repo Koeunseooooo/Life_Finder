@@ -89,7 +89,7 @@ class ObjectGoalNumberForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['goal_count']
-        labels = {"goal_count": "목표 개수"}
+        labels = {"goal_count": ""}
         widgets = {'goal_count': NumberInput(attrs={'type': 'range', 'max': '100', 'min': '0', 'step': '1'})}
 
     # scale = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 'step': '5', 'min': '-100', 'max': '100', 'id':'myRange'}), required=False)
