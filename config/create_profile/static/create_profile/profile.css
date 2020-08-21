@@ -104,7 +104,7 @@ body{
     text-align: left;
 }
 #intro{
-        width: 5rem;
+    width: 5rem;
     margin-left: 1rem;
     font-family: "yg-jalnan", 'sans-serif';
     text-align: left;
@@ -121,12 +121,12 @@ body{
 }
 
 #intro, #intlife, #goalbadge, #job{
-    color: white;
+    color: #717FFF;
 }
 
 
 #tt{
-    color: white;
+    color: #717FFF;
     padding-left: 20px;
     text-align: left;
     margin-bottom: 20px;
