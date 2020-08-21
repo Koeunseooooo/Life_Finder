@@ -65,7 +65,6 @@
                                 {% else %}
                                     <img id="user_photo" src='{{ comment.comment_author.photo.url }}'>
                                 {% endif %}
-                                <img src="{% static profile.photo.url %}" style="height: 200px; width: 200px;">
                             {% else %}
                                 {% if not  comment.comment_author == request.user.user_profile %}
                                     <a href="{% url 'create_profile:show_each_profile' comment.comment_author.user.pk %}">
