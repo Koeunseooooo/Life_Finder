@@ -29,7 +29,7 @@
 
 #lessbtn{
     margin: 0 auto;
-    width: 540px;
+    width: 300px;
     background-color: #0B2752;
     height: 60px;
     text-align: center;
@@ -47,6 +47,6 @@
 }
 
 #back{
-    width: 540px;
+    width: 300px;
     margin: 0 auto;
 }

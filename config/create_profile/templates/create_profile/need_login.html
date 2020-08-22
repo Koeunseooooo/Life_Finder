@@ -31,15 +31,15 @@
 
         .button_5 {
             text-align: center;
-            width: 540px;
+            width: 300px;
             background-color: #0B2752;
-            height: 60px;
-            line-height: 60px;
-            font-family: "Syncopate", sans-serif;
+            height: 70px;
+            line-height: 70px;
+            font-family: "yg-jalnan", sans-serif;
             font-weight: 900;
             font-size: 20px;
             border: none;
-
+            border-radius: 3rem;
         }
 
         .button_5:nth-child(1){
@@ -68,8 +68,9 @@
     <div class="need_login">
         <p class="login_need_desc">로그인 후 이용 가능합니다</p>
         <div class="buttons">
-            <button class="button_5"><a href="{% url 'create_profile:signup' %}">JOIN US</a></button>
-            <button class="button_5"><a href="{% url 'create_profile:login' %}">LOG IN</a></button>
+            <button class="button_5"><a href="{% url 'create_profile:login' %}">로그인하러 가기</a></button>
+                        <button class="button_5"><a href="{% url 'create_profile:signup' %}">회원가입하러 가기 </a></button>
+
         </div>
     </div>
 {% endblock %}

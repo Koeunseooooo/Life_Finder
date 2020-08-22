@@ -14,7 +14,7 @@
         <div class="topbtn">
             {% if user.is_authenticated %}
                 <a href="{% url 'photo:create' %}"><button id="gg">글 등록하기</button></a>
-                <a href="{% url 'photo:like_list' %}"><button id="gd">좋아요한 사진보기</button></a>
+                <a href="{% url 'photo:like_list' %}"><button id="gd">좋아요한 글보기</button></a>
             {% endif %}
         </div>
          <ul class="list-group list-group-flush">

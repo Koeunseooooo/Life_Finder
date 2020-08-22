@@ -27,7 +27,7 @@ label{
     text-align: center;
     font-family: 'yg-jalnan', "cursive";
     font-size: 17px;
-    color: black;
+    color: #0B2752;
 }
 
 
@@ -97,6 +97,7 @@ select[name="category"]{
     font-size: 20px;
     width: 540px;
     height: 60px;
+    border-radius: 3rem;
 }
 
 #lb:hover{

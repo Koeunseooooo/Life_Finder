@@ -83,7 +83,7 @@
     }
 
     #google_login:hover {
-        background-color: orange;
+        background-color: orangered;
     }
 
     #google_login a {
@@ -155,7 +155,7 @@
 background-color: #e0e0e0;
     }
 #forget_password:hover{
-    background-color: orange;
+    background-color: orangered;
 }
     #forget_password a{
         color: white;

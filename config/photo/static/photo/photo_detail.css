@@ -5,12 +5,13 @@
     font-style: normal;
 }
 
-#all{
+#all {
     padding-top: 11rem;
     margin: 0 auto;
     width: 80%;
 }
-#editbtn{
+
+#editbtn {
     padding-top: 4rem;
     width: 60%;
     margin: 0 auto;
@@ -19,7 +20,7 @@
     padding-bottom: 2rem;
 }
 
-.button_7{
+.button_7 {
     width: 80px;
     height: 50px;
     border-radius: 3rem;
@@ -28,14 +29,14 @@
     border: none;
 }
 
-.button_7 a{
+.button_7 a {
     color: white;
     padding: 15px;
     font-family: "yg-jalnan", 'sans-serif';
     font-size: 18px;
 }
 
-.button_7:hover{
+.button_7:hover {
     background-color: orangered;
 }
 
@@ -50,13 +51,13 @@
 
 }
 
-img{
+img {
     width: 100%;
     overflow: hidden;
     margin: 0 auto;
 }
 
-#wrap4{
+#wrap4 {
     width: 60%;
     margin: 0 auto;
     text-align: left;
@@ -64,56 +65,54 @@ img{
 }
 
 
-#wrap4 ul{
+#wrap4 ul {
     margin-top: 10px;
 }
-#wrap4 ul span{
+
+#wrap4 ul span {
     font-family: "helvetica", sans-serif;
     font-weight: 900;
     font-size: 25px;
     color: lightgray;
 }
 
-#wrap4 ul li:nth-child(1){
+#wrap4 ul li:nth-child(1) {
     font-size: 27px;
 }
 
 
-
-
-
-
 /*다른 유저 게시글 이름 연결 */
-#wrap4 a{
+#wrap4 a {
     color: white;
 }
 
 
 /*유저연결버튼 */
-#show{
+#show {
 
     background-color: #0B2752;
     padding: 10px 20px;
     border-radius: 3rem;
+-webkit-box-shadow: 0px 6px 9px -3px rgba(128,128,128,1);
+-moz-box-shadow: 0px 6px 9px -3px rgba(128,128,128,1);
+box-shadow: 0px 6px 9px -3px rgba(128,128,128,1);
 }
 
-#show:hover{
+#show:hover {
     background-color: orangered;
 }
 
 
-#posttitle{
+#posttitle {
     margin-top: 3rem;
     font-weight: 700;
-     font-family: "Noto Sans KR", sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 23px;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
     border-bottom: 2px solid #4f4f4f;
     color: #333333;
 }
-
-
 
 
 /*게시글 작성 날짜 이건 문제 없음 */
@@ -124,30 +123,29 @@ img{
 }
 
 
-
-#wrap4 li:nth-child(4){
+#wrap4 li:nth-child(4) {
     margin-top: 20px;
     font-size: 20px;
 }
 
 
 /*글 작성 내용 */
-#wrap4 p{
+#wrap4 p {
     font-size: 20px;
     color: #333333;
 
 }
 
 /*유저관심태그*/
-#wrap4 p:nth-child(2){
+#wrap4 p:nth-child(2) {
     margin-top: 5rem;
     color: #B8BFFF;
-    font-family: "yg-jalnan",'sans-serif';
+    font-family: "yg-jalnan", 'sans-serif';
     font-size: 20px;
     line-height: 20px;
 }
 
-#comment{
+#comment {
 
     width: 60%;
     margin: 0 auto;
@@ -155,26 +153,28 @@ img{
     padding-bottom: 3rem;
 }
 
-input[name='text']{
+input[name='text'] {
     height: 120px;
     padding-left: 2%;
     background-color: #F1F1F1;
     border: none;
     width: 98%;
-    font-family: "Noto Sans KR",'sans-serif';
+    font-family: "Noto Sans KR", 'sans-serif';
     font-size: 17px;
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
-label{
+
+label {
     display: none;
 }
 
-#margin{
+#margin {
     width: 200px;
     margin: 0 auto;
 }
-.comment_write{
+
+.comment_write {
 
     margin-top: 10px;
     border-radius: 3rem;
@@ -184,23 +184,23 @@ label{
     border: none;
     color: white;
     font-size: 20px;
-    font-family: "yg-jalnan",'sans-serif';
+    font-family: "yg-jalnan", 'sans-serif';
     margin-bottom: 8rem;
 
 
 }
 
 
-.comment_write:hover{
+.comment_write:hover {
     background-color: orangered;
 }
-.comment_register{
+
+.comment_register {
     margin-top: 2rem;
 }
 
 
-
-.each_comment{
+.each_comment {
     display: flex;
     height: 70px;
     padding-bottom: 2px;
@@ -209,7 +209,7 @@ label{
 
 }
 
-.delete_comment{
+.delete_comment {
     margin-top: 26px;
     text-decoration: none;
     margin-left: 20px;
@@ -222,7 +222,7 @@ label{
 }
 
 /*댓글 삭제 글자*/
-.delete_comment a{
+.delete_comment a {
     color: #888888;
     font-family: "Noto Sans KR", sans-serif;
     text-align: center;
@@ -230,10 +230,7 @@ label{
 }
 
 
-
-
-
-#user_photo, #smile01{
+#user_photo, #smile01 {
     border: 2px solid white;
     width: 50px;
     height: 50px;
@@ -243,7 +240,7 @@ label{
 }
 
 /*댓글  */
-.comment_author_info{
+.comment_author_info {
     color: #333333;
     line-height: 75px;
     margin-left: 20px;
@@ -252,18 +249,16 @@ label{
 
 
 /*댓글 작성자 닉네임 */
-.comment_author_info span{
+.comment_author_info span {
     color: #717FFF;
     font-weight: 900;
     margin-right: 20px;
-    font-size: 23px;
+    font-size: 15px;
+    font-family: "yg-jalnan", 'sans-serif';
 }
 
 
-
-
-
-.comment_info{
+.comment_info {
     display: flex;
 }
 

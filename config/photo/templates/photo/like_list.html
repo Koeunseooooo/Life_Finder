@@ -36,8 +36,7 @@
 
        #gd {
             margin-top: 5rem;
-            width: 200px;
-            height: 60px;
+           height: 60px;
             color: white;
             background-color: #c4c4c4;
             border: none;
@@ -113,7 +112,7 @@
     <div id="wrap05">
         <div class="topbtn">
             {% if user.is_authenticated %}
-                <button id="gd"><a class="nav-link" style="color: white" href="{% url 'photo:index' %}"><span>커뮤니티 홈으로 가기</span></a></button>
+                <button id="gd" style="width: 300px"><a class="nav-link" style="color: white" href="{% url 'photo:index' %}"><span>커뮤니티 홈으로 가기</span></a></button>
             {% endif %}
         </div>
 
@@ -139,7 +138,7 @@
                                 </a>
                             {% endif %}
                             {% if object.like.all.count %}
-                                <span>{{ object.like.all.count }}</span>
+                                <span>{{ object.like.all.count }}liked</span>
                             {% endif %}
                         </li>
                     </ul>

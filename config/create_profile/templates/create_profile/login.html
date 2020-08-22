@@ -31,7 +31,8 @@
                         <input name="username" type="text" placeholder="     아이디" autofocus><br/>
                         <input name="password" type="password" placeholder="    비밀번호">
                         <input type="submit" id="save" value="로그인"/>
-<button id="google_login"><img src="{% static 'main/googlelogo.png' %}"><span><a href="{% provider_login_url 'google' %}">Sign in with Google</a></span></button>                        <button id="forget_password"><a href="{% url "password_reset" %}">비밀번호 찾기</a></button>
+<button id="google_login"><img src="{% static 'main/googlelogo.png' %}"><span><a href="{% provider_login_url 'google' %}">Sign in with Google</a></span></button>
+                        <button id="forget_password"><a href="{% url "password_reset" %}">비밀번호 찾기</a></button>
 
 
                     </div>
